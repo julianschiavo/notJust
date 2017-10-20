@@ -140,7 +140,7 @@ class EvalCommand extends Command {
 					});
 				}
 			}
-}
+//}
 });
 
 function sendResultEmbed(result, input, message) {
