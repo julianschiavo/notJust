@@ -1,3 +1,4 @@
+const Discord = require('discord.js')
 const Command = require('../../cmdModule/commands').Command
 const paste = require("better-pastebin")
 paste.setDevKey("e7dfc6a968006ffa783f9cb21ec8c0d7")
@@ -8,7 +9,7 @@ function sendResultEmbed(result, input, message) {
 	if (typeof(result) == "undefined") {
 		var oinput = "```js\n" + input + "```"
 		var ooutput = "```No Output.```"
-		const embed = new message.client.RichEmbed()
+		const embed = new Discord.RichEmbed()
 			.setColor("#ffff00")
 			.setTimestamp()
 			.addField("<:null:330712178342625280> `No output was returned.`",
@@ -24,7 +25,7 @@ function sendResultEmbed(result, input, message) {
 	} else {
 		var ginput = "```js\n" + input + "```"
 		var goutput = "```" + result + "```"
-		const embed = new message.client.RichEmbed()
+		const embed = new Discord.RichEmbed()
 			.setColor("#00ff00")
 			.setTimestamp()
 			.addField("<:green_tick:330712173288488960> `Execution Successful.`",
@@ -110,7 +111,7 @@ var msg = args.join(' ');
    								.fail(err => {
    									var einput = "```js\n" + origMsg + "```"
 										var eoutput = "```" + err + "```"
-										const embed = new message.client.RichEmbed()
+										const embed = new Discord.RichEmbed()
 					  					.setColor("#ff0000")
 					  					.setTimestamp()
 					  					.addField("<:red_tick:330712188681453590> `An Error Occurred.`",
@@ -129,7 +130,7 @@ var msg = args.join(' ');
    					} catch (e) {
    						var einput = "```js\n" + origMsg + "```"
 							var eoutput = "```" + e + "```"
-							const embed = new message.client.RichEmbed()
+							const embed = new Discord.RichEmbed()
 					  		.setColor("#ff0000")
 					  		.setTimestamp()
 					  		.addField("<:red_tick:330712188681453590> `An Error Occurred.`",
@@ -146,7 +147,7 @@ var msg = args.join(' ');
    				.fail(err => {
    					var einput = "```js\n" + origMsg + "```"
 						var eoutput = "```" + err + "```"
-						const embed = new message.client.RichEmbed()
+						const embed = new Discord.RichEmbed()
 						  .setColor("#ff0000")
 						  .setTimestamp()
 						  .addField("<:red_tick:330712188681453590> `An Error Occurred.`",
@@ -169,7 +170,7 @@ var msg = args.join(' ');
    			} catch (e) {
         	var einput = "```js\n" + msg + "```"
 					var eoutput = "```" + e + "```"
-					const embed = new message.client.RichEmbed()
+					const embed = new Discord.RichEmbed()
 					  .setColor("#ff0000")
 					  .setTimestamp()
 					  .addField("<:red_tick:330712188681453590> `An Error Occurred.`",
