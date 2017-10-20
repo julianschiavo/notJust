@@ -1,0 +1,14 @@
+{
+  "prefix": "...",
+  "token": "token here",
+  "owner": "193908323911860224",
+  "timer": 300000,
+  "env": "dev",
+  "rethink": {
+    "host": "1.2.3.4",
+    "port": 28015,
+    "db": "dotSandbox",
+    "user": "admin",
+    "password": "your password"
+  }
+}
