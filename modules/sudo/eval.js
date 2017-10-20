@@ -2,6 +2,45 @@ const Command = require('../../cmdModule/commands').Command
 const paste = require("better-pastebin")
 paste.setDevKey("e7dfc6a968006ffa783f9cb21ec8c0d7")
 
+
+
+function sendResultEmbed(result, input, message) {
+	if (typeof(result) == "undefined") {
+		var oinput = "```js\n" + input + "```"
+		var ooutput = "```No Output.```"
+		const embed = new Discord.RichEmbed()
+			.setColor("#ffff00")
+			.setTimestamp()
+			.addField("<:null:330712178342625280> `No output was returned.`",
+				"Check the console for more info.")
+			.addBlankField(true)
+			.addField(":inbox_tray: `Input`",
+				oinput)
+			.addField(":outbox_tray: `Output`",
+				ooutput)
+		message.channel.send({
+			embed
+		});
+	} else {
+		var ginput = "```js\n" + input + "```"
+		var goutput = "```" + result + "```"
+		const embed = new Discord.RichEmbed()
+			.setColor("#00ff00")
+			.setTimestamp()
+			.addField("<:green_tick:330712173288488960> `Execution Successful.`",
+				"Check the console for more info.")
+			.addBlankField(true)
+			.addField(":inbox_tray: `Input`",
+				ginput)
+			.addField(":outbox_tray: `Output`",
+				goutput)
+		message.channel.send({
+			embed
+		});
+	}
+}
+
+
 class EvalCommand extends Command {
   constructor() {
     super({
@@ -163,41 +202,10 @@ paste.login("e7dfc6a968006ffa783f9cb21ec8c0d7", "e7dfc6a968006ffa783f9cb21ec8c0d
 }
 
 
-function sendResultEmbed(result, input, message) {
-	if (typeof(result) == "undefined") {
-		var oinput = "```js\n" + input + "```"
-		var ooutput = "```No Output.```"
-		const embed = new Discord.RichEmbed()
-			.setColor("#ffff00")
-			.setTimestamp()
-			.addField("<:null:330712178342625280> `No output was returned.`",
-				"Check the console for more info.")
-			.addBlankField(true)
-			.addField(":inbox_tray: `Input`",
-				oinput)
-			.addField(":outbox_tray: `Output`",
-				ooutput)
-		message.channel.send({
-			embed
-		});
-	} else {
-		var ginput = "```js\n" + input + "```"
-		var goutput = "```" + result + "```"
-		const embed = new Discord.RichEmbed()
-			.setColor("#00ff00")
-			.setTimestamp()
-			.addField("<:green_tick:330712173288488960> `Execution Successful.`",
-				"Check the console for more info.")
-			.addBlankField(true)
-			.addField(":inbox_tray: `Input`",
-				ginput)
-			.addField(":outbox_tray: `Output`",
-				goutput)
-		message.channel.send({
-			embed
-		});
-	}
-}
+
+
+
+
 }
 
 
