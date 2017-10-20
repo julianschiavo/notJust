@@ -2,12 +2,6 @@ const Command = require('../../cmdModule/commands').Command
 const paste = require("better-pastebin")
 paste.setDevKey("e7dfc6a968006ffa783f9cb21ec8c0d7")
 
-paste.login("e7dfc6a968006ffa783f9cb21ec8c0d7", "e7dfc6a968006ffa783f9cb21ec8c0d7", function(success, data) {
-	if (!success) {
-		console.error(new Error("Failed to log in to Pastebin"))
-		process.exit(1);
-	}
-
 class EvalCommand extends Command {
   constructor() {
     super({
@@ -23,7 +17,13 @@ class EvalCommand extends Command {
   }
 
   async run(message, args, api) {
+paste.login("e7dfc6a968006ffa783f9cb21ec8c0d7", "e7dfc6a968006ffa783f9cb21ec8c0d7", function(success, data) {
+	if (!success) {
+		console.error(new Error("Failed to log in to Pastebin"))
+		process.exit(1);
+	}
     args.splice(0, 1)
+
     /*var code = args.join(' ');
     code = api.clean(code)
     try {
@@ -140,8 +140,9 @@ class EvalCommand extends Command {
 					});
 				}
 			}
-}
 });
+}
+
 
 function sendResultEmbed(result, input, message) {
 	if (typeof(result) == "undefined") {
