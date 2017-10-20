@@ -140,6 +140,8 @@ paste.login("e7dfc6a968006ffa783f9cb21ec8c0d7", "e7dfc6a968006ffa783f9cb21ec8c0d
 					});
 				}
 }
+});
+}
 
 
 function sendResultEmbed(result, input, message) {
