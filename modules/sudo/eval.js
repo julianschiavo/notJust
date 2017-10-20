@@ -87,9 +87,9 @@ paste.login("e7dfc6a968006ffa783f9cb21ec8c0d7", "e7dfc6a968006ffa783f9cb21ec8c0d
 
 
 
-			if (msg.startsWith("http://pastebin.com/") || msg.startsWith("https://pastebin.com/")) {
-   			var origMsg = msg
-   			msg = msg.replace(/http:\/\//gi, "")
+			if (args.startsWith("http://pastebin.com/") || args.startsWith("https://pastebin.com/")) {
+   			var origMsg = args
+   			msg = args.replace(/http:\/\//gi, "")
    			msg = msg.replace(/https:\/\//gi, "")
    			msg = msg.replace(/www./gi, "")
    			msg = msg.replace(/pastebin.com\//gi, "")
