@@ -22,10 +22,14 @@ class LcountCommand extends Command {
       return;
     }
     var argg = args[1].toLowerCase()
+    var arggg    
+if (args[2]) {
+    arggg = args[2].toLowerCase()
+    }
     var crew
     var color
     var endd
-    var nick
+    var zz = 'f'
     if (argg.indexOf('g') > -1) {
       crew = msg.guild.roles.find('name', 'Greenlight')
       color = '#00ff00'
@@ -45,9 +49,11 @@ class LcountCommand extends Command {
       nick = true*/
     }
     
-    if (argg.indexOf('z') > -1) {
-      nick = true
+if (arggg) {    
+if (arggg.indexOf('z') > -1 | arggg.indexOf('nick') > -1 | arggg.indexOf('zone') > -1) {
+      zz = 't'
     }
+}
     
     /*var role
     var rname
@@ -59,7 +65,7 @@ class LcountCommand extends Command {
       rname = msg.guild.roles.find('name', 'Prestige Cup').name
     }*/
     
-    if (nick = false) {
+    if (zz !== 't') {
     var role1 = msg.guild.roles.find('name', 'Prestige Car')
     var role2 = msg.guild.roles.find('name', 'Prestige Cup')
     
@@ -104,23 +110,24 @@ class LcountCommand extends Command {
     console.log(count2)
       
     api.evalembed(color, `<:Tick:318378431051989003> \`Prestige List for ${endd} Members:\``, role1.name + " Count: " + count1, role1.name + " List: " + list1, role2.name + " Count: " + count2, role2.name + " List: " + list2)
-    } else {
+    } 
+    if (zz == 't') {
     var members = crew.members
     
     var list = members.filter(user => {
       if (msg.guild.member(user.user.id).nickname !== null) {
-      return msg.guild.member(user.user.id).nickname
-      } else {
+      return user
+      //} else {
       //
       }
       //
       //return user.roles.has(role1.id)
-    //}).map(user => {
-    //  if (msg.guild.member(user.user.id).nickname !== null) {
-    //  return msg.guild.member(user.user.id).nickname
-    //  } else {
-    //  return user.user.username
-    //  }
+    }).map(user => {
+      if (msg.guild.member(user.user.id).nickname !== null) {
+      return msg.guild.member(user.user.id).nickname
+      } else {
+      return
+      }
     }).join('` | `')
     
     list = "`" + list + "`"
@@ -131,7 +138,7 @@ class LcountCommand extends Command {
       count = count + 1
     }
       
-    api.evalembed("#fff", `<:Tick:318378431051989003> \`Timezone List for ${endd} Members:\``, "Nickname/Timezone" + " Count:", count, "Nickname/Timezone" + " List:", list)
+    api.evalembed("#ffffff", `<:Tick:318378431051989003> \`Timezone List for ${endd} Members:\``, "Nickname/Timezone" + " Count:", count, "Nickname/Timezone" + " List:", list)
     }
     
     /*members.map(user => {
