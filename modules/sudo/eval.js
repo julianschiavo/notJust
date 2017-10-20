@@ -9,9 +9,6 @@ class EvalCommand extends Command {
   }
 
   hasPermission(message) {
-    let dotGuild = message.client.guilds.get('315380052097499156')
-    if (!dotGuild.members.has(message.author.id)) return false
-    if (require('../../config.json').env == 'sandbox' && dotGuild.members.get(message.author.id).roles.has('315381167765454849')) return true
     if (message.author.id == require('../../config.json').owner) return true
     return false
   }
