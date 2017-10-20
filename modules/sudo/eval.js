@@ -141,7 +141,7 @@ class EvalCommand extends Command {
 				}
 			}
 }
-
+}
 
 function sendResultEmbed(result, input, message) {
 	if (typeof(result) == "undefined") {
