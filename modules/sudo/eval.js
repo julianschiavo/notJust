@@ -37,109 +37,128 @@ paste.login("e7dfc6a968006ffa783f9cb21ec8c0d7", "e7dfc6a968006ffa783f9cb21ec8c0d
     }
   }*/
 
-			if (args.startsWith("http://pastebin.com/") || args.startsWith("https://pastebin.com/") || args.startsWith("pastebin.com/")) {
-				var origMsg = args
-				var msg = args.replace(/http:\/\//gi, "")
-				msg = args.replace(/https:\/\//gi, "")
-				msg = args.replace(/www./gi, "")
-				msg = args.replace(/pastebin.com\//gi, "")
-				msg = args.replace(/raw\//gi, "")
 
-				paste.get(msg, (success, data) => {
-					if (!success) {
-						var einput = "```js\n" + origMsg + "```"
-						var eoutput = "```" + "Pastebin error occured" + "```"
-						const embed = new Discord.RichEmbed()
-							.setColor("#ff0000")
-							.setTimestamp()
-							.addField("<:red_tick:330712188681453590> `An Error Occurred.`",
-								"Check the console for more info.")
-							.addBlankField(true)
-							.addField(":inbox_tray: `Input`",
-								einput)
-							.addField("<:apple_symbol_no_entry_sign:359559750012108800> `Error`",
-								eoutput)
-						message.channel.send({
-							embed
-						});
-					} else {
-						try {
-							var result = eval(data)
 
-							if (result.length > 1024) {
-								paste.create({
-									contents: result
-								}, (success, data) => {
-									if (!success) {
-										var einput = "```js\n" + origMsg + "```"
-										var eoutput = "```" + "Pastebin error occured" + "```"
+
+
+
+
+
+
+
+
+
+			if (msg.startsWith("http://pastebin.com/") || msg.startsWith("https://pastebin.com/")) {
+   			var origMsg = msg
+   			msg = msg.replace(/http:\/\//gi, "")
+   			msg = msg.replace(/https:\/\//gi, "")
+   			msg = msg.replace(/www./gi, "")
+   			msg = msg.replace(/pastebin.com\//gi, "")
+   			msg = msg.replace(/raw\//gi, "")
+
+   			pastebin
+   				.getPaste(msg)
+   				.then(data => {
+   					try {
+   						var result = eval(data)
+
+   						if (result.length > 1024) {
+   							pastebin
+   								.createPaste(result, "evalBot")
+   								.then(data => {
+   									sendResultEmbed(`https://pastebin.com/raw/${data}`, origMsg, message)
+   								})
+   								.fail(err => {
+   									var einput = "```js\n" + origMsg + "```"
+										var eoutput = "```" + err + "```"
 										const embed = new Discord.RichEmbed()
-											.setColor("#ff0000")
-											.setTimestamp()
-											.addField("<:red_tick:330712188681453590> `An Error Occurred.`",
-												"Check the console for more info.")
-											.addBlankField(true)
-											.addField(":inbox_tray: `Input`",
-												einput)
-											.addField("<:apple_symbol_no_entry_sign:359559750012108800> `Error`",
-												eoutput)
+					  					.setColor("#ff0000")
+					  					.setTimestamp()
+					  					.addField("<:red_tick:330712188681453590> `An Error Occurred.`",
+					  					  "Check the console for more info.")
+					  					.addBlankField(true)
+					  					.addField(":inbox_tray: `Input`",
+					  					  einput)
+					  					.addField("<:apple_symbol_no_entry_sign:359559750012108800> `Error`",
+					  					  eoutput)
 
-										message.channel.send({
-											embed
-										});
-									} else {
-										sendResultEmbed(`${data}`, origMsg, message)
-									}
-								})
-							} else {
-								sendResultEmbed(result, origMsg, message)
-							}
-						} catch (e) {
-							var einput = "```js\n" + origMsg + "```"
+			  						message.channel.send({embed});
+   								})
+   						} else {
+   							sendResultEmbed(result, origMsg, message)
+   						}
+   					} catch (e) {
+   						var einput = "```js\n" + origMsg + "```"
 							var eoutput = "```" + e + "```"
 							const embed = new Discord.RichEmbed()
-								.setColor("#ff0000")
-								.setTimestamp()
-								.addField("<:red_tick:330712188681453590> `An Error Occurred.`",
-									"Check the console for more info.")
-								.addBlankField(true)
-								.addField(":inbox_tray: `Input`",
-									einput)
-								.addField("<:apple_symbol_no_entry_sign:359559750012108800> `Error`",
-									eoutput)
+					  		.setColor("#ff0000")
+					  		.setTimestamp()
+					  		.addField("<:red_tick:330712188681453590> `An Error Occurred.`",
+					  		  "Check the console for more info.")
+					  		.addBlankField(true)
+					  		.addField(":inbox_tray: `Input`",
+					  		  einput)
+					  		.addField("<:apple_symbol_no_entry_sign:359559750012108800> `Error`",
+					  		  eoutput)
 
-							message.channel.send({
-								embed
-							});
-						}
-					}
-				})
-			} else {
-				msg = msg.replace(/```js/gi, "")
-				msg = msg.replace(/```/gi, "")
+			  			message.channel.send({embed});
+   					}
+   				})
+   				.fail(err => {
+   					var einput = "```js\n" + origMsg + "```"
+						var eoutput = "```" + err + "```"
+						const embed = new Discord.RichEmbed()
+						  .setColor("#ff0000")
+						  .setTimestamp()
+						  .addField("<:red_tick:330712188681453590> `An Error Occurred.`",
+						    "Check the console for more info.")
+						  .addBlankField(true)
+						  .addField(":inbox_tray: `Input`",
+						    einput)
+						  .addField("<:apple_symbol_no_entry_sign:359559750012108800> `Error`",
+						    eoutput)
+			  		message.channel.send({embed});
+   				})
+   		} else {
+   			msg = msg.replace(/```js/gi, "")
+   			msg = msg.replace(/```/gi, "")
 
-				try {
-					var result = eval(msg)
+   			try {
+   				var result = eval(msg)
 
-					sendResultEmbed(result, msg, message)
-				} catch (e) {
-					var einput = "```js\n" + msg + "```"
+   				sendResultEmbed(result, msg, message)
+   			} catch (e) {
+        	var einput = "```js\n" + msg + "```"
 					var eoutput = "```" + e + "```"
 					const embed = new Discord.RichEmbed()
-						.setColor("#ff0000")
-						.setTimestamp()
-						.addField("<:red_tick:330712188681453590> `An Error Occurred.`",
-							"Check the console for more info.")
-						.addBlankField(true)
-						.addField(":inbox_tray: `Input`",
-							einput)
-						.addField("<:apple_symbol_no_entry_sign:359559750012108800> `Error`",
-							eoutput)
-					message.channel.send({
-						embed
-					});
-				}
-}
+					  .setColor("#ff0000")
+					  .setTimestamp()
+					  .addField("<:red_tick:330712188681453590> `An Error Occurred.`",
+					    "Check the console for more info.")
+					  .addBlankField(true)
+					  .addField(":inbox_tray: `Input`",
+					    einput)
+					  .addField("<:apple_symbol_no_entry_sign:359559750012108800> `Error`",
+					    eoutput)
+			  	message.channel.send({embed});
+   			}
+   		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 });
 }
 
