@@ -39,7 +39,7 @@ class ballCommand extends Command {
 			//bot.reply(message, sayings[result]);
     let embed = new Discord.RichEmbed()
       //embed.setTimestamp()
-      embed.setTitle('🎱 `' + q + '`')
+      embed.setTitle('<:apple_billiards:372006754965389312> `' + q + '`')
 	  embed.setDescription(String.fromCharCode(8203))
       embed.setColor('#00ff00')
       //embed.setFooter('Replying to: ' + this.message.author.tag)
