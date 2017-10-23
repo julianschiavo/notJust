@@ -10,8 +10,7 @@ function sendResultEmbed(result, input, message) {
 		const embed = new Discord.RichEmbed()
 			.setColor("#ffff00")
 			.setTimestamp()
-			.addField("<:null:330712178342625280> `No output was returned.`",
-				"Check the console for more info.")
+			.addField("<:null:330712178342625280> `No output was returned.`", String.fromCharCode(8203))
 			.addField(":inbox_tray: `Input`",
 				oinput)
 			.addField(":outbox_tray: `Output`",
@@ -25,8 +24,7 @@ function sendResultEmbed(result, input, message) {
 		const embed = new Discord.RichEmbed()
 			.setColor("#00ff00")
 			.setTimestamp()
-			.addField("<:apple_pencil_paper:359560552701231106> `Eval Successful`",
-				"Find additional information in the console.")
+			.addField("<:apple_pencil_paper:359560552701231106> `Eval Successful`", String.fromCharCode(8203))
 			.addField(":inbox_tray: `Input`",
 				ginput)
 			.addField(":outbox_tray: `Output`",
@@ -110,8 +108,7 @@ var msg = args.join(' ');
 										const embed = new Discord.RichEmbed()
 					  					.setColor("#ff0000")
 					  					.setTimestamp()
-					  					.addField("<:red_tick:330712188681453590> `An Error Occurred.`",
-					  					  "Check the console for more info.")
+					  					.addField("<:red_tick:330712188681453590> `An Error Occurred.`", String.fromCharCode(8203))
 					  					.addBlankField(true)
 					  					.addField(":inbox_tray: `Input`",
 					  					  einput)
@@ -129,8 +126,7 @@ var msg = args.join(' ');
 							const embed = new Discord.RichEmbed()
 					  		.setColor("#ff0000")
 					  		.setTimestamp()
-					  		.addField("<:red_tick:330712188681453590> `An Error Occurred.`",
-					  		  "Check the console for more info.")
+					  		.addField("<:red_tick:330712188681453590> `An Error Occurred.`", String.fromCharCode(8203))
 					  		.addBlankField(true)
 					  		.addField(":inbox_tray: `Input`",
 					  		  einput)
@@ -146,8 +142,7 @@ var msg = args.join(' ');
 						const embed = new Discord.RichEmbed()
 						  .setColor("#ff0000")
 						  .setTimestamp()
-						  .addField("<:red_tick:330712188681453590> `An Error Occurred.`",
-						    "Check the console for more info.")
+						  .addField("<:red_tick:330712188681453590> `An Error Occurred.`", String.fromCharCode(8203))
 						  .addBlankField(true)
 						  .addField(":inbox_tray: `Input`",
 						    einput)
@@ -169,8 +164,7 @@ var msg = args.join(' ');
 					const embed = new Discord.RichEmbed()
 					  .setColor("#ff0000")
 					  .setTimestamp()
-					  .addField("<:red_tick:330712188681453590> `An Error Occurred.`",
-					    "Check the console for more info.")
+					  .addField("<:red_tick:330712188681453590> `An Error Occurred.`", String.fromCharCode(8203))
 					  .addBlankField(true)
 					  .addField(":inbox_tray: `Input`",
 					    einput)
