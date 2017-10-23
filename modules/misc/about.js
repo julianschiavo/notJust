@@ -11,9 +11,9 @@ class aboutCommand extends Command {
   async run(message, args, api) {
     //message.delete()
     //api.evalembed([245, 236, 71], "🏓 `Ping Successful`", "Heartbeat", one, "Ping", two)
-    let servers  = message.client.servers.length,
-    let channels = message.client.channels.length,
-    let users    = message.client.users.length,
+    var servers  = message.client.servers.length,
+    var channels = message.client.channels.length,
+    var users    = message.client.users.length,
     //let online   = this.client.users.filter(u => u.status != "offline").length;
     let embed = new Discord.RichEmbed()
       //embed.setTimestamp()
