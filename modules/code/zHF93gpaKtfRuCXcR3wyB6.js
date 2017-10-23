@@ -21,7 +21,7 @@ class LcodeCommand extends Command {
     
     msg.delete()
 
-    api.embed('#00ff00', `<:Tick:318378431051989003> \`${user.user.username} has moved into #code Stage 2!\``, '')
+    api.embed('#00ff00', `<:green_tick:330712173288488960> \`${user.user.username} has moved into #code Stage 2!\``, '')
   }
 
 }
