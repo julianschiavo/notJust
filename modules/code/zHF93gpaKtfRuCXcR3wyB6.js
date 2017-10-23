@@ -16,7 +16,7 @@ class LcodeCommand extends Command {
   async run(msg, args, api) {
     if (msg.channel.type == 'text') {
       msg.delete()
-      api.embed('#00ff00', `<:red_tick:330712188681453590> \`You MUST run this command in DMs. If you run this command again out of DMs you risk being banned from #code as you are ruining the game for everyone.\``, '')
+      api.embed('#00ff00', `<:red_tick:330712188681453590> \`You MUST run this command in DMs.\``, 'If you run this command again out of DMs you risk being banned from #code as you are ruining the game for everyone.')
       return
     }
     let guild = msg.client.guilds.find("name", "dotHub");
