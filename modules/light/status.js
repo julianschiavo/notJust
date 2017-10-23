@@ -55,12 +55,14 @@ class LstatusCommand extends Command {
       endA = 'Cup'
     }
     
-    if (user.roles.has('277031676906045450')) {
-      color = '#00ff00'
+    if (user.roles.has('370811516309602307')) {
+      color = '#4c4cff'
+    } else if (user.roles.has('277031676906045450')) {
+      color = '#00aa00'
     } else if (user.roles.has('279166847289524224')) {
-      color = '#ffff00'
+      color = '#ffff4c'
     } else if (user.roles.has('339024651747590146')) {
-      color = '#ff0000'
+      color = '#ff3232'
     }
     
       if (user.roles.has(prole.id)) {

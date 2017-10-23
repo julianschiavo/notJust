@@ -1,11 +1,12 @@
 const Command = require('../../cmdModule/commands').Command
 
+
 class LnewCommand extends Command {
   constructor() {
     super({
       name: 'crew',
       help: 'Set a member\'s initial crew',
-            lhelp: '{user} {crew letter}\n{user} is the user to add to a crew\n{crew letter} is G or Y or R, what crew to add the user to'
+            lhelp: '{user} {crew letter}\n{user} is the user to add to a crew\n{crew letter} is B or G or Y or R, what crew to add the user to'
     })
   }
   
@@ -20,11 +21,14 @@ class LnewCommand extends Command {
     let user = msg.guild.member(msg.mentions.users.first());
     let rolename = msg.guild.roles.find('name', 'Members')
     var rolename2 = null
-    if(args[2].indexOf('G') > -1) {
+    var arggg = args[2].toLowerCase()
+    if(arggg.indexOf('b') > -1) {
+      rolename2 = msg.guild.roles.find('name', 'Bluelight')
+    } else if(arggg.indexOf('g') > -1) {
       rolename2 = msg.guild.roles.find('name', 'Greenlight')
-    } else if(args[2].indexOf('Y') > -1) {
+    } else if(arggg.indexOf('y') > -1) {
       rolename2 = msg.guild.roles.find('name', 'Yellowlight')
-    } else if(args[2].indexOf('R') > -1) {
+    } else if(arggg.indexOf('r') > -1) {
       rolename2 = msg.guild.roles.find('name', 'Redlight')
     }
     user.addRole(rolename)

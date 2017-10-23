@@ -5,7 +5,7 @@ class LcountCommand extends Command {
     super({
       name: 'list',
       help: 'List the members who have the prestige car',
-      lhelp: '{crew letter} [z]\n{crew letter} is G or Y or R, what crew to list prestige car + cup for.\n[z] If z is specified, the list will be of the crew\'s user\'s nicks/timezones rather than prestige status'
+      lhelp: '{crew letter} [z]\n{crew letter} is B or G or Y or R, what crew to list prestige car + cup for.\n[z] If z is specified, the list will be of the crew\'s user\'s nicks/timezones rather than prestige status'
     })
   }
   
@@ -18,7 +18,7 @@ class LcountCommand extends Command {
   async run(msg, args, api) {
     if (!args[1]) {
       //msg.reply('<:NoTick:318378431572344832> Please remember to specify the crew (G/Y/R) and type of count (car/cup)!')
-      api.error('Please remember to specify the crew (G/Y/R/all)!')
+      api.error('Please remember to specify the crew (B/G/Y/R)!')
       return;
     }
     var argg = args[1].toLowerCase()
@@ -30,17 +30,21 @@ if (args[2]) {
     var color
     var endd
     var zz = 'f'
-    if (argg.indexOf('g') > -1) {
+    if (argg.indexOf('b') > -1) {
+      crew = msg.guild.roles.find('name', 'Bluelight')
+      color = '#4c4cff'
+      endd = crew.name
+    } else if (argg.indexOf('g') > -1) {
       crew = msg.guild.roles.find('name', 'Greenlight')
-      color = '#00ff00'
+      color = '#00aa00'
       endd = crew.name
     } else if (argg.indexOf('y') > -1) {
       crew = msg.guild.roles.find('name', 'Yellowlight')
-      color = '#ffff00'
+      color = '#ffff4c'
       endd = crew.name
     } else if (argg.indexOf('r') > -1) {
       crew = msg.guild.roles.find('name', 'Redlight')
-      color = '#ff0000'
+      color = '#ff3232'
       endd = crew.name
     /*} else if (argg.indexOf('all') > -1) {
       crew = msg.guild.roles.find('name', 'Members')

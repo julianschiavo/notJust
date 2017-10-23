@@ -28,6 +28,8 @@ class LseasonCommand extends Command {
         prole = msg.guild.roles.find('name', 'Prestige Car')
         prole2 = msg.guild.roles.find('name', 'Prestige Cup')
     
+    var rrole2
+    rrole2 = msg.guild.roles.find('name', 'Bluelight Best Player')
     var rrole
     rrole = msg.guild.roles.find('name', 'Greenlight Best Player')
     var rrolee
@@ -40,6 +42,7 @@ var members2 = prole2.members
 var members3 = rrole.members
 var members4 = rrolee.members
 var members5 = rroleee.members
+var members6 = rrole2.members
 
     members.filter(user => {
       user.removeRole(prole)
@@ -66,14 +69,18 @@ var members5 = rroleee.members
       return
     })
     
-    rrole.setColor('#00aa00')
-    rrolee.setColor('#ffff00')
-    rroleee.setColor('#ff0000')
+    members6.filter(user => {
+      user.removeRole(rrole2)
+      return
+    })
     
-api.embed('#00ff00', `<:Tick:318378431051989003> \`Everything Reset for New Season!\``, '')
-   
+    rrole2.setColor('#4c4cff')
+    rrole.setColor('#00aa00')
+    rrolee.setColor('#ffff4c')
+    rroleee.setColor('#ff3232')
+    
+api.embed('#ffffff', `<:Tick:318378431051989003> \`Everything Reset for New Season!\``, '')
   }
-
 }
 
 module.exports = LseasonCommand

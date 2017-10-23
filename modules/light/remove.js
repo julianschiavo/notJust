@@ -1,5 +1,6 @@
 const Command = require('../../cmdModule/commands').Command
 
+
 class LoldCommand extends Command {
   constructor() {
     super({
@@ -21,7 +22,9 @@ class LoldCommand extends Command {
     let rolename = msg.guild.roles.find('name', 'Members')
     let newrolename = msg.guild.roles.find('name', 'Leaving')
     var oldrolename = null
-    if (user.roles.has('277031676906045450')) {
+    if (user.roles.has('370811516309602307')) {
+      oldrolename = msg.guild.roles.find('name', 'Bluelight')
+    } else if (user.roles.has('277031676906045450')) {
       oldrolename = msg.guild.roles.find('name', 'Greenlight')
     } else if (user.roles.has('279166847289524224')) {
       oldrolename = msg.guild.roles.find('name', 'Yellowlight')

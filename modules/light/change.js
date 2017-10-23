@@ -5,7 +5,7 @@ class LdiffCommand extends Command {
     super({
       name: 'change',
       help: 'Change a member\'s crew',
-            lhelp: '{user} {crew letter}\n{user} is the user to change crew for\n{crew letter} is G or Y or R, what crew to change the user to'
+            lhelp: '{user} {crew letter}\n{user} is the user to change crew for\n{crew letter} is B or G or Y or R, what crew to change the user to'
     })
   }
   
@@ -19,18 +19,23 @@ class LdiffCommand extends Command {
     let user = msg.guild.member(msg.mentions.users.first());
     var rolename2 = null
     var oldrolename = null
-    if (user.roles.has('277031676906045450')) {
+    if (user.roles.has('370811516309602307')) {
+      oldrolename = msg.guild.roles.find('name', 'Bluelight')
+    } else if (user.roles.has('277031676906045450')) {
       oldrolename = msg.guild.roles.find('name', 'Greenlight')
     } else if (user.roles.has('279166847289524224')) {
       oldrolename = msg.guild.roles.find('name', 'Yellowlight')
     } else if (user.roles.has('339024651747590146')) {
       oldrolename = msg.guild.roles.find('name', 'Redlight')
     }
-    if (args[2].indexOf('G') > -1) {
+    var arggg = args[2].toLowerCase()
+    if (arggg.indexOf('b') > -1) {
+      rolename2 = msg.guild.roles.find('name', 'Bluelight')
+    } else if (arggg.indexOf('g') > -1) {
       rolename2 = msg.guild.roles.find('name', 'Greenlight')
-    } else if (args[2].indexOf('Y') > -1) {
+    } else if (arggg.indexOf('y') > -1) {
       rolename2 = msg.guild.roles.find('name', 'Yellowlight')
-    } else if (args[2].indexOf('R') > -1) {
+    } else if (arggg.indexOf('r') > -1) {
       rolename2 = msg.guild.roles.find('name', 'Redlight')
     }
     user.addRole(rolename2)

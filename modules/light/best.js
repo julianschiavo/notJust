@@ -5,7 +5,7 @@ class LbestCommand extends Command {
     super({
       name: 'best',
       help: 'Set the best crew member or change it\'s role color',
-      lhelp: '{G/Y/R} {user}\n{G/Y/R} is the crew the member/user is in\n{user} is @ the user'
+      lhelp: '{B/G/Y/R} {user}\n{B/G/Y/R} is the crew the member/user is in\n{user} is @ the user'
     })
   }
 
@@ -27,20 +27,24 @@ class LbestCommand extends Command {
     var color
 
     crew = args[0].toLowerCase()
-    if (crew !== 'g' && crew !== 'y' && crew !== 'r') {
+    if (crew !== 'b' && crew !== 'g' && crew !== 'y' && crew !== 'r') {
       api.error('Please remember to specify which crew the member is in!')
       return;
+    } else if (crew == 'b') {
+      role = msg.guild.roles.find('name', 'Bluelight Best Player')
+      color = '#4c4cff'
+      role.setColor(color)
     } else if (crew == 'g') {
       role = msg.guild.roles.find('name', 'Greenlight Best Player')
       color = '#00aa00'
       role.setColor(color)
     } else if (crew == 'y') {
       role = msg.guild.roles.find('name', 'Yellowlight Best Player')
-      color = '#ffff00'
+      color = '#ffff4c'
       role.setColor(color)
     } else if (crew == 'r') {
       role = msg.guild.roles.find('name', 'Redlight Best Player')
-      color = '#ff0000'
+      color = '#ff3232'
       role.setColor(color)
     }
     args.splice(0, 1)

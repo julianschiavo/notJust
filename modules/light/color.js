@@ -5,7 +5,7 @@ class LcolorCommand extends Command {
     super({
       name: 'color',
       help: 'Set the best crew member\'s role color',
-      lhelp: '{hexcolor}\n{hexcolor} is the hex color (e.g. #ffffff) to set your role color to \n(**YOU MUST INCLUDE `#`!**)'
+      lhelp: '{hexcolor}\n{hexcolor} is the hex color (e.g. #ffffff is white) to set your role color to \n(**YOU MUST INCLUDE `#`!**)'
     })
   }
   
@@ -27,10 +27,12 @@ class LcolorCommand extends Command {
     rrolee = msg.guild.roles.find('name', 'Yellowlight Best Player')
     var rroleee
     rroleee = msg.guild.roles.find('name', 'Redlight Best Player')
+    var rrole2
+    rrole2 = msg.guild.roles.find('name', 'Bluelight Best Player')
     var member = msg.guild.members.get(msg.author.id)
     var color
 
-    if (member.roles.has(rrole.id) || member.roles.has(rrolee.id) || member.roles.has(rroleee.id)) {
+    if (member.roles.has(rrole.id) || member.roles.has(rrolee.id) || member.roles.has(rroleee.id) || member.roles.has(rrole2.id)) {
        if (member.roles.has(rrole.id)) {
        rrole = rrole
        } else if (member.roles.has(rrolee.id)) { 
@@ -38,8 +40,13 @@ class LcolorCommand extends Command {
        rrolee = ''
       } else if (member.roles.has(rroleee.id)) {
         rrole = rroleee
-      rroleee = ''
-      rrolee = ''
+        rroleee = ''
+        rrolee = ''
+      } else if (member.roles.has(rrole2.id)) {
+        rrole = rrole2
+        rroleee = ''
+        rrolee = ''
+        rrole2 = ''
       }
    } else {
         api.error('You must be awarded the best player for this season (by an admin) to set your role color!')
