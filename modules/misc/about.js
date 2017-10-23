@@ -23,10 +23,10 @@ class aboutCommand extends Command {
       //embed.setFooter('Replying to: ' + this.message.author.tag)
       embed.setTimestamp()
         embed.setDescription(String.fromCharCode(8203))
-        embed.addField('Stats', 'notJust is on ' + servers + ' servers, which contain ' + channels + ' channels, and ' + users + ' users.', false)
-        embed.addField('Invite', 'notJust is currently private as it is not finished and may be buggy.', false)
-        embed.addField('Description', 'notJust is a state-of-the-art bot made by dotJS. It has modules which include fun commands, moderation commands, and more.', false)
-        embed.addField('Contributors', 'notJust couldn\'t have been built without the assistance of Vlad, so thanks for all his help.', false)
+        embed.addField('`Stats`', 'notJust is on ' + servers + ' servers, which contain ' + channels + ' channels, and ' + users + ' users.', false)
+        embed.addField('`Invite`', 'notJust is currently private as it is not finished and may be buggy.', false)
+        embed.addField('`Description`', 'notJust is a state-of-the-art bot made by dotJS. It has modules which include fun commands, moderation commands, and more.', false)
+        embed.addField('`Contributors`', 'notJust couldn\'t have been built without the assistance of Vlad, so thanks for all his help.', false)
       message.channel.send({ embed })
     return true
   }
