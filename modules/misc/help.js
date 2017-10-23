@@ -15,7 +15,7 @@ class HelpCommand extends Command {
   constructor() {
     super({
       name: 'help',
-      help: 'Shows this commands list'
+      help: 'Show this commands list'
     })
   }
   async run(message, args, api) {
@@ -43,6 +43,10 @@ class HelpCommand extends Command {
         let embed = new Discord.RichEmbed()
         embed.setColor(dotcolor)
         embed.setTitle(`ℹ \`${api.handler.modules[mod] ? api.handler.modules[mod] : mod}\``)
+        var name = api.handler.modules[mod] ? api.handler.modules[mod] : mod
+        if (name == '#code') {
+          continue
+        }
         var oneCommand = false
         for (let _cmd in commands) {
           if (!commands.hasOwnProperty(_cmd)) continue
