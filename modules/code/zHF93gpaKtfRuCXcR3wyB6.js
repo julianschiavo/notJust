@@ -9,7 +9,7 @@ class LcodeCommand extends Command {
   }
 
   hasPermission(message) {
-    if (message.guild.id == '268970339948691456') return false
+    if (!message.guild) return false
     return true
   }
 
