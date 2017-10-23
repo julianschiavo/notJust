@@ -34,6 +34,7 @@ class ballCommand extends Command {
 										"Very doubtful"];
 
 			var result = Math.floor((Math.random() * sayings.length) + 0);
+	  args.splice(0,1)
       var q = args.join(' ');
 			//bot.reply(message, sayings[result]);
     let embed = new Discord.RichEmbed()
