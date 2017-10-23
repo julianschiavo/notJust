@@ -9,19 +9,20 @@ class LcodeCommand extends Command {
   }
 
   hasPermission(message) {
-    if (message.guild.id == '268970339948691456') return true
-    return false
+    if (message.guild.id == '268970339948691456') return false
+    return true
   }
 
   async run(msg, args, api) {
-    var user = msg.guild.member(msg.author);
-    var role = msg.guild.roles.find('name', 'Stage 2')
+    let guild = msg.client.guilds.find("name", "dotHub");
+    var user = guild.member(msg.author);
+    var role = guild.roles.find('name', 'Stage 2')
 
     user.addRole(role)
     
-    msg.delete()
+    //msg.delete()
 
-    api.embed('#00ff00', `<:green_tick:330712173288488960> \`${user.user.username} has moved into #code Stage 2!\``, '')
+    api.embed('#00ff00', `<:green_tick:330712173288488960> \`You have moved into #code Stage 2!\``, '')
   }
 
 }
