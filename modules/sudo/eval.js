@@ -3,8 +3,6 @@ const Command = require('../../cmdModule/commands').Command
 const paste = require("better-pastebin")
 paste.setDevKey("e7dfc6a968006ffa783f9cb21ec8c0d7")
 
-
-
 function sendResultEmbed(result, input, message) {
 	if (typeof(result) == "undefined") {
 		var oinput = "```js\n" + input + "```"
@@ -14,7 +12,6 @@ function sendResultEmbed(result, input, message) {
 			.setTimestamp()
 			.addField("<:null:330712178342625280> `No output was returned.`",
 				"Check the console for more info.")
-			.addBlankField(true)
 			.addField(":inbox_tray: `Input`",
 				oinput)
 			.addField(":outbox_tray: `Output`",
@@ -28,9 +25,8 @@ function sendResultEmbed(result, input, message) {
 		const embed = new Discord.RichEmbed()
 			.setColor("#00ff00")
 			.setTimestamp()
-			.addField("<:green_tick:330712173288488960> `Execution Successful.`",
-				"Check the console for more info.")
-			.addBlankField(true)
+			.addField("<:apple_pencil_paper:359560552701231106> `Eval Successful`",
+				"Find additional information in the console.")
 			.addField(":inbox_tray: `Input`",
 				ginput)
 			.addField(":outbox_tray: `Output`",
