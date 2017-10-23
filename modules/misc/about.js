@@ -26,7 +26,7 @@ class aboutCommand extends Command {
         embed.addField('Invite', 'notJust is currently private as it is not finished and may be buggy.', false)
         embed.addField('Description', 'notJust is a state-of-the-art bot made by dotJS. It has modules which include fun commands, moderation commands, and more.', false)
         embed.addField('Contributors', 'notJust couldn't have been built without the assistance of Vlad, so thanks for all his help.', false)
-      this.message.channel.send({ embed })
+      message.channel.send({ embed })
     return true
   }
 }
