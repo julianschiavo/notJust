@@ -8,13 +8,13 @@ class LcodeCommand extends Command {
   }
 
   hasPermission(message) {
-    if (message.guild.id == '268970339948691456') return true
+    //if (message.guild.id == '268970339948691456') return true
     return false
   }
 
   async run(msg, args, api) {
     var user = msg.guild.member(msg.author);
-    var role = msg.guild.roles.find('id', 'Stage 2')
+    var role = msg.guild.roles.find('name', 'Stage 2')
 
     user.addRole(role)
     
