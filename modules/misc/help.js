@@ -15,7 +15,7 @@ class HelpCommand extends Command {
   constructor() {
     super({
       name: 'help',
-      help: 'Show this commands list'
+      help: 'Show available commands'
     })
   }
   async run(message, args, api) {
@@ -42,7 +42,7 @@ class HelpCommand extends Command {
         let commands = modulesio[mod]
         let embed = new Discord.RichEmbed()
         embed.setColor(dotcolor)
-        embed.setTitle(`ℹ \`${api.handler.modules[mod] ? api.handler.modules[mod] : mod}\``)
+        embed.setTitle(`<:apple_symbol_info:359559750096257024> \`${api.handler.modules[mod] ? api.handler.modules[mod] : mod}\``)
         var name = api.handler.modules[mod] ? api.handler.modules[mod] : mod
         if (name == '#code') {
           continue
@@ -66,7 +66,7 @@ class HelpCommand extends Command {
         if (command.name == args[1]) {
           let embed = new Discord.RichEmbed()
           embed.setColor(dotcolor)
-          embed.setTitle(`ℹ \`${api.handler.prefix}${command.name}\``)
+          embed.setTitle(`<:apple_symbol_info:359559750096257024> \`${api.handler.prefix}${command.name}\``)
           if (command.lhelp == ' ' || command.lhelp == command.help) {
             embed.setDescription(command.help)
           } else {
