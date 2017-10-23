@@ -64,6 +64,7 @@ handler.registerModule('mod', 'Moderation')
 handler.registerModule('misc', 'Other')
 handler.registerModule('light', 'Light')
 handler.registerModule('utility', 'Utility')
+handler.registerModule('code', '#code')
 
 fs.readdir('./events/', (err, files) => {
   if (err) return console.error(err)
