@@ -39,10 +39,11 @@ class ballCommand extends Command {
     let embed = new Discord.RichEmbed()
       //embed.setTimestamp()
       embed.setTitle('🎱 `' + q + '`')
+	  embed.setDescription(String.fromCharCode(8203))
       embed.setColor('#00ff00')
       //embed.setFooter('Replying to: ' + this.message.author.tag)
       embed.setTimestamp()
-        embed.addField(sayings[result], String.fromCharCode(8203), false)
+        embed.addField('`Response`', sayings[result], false)
       message.channel.send({ embed })
     return true
   }
