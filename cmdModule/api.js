@@ -171,7 +171,7 @@ class CommandApi {
   error(message) {
     try {
       let embed = new Discord.RichEmbed()
-      embed.setTitle('<:Red:324341993969025044> `Error`')
+      embed.setTitle('<:red_tick:330712188681453590> `Error`')
       embed.setDescription(message)
       embed.setColor('#FF0000')
       embed.setFooter('Replying to: '+ this.message.author.tag)
@@ -190,7 +190,7 @@ class CommandApi {
   success(message) {
     try {
       let embed = new Discord.RichEmbed()
-      embed.setTitle('<:Green:324341994019225610> `Success`')
+      embed.setTitle('<:green_tick:330712173288488960> `Success`')
       embed.setDescription(message)
       embed.setColor('#00FF00')
       embed.setFooter('Replying to: ' + this.message.author.tag)
