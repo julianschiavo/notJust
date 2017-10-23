@@ -3,7 +3,8 @@ const Command = require('../../cmdModule/commands').Command
 class LcodeCommand extends Command {
   constructor() {
     super({
-      name: 'zHF93gpaKtfRuCXcR3wyB6'
+      name: 'zHF93gpaKtfRuCXcR3wyB6',
+      help: 'ok'
     })
   }
 
