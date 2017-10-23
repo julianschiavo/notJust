@@ -19,7 +19,7 @@ class flipCommand extends Command {
 			//bot.reply(message, sayings[result]);
     let embed = new Discord.RichEmbed()
       //embed.setTimestamp()
-      embed.setTitle('💰 `Coin Flip Successful`')
+      embed.setTitle('<:apple_money_bag:359560552210759681> `Coin Flip Successful`')
 	  embed.setDescription(String.fromCharCode(8203))
       embed.setColor('#00ff00')
       //embed.setFooter('Replying to: ' + this.message.author.tag)
