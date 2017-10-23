@@ -1,16 +1,14 @@
 const Command = require('../../cmdModule/commands').Command
 
-class codeCommand extends Command {
+class LcodeCommand extends Command {
   constructor() {
     super({
-      name: 'zHF93gpaKtfRuCXcR3wyB6',
-      help: '--',
-      lhelp: '--'
+      name: 'zHF93gpaKtfRuCXcR3wyB6'
     })
   }
 
   hasPermission(message) {
-    if (message.guild.id == '268970339948691456') return true
+    //if (message.guild.id == '268970339948691456') return true
     return false
   }
 
@@ -27,4 +25,4 @@ class codeCommand extends Command {
 
 }
 
-module.exports = codeCommand
+module.exports = LcodeCommand
