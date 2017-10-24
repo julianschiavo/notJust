@@ -13,23 +13,23 @@ class catCommand extends Command {
   }
 
   async run(message, args, api) {
-    message.delete()
-	 var img 
-    request({
-        url: url,
-        json: true
-    }, function (error, response, body) {
-        console.log(body);
-	img = body.file
-    })
-
-      let embed = new Discord.RichEmbed()
+	let embed = new Discord.RichEmbed()
       //embed.setTitle('<:apple_animal_cat:372237719780196353> `Cat Fetched Successfully`')
 	  //embed.setDescription(String.fromCharCode(8203))
       embed.setColor('#00ff00')
       //embed.setFooter('Replying to: ' + this.message.author.tag)
       embed.setTimestamp()
-      embed.setImage(img)
+      
+    request({
+        url: url,
+        json: true
+    }, function (error, response, body) {
+        console.log(body.file);
+	//var img = body.file;
+	embed.setImage(body.file)
+    })
+
+      
         
       message.channel.send({ embed })
     return true
