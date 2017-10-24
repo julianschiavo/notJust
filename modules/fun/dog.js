@@ -24,7 +24,6 @@ class dogCommand extends Command {
             imageURL = body.url;
 	  message.channel.send(imageURL)
 	  embed.setImage(imageURL)*/
-	  function runDogFetch(message) {
 	  const response = await request('https://random.dog/woof.json', (e,r,b) => {  
     var imageURL = JSON.parse(b).url
     var check = checkURL(imageURL)
@@ -39,10 +38,9 @@ class dogCommand extends Command {
 	 //message.channel.send(imageURL) 
 	  message.channel.send({ embed })
     } else {
-	    runDogFetch(message)
+	    api.error('Error Code: `Dog_A`\nAn error has occured. Please try again.')
     }
   })
-	  }
 	  
       /*var img
       var img2
