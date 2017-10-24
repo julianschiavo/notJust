@@ -1,3 +1,4 @@
+const Discord = require('discord.js');
 const Command = require('../../cmdModule/commands').Command
 
 class jumboCommand extends Command {
