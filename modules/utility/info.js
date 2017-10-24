@@ -33,6 +33,8 @@ class infoCommand extends Command {
 			var gid = message.guild.id
 			var time = ta.ago(message.guild.createdTimestamp);
 			var icon = message.guild.iconURL
+			var _role = message.guild.roles.map(r => r.name).join(', ')
+			var _channel = message.guild.channels.map(r => r.name).join(', ')
 			//let online   = this.client.users.filter(u => u.status != "offline").length;
 			let embed = new Discord.RichEmbed()
 			embed.setTitle('<:apple_symbol_info:359559750096257024> `About ' + name + '`')
@@ -40,6 +42,8 @@ class infoCommand extends Command {
 			embed.setFooter('Replying to ' + message.author.tag)
 			embed.setDescription(String.fromCharCode(8203))
 			embed.setThumbnail(icon)
+			embed.addField('`Channels`', '`' + _channel + '`', false)
+			embed.addField('`Roles`', '`' + _role + '`', false)
 			embed.addField('`Numbers`', users + ' members, ' + emojis + ' emoji, ' + channels + ' channels and ' + roles + ' roles.', false)
 			embed.addField('`Created`', time, true)
 			embed.addField('`Owner`', owner, true)
@@ -67,7 +71,7 @@ class infoCommand extends Command {
 			embed.setThumbnail(icon)
 			//embed.addField('`Numbers`', users + ' members, ' + emojis + ' emoji, ' + channels + ' channels and ' + roles + ' roles.', false)
 
-			embed.addField('`Roles`', roles, false)
+			embed.addField('`Roles`', '`' + roles + '`', false)
 			embed.addField('`ID`', id, true)
 			embed.addField('`Created`', time, true)
 			embed.addField('`Joined`', join, true)
