@@ -22,7 +22,8 @@ var argsg = args.join(' ');
     py    = spawn('python', ['search.py']);*/
 
 var options = {
-scriptPath: '/home/me/notJust/modules/fun/'
+scriptPath: '/home/me/notJust/modules/fun/',
+args: argsg
 };
 var pyshell = new PythonShell('search.py', options);
 
