@@ -37,10 +37,13 @@ class randomCommand extends Command {
 			function randomN(min, max) {
 	                	return Math.floor(Math.random()*(max-min+1)+min);
                         }
-			if (args[1] && !isNaN(args[1]) && args[2] && !isNaN(args[2])) {
-				num = randomN(1, 100)
-			} else {
+			function isN(num){
+                        	return !isNaN(num)
+                        }
+			if (args[1] && isN(args[1]) && args[2] && isN(args[2])) {
 				num = randomN(args[1], args[2])
+			} else {
+				num = randomN(1, 100)
 			}
 			let embed = new Discord.RichEmbed()
 			embed.setFooter('Replying to ' + message.author.tag)
