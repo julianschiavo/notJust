@@ -34,7 +34,7 @@ class infoCommand extends Command {
 			var time = ta.ago(message.guild.createdTimestamp);
 			var icon = message.guild.iconURL
 			var _role = message.guild.roles.map(r => r.name).join('`, `')
-			var _channel = message.guild.channels.map(r => r.name).join('`, `')
+			var _channel = message.guild.channels.map(r => r.name).join('`, #`')
 			//let online   = this.client.users.filter(u => u.status != "offline").length;
 			let embed = new Discord.RichEmbed()
 			embed.setTitle('<:apple_symbol_info:359559750096257024> `About ' + name + '`')
