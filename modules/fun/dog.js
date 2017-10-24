@@ -24,15 +24,11 @@ class dogCommand extends Command {
             imageURL = body.url;
 	  message.channel.send(imageURL)
 	  embed.setImage(imageURL)*/
-	  
-	  const response = await request('https://random.dog/woof.json', (e,r,b) => {
-		  
+	  function runDogFetch(message) {
+	  const response = await request('https://random.dog/woof.json', (e,r,b) => {  
     var imageURL = JSON.parse(b).url
-    
     var check = checkURL(imageURL)
-    
     if (check) {
-    
     let embed = new Discord.RichEmbed()
       embed.setTitle('<:apple_animal_dog:372248984783290369> `Dog Fetched Successfully`')
 	  embed.setDescription(String.fromCharCode(8203))
@@ -43,9 +39,10 @@ class dogCommand extends Command {
 	 //message.channel.send(imageURL) 
 	  message.channel.send({ embed })
     } else {
-	    api.error('The random dog was a video instead of an image. Please try again.')
+	    runDogFetch(message)
     }
   })
+	  }
 	  
       /*var img
       var img2
