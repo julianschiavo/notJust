@@ -14,7 +14,7 @@ class dogCommand extends Command {
 
   async run(message, args, api) {
 	let embed = new Discord.RichEmbed()
-      embed.setTitle('<:apple_animal_cat:372237719780196353> `Cat Fetched Successfully`')
+      embed.setTitle('<:apple_animal_dog:372248984783290369> `Dog Fetched Successfully`')
 	  embed.setDescription(String.fromCharCode(8203))
       embed.setColor('#00ff00')
 	  embed.setFooter('Replying to ' + message.author.tag)
@@ -25,7 +25,7 @@ class dogCommand extends Command {
         json: true
     }, function (error, response, body) {
         console.log(body.url);
-	    var img = body.file
+	    var img = body.url
 	    var img2 = encodeURI(body.url);
 	embed.setImage(img)
     })
