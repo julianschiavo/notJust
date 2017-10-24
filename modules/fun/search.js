@@ -25,13 +25,14 @@ var offset = Math.floor((Math.random() * 100) + 1);
 var results = imageSearch(argsg, callback, offset, 1);
  
 function callback(results) {
-    embed.setImage(results[0])
+    embed.setImage(results[0]);
+	message.channel.send({ embed })
 }
 
 //	embed.setImage(img)
 
 
-      message.channel.send({ embed })
+      
     return true
   }
 }
