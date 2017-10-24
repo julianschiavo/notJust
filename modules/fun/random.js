@@ -22,7 +22,6 @@ class randomCommand extends Command {
 			embed.setTitle('<:apple_money_bag:359560552210759681> `Coin Flipped`')
 			embed.setDescription(String.fromCharCode(8203))
 			embed.setColor('#00ff00')
-			embed.setTimestamp()
 			if (result == 1) {
 				embed.addField('`Side`', 'Heads', false)
 			} else if (result == 2) {
@@ -50,7 +49,6 @@ class randomCommand extends Command {
 			embed.setTitle('<:apple_symbol_numbers:372331796832190464> `Random Number Generated`')
 			embed.setDescription(String.fromCharCode(8203))
 			embed.setColor('#00ff00')
-			embed.setTimestamp()
 			embed.addField('`Number`', num, false)
 			message.channel.send({
 				embed
