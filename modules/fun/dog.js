@@ -38,7 +38,7 @@ class dogCommand extends Command {
 	 //message.channel.send(imageURL) 
 	  message.channel.send({ embed })
     } else {
-	    api.error('Error Code: `Dog_A`\nAn error has occured. Please try again.')
+	    api.error('Wrong file format returned. Please try again.')
     }
   })
 	  
