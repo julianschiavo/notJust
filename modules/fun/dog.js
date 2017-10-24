@@ -34,7 +34,7 @@ class dogCommand extends Command {
 	  embed.setFooter('Replying to ' + message.author.tag)
     embed.setImage(imageURL)
 		  console.log(imageURL)
-	 message.channel.send(imageURL) 
+	 //message.channel.send(imageURL) 
 	  message.channel.send({ embed })
   })
 	  
