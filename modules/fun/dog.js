@@ -29,6 +29,7 @@ class dogCommand extends Command {
     var imageURL = JSON.parse(b).url
     embed.setImage(imageURL)
   })
+	  console.log(imageURL)
 	 message.channel.send(imageURL) 
 	  message.channel.send({ embed })
       /*var img
