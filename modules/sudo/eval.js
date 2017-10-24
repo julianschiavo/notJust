@@ -9,8 +9,9 @@ function sendResultEmbed(result, input, message) {
 		var ooutput = "```No Output.```"
 		const embed = new Discord.RichEmbed()
 			.setColor("#ffff00")
-			.setTimestamp()
-			.addField("<:null:330712178342625280> `No output was returned.`", String.fromCharCode(8203))
+			.setTitle("<:null:330712178342625280> `No output was returned.`")
+		        .setDescription(String.fromCharCode(8203))
+		        .setFooter('Replying to ' + message.author.tag)
 			.addField(":inbox_tray: `Input`",
 				oinput)
 			.addField(":outbox_tray: `Output`",
@@ -23,8 +24,9 @@ function sendResultEmbed(result, input, message) {
 		var goutput = "```" + result + "```"
 		const embed = new Discord.RichEmbed()
 			.setColor("#00ff00")
-			.setTimestamp()
-			.addField("<:apple_pencil_paper:359560552701231106> `Eval Successful`", String.fromCharCode(8203))
+			.setTitle("<:apple_pencil_paper:359560552701231106> `Eval Successful`")
+		        .setDescription(String.fromCharCode(8203))
+		        .setFooter('Replying to ' + message.author.tag)
 			.addField(":inbox_tray: `Input`",
 				ginput)
 			.addField(":outbox_tray: `Output`",
@@ -107,9 +109,9 @@ var msg = args.join(' ');
 										var eoutput = "```" + err + "```"
 										const embed = new Discord.RichEmbed()
 					  					.setColor("#ff0000")
-					  					.setTimestamp()
-					  					.addField("<:red_tick:330712188681453590> `An Error Occurred.`", String.fromCharCode(8203))
-					  					.addBlankField(true)
+					  					.setDescription(String.fromCharCode(8203))
+		                                                                .setFooter('Replying to ' + message.author.tag)
+					  					.setTitle("<:red_tick:330712188681453590> `An Error Occurred.`")
 					  					.addField(":inbox_tray: `Input`",
 					  					  einput)
 					  					.addField("<:apple_symbol_no_entry_sign:359559750012108800> `Error`",
@@ -125,9 +127,9 @@ var msg = args.join(' ');
 							var eoutput = "```" + e + "```"
 							const embed = new Discord.RichEmbed()
 					  		.setColor("#ff0000")
-					  		.setTimestamp()
-					  		.addField("<:red_tick:330712188681453590> `An Error Occurred.`", String.fromCharCode(8203))
-					  		.addBlankField(true)
+					  		.setDescription(String.fromCharCode(8203))
+		                                        .setFooter('Replying to ' + message.author.tag)
+					  		.setTitle("<:red_tick:330712188681453590> `An Error Occurred.`")
 					  		.addField(":inbox_tray: `Input`",
 					  		  einput)
 					  		.addField("<:apple_symbol_no_entry_sign:359559750012108800> `Error`",
@@ -141,9 +143,9 @@ var msg = args.join(' ');
 						var eoutput = "```" + err + "```"
 						const embed = new Discord.RichEmbed()
 						  .setColor("#ff0000")
-						  .setTimestamp()
-						  .addField("<:red_tick:330712188681453590> `An Error Occurred.`", String.fromCharCode(8203))
-						  .addBlankField(true)
+						  .setDescription(String.fromCharCode(8203))
+		                                  .setFooter('Replying to ' + message.author.tag)
+						  .setTitle("<:red_tick:330712188681453590> `An Error Occurred.`")
 						  .addField(":inbox_tray: `Input`",
 						    einput)
 						  .addField("<:apple_symbol_no_entry_sign:359559750012108800> `Error`",
@@ -163,9 +165,9 @@ var msg = args.join(' ');
 					var eoutput = "```" + e + "```"
 					const embed = new Discord.RichEmbed()
 					  .setColor("#ff0000")
-					  .setTimestamp()
-					  .addField("<:red_tick:330712188681453590> `An Error Occurred.`", String.fromCharCode(8203))
-					  .addBlankField(true)
+					  .setDescription(String.fromCharCode(8203))
+		                          .setFooter('Replying to ' + message.author.tag)
+					  .setTitle("<:red_tick:330712188681453590> `An Error Occurred.`")
 					  .addField(":inbox_tray: `Input`",
 					    einput)
 					  .addField("<:apple_symbol_no_entry_sign:359559750012108800> `Error`",
