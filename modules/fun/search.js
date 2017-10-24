@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+var PythonShell = require('python-shell');
 
 const Command = require('../../cmdModule/commands').Command
 
@@ -19,17 +20,21 @@ var argsg = args.join(' ');
 	  
 /*var spawn = require('child_process').spawn,
     py    = spawn('python', ['search.py']);*/
-var spawn = require("child_process").spawn;
-var process = spawn('python',["search.py", argsg]);
-process.stdout.on('data', function (data){
+
+var options = {
+scriptPath: '/home/me/notJust/modules/fun/'
+};
+var pyshell = new PythonShell('search.py', options);
+
+pyshell.on('message', function (message) {	  
   let embed = new Discord.RichEmbed()
       embed.setTitle('<:apple_face_sunglasses:359559678809866240> `Image Found Successfully`')
 	  embed.setDescription(String.fromCharCode(8203))
       embed.setColor('#00ff00')
       //embed.setTimestamp()
 	  embed.setFooter('Replying to ' + message.author.tag)
-	  message.channel.send(data)
-	embed.setImage(data);
+	  message.channel.send(message)
+	embed.setImage(message);
 	message.channel.send({ embed })
 });
 //py.stdin.end();
