@@ -4,6 +4,10 @@ var url = "http://random.dog/woof.json"
 
 const Command = require('../../cmdModule/commands').Command
 
+function checkURL(url) {
+    return(url.match(/\.(jpeg|jpg|gif|png)$/) != null);
+}
+
 class dogCommand extends Command {
   constructor() {
     super({
@@ -25,7 +29,9 @@ class dogCommand extends Command {
 		  
     var imageURL = JSON.parse(b).url
     
+    var check = checkURL(imageURL)
     
+    if (check) {
     
     let embed = new Discord.RichEmbed()
       embed.setTitle('<:apple_animal_dog:372248984783290369> `Dog Fetched Successfully`')
@@ -36,6 +42,9 @@ class dogCommand extends Command {
 		  console.log(imageURL)
 	 //message.channel.send(imageURL) 
 	  message.channel.send({ embed })
+    } else {
+	    api.error('The random dog was a video instead of an image. Please try again.')
+    }
   })
 	  
       /*var img
