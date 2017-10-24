@@ -19,18 +19,18 @@ class dogCommand extends Command {
       embed.setColor('#00ff00')
 	  embed.setFooter('Replying to ' + message.author.tag)
 	  
-	  const response = await request('https://random.dog/woof.json'),
+	  /*const response = await request('https://random.dog/woof.json'),
             body = JSON.parse(response.body),
             imageURL = body.url;
-        /*message.channel.send({
-            files: [{
-                attachment: imageURL,
-                name: 'doggo.png'
-            }]
-        });*/
 	  message.channel.send(imageURL)
-	  embed.setImage(imageURL)
-	  
+	  embed.setImage(imageURL)*/
+	  var imageURL
+	  const response = await request('https://random.dog/woof.json', (e,r,b) => {
+    var imageURL = JSON.parse(b).url
+    embed.setImage(imageURL)
+  })
+	 message.channel.send(imageURL) 
+	  message.channel.send({ embed })
       /*var img
       var img2
     request({
