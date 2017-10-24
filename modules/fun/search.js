@@ -18,7 +18,7 @@ var argsg = args.join(' ');
 
 	  
 var spawn = require('child_process').spawn,
-    py    = spawn('python', ['/home/me/notJust/search.py']);
+    py    = spawn('python', ['search.py']);
 var img;
 py.stdout.on('data', function(data){
   img += data.toString();
