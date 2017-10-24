@@ -17,7 +17,9 @@ class jumboCommand extends Command {
 			api.error('Please provide an emoji to jumbo.')
 		}
 		var arg = args[0]
-		var argtest = \ < \: . + \: \d + \ > .test(arg);
+		//var argtest = \ < \: . + \: \d + \ > .test(arg);
+		var test = new RegExp("\<\:.+\:\d+\>");
+		var argtest = test.test(arg);
 		if (argtest == true) {
 			arg = arg.replace(/\D/g, '');
 			//arg = arg.replace(/[^a-zA-Z-]/g, '')
