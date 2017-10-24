@@ -23,6 +23,7 @@ class serverCommand extends Command {
     var owner    = message.guild.owner.user.tag
     var gid      = message.guild.id
     var time     = ta.ago(message.guild.createdTimestamp);
+    var icon     = message.guild.iconURL
     //let online   = this.client.users.filter(u => u.status != "offline").length;
     let embed = new Discord.RichEmbed()
       embed.setTitle('<:apple_symbol_info:359559750096257024> `About ' + name + '`')
@@ -31,6 +32,8 @@ class serverCommand extends Command {
         /*embed.addField('`ID`', gid, true)
         embed.addBlankField(true)*/
         embed.setDescription(String.fromCharCode(8203))
+        
+        embed.setThumbnail(icon)
         embed.addField('`Numbers`', users + ' members, ' + emojis + ' emoji, ' + channels + ' channels and ' + roles + ' roles.', false)
         
         embed.addField('`Created`', time, true)
