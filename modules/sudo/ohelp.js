@@ -11,10 +11,10 @@ _.mixin(({
     )
   }
 }))
-class HelpCommand extends Command {
+class oHelpCommand extends Command {
   constructor() {
     super({
-      name: 'help',
+      name: 'ohelp',
       help: 'Show available commands'
     })
   }
@@ -212,4 +212,4 @@ class HelpCommand extends Command {
   }*/
 }
 
-module.exports = HelpCommand
+module.exports = oHelpCommand
