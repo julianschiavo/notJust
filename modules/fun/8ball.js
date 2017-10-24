@@ -43,7 +43,8 @@ class ballCommand extends Command {
 	  embed.setDescription(String.fromCharCode(8203))
       embed.setColor('#00ff00')
       //embed.setFooter('Replying to: ' + this.message.author.tag)
-      embed.setTimestamp()
+      //embed.setTimestamp()
+	  embed.setFooter('Replying to ' + message.author.tag)
         embed.addField('`Response`', sayings[result], false)
       message.channel.send({ embed })
     return true
