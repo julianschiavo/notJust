@@ -1,6 +1,6 @@
 const Discord = require('discord.js')
 const Command = require('../../cmdModule/commands').Command
-const ta = require('time-ago')
+const ta = require('../../timeago.js')
 
 class serverCommand extends Command {
   constructor() {
