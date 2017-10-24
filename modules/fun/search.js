@@ -1,6 +1,4 @@
 const Discord = require('discord.js');
-const GoogleImages = require('google-images');
-const client = new GoogleImages('014338422944177884073:dkjfxeuq_dy', 'AIzaSyB2AcbLRMT-gTe6T75wYBx4JCarYBe7pBE');
 
 const Command = require('../../cmdModule/commands').Command
 
@@ -20,7 +18,7 @@ var argsg = args.join(' ');
 
 	  
 var spawn = require('child_process').spawn,
-    py    = spawn('python', ['search.py']);
+    py    = spawn('python', ['/home/me/notJust/search.py']);
 var img;
 py.stdout.on('data', function(data){
   img += data.toString();
