@@ -20,14 +20,18 @@ class catCommand extends Command {
       embed.setColor('#00ff00')
       //embed.setFooter('Replying to: ' + this.message.author.tag)
       embed.setTimestamp()
-      
+      var img
+      var bod
+      var img2
     request({
         url: url,
         json: true
     }, function (error, response, body) {
         console.log(body.file);
 	//var img = body.file;
-	var img = encodeURI(body.file);
+	    var bod = body
+	    var img = body.file
+	var img2 = encodeURI(body.file);
 	embed.setImage(img)
     })
 	  
@@ -35,8 +39,9 @@ class catCommand extends Command {
 	embed.setImage(response.body.file)
 	}*/
 
-      
-        
+      message.channel.send(bod)
+        message.channel.send(img)
+	  message.channel.send(img2)
       message.channel.send({ embed })
     return true
   }
