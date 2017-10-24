@@ -17,25 +17,21 @@ args.splice(0,1);
 var argsg = args.join(' ');
 
 	  
-var spawn = require('child_process').spawn,
-    py    = spawn('python', ['search.py']);
-var img;
-py.stdout.on('data', function(data){
-  img += data.toString();
-});
-py.stdout.on('end', function(){
+/*var spawn = require('child_process').spawn,
+    py    = spawn('python', ['search.py']);*/
+var spawn = require("child_process").spawn;
+var process = spawn('python',["search.py", argsg]);
+process.stdout.on('data', function (data){
   let embed = new Discord.RichEmbed()
       embed.setTitle('<:apple_face_sunglasses:359559678809866240> `Image Found Successfully`')
 	  embed.setDescription(String.fromCharCode(8203))
       embed.setColor('#00ff00')
       //embed.setTimestamp()
 	  embed.setFooter('Replying to ' + message.author.tag)
-	  message.channel.send(img)
-	embed.setImage(img);
+	  message.channel.send(data)
+	embed.setImage(data);
 	message.channel.send({ embed })
 });
-	  
-py.stdin.write(argsg);
 //py.stdin.end();
   
 	  
