@@ -16,7 +16,7 @@ class PingCommand extends Command {
       let end = Date.now();
       let two = Math.round(end - start) + " ms"
       newMessage.delete()
-      api.evalembed([245, 236, 71], "🏓 `Ping Successful`", "Heartbeat", one, "Ping", two)
+      api.evalembed([245, 236, 71], "<:apple_pingpong:372233015784505345> `Ping Successful`", "Heartbeat", one, "Ping", two)
     })
     //api.embed([245, 236, 71], "🏓 `Ping Successful!`", "**Heartbeat:** " + message.client.ping.toFixed().toString() + " ms\n**Ping:** " + final + " ms")
     return true
