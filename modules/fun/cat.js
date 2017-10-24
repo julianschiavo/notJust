@@ -14,11 +14,13 @@ class catCommand extends Command {
 
   async run(message, args, api) {
     message.delete()
+	 var img 
     request({
         url: url,
         json: true
     }, function (error, response, body) {
         console.log(body);
+	img = body.file
     })
 
       let embed = new Discord.RichEmbed()
@@ -27,7 +29,7 @@ class catCommand extends Command {
       embed.setColor('#00ff00')
       //embed.setFooter('Replying to: ' + this.message.author.tag)
       embed.setTimestamp()
-      embed.setImage(body)
+      embed.setImage(img)
         
       message.channel.send({ embed })
     return true
