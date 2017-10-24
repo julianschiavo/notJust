@@ -32,10 +32,11 @@ class serverCommand extends Command {
         embed.addBlankField(true)*/
         embed.setDescription(String.fromCharCode(8203))
         
-        embed.addField('`Emoji`', emojis, true)
+        
         embed.addField('`Owner`', owner, true)
         embed.addField('`Created`', time, true)
-        embed.addBlankField(true)
+        embed.addBlankField(false)
+        embed.addField('`Emoji`', emojis, true)
         embed.addField('`Channels`', channels, true)
         embed.addField('`Members`', users, true)
         embed.addField('`Roles`', roles, true)
