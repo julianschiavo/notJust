@@ -18,7 +18,8 @@ class catCommand extends Command {
       embed.setTitle('<:apple_animal_cat:372237719780196353> `Cat Fetched Successfully`')
 	  embed.setDescription(String.fromCharCode(8203))
       embed.setColor('#00ff00')
-      embed.setTimestamp()
+      //embed.setTimestamp()
+	  embed.setFooter('Replying to: ' + this.message.author.tag)
       var img
       var img2
     request({
