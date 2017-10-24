@@ -61,7 +61,7 @@ class infoCommand extends Command {
 			var time = ta.ago(user.user.createdTimestamp);
 			var id = user.user.id
 			var join = ta.ago(user.joinedTimestamp);
-			var roles = '`' + user.roles.map(r => r.name).join('`, `') + '`'
+			var roles = '`' + user.roles.map(r => r.name).join('` `') + '`'
 			var name = user.user.username
 			let embed = new Discord.RichEmbed()
 			embed.setTitle('<:apple_symbol_info:359559750096257024> `About ' + name + '`')
