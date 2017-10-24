@@ -75,8 +75,9 @@ class CommandApi {
       let embed = new Discord.RichEmbed()
       embed.setTitle(title)
       embed.setColor(hex)
-      embed.setTimestamp()
+      //embed.setTimestamp()
       //embed.setFooter('Replying to: ' + this.message.author.tag)
+      embed.setFooter('Replying to ' + this.message.author.tag)
       if (description) {
         embed.setDescription(description)
       }
@@ -107,7 +108,8 @@ class CommandApi {
       embed.setTitle(title)
       embed.setColor(hex)
       //embed.setFooter('Replying to: ' + this.message.author.tag)
-      embed.setTimestamp()
+      //embed.setTimestamp()
+      embed.setFooter('Replying to ' + this.message.author.tag)
       if (field1title && field1value) {
         embed.setDescription(String.fromCharCode(8203))
         embed.addField(field1title, field1value, false)
@@ -177,7 +179,8 @@ class CommandApi {
       embed.setDescription(message)
       embed.setColor('#FF0000')
       //embed.setFooter('Replying to: '+ this.message.author.tag)
-      embed.setTimestamp()
+      //embed.setTimestamp()
+      embed.setFooter('Replying to ' + this.message.author.tag)
       //embed.setTimestamp(new Date())
       //this.message.channel.sendEmbed(embed)
       this.message.channel.send({ embed })
@@ -196,7 +199,8 @@ class CommandApi {
       embed.setTitle('<:green_tick:330712173288488960> `Success`')
       embed.setDescription(message)
       embed.setColor('#00FF00')
-      embed.setTimestamp()
+      embed.setFooter('Replying to ' + this.message.author.tag)
+      //embed.setTimestamp()
       //embed.setFooter('Replying to: ' + this.message.author.tag)
       this.message.channel.send({ embed })
       return true
