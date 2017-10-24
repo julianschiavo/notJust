@@ -19,6 +19,7 @@ class HelpCommand extends Command {
     })
   }
   async run(message, args, api) {
+    message.delete()
     let dotcolor = [245, 236, 71]
     if (args.length == 1) {
       let order = ['light', 'fun', 'music', 'misc', 'utility', 'mod', 'admin', 'sudo']
