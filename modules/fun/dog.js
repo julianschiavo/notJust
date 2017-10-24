@@ -13,25 +13,31 @@ class dogCommand extends Command {
   }
 
   async run(message, args, api) {
-	let embed = new Discord.RichEmbed()
-      embed.setTitle('<:apple_animal_dog:372248984783290369> `Dog Fetched Successfully`')
-	  embed.setDescription(String.fromCharCode(8203))
-      embed.setColor('#00ff00')
-	  embed.setFooter('Replying to ' + message.author.tag)
+	
 	  
 	  /*const response = await request('https://random.dog/woof.json'),
             body = JSON.parse(response.body),
             imageURL = body.url;
 	  message.channel.send(imageURL)
 	  embed.setImage(imageURL)*/
-	  var imageURL
+	  
 	  const response = await request('https://random.dog/woof.json', (e,r,b) => {
-    imageURL = JSON.parse(b).url
+		  
+    var imageURL = JSON.parse(b).url
+    
+    
+    
+    let embed = new Discord.RichEmbed()
+      embed.setTitle('<:apple_animal_dog:372248984783290369> `Dog Fetched Successfully`')
+	  embed.setDescription(String.fromCharCode(8203))
+      embed.setColor('#00ff00')
+	  embed.setFooter('Replying to ' + message.author.tag)
     embed.setImage(imageURL)
-  })
-	  console.log(imageURL)
+		  console.log(imageURL)
 	 message.channel.send(imageURL) 
 	  message.channel.send({ embed })
+  })
+	  
       /*var img
       var img2
     request({
