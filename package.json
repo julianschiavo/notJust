@@ -38,6 +38,7 @@
     "request": "^2.81.0",
     "rethinkdbdash": "^2.3.29",
     "snekfetch": "^3.5.5",
+    "time-ago": "^0.1.0",
     "uws": "^8.14.0",
     "ytdl-core": "^0.14.4"
   },
