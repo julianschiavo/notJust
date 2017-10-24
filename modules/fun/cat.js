@@ -15,13 +15,11 @@ class catCommand extends Command {
 
   async run(message, args, api) {
 	let embed = new Discord.RichEmbed()
-      //embed.setTitle('<:apple_animal_cat:372237719780196353> `Cat Fetched Successfully`')
-	  //embed.setDescription(String.fromCharCode(8203))
+      embed.setTitle('<:apple_animal_cat:372237719780196353> `Cat Fetched Successfully`')
+	  embed.setDescription(String.fromCharCode(8203))
       embed.setColor('#00ff00')
-      //embed.setFooter('Replying to: ' + this.message.author.tag)
       embed.setTimestamp()
       var img
-      //var bod
       var img2
     request({
         url: url,
