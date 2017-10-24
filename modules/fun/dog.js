@@ -24,9 +24,10 @@ class dogCommand extends Command {
         url: url,
         json: true
     }, function (error, response, body) {
-        console.log(body.url);
-	    var img = body.url
-	    var img2 = encodeURI(body.url);
+	var bod = JSON.parse(response.body)
+        console.log(bod.url);
+	    var img = response.bod.url
+	    var img2 = encodeURI(response.bod.url);
 	embed.setImage(img)
     })
 	  
