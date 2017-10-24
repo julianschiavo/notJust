@@ -28,9 +28,9 @@ class randomCommand extends Command {
 			embed.setColor('#00ff00')
 			embed.setTimestamp()
 			if (result == 1) {
-				embed.addField('`Result`', 'Heads', false)
+				embed.addField('`Side`', 'Heads', false)
 			} else if (result == 2) {
-				embed.addField('`Result`', 'Tails', false)
+				embed.addField('`Side`', 'Tails', false)
 			}
 			message.channel.send({
 				embed
@@ -49,8 +49,7 @@ class randomCommand extends Command {
 			embed.setDescription(String.fromCharCode(8203))
 			embed.setColor('#00ff00')
 			embed.setTimestamp()
-			embed.addField('`Result`', 'Heads', false)
-			embed.addField('`Result`', 'Tails', false)
+			embed.addField('`Number`', num, false)
 			message.channel.send({
 				embed
 			})
