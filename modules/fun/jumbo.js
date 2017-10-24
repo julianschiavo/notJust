@@ -5,7 +5,8 @@ class jumboCommand extends Command {
   constructor() {
     super({
       name: 'jumbo',
-      help: 'Show jumbo version of emoji'
+      help: 'Show jumbo version of emoji',
+      lhelp: '\n Note: Jumbo only works on non default emoji for now.'
     })
   }
 
