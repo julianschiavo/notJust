@@ -26,7 +26,7 @@ class dogCommand extends Command {
 	  embed.setImage(imageURL)*/
 	  var imageURL
 	  const response = await request('https://random.dog/woof.json', (e,r,b) => {
-    var imageURL = JSON.parse(b).url
+    imageURL = JSON.parse(b).url
     embed.setImage(imageURL)
   })
 	  console.log(imageURL)
