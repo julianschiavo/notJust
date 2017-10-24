@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-var get = require("snekfetch");
+var request = require("snekfetch");
 var url = "http://random.dog/woof.json"
 
 const Command = require('../../cmdModule/commands').Command
