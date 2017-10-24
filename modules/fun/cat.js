@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
-//var request = require ("request");
-const get = require("snekfetch");
+var request = require ("request");
+//const get = require("snekfetch");
 var url = "http://random.cat/meow.php"
 
 const Command = require('../../cmdModule/commands').Command
@@ -21,18 +21,19 @@ class catCommand extends Command {
       //embed.setFooter('Replying to: ' + this.message.author.tag)
       embed.setTimestamp()
       
-    /*request({
+    request({
         url: url,
         json: true
     }, function (error, response, body) {
         console.log(body.file);
 	//var img = body.file;
-	embed.setImage(body.file)
-    })*/
+	var img = encodeURI(body.file);
+	embed.setImage(img)
+    })
 	  
-	  get(url).then(response => {
+	  /*get(url).then(response => {
 	embed.setImage(response.body.file)
-	}
+	}*/
 
       
         
