@@ -21,7 +21,7 @@ class catCommand extends Command {
       //embed.setFooter('Replying to: ' + this.message.author.tag)
       embed.setTimestamp()
       var img
-      var bod
+      //var bod
       var img2
     request({
         url: url,
@@ -29,9 +29,9 @@ class catCommand extends Command {
     }, function (error, response, body) {
         console.log(body.file);
 	//var img = body.file;
-	    var bod = body
+	    //var bod = body
 	    var img = body.file
-	var img2 = encodeURI(body.file);
+	    var img2 = encodeURI(body.file);
 	embed.setImage(img)
     })
 	  
@@ -41,7 +41,7 @@ class catCommand extends Command {
 
       //message.channel.send(bod)
         message.channel.send(img)
-	  //message.channel.send(img2)
+	  message.channel.send(img2)
       message.channel.send({ embed })
     return true
   }
