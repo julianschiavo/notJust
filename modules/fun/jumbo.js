@@ -9,10 +9,10 @@ class jumboCommand extends Command {
   }
 
   async run(message, args, api) {
-  if (!args[1]) {
+  args.splice(0,1)
+  if (!args[0]) {
   api.error('Please provide an emoji to jumbo.')
   }
-  args.splice(0,1)
   var arg = args[0]
   arg = arg.replace(/\D/g,'');
   var emojilink = message.client.emojis.get(arg).url
