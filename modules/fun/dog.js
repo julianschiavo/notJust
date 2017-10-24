@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-var request = require ("request");
+var get = require("snekfetch");
 var url = "http://random.dog/woof.json"
 
 const Command = require('../../cmdModule/commands').Command
@@ -18,7 +18,20 @@ class dogCommand extends Command {
 	  embed.setDescription(String.fromCharCode(8203))
       embed.setColor('#00ff00')
 	  embed.setFooter('Replying to ' + message.author.tag)
-      var img
+	  
+	  const response = await request('https://random.dog/woof.json'),
+            body = JSON.parse(response.body),
+            imageURL = body.url;
+        /*message.channel.send({
+            files: [{
+                attachment: imageURL,
+                name: 'doggo.png'
+            }]
+        });*/
+	  message.channel.send(imageURL)
+	  embed.setImage(imageURL)
+	  
+      /*var img
       var img2
     request({
         url: url,
@@ -29,16 +42,16 @@ class dogCommand extends Command {
 	    var img = bod.url
 	    var img2 = encodeURI(bod.url);
 	embed.setImage(img)
-    })
+    })(*/
 	  
 	  /*get(url).then(response => {
 	embed.setImage(response.body.file)
 	}*/
 
       //message.channel.send(bod)
-        message.channel.send(img)
+        /*message.channel.send(img)
 	  message.channel.send(img2)
-      message.channel.send({ embed })
+      message.channel.send({ embed })*/
     return true
   }
 }
