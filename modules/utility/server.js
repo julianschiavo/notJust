@@ -31,16 +31,15 @@ class serverCommand extends Command {
         /*embed.addField('`ID`', gid, true)
         embed.addBlankField(true)*/
         embed.setDescription(String.fromCharCode(8203))
+        embed.addField('`Numbers`', users + ' members, ' + emojis + ' emoji, ' + channels + ' channels and ' + roles + ' roles.', false)
         
         embed.addField('`Created`', time, true)
         embed.addField('`Owner`', owner, true)
-        
-        embed.addBlankField(false)
+       
         /*embed.addField('`Emoji`', emojis, true)
         embed.addField('`Channels`', channels, true)
         embed.addField('`Members`', users, true)
         embed.addField('`Roles`', roles, true)*/
-        embed.addField('`Count`', users + ' members, ' + emojis + ' emoji, ' + channels + ' channels and ' + roles + ' roles.', true)
         
         
         /*embed.addField('`Invite`', 'notJust is currently private as it is not finished and may be buggy.', false)
