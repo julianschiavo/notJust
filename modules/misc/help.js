@@ -15,7 +15,7 @@ class HelpCommand extends Command {
   constructor() {
     super({
       name: 'help',
-      help: 'Show available commands'
+      help: 'DM available commands'
     })
   }
   async run(message, args, api) {
