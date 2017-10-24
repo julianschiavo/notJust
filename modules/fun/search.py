@@ -1,5 +1,5 @@
 ## search.py
-
+import sys
 import random
 from imagesoup import ImageSoup
 soup = ImageSoup()
