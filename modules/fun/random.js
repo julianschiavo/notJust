@@ -1,10 +1,6 @@
 const Discord = require('discord.js')
 const Command = require('../../cmdModule/commands').Command
 
-function randomN(min, max) {
-	return Math.floor(Math.random() * (max - min + 1) + min);
-}
-
 class randomCommand extends Command {
 	constructor() {
 		super({
@@ -38,6 +34,9 @@ class randomCommand extends Command {
 			return true
 		} else if (argg.indexOf('number') >= 0) {
 			var num;
+			function randomN(min, max) {
+	                	return Math.floor(Math.random()*(max-min+1)+min);
+                        }
 			if (args[1] && !isNaN(args[1]) && args[2] && !isNaN(args[2])) {
 				num = randomN(1, 100)
 			} else {
