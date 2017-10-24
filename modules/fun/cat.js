@@ -39,9 +39,9 @@ class catCommand extends Command {
 	embed.setImage(response.body.file)
 	}*/
 
-      message.channel.send(bod)
-        message.channel.send(img)
-	  message.channel.send(img2)
+      //message.channel.send(bod)
+        //message.channel.send(img)
+	  //message.channel.send(img2)
       message.channel.send({ embed })
     return true
   }
