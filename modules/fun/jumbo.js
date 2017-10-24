@@ -15,7 +15,8 @@ class jumboCommand extends Command {
   api.error('Please provide an emoji to jumbo.')
   }
   var arg = args[0]
-  arg = arg.replace(/\D/g,'');
+  
+  //arg = arg.replace(/\D/g,'');
   var emojilink = message.client.emojis.get(arg).url
     let embed = new Discord.RichEmbed()
 			embed.setFooter('Replying to ' + message.author.tag)
