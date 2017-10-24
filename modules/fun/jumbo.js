@@ -34,6 +34,7 @@ class jumboCommand extends Command {
 			message.channel.send({
 				embed
 			})
+			return true
 		} else {
 			var arg = twemoji.convert.toCodePoint(arg)
 			var emojilink = 'https://raw.githubusercontent.com/twitter/twemoji/gh-pages/2/72x72/' + arg + '.png'
@@ -46,9 +47,10 @@ class jumboCommand extends Command {
 			message.channel.send({
 				embed
 			})
+			return true
 		}
 		//https://raw.githubusercontent.com/twitter/twemoji/gh-pages/2/svg/twemoji.convert.toCodePoint('unicodeEmojiOutputHere').svg
-		return true
+		
 	}
 }
 
