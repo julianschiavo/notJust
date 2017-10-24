@@ -16,8 +16,10 @@ class jumboCommand extends Command {
   }
   var arg = args[0]
   
-  //arg = arg.replace(/\D/g,'');
+  arg = arg.replace(/\D/g,'');
+  //arg = arg.replace(/[^a-zA-Z-]/g, '')
   var emojilink = message.client.emojis.get(arg).url
+//var emojilink = message.client.emojis.find('name', arg).url
     let embed = new Discord.RichEmbed()
 			embed.setFooter('Replying to ' + message.author.tag)
 			embed.setTitle('<:apple_face_smile:359559572634992672> `Emoji Jumboed`')
