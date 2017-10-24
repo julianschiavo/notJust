@@ -19,16 +19,17 @@ class serverCommand extends Command {
     var roles    = message.guild.roles.size
     var emojis   = message.guild.emojis.size
     var name     = message.guild.name
-    var owner    = message.guild.owner.tag
+    var owner    = message.guild.owner.username
     //let online   = this.client.users.filter(u => u.status != "offline").length;
     let embed = new Discord.RichEmbed()
       embed.setTitle('<:apple_symbol_info:359559750096257024> `About ' + name + '`')
       embed.setColor('#00ff00')
     embed.setFooter('Replying to ' + message.author.tag)
         embed.setDescription(String.fromCharCode(8203))
-        embed.addField('`Owner`', owner, false)
+        embed.addField('`Emoji`', emojis, true)
+        embed.addField('`Owner`', owner, true)
+        embed.addBlankField(true)
         embed.addField('`Channels`', channels, true)
-        embed.addField('`Emojis`', emojis, true)
         embed.addField('`Members`', users, true)
         embed.addField('`Roles`', roles, true)
         
