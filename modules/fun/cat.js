@@ -40,7 +40,7 @@ class catCommand extends Command {
 	}*/
 
       //message.channel.send(bod)
-        //message.channel.send(img)
+        message.channel.send(img)
 	  //message.channel.send(img2)
       message.channel.send({ embed })
     return true
