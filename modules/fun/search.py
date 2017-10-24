@@ -18,6 +18,8 @@ def main():
     #get our data as an array from read_in()
     lines = read_in()
     
+    
+    
     result = search_google_images(lines)
     choice = random.choice(result)
     #r = requests.get(choice.URL)
@@ -25,7 +27,8 @@ def main():
     #event.msg.reply('', attachments=[('img.jpg', r.content)])
 
     #return the sum to the output stream
-    print choice.URL
+    print(choice.URL)
+    sys.stdout.flush()
 
 #start process
 if __name__ == '__main__':
