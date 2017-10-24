@@ -18,6 +18,11 @@ class HelpCommand extends Command {
       help: 'Show available commands'
     })
   }
+  hasPermission(message) {
+     if (message.author.id == require('../../config.json').owner) return true
+    return false  
+  }
+  
   async run(message, args, api) {
     let dotcolor = [245, 236, 71]
     if (args.length == 1) {
