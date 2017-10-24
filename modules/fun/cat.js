@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 var request = require ("request");
-var url = "http://random.cat/meow"
+var url = "http://random.cat/meow.php"
 
 const Command = require('../../cmdModule/commands').Command
 
