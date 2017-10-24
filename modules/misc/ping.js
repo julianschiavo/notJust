@@ -9,7 +9,7 @@ class PingCommand extends Command {
   }
 
   async run(message, args, api) {
-    message.delete()
+    //message.delete()
     let start = Date.now()
     let one = message.client.ping.toFixed().toString() + " ms"
     message.channel.send("Pinging...").then(newMessage => {
