@@ -58,7 +58,7 @@ class infoCommand extends Command {
 			var id = user.user.id
 			var join = ta.ago(user.joinedTimestamp);
 			var roles = user.roles
-			    //roles = roles.join(', ');
+			    roles = roles.join(', ');
 			var name = user.user.username
 			let embed = new Discord.RichEmbed()
 			embed.setTitle('<:apple_symbol_info:359559750096257024> `About ' + name + '`')
@@ -68,7 +68,7 @@ class infoCommand extends Command {
 			embed.setThumbnail(icon)
 			//embed.addField('`Numbers`', users + ' members, ' + emojis + ' emoji, ' + channels + ' channels and ' + roles + ' roles.', false)
 
-			embed.addField('`roles`', roles, false)
+			embed.addField('`Roles`', roles, false)
 			embed.addField('`ID`', id, true)
 			embed.addField('`Created`', time, true)
 			embed.addField('`Joined`', join, true)
