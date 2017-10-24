@@ -18,7 +18,7 @@ class jumboCommand extends Command {
 		}
 		var arg = args[0]
 		//var argtest = \ < \: . + \: \d + \ > .test(arg);
-		var test = new RegExp("\<\:.+\:\d+\>");
+		var test = '\<\:.+\:\d+\>';
 		var argtest = test.test(arg);
 		if (argtest == true) {
 			arg = arg.replace(/\D/g, '');
