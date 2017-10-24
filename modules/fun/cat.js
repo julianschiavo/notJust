@@ -19,7 +19,7 @@ class catCommand extends Command {
 	  embed.setDescription(String.fromCharCode(8203))
       embed.setColor('#00ff00')
       //embed.setTimestamp()
-	  embed.setFooter('Replying to: ' + this.message.author.tag)
+	  embed.setFooter('Replying to: ' + message.author.tag)
       var img
       var img2
     request({
