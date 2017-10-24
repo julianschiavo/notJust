@@ -35,7 +35,7 @@ class jumboCommand extends Command {
 			})
 		} else {
 			var arg = twemoji.convert.toCodePoint(arg)
-			var emojilink = 'https://raw.githubusercontent.com/twitter/twemoji/gh-pages/2/svg/' + arg + '.svg'
+			var emojilink = 'https://raw.githubusercontent.com/twitter/twemoji/gh-pages/2/72x72/' + arg + '.png'
 			let embed = new Discord.RichEmbed()
 			embed.setFooter('Replying to ' + message.author.tag)
 			embed.setTitle('<:apple_face_smile:359559572634992672> `Emoji Jumboed`')
