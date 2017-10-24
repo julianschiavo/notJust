@@ -9,8 +9,8 @@ class serverCommand extends Command {
     })
   }
   hasPermission(message) {
-    return true  
     if (message.channel.type !== 'text') return false
+    return true  
   }
 
   async run(message, args, api) {
@@ -19,12 +19,15 @@ class serverCommand extends Command {
     var roles    = message.guild.roles.size
     var emojis   = message.guild.emojis.size
     var name     = message.guild.name
-    var owner    = message.guild.owner.username
+    var owner    = message.guild.owner.user.tag
+    var gid    = message.guild.id
     //let online   = this.client.users.filter(u => u.status != "offline").length;
     let embed = new Discord.RichEmbed()
       embed.setTitle('<:apple_symbol_info:359559750096257024> `About ' + name + '`')
       embed.setColor('#00ff00')
     embed.setFooter('Replying to ' + message.author.tag)
+        embed.addField('`ID`', gid, true)
+        embed.addBlankField(true)
         embed.setDescription(String.fromCharCode(8203))
         embed.addField('`Emoji`', emojis, true)
         embed.addField('`Owner`', owner, true)
