@@ -36,7 +36,7 @@ class srCommand extends Command {
 				function randomN(min, max) {
 					return Math.floor(Math.random() * (max - min + 1) + min);
 				}
-				var googleData = $('.rg_i').first().attr('src');
+				var googleData = $('.rg_ic').first().attr('src');
 
 				var rNum = randomN(1, 100)
 				//googleData = googleData.find('img')
