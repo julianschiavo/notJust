@@ -24,7 +24,7 @@ function sendResultEmbed(result, input, message) {
 		var goutput = "```" + result + "```"
 		const embed = new Discord.RichEmbed()
 			.setColor("#00ff00")
-			.setTitle("<:apple_pencil_paper:359560552701231106> `Eval Successful`")
+			.setTitle("<:apple_pencil_paper:359560552701231106> `Code Evaluated`")
 		        .setDescription(String.fromCharCode(8203))
 		        .setFooter('Replying to ' + message.author.tag)
 			.addField(":inbox_tray: `Input`",
