@@ -39,7 +39,7 @@ class srCommand extends Command {
 				var googleData = $('.r').first()
 				var rNum = randomN(1, 100)
 				googleData = googleData.find('img')
-				googleData = googleData[rNum].attr('src');
+				googleData = googleData.first().attr('src');
 
 				// Now that we have our data from Google, we can send it to the channel.
 				googleData = querystring.parse(googleData.replace('/url?', ''));
