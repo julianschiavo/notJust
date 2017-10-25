@@ -29,7 +29,7 @@ class dogCommand extends Command {
     var check = checkURL(imageURL)
     if (check) {
     let embed = new Discord.RichEmbed()
-      embed.setTitle('<:apple_animal_dog:372248984783290369> `Dog Fetched Successfully`')
+      embed.setTitle('<:apple_animal_dog:372248984783290369> `Dog Fetched`')
 	  embed.setDescription(String.fromCharCode(8203))
       embed.setColor('#00ff00')
 	  embed.setFooter('Replying to ' + message.author.tag)
