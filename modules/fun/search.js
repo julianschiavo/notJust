@@ -36,14 +36,14 @@ class srCommand extends Command {
 				function randomN(min, max) {
 					return Math.floor(Math.random() * (max - min + 1) + min);
 				}
-				var googleData = $('.rg_ic').first().attr('src');
+				var googleData = $('.y').first().find('ivg-i').first().find('a').first().attr('src');
 
 				var rNum = randomN(1, 100)
 				//googleData = googleData.find('img')
 				//googleData = googleData.first().attr('src');
 
 				// Now that we have our data from Google, we can send it to the channel.
-				googleData = querystring.parse(googleData.replace('/url?', ''));
+				googleData = querystring.parse(googleData.replace('/imgres?imgurl=', ''));
 				//searchMessage.edit(`Result found!\n${googleData.q}`);
 				let embed = new Discord.RichEmbed()
 				embed.setTitle('<:apple_face_sunglasses:359559678809866240> `Image Found Successfully`')
