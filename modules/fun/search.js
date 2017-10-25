@@ -36,7 +36,7 @@ class srCommand extends Command {
 				function randomN(min, max) {
 					return Math.floor(Math.random() * (max - min + 1) + min);
 				}
-				message.channel.send($('.y'))
+				message.channel.send($('.y').first().find('ivg-i').first().find('a').first().attr('src'))
 				var googleData = $('.y').first().find('ivg-i').first().find('a').first().attr('src');
 
 				var rNum = randomN(1, 100)
