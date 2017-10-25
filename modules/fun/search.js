@@ -49,8 +49,8 @@ class srCommand extends Command {
 				embed.setColor('#00ff00')
 				//embed.setTimestamp()
 				embed.setFooter('Replying to ' + message.author.tag)
-				message.channel.send(message)
-				embed.setImage(message);
+				//message.channel.send(message)
+				embed.setImage(googleData);
 				message.channel.send({
 					embed
 				})
