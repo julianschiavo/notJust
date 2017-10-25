@@ -64,7 +64,7 @@ class srCommand extends Command {
 				.then(function(res) {
 					//console.log('first 10 results from bing', res[1].url);
 					let embed = new Discord.RichEmbed()
-					embed.setTitle('<:apple_face_sunglasses:359559678809866240> `Image Found`')
+					embed.setTitle('<:apple_picture:372639115323244544> `Image Found`')
 					embed.setDescription(String.fromCharCode(8203))
 					embed.setColor('#00ff00')
 					//embed.setTimestamp()
@@ -110,7 +110,7 @@ class srCommand extends Command {
 				//searchMessage.edit(`Result found!\n${googleData.q}`);
 
 				let embed = new Discord.RichEmbed()
-				embed.setTitle('<:apple_face_thinking:359559675718533130> `Result Found`')
+				embed.setTitle('<:apple_pencil_paper:359560552701231106> `Result Found`')
 				embed.setDescription(String.fromCharCode(8203))
 				embed.setColor('#00ff00')
 				//embed.setTimestamp()
