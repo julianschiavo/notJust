@@ -18,8 +18,8 @@ class jumboCommand extends Command {
 		}
 		var arg = args[0]
 		//var argtest = \ < \: . + \: \d + \ > .test(arg);
-		var argtest = arg.match(/\D/g);
-		if (!argtest) {
+		//var argtest = arg.match(/\D/g);
+		if (arg.indexOf('<') >= 0) {
 			arg = arg.replace(/\D/g, '');
 			//arg = arg.replace(/[^a-zA-Z-]/g, '')
 			//var emojilink = message.client.emojis.get(arg).url
