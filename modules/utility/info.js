@@ -93,6 +93,7 @@ class infoCommand extends Command {
 			var name = role.name
 			var users = '`' + role.members.map(r => r.user.username).join('`, `') + '`'
 			var icon = message.guild.iconURL
+			let embed = new Discord.RichEmbed()
 			embed.setTitle('<:apple_symbol_info:359559750096257024> `About ' + name + '`')
 			embed.setColor('#00ff00')
 			embed.setFooter('Replying to ' + message.author.tag)
