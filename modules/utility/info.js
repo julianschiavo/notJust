@@ -7,7 +7,7 @@ class infoCommand extends Command {
 		super({
 			name: 'info',
 			help: 'Get info about a user or server',
-			lhelp: '{server/user} [user]\n{server/user} is whether to get info about the server or a user\n[user] is the user to get info on (defaults to message author)'
+			lhelp: '{server/user/role} [user/role name]\n{server/user/role} is whether to get info about the server, a user, or a role\n[user/role name] is the user or to get info on (if user, defaults to message author)'
 		})
 	}
 	hasPermission(message) {
@@ -75,6 +75,39 @@ class infoCommand extends Command {
 			embed.addField('`Roles`', '`' + roles + '`', false)
 			embed.addField('`Created`', time, true)
 			embed.addField('`Joined`', join, true)
+			message.channel.send({
+				embed
+			})
+		} else if (argg.indexOf('role') >= 0) {
+			var role
+			if (args[1]) {
+				role = message.guild.roles.find("name", args[1]);
+			} else {
+				api.error('Please specify a role name to get info for.')
+			}
+			var pos = role.position
+			var color = role.hexColor
+			var time = ta.ago(role.createdTimestamp)
+			var hoist = role.hoist
+			var id = role.id
+			var name = role.name
+			var users = '`' + role.members.map(r => r.user.username).join('`, `') + '`'
+			var icon = message.guild.iconURL
+			embed.setTitle('<:apple_symbol_info:359559750096257024> `About ' + name + '`')
+			embed.setColor('#00ff00')
+			embed.setFooter('Replying to ' + message.author.tag)
+			embed.setDescription(String.fromCharCode(8203))
+			embed.setThumbnail(icon)
+			//embed.addField('`Numbers`', users + ' members, ' + emojis + ' emoji, ' + channels + ' channels and ' + roles + ' roles.', false)
+			
+			embed.addField('`ID`', id, false)
+			embed.addField('`Created`', time, true)
+			embed.addField('`Color`', color, true)
+			embed.addField('`Hoisted`', hoist, true)
+			
+			embed.addField('`Members`', users, false)
+			
+			//embed.addField('`Joined`', join, true)
 			message.channel.send({
 				embed
 			})
