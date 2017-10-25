@@ -15,7 +15,7 @@ class catCommand extends Command {
 
   async run(message, args, api) {
 	let embed = new Discord.RichEmbed()
-      embed.setTitle('<:apple_animal_cat:372237719780196353> `Cat Fetched Successfully`')
+      embed.setTitle('<:apple_animal_cat:372237719780196353> `Cat Fetched`')
 	  embed.setDescription(String.fromCharCode(8203))
       embed.setColor('#00ff00')
       //embed.setTimestamp()
