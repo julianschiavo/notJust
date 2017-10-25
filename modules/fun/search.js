@@ -57,7 +57,7 @@ class srCommand extends Command {
 				})
 				// If no results are found, we catch it and return 'No results are found!'
 			}).catch((err) => {
-				api.error('No results found')
+				api.error(err)
 			});
 
 
