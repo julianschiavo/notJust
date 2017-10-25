@@ -81,11 +81,8 @@ class srCommand extends Command {
 				}).catch(function(err) {
 				if (err.indexOf('undefined') >= 0) {
 					api.error('No results were returned for that query, or it was an invalid query.')
-				} else if err.indexOf('no keyword') >= 0) {
-					api.error('Please specify a query.')
-				} else {
-					api.error(err);
 				}
+				console.log(err);
 				})
 
 
