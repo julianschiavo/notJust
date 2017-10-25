@@ -23,18 +23,19 @@ class reloadCommand extends Command {
 		var mn = args[1]
 		var cn = args[2]
 		delete require.cache[require.resolve('../' + mn + '/' + cn + '.js')];
-                //message.reply(`The command ${args[0]} has been reloaded`);
+		//message.reply(`The command ${args[0]} has been reloaded`);
 		let embed = new Discord.RichEmbed()
-		embed.setTitle('<:green_tick:330712173288488960> `' + cn + ' Reloaded`') 
-		embed.setDescription(String.fromCharCode(8203)) 
+		embed.setTitle('<:green_tick:330712173288488960> `' + cn + ' Reloaded`')
+		embed.setDescription(String.fromCharCode(8203))
 		embed.setColor('#00ff00')
 		//embed.setTimestamp()
-		embed.setFooter('Replying to ' + message.author.tag) 
+		embed.setFooter('Replying to ' + message.author.tag)
 
 		message.channel.send({
 			embed
-		}) return true
+		})
+		return true
 	}
 }
 
-module.exports = catCommand
+module.exports = reloadCommand
