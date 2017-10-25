@@ -105,9 +105,9 @@ class CommandApi {
 			var user
 			var isID
 			isID = isNumber(args)
-      if (!type) {
-        type == 'user'
-      }
+			if (!type) {
+				type == 'user'
+			}
 			if (type == 'user') {
 				if (isID == true) {
 					user = this.client.users.get(args)
@@ -122,9 +122,9 @@ class CommandApi {
 				}
 			}
 			return user
+		} catch (err) {
+			return err
 		}
-	} catch (err) {
-		return err
 	}
 
 	/**
