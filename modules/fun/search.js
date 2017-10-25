@@ -1,5 +1,8 @@
 const Discord = require('discord.js');
 var scraper = require('google-search-scraper');
+const cheerio = require('cheerio'),
+      snekfetch = require('snekfetch'),
+      querystring = require('querystring');
  
 
 
