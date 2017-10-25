@@ -45,25 +45,35 @@ bot.on('debug', (e) => {
   if (env == 'dev' || env == 'development' || env == 'sandbox') console.info(e)
 })
 
-bot.on('guildMemberAdd', member => {
+client.on("guildCreate", guild => {
+  // Adding a new row to the collection uses `set(key, value)`
+  settings.set(guild.id, defaultSettings);
+})
+
+client.on("guildDelete", guild => {
+  // Removing an element uses `delete(key)`
+  settings.delete(guild.id);
+});
+
+/*bot.on('guildMemberAdd', member => {
   // Send the message to the guilds default channel (usually #general), mentioning the member
   //member.guild.defaultChannel.send(`Welcome to the server, ${member}!`);
 
   // If you want to send the message to a designated channel on a server instead
   // you can do the following:
-  const channel = member.guild.channels.find('name', 'admins');
+  //const channel = member.guild.channels.find('name', 'admins');
   // Do nothing if the channel wasn't found on this server
-  if (!channel) return;
+  //if (!channel) return;
   // Send the message, mentioning the member
-  const msgg = channel.send(`Set ${member}'s Crew:\n\nReact with:\n:one: Bot\n:two: Redlight\n:three: Yellowlight\n:four: Greenlight`);
-  const collector = msgg.createReactionCollector(
+  //const msgg = channel.send(`Set ${member}'s Crew:\n\nReact with:\n:one: Bot\n:two: Redlight\n:three: Yellowlight\n:four: Greenlight`);
+  //const collector = msgg.createReactionCollector(
  (reaction) => reaction.emoji.id === '1️⃣' || reaction.emoji.id === '2️⃣' ||reaction.emoji.id === '3️⃣' ||reaction.emoji.id === '4️⃣'
 );
 collector.on('collect', r => msgg.channel.send(`Run lcrew to set ${member} to ${r}. I can't do it yet, sorry!`));
   
   
   //api.embed('#00ff00', `<:Tick:318378431051989003> \`Prestige Roles Reset for New Season\``, '')
-});
+});*/
 
 
 handler.registerModule('sudo', 'Sudo')
