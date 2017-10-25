@@ -9,16 +9,6 @@ const Commands = require('./cmdModule/commands')
 const config = require('./config.json')
 const Discord = require('discord.js')
 
-const Enmap = require('enmap');
-const EnmapRethink = require('enmap-rethink');
-const provider = new EnmapRethink({name: "settings"});
-client.settings = new Enmap({provider: provider});
-
-const defaultSettings = {
-  logChannel: "logs",
-  muteRole: "Muted"
-}
-
 if (!config.prefix) throw new errors.NotFoundError('(config.json).prefix')
 if (!config.token) throw new errors.NotFoundError('(config.json).token')
 if (!config.timer) throw new errors.NotFoundError('(config.json).timer')
@@ -45,12 +35,22 @@ bot.on('debug', (e) => {
   if (env == 'dev' || env == 'development' || env == 'sandbox') console.info(e)
 })
 
-client.on("guildCreate", guild => {
+const Enmap = require('enmap');
+const EnmapRethink = require('enmap-rethink');
+const provider = new EnmapRethink({name: "settings"});
+bot.settings = new Enmap({provider: provider});
+
+const defaultSettings = {
+  logChannel: "logs",
+  muteRole: "Muted"
+}
+
+bot.on("guildCreate", guild => {
   // Adding a new row to the collection uses `set(key, value)`
   settings.set(guild.id, defaultSettings);
 })
 
-client.on("guildDelete", guild => {
+bot.on("guildDelete", guild => {
   // Removing an element uses `delete(key)`
   settings.delete(guild.id);
 });
