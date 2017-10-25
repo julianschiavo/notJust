@@ -20,31 +20,24 @@ class srCommand extends Command {
 		var image
 		if (argsg.indexOf('img') >= 0 || argsg.indexOf('[img]') >= 0) {
 			var query = argsg.replace('[img]', '').replace('img', '')
-			//query = encodeURIComponent(query)
+			query = encodeURIComponent(query)
 			//https://www.google.com.hk/search?q=hi&tbm=isch
-			//let searchUrl = 'https://www.google.com/search?q=' + query + '&tbm=isch';
+			let searchUrl = 'https://www.google.com/search?q=' + query + '&tbm=isch';
 
-			// We will now use snekfetch to crawl Google.com. Snekfetch uses promises so we will
-			// utilize that for our try/catch block.
-			/*return snekfetch.get(searchUrl).then((result) => {
-
-				// Cheerio lets us parse the HTML on our google result to grab the URL.
+			return snekfetch.get(searchUrl).then((result) => {
 				let $ = cheerio.load(result.text);
 
-				// This is allowing us to grab the URL from within the instance of the page (HTML)
 				//let googleData = $('.r').first().find('a').first().attr('href');
 				function randomN(min, max) {
 					return Math.floor(Math.random() * (max - min + 1) + min);
 				}
-				message.channel.send($('.y').first().find('ivg-i').first().find('a').first().attr('src'))
-				var googleData = $('.y').first().find('ivg-i').first().find('a').first().attr('src');
-
-				var rNum = randomN(1, 100)
+				//message.channel.send($('.y').first().find('ivg-i').first().find('a').first().attr('src'))
+				//var googleData = $('.y').first().find('ivg-i').first().find('a').first().attr('src');
+				//var rNum = randomN(1, 100)
 				//googleData = googleData.find('img')
 				//googleData = googleData.first().attr('src');
-
-				// Now that we have our data from Google, we can send it to the channel.
-				googleData = querystring.parse(googleData.replace('/imgres?imgurl=', ''));
+				var googleData = $('img').eq(Math.floor(Math.random() * (100 - 1 + 1) + 1)).attr('src');
+				//googleData = querystring.parse(googleData.replace('/imgres?imgurl=', ''));
 				//searchMessage.edit(`Result found!\n${googleData.q}`);
 				let embed = new Discord.RichEmbed()
 				embed.setTitle('<:apple_face_sunglasses:359559678809866240> `Image Found Successfully`')
@@ -60,9 +53,9 @@ class srCommand extends Command {
 				// If no results are found, we catch it and return 'No results are found!'
 			}).catch((err) => {
 				api.error(err)
-			});*/
+			});
 			
-			var options = {
+			/*var options = {
   query: query,
   host: 'www.google.com',
   limit: 10,
@@ -73,7 +66,7 @@ scraper.search(options, function(err, url) {
   // This is called for each result 
   if(err) throw err;
   console.log(url)
-});
+});*/
 
 
 
