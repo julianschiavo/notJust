@@ -3,7 +3,7 @@ const Discord = require('discord.js');
       snekfetch = require('snekfetch'),
       querystring = require('querystring');*/
 var Scraper = require('images-scraper'),
-	bing = new Scraper.Bing();
+	google = new Scraper.Google();
 
 const Command = require('../../cmdModule/commands').Command
 
@@ -58,10 +58,13 @@ class srCommand extends Command {
 				api.error(err)
 			});*/
 
-			bing.list({
+			google.list({
 					keyword: query,
-					num: 100,
-					detail: true
+	num: 100,
+	detail: true,
+	nightmare: {
+		show: true
+	}
 				})
 				.then(function(res) {
 					//console.log('first 10 results from bing', res[1].url);
@@ -78,7 +81,7 @@ class srCommand extends Command {
 						embed
 					})
 				}).catch(function(err) {
-					console.log('Error: ', err);
+					api.error(err);
 				})
 
 
