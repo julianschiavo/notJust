@@ -67,7 +67,7 @@ class srCommand extends Command {
 				.then(function(res) {
 					//console.log('first 10 results from bing', res[1].url);
 					let embed = new Discord.RichEmbed()
-					embed.setTitle('<:apple_face_sunglasses:359559678809866240> `Image Found Successfully`')
+					embed.setTitle('<:apple_face_sunglasses:359559678809866240> `Image Found`')
 					embed.setDescription(String.fromCharCode(8203))
 					embed.setColor('#00ff00')
 					//embed.setTimestamp()
