@@ -36,9 +36,8 @@ bot.on('debug', (e) => {
 })
 
 const Enmap = require('enmap');
-const EnmapRethink = require('enmap-rethink');
-const provider = new EnmapRethink({name: "settings"});
-bot.settings = new Enmap({provider: provider});
+const EnmapLevel = require('enmap-level');
+const bot.settings = new Enmap({provider: new EnmapLevel({name: "settings"});});
 
 const defaultSettings = {
   logChannel: "logs",
@@ -47,12 +46,12 @@ const defaultSettings = {
 
 bot.on("guildCreate", guild => {
   // Adding a new row to the collection uses `set(key, value)`
-  settings.set(guild.id, defaultSettings);
+  bot.settings.set(guild.id, defaultSettings);
 })
 
 bot.on("guildDelete", guild => {
   // Removing an element uses `delete(key)`
-  settings.delete(guild.id);
+  bot.settings.delete(guild.id);
 });
 
 /*bot.on('guildMemberAdd', member => {
