@@ -99,9 +99,9 @@ class srCommand extends Command {
 
 				// Cheerio lets us parse the HTML on our google result to grab the URL.
 				let $ = cheerio.load(result.text);
-				var rN = randomN(1, 100)
+				var rN = randomN(1, 10)
 				// This is allowing us to grab the URL from within the instance of the page (HTML)
-				let googleData = $('.r')[rN].find('a').first().attr('href');
+				let googleData = $('.r').eq(Math.floor(Math.random() * 10)).find('a').first().attr('href');
 
 				// Now that we have our data from Google, we can send it to the channel.
 				googleData = querystring.parse(googleData.replace('/url?', ''));
@@ -122,7 +122,7 @@ class srCommand extends Command {
 
 				// If no results are found, we catch it and return 'No results are found!'
 			}).catch((err) => {
-				api.error('No results found!');
+				api.error('No results were returned for that query, or it was an invalid query.');
 			});
 
 		}
