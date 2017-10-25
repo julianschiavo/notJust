@@ -15,7 +15,7 @@ class HelpCommand extends Command {
   constructor() {
     super({
       name: 'help',
-      help: 'DM available commands'
+      help: 'Give available commands'
     })
   }
   async run(message, args, api) {
@@ -58,7 +58,15 @@ class HelpCommand extends Command {
         }
         if (!oneCommand) continue
         //moduleEmbeds[mod] = await message.channel.send({ embed })
-        moduleEmbeds[mod] = await message.author.send({ embed })
+        if (message.channel.type == 'text') {
+          if (message.channel.id == '342611254193553408') {
+            moduleEmbeds[mod] = await message.channel.send({ embed })
+          } else {
+            moduleEmbeds[mod] = await message.author.send({ embed })
+          }
+        } else {
+          moduleEmbeds[mod] = await message.author.send({ embed })
+        }
       }
     } else {
       for (let _cmd in api.handler.commands) {
@@ -75,7 +83,15 @@ class HelpCommand extends Command {
             embed.setDescription(`${command.help}\n\n${api.handler.prefix}${command.name} ${command.lhelp}`)
           }
           //return message.channel.send({embed})
-          return message.author.send({embed})
+          if (message.channel.type == 'text') {
+          if (message.channel.id == '342611254193553408') {
+            return message.channel.send({ embed })
+          } else {
+            return message.author.send({ embed })
+          }
+        } else {
+          return message.author.send({ embed })
+        }
         }
       }
     }
