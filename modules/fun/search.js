@@ -19,12 +19,16 @@ class srCommand extends Command {
 	async run(message, args, api) {
 		args.splice(0, 1);
 		var argsg = args.join(' ');
+		
 
 		function randomN(min, max) {
 			return Math.floor(Math.random() * (max - min + 1) + min);
 		}
 		if (argsg.indexOf('img') >= 0 || argsg.indexOf('[img]') >= 0) {
 			var query = argsg.replace('[img]', '').replace('img', '')
+			if (!query) {
+				api.error('Please specify a query.')
+			}
 			//query = encodeURIComponent(query)
 			//https://www.google.com.hk/search?q=hi&tbm=isch
 			//let searchUrl = 'https://www.google.com/search?q=' + query + '&tbm=isch';
@@ -78,7 +82,13 @@ class srCommand extends Command {
 						embed
 					})
 				}).catch(function(err) {
+				if (err.indexOf('undefined') >= 0) {
+					api.error('No results were returned for that query, or it was an invalid query.')
+				} else if err.indexOf('no keyword') >= 0) {
+					api.error('Please specify a query.')
+				} else {
 					api.error(err);
+				}
 				})
 
 
