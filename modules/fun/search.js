@@ -20,8 +20,9 @@ class srCommand extends Command {
 		var image
 		if (argsg.indexOf('img') >= 0 || argsg.indexOf('[img]') >= 0) {
 			var query = argsg.replace('[img]', '').replace('img', '')
+			query = encodeURIComponent(query)
 			//https://www.google.com.hk/search?q=hi&tbm=isch
-			let searchUrl = `https://www.google.com/search?q=${encodeURIComponent(argsg)}&tbm=isch`;
+			let searchUrl = 'https://www.google.com/search?q=' + query + '&tbm=isch';
 
 			// We will now use snekfetch to crawl Google.com. Snekfetch uses promises so we will
 			// utilize that for our try/catch block.
