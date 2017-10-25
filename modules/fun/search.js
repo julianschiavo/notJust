@@ -91,7 +91,8 @@ class srCommand extends Command {
 			const cheerio = require('cheerio'),
 				snekfetch = require('snekfetch'),
 				querystring = require('querystring');
-			let searchUrl = `https://www.google.com/search?q=${encodeURIComponent(argsg)}`;
+			var query = encodeURIComponent(argsg)
+			let searchUrl = 'https://www.google.com/search?q=' + query;
 
 			// We will now use snekfetch to crawl Google.com. Snekfetch uses promises so we will
 			// utilize that for our try/catch block.
