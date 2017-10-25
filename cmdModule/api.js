@@ -110,13 +110,13 @@ class CommandApi {
 			}
 			if (type == 'user') {
 				if (isID == true) {
-					user = this.client.users.get(args)
+					user = this.message.client.users.get(args)
 				} else {
 					user = this.message.mentions.users.first()
 				}
 			} else if (type == 'member') {
 				if (isID == true) {
-					user = this.message.guild.member(this.client.users.get(args))
+					user = this.message.guild.member(this.message.client.users.get(args))
 				} else {
 					user = this.message.guild.member(this.message.mentions.users.first())
 				}
