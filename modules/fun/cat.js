@@ -5,6 +5,10 @@ var url = "http://random.cat/meow.php"
 
 const Command = require('../../cmdModule/commands').Command
 
+function checkURL(url) {
+    return(url.match(/\.(jpeg|jpg|gif|png)$/) != null);
+}
+
 class catCommand extends Command {
   constructor() {
     super({
@@ -29,6 +33,12 @@ class catCommand extends Command {
         console.log(body.file);
 	//var img = body.file;
 	    //var bod = body
+	    var check = checkURL(body.file)
+    if (check) {
+	    } else {
+	    api.error('Wrong file format returned. Please try again.')
+		    return;
+    }
 	    var img = body.file
 	    var img2 = encodeURI(body.file);
 	embed.setImage(img)
