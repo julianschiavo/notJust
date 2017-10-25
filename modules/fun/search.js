@@ -1,9 +1,4 @@
 const Discord = require('discord.js');
-/*const cheerio = require('cheerio'),
-      snekfetch = require('snekfetch'),
-      querystring = require('querystring');*/
-var Scraper = require('images-scraper'),
-	yahoo = new Scraper.Yahoo();
 
 const Command = require('../../cmdModule/commands').Command
 
@@ -19,12 +14,14 @@ class srCommand extends Command {
 	async run(message, args, api) {
 		args.splice(0, 1);
 		var argsg = args.join(' ');
-		
+
 
 		function randomN(min, max) {
 			return Math.floor(Math.random() * (max - min + 1) + min);
 		}
 		if (argsg.indexOf('img') >= 0 || argsg.indexOf('[img]') >= 0) {
+			var Scraper = require('images-scraper'),
+				yahoo = new Scraper.Yahoo();
 			var query = argsg.replace('[img]', '').replace('img', '')
 			//query = encodeURIComponent(query)
 			//https://www.google.com.hk/search?q=hi&tbm=isch
@@ -61,8 +58,8 @@ class srCommand extends Command {
 
 			yahoo.list({
 					keyword: query,
-	num: 100,
-	detail: true
+					num: 100,
+					detail: true
 				})
 				.then(function(res) {
 					//console.log('first 10 results from bing', res[1].url);
@@ -80,19 +77,55 @@ class srCommand extends Command {
 					})
 				}).catch(function(err) {
 
-				console.log(err);
-				if (err.toString().indexOf('undefined') >= 0) {
-					api.error('No results were returned for that query, or it was an invalid query.')
-				} else if (err.toString().indexOf('keyword') >= 0) {
-					api.error('Please specify a search query.')
-				}
+					console.log(err);
+					if (err.toString().indexOf('undefined') >= 0) {
+						api.error('No results were returned for that query, or it was an invalid query.')
+					} else if (err.toString().indexOf('keyword') >= 0) {
+						api.error('Please specify a search query.')
+					}
 				})
 
 
 
+		} else {
+			const cheerio = require('cheerio'),
+				snekfetch = require('snekfetch'),
+				querystring = require('querystring');
+			let searchUrl = `https://www.google.com/search?q=${encodeURIComponent(argsg)}`;
+
+			// We will now use snekfetch to crawl Google.com. Snekfetch uses promises so we will
+			// utilize that for our try/catch block.
+			return snekfetch.get(searchUrl).then((result) => {
+
+				// Cheerio lets us parse the HTML on our google result to grab the URL.
+				let $ = cheerio.load(result.text);
+				var rN = randomN(1, 100)
+				// This is allowing us to grab the URL from within the instance of the page (HTML)
+				let googleData = $('.r')[rN].find('a').first().attr('href');
+
+				// Now that we have our data from Google, we can send it to the channel.
+				googleData = querystring.parse(googleData.replace('/url?', ''));
+				//searchMessage.edit(`Result found!\n${googleData.q}`);
+
+				let embed = new Discord.RichEmbed()
+				embed.setTitle('<:apple_face_thinking:359559675718533130> `Result Found`')
+				embed.setDescription(String.fromCharCode(8203))
+				embed.setColor('#00ff00')
+				//embed.setTimestamp()
+				embed.setFooter('Replying to ' + message.author.tag)
+				//message.channel.send(message)
+				embed.addField('`Link`', googleData.q, false)
+				//embed.setImage(res[rN].url);
+				message.channel.send({
+					embed
+				})
+
+				// If no results are found, we catch it and return 'No results are found!'
+			}).catch((err) => {
+				api.error('No results found!');
+			});
+
 		}
-
-
 
 		return true
 	}
