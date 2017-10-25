@@ -80,8 +80,11 @@ class infoCommand extends Command {
 			})
 		} else if (argg.indexOf('role') >= 0) {
 			var role
-			if (args[1]) {
-				role = message.guild.roles.find("name", args[1]);
+			args.splice(0,1)
+			var argsF = args.join(' ')
+			
+			if (argsF) {
+				role = message.guild.roles.find("name", argsF);
 			} else {
 				api.error('Please specify a role name to get info for.')
 			}
