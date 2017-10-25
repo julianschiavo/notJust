@@ -106,7 +106,7 @@ class infoCommand extends Command {
 			embed.addField('`Color`', color, true)
 			embed.addField('`Hoisted`', hoist, true)
 			
-			embed.addField('`Members`', users, false)
+			//embed.addField('`Members`', users, false)
 			
 			//embed.addField('`Joined`', join, true)
 			message.channel.send({
