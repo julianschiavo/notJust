@@ -1,7 +1,7 @@
-const Discord = require('discord.js'),
-	cheerio = require('cheerio'),
-	snekfetch = require('snekfetch'),
-	querystring = require('querystring');
+const Discord = require('discord.js');
+var scraper = require('google-search-scraper');
+ 
+
 
 const Command = require('../../cmdModule/commands').Command
 
@@ -20,13 +20,13 @@ class srCommand extends Command {
 		var image
 		if (argsg.indexOf('img') >= 0 || argsg.indexOf('[img]') >= 0) {
 			var query = argsg.replace('[img]', '').replace('img', '')
-			query = encodeURIComponent(query)
+			//query = encodeURIComponent(query)
 			//https://www.google.com.hk/search?q=hi&tbm=isch
-			let searchUrl = 'https://www.google.com/search?q=' + query + '&tbm=isch';
+			//let searchUrl = 'https://www.google.com/search?q=' + query + '&tbm=isch';
 
 			// We will now use snekfetch to crawl Google.com. Snekfetch uses promises so we will
 			// utilize that for our try/catch block.
-			return snekfetch.get(searchUrl).then((result) => {
+			/*return snekfetch.get(searchUrl).then((result) => {
 
 				// Cheerio lets us parse the HTML on our google result to grab the URL.
 				let $ = cheerio.load(result.text);
@@ -60,7 +60,20 @@ class srCommand extends Command {
 				// If no results are found, we catch it and return 'No results are found!'
 			}).catch((err) => {
 				api.error(err)
-			});
+			});*/
+			
+			var options = {
+  query: query,
+  host: 'www.google.com',
+  limit: 10,
+  params: {'tbm=isch'} // params will be copied as-is in the search URL query string 
+};
+ 
+scraper.search(options, function(err, url) {
+  // This is called for each result 
+  if(err) throw err;
+  console.log(url)
+});
 
 
 
