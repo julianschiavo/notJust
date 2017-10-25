@@ -39,7 +39,7 @@ class srCommand extends Command {
 				//var rNum = randomN(1, 100)
 				//googleData = googleData.find('img')
 				//googleData = googleData.first().attr('src');
-				var googleData = $('img').eq(Math.floor(Math.random() * (100 - 1 + 1) + 1)).attr('src');
+				var googleData = $('img').eq(Math.floor(Math.random() * 10)).attr('src')
 				//googleData = querystring.parse(googleData.replace('/imgres?imgurl=', ''));
 				//searchMessage.edit(`Result found!\n${googleData.q}`);
 				let embed = new Discord.RichEmbed()
