@@ -25,8 +25,9 @@ class kickCommand extends Command {
     var user = api.getUser(arg,'member')
 
     args.splice(0,1)
+		var reason
     if (args[0]) {
-    var reason = args.join(' ');
+    reason = args.join(' ');
 		user.kick(reason)
     } else {
     user.kick('No reason provided')
@@ -35,6 +36,9 @@ class kickCommand extends Command {
 		embed.setTitle('<:apple_boot:372659817287909376> `Kicked ' + user.user.username + '`')
 		embed.setDescription(String.fromCharCode(8203))
 		embed.setColor('#00ff00')
+		if (reason) {
+			embed.addField('`Reason`', reason, false)
+		}
 		//embed.setTimestamp()
 		embed.setFooter('Replying to ' + message.author.tag)
 
