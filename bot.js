@@ -9,6 +9,16 @@ const Commands = require('./cmdModule/commands')
 const config = require('./config.json')
 const Discord = require('discord.js')
 
+const Enmap = require('enmap');
+const EnmapRethink = require('enmap-rethink');
+const provider = new EnmapRethink({name: "settings"});
+client.settings = new Enmap({provider: provider});
+
+const defaultSettings = {
+  logChannel: "logs",
+  muteRole: "Muted"
+}
+
 if (!config.prefix) throw new errors.NotFoundError('(config.json).prefix')
 if (!config.token) throw new errors.NotFoundError('(config.json).token')
 if (!config.timer) throw new errors.NotFoundError('(config.json).timer')
