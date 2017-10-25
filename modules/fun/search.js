@@ -79,10 +79,11 @@ class srCommand extends Command {
 						embed
 					})
 				}).catch(function(err) {
-				if (err.indexOf('undefined') >= 0) {
+
+				console.log(err);
+				if (err.toString().indexOf('undefined') >= 0) {
 					api.error('No results were returned for that query, or it was an invalid query.')
 				}
-				console.log(err);
 				})
 
 
