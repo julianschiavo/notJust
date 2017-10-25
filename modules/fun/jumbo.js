@@ -18,7 +18,7 @@ class jumboCommand extends Command {
 		}
 		var arg = args[0]
 		//var argtest = \ < \: . + \: \d + \ > .test(arg);
-		var argtest = arg.match(\ < \: . + \: \d + \ > );
+		var argtest = arg.match('\<\:.+\:\d+\>');
 		if (!argtest) {
 			arg = arg.replace(/\D/g, '');
 			//arg = arg.replace(/[^a-zA-Z-]/g, '')
@@ -48,7 +48,7 @@ class jumboCommand extends Command {
 				embed
 			})
 			return true
-		//}
+		}
 		//https://raw.githubusercontent.com/twitter/twemoji/gh-pages/2/svg/twemoji.convert.toCodePoint('unicodeEmojiOutputHere').svg
 
 	}
