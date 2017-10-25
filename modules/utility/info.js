@@ -62,7 +62,7 @@ class infoCommand extends Command {
 			var id = user.user.id
 			var join = ta.ago(user.joinedTimestamp);
 			var roles = user.roles.map(r => r.name).join('`, `')
-		            //roles = '.' + roles + '.'
+			//roles = '.' + roles + '.'
 			var name = user.user.username
 			let embed = new Discord.RichEmbed()
 			embed.setTitle('<:apple_symbol_info:359559750096257024> `About ' + name + '`')
@@ -88,7 +88,12 @@ class infoCommand extends Command {
 			var pos = role.position
 			var color = role.hexColor
 			var time = ta.ago(role.createdTimestamp)
-			var hoist = role.hoist
+			var hoist
+			if (role.hoist == true) {
+				hoist = "True"
+			} else {
+				hoist = "False"
+			}
 			var id = role.id
 			var name = role.name
 			var users = '`' + role.members.map(r => r.user.username).join('`, `') + '`'
@@ -100,14 +105,16 @@ class infoCommand extends Command {
 			embed.setDescription(String.fromCharCode(8203))
 			embed.setThumbnail(icon)
 			//embed.addField('`Numbers`', users + ' members, ' + emojis + ' emoji, ' + channels + ' channels and ' + roles + ' roles.', false)
-			
-			embed.addField('`ID`', id, false)
-			embed.addField('`Created`', time, true)
 			embed.addField('`Color`', color, true)
 			embed.addField('`Hoisted`', hoist, true)
-			
+			embed.addField('`Position`', pos, true)
+			embed.addField('`ID`', id, true)
+			embed.addField('`Created`', time, true)
+
+
+
 			//embed.addField('`Members`', users, false)
-			
+
 			//embed.addField('`Joined`', join, true)
 			message.channel.send({
 				embed
