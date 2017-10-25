@@ -37,7 +37,9 @@ bot.on('debug', (e) => {
 
 const Enmap = require('enmap');
 const EnmapLevel = require('enmap-level');
-const bot.settings = new Enmap({provider: new EnmapLevel({name: "settings"});});
+const tableSource = new EnmapLevel({name: "settings"});
+bot.settings = new Enmap({provider: tableSource});
+//const bot.settings = new Enmap({provider: new EnmapLevel({name: "settings"});});
 
 const defaultSettings = {
   logChannel: "logs",
