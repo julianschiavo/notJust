@@ -101,7 +101,8 @@ class srCommand extends Command {
 				let $ = cheerio.load(result.text);
 				var rN = randomN(1, 10)
 				// This is allowing us to grab the URL from within the instance of the page (HTML)
-				let googleData = $('.r').eq(Math.floor(Math.random() * 10)).find('a').first().attr('href');
+				//let googleData = $('.r').eq(Math.floor(Math.random() * 10)).find('a').first().attr('href');
+				var googleData = $('.r').first().find('a').first().attr('href');
 
 				// Now that we have our data from Google, we can send it to the channel.
 				googleData = querystring.parse(googleData.replace('/url?', ''));
