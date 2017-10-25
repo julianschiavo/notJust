@@ -17,6 +17,7 @@ class jumboCommand extends Command {
 			api.error('Please provide an emoji to jumbo.')
 		}
 		var arg = args[0]
+		var argtest = twemoji.convert.toCodePoint(arg)
 		//var argtest = \ < \: . + \: \d + \ > .test(arg);
 		//var argtest = arg.match(/\D/g);
 		if (arg.indexOf('<') >= 0) {
@@ -35,7 +36,7 @@ class jumboCommand extends Command {
 				embed
 			})
 			return true
-		} else {
+		} else if (argtest) {
 			var arg = twemoji.convert.toCodePoint(arg)
 			var emojilink = 'https://raw.githubusercontent.com/twitter/twemoji/gh-pages/2/72x72/' + arg + '.png'
 			let embed = new Discord.RichEmbed()
@@ -48,6 +49,8 @@ class jumboCommand extends Command {
 				embed
 			})
 			return true
+		} else {
+			api.error('Please provide an emoji to jumbo.')
 		}
 		//https://raw.githubusercontent.com/twitter/twemoji/gh-pages/2/svg/twemoji.convert.toCodePoint('unicodeEmojiOutputHere').svg
 
