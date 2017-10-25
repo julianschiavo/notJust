@@ -1,0 +1,48 @@
+const Discord = require('discord.js');
+const Command = require('../../cmdModule/commands').Command
+
+class kickCommand extends Command {
+	constructor() {
+		super({
+			name: 'kick',
+			help: 'Kick a user',
+			lhelp: '{user} [reason]\n{user} is the user to kick (id or mention)\n[reason] is the Audit Log reason for the kick'
+		})
+	}
+
+	hasPermission(message) {
+		//if (message.author.id == require('../../config.json').owner) return true
+    if (message.author.hasPermission("KICK_MEMBERS")) return true
+		return false
+	}
+
+	async run(message, args, api) {
+    args.splice(0,1)
+		if (!args[0]) {
+			api.error('Please specify which user to kick.')
+		}
+    var arg = args[0]
+    var user = api.getUser(arg,'member')
+
+    args.splice(0,1)
+    if (args[0]) {
+    var reason = args.join(' ');
+		user.kick(reason)
+    } else {
+    user.kick('No reason provided')
+    }
+		let embed = new Discord.RichEmbed()
+		embed.setTitle('<:apple_boot:372659817287909376> `Kicked ' + user.user.username + '`')
+		embed.setDescription(String.fromCharCode(8203))
+		embed.setColor('#00ff00')
+		//embed.setTimestamp()
+		embed.setFooter('Replying to ' + message.author.tag)
+
+		message.channel.send({
+			embed
+		})
+		return true
+	}
+}
+
+module.exports = kickCommand
