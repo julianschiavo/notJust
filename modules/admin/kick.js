@@ -30,7 +30,7 @@ class kickCommand extends Command {
     reason = args.join(' ');
 		user.kick(reason)
     } else {
-    user.kick('No reason provided')
+    user.kick()
     }
 		let embed = new Discord.RichEmbed()
 		embed.setTitle('<:apple_boot:372659817287909376> `Kicked ' + user.user.username + '`')
