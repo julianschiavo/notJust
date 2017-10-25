@@ -105,11 +105,14 @@ class infoCommand extends Command {
 			embed.setDescription(String.fromCharCode(8203))
 			embed.setThumbnail(icon)
 			//embed.addField('`Numbers`', users + ' members, ' + emojis + ' emoji, ' + channels + ' channels and ' + roles + ' roles.', false)
-			embed.addField('`Color`', color, true)
-			embed.addField('`Hoisted`', hoist, true)
+			
 			embed.addField('`Position`', pos, true)
-			embed.addField('`ID`', id, true)
+			embed.addField('`Hoisted`', hoist, true)
+			
+			embed.addField('`Color`', color, true)
 			embed.addField('`Created`', time, true)
+			embed.addField('`ID`', id, true)
+			
 
 
 
