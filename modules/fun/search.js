@@ -1,9 +1,9 @@
 const Discord = require('discord.js');
-const cheerio = require('cheerio'),
+/*const cheerio = require('cheerio'),
       snekfetch = require('snekfetch'),
-      querystring = require('querystring');
- 
-
+      querystring = require('querystring');*/
+var Scraper = require('images-scraper'),
+	bing = new Scraper.Bing();
 
 const Command = require('../../cmdModule/commands').Command
 
@@ -19,20 +19,20 @@ class srCommand extends Command {
 	async run(message, args, api) {
 		args.splice(0, 1);
 		var argsg = args.join(' ');
-		var image
+		function randomN(min, max) {
+					return Math.floor(Math.random() * (max - min + 1) + min);
+		}
 		if (argsg.indexOf('img') >= 0 || argsg.indexOf('[img]') >= 0) {
 			var query = argsg.replace('[img]', '').replace('img', '')
-			query = encodeURIComponent(query)
+			//query = encodeURIComponent(query)
 			//https://www.google.com.hk/search?q=hi&tbm=isch
-			let searchUrl = 'https://www.google.com/search?q=' + query + '&tbm=isch';
+			//let searchUrl = 'https://www.google.com/search?q=' + query + '&tbm=isch';
 
-			return snekfetch.get(searchUrl).then((result) => {
+			/*return snekfetch.get(searchUrl).then((result) => {
 				let $ = cheerio.load(result.text);
 
 				//let googleData = $('.r').first().find('a').first().attr('href');
-				function randomN(min, max) {
-					return Math.floor(Math.random() * (max - min + 1) + min);
-				}
+				
 				//message.channel.send($('.y').first().find('ivg-i').first().find('a').first().attr('src'))
 				//var googleData = $('.y').first().find('ivg-i').first().find('a').first().attr('src');
 				//var rNum = randomN(1, 100)
@@ -55,20 +55,30 @@ class srCommand extends Command {
 				// If no results are found, we catch it and return 'No results are found!'
 			}).catch((err) => {
 				api.error(err)
-			});
-			
-			/*var options = {
-  query: query,
-  host: 'www.google.com',
-  limit: 10,
-  params: {'tbm=isch'} // params will be copied as-is in the search URL query string 
-};
- 
-scraper.search(options, function(err, url) {
-  // This is called for each result 
-  if(err) throw err;
-  console.log(url)
-});*/
+			});*/
+
+			bing.list({
+					keyword: query,
+					num: 10,
+					detail: true
+				})
+				.then(function(res) {
+					//console.log('first 10 results from bing', res[1].url);
+				let embed = new Discord.RichEmbed()
+				embed.setTitle('<:apple_face_sunglasses:359559678809866240> `Image Found Successfully`')
+				embed.setDescription(String.fromCharCode(8203))
+				embed.setColor('#00ff00')
+				//embed.setTimestamp()
+				embed.setFooter('Replying to ' + message.author.tag)
+				//message.channel.send(message)
+				var rN = randomN(1,100)
+				embed.setImage(res[rN].url);
+				message.channel.send({
+					embed
+				})
+				}).catch(function(err) {
+					console.log('Error: ', err);
+				})
 
 
 
