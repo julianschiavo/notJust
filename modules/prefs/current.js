@@ -2,10 +2,10 @@ const Discord = require('discord.js');
 
 const Command = require('../../cmdModule/commands').Command
 
-class listCommand extends Command {
+class currCommand extends Command {
 	constructor() {
 		super({
-			name: 'list',
+			name: 'current',
 			help: 'List current server preferences'
 		})
 	}
@@ -59,4 +59,4 @@ class listCommand extends Command {
 	}
 }
 
-module.exports = listCommand
+module.exports = currCommand
