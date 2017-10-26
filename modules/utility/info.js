@@ -116,7 +116,7 @@ class infoCommand extends Command {
 			embed.setFooter('Replying to ' + message.author.tag)
 			embed.setDescription(String.fromCharCode(8203))
 			embed.setThumbnail(icon)
-			if (members) {
+			if (members && members !== '``') {
 			embed.addField('`Members`', members, false)
 			}
 			embed.addField('`Position`', pos, true)
