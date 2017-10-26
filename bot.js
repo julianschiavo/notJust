@@ -1,9 +1,9 @@
 const errors = require('common-errors')
 const fs = require('fs')
 fs.exists('./config.json', (exists) => {
-  if (!exists) {
-    throw new errors.io.FileNotFoundError('./config.json', 'Have you copied config.example.json to config.json and changed the respective values?')
-  }
+	if (!exists) {
+		throw new errors.io.FileNotFoundError('./config.json', 'Have you copied config.example.json to config.json and changed the respective values?')
+	}
 })
 const Commands = require('./cmdModule/commands')
 const config = require('./config.json')
@@ -15,46 +15,64 @@ if (!config.timer) throw new errors.NotFoundError('(config.json).timer')
 if (!config.env) throw new errors.NotFoundError('(config.json).env')
 const env = config.env
 if (env == 'prod' || env == 'production') {
-  console.log('notJust is running in PRODUCTION mode. Debug messages will not be shown.')
+	console.log('notJust is running in PRODUCTION mode. Debug messages will not be shown.')
 } else if (env == 'dev' || env == 'development') {
-  console.log('notJust is running in DEVELOPMENT mode. Debug messages will be shown.')
+	console.log('notJust is running in DEVELOPMENT mode. Debug messages will be shown.')
 } else if (env == 'sandbox') {
-  console.warn('notJust is running in SANDBOX mode! Debug messages will be shown. Certain commands will always be able to run, regardless of hasPermission().')
+	console.warn('notJust is running in SANDBOX mode! Debug messages will be shown. Certain commands will always be able to run, regardless of hasPermission().')
 } else {
-  throw new errors.ArgumentError('(config.json).env', `config.env should be set to 'prod', 'dev', or 'sandbox'.`)
+	throw new errors.ArgumentError('(config.json).env', `config.env should be set to 'prod', 'dev', or 'sandbox'.`)
 }
 const bot = new Discord.Client()
 const handler = new Commands.CommandHandler({
-  bot: bot,
-  prefix: config.prefix
+	bot: bot,
+	prefix: config.prefix
 })
 
 bot.on('error', (e) => console.error(e))
 bot.on('warn', (e) => console.warn(e))
 bot.on('debug', (e) => {
-  if (env == 'dev' || env == 'development' || env == 'sandbox') console.info(e)
+	if (env == 'dev' || env == 'development' || env == 'sandbox') console.info(e)
 })
 
 const Enmap = require('enmap');
 const EnmapLevel = require('enmap-level');
-const tableSource = new EnmapLevel({name: "settings"});
-bot.settings = new Enmap({provider: tableSource});
+const tableSource = new EnmapLevel({
+	name: "settings"
+});
+bot.settings = new Enmap({
+	provider: tableSource
+});
 bot.queue = {};
 
 bot.defaultSettings = {
-  logChannel: "logs",
-  muteRole: "Muted",
-  selfRoles: ""
+	logChannel: "logs",
+	muteRole: "Muted",
+	selfRoles: ""
 }
 
 bot.on("guildCreate", guild => {
-  // Adding a new row to the collection uses `set(key, value)`
-  bot.settings.set(guild.id, bot.defaultSettings);
+	// Adding a new row to the collection uses `set(key, value)`
+	bot.settings.set(guild.id, bot.defaultSettings);
 })
 
 bot.on("guildDelete", guild => {
-  // Removing an element uses `delete(key)`
-  bot.settings.delete(guild.id);
+	// Removing an element uses `delete(key)`
+	bot.settings.delete(guild.id);
+});
+
+message.client.dispatcher = ''
+
+message.client.dispatcher.on('end', () => {
+	//collector.stop();
+	//play(message.client.queue[message.guild.id].songs.shift());
+});
+
+message.client.dispatcher.on('error', (err) => {
+	return api.error(err).then(() => {
+		//collector.stop();
+		//play(message.client.queue[message.guild.id].songs.shift());
+	});
 });
 
 /*bot.on('guildMemberAdd', member => {
@@ -90,17 +108,17 @@ handler.registerModule('code', '#code')
 handler.registerModule('prefs', 'Preferences')
 
 fs.readdir('./events/', (err, files) => {
-  if (err) return console.error(err)
-  files.forEach(file => {
-    bot.on(file.split('.')[0], (...args) => {
-      var module = require(`./events/${file}`)
-      if (file.split('.')[0] == 'message') {
-        module.run(bot, handler, ...args)
-      } else {
-        module.run(bot, ...args)
-      }
-    })
-  })
+	if (err) return console.error(err)
+	files.forEach(file => {
+		bot.on(file.split('.')[0], (...args) => {
+			var module = require(`./events/${file}`)
+			if (file.split('.')[0] == 'message') {
+				module.run(bot, handler, ...args)
+			} else {
+				module.run(bot, ...args)
+			}
+		})
+	})
 })
 
 bot.login(config.token)
