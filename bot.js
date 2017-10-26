@@ -39,7 +39,7 @@ const Enmap = require('enmap');
 const EnmapLevel = require('enmap-level');
 const tableSource = new EnmapLevel({name: "settings"});
 bot.settings = new Enmap({provider: tableSource});
-//const bot.settings = new Enmap({provider: new EnmapLevel({name: "settings"});});
+bot.queue = {};
 
 bot.defaultSettings = {
   logChannel: "logs",
