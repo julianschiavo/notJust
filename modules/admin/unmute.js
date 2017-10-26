@@ -5,7 +5,7 @@ class unmuteCommand extends Command {
 	constructor() {
 		super({
 			name: 'unmute',
-			help: 'Unmute a muted user',
+			help: 'Unmute a member',
 			lhelp: '{user} [reason]\n{user} is the user to unmute (id or mention)\n[reason] is the Audit Log reason for the unmute'
 		})
 	}
