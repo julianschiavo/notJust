@@ -4,7 +4,7 @@ const Command = require('../../cmdModule/commands').Command
 class upCommand extends Command {
 	constructor() {
 		super({
-			name: 'Upgrade',
+			name: 'upgrade',
 			help: 'Upgrade a server',
 			lhelp: '{server_id}\n{server_id} is ID of the server to upgrade'
 		})
