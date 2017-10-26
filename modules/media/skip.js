@@ -23,17 +23,17 @@ class skipCommand extends Command {
 			message.client.settings.set(message.guild.id, message.client.defaultSettings);
 		}
 
-						message.client.dispatcher.end();
+		message.client.dispatcher.end();
 
 		let embed = new Discord.RichEmbed()
 		embed.setDescription(String.fromCharCode(8203))
 		embed.setColor('#00ff00')
 		//embed.setTimestamp()
 		embed.setFooter('Replying to ' + message.author.tag)
-				embed.setTitle('<<:apple_music:372943300753227786> `Skipped Media`')
-				message.channel.send({
-					embed
-				})
+		embed.setTitle('<:apple_music:372943300753227786> `Skipped Media`')
+		message.channel.send({
+			embed
+		})
 
 
 		return true
