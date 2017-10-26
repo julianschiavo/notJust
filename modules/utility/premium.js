@@ -8,9 +8,15 @@ class preCommand extends Command {
 			help: 'Get info about notJust Premium'
 		})
 	}
+	
+	hasPermission(message) {
+		if (message.guild && message.client.settings.get(message.guild.id).isDonator == true) return false
+		//if (message.guild.member(message.author).hasPermission("KICK_MEMBERS")) return true
+		// if (message.author.id == message.guild.ownerID) return true
+		return true
+	}
 
 	async run(message, args, api) {
-
 		let embed = new Discord.RichEmbed()
 
 		embed.setTitle('<:apple_symbol_info:359559750096257024> `About notJust Premium`')
@@ -18,7 +24,7 @@ class preCommand extends Command {
 
 		embed.setFooter('Replying to ' + message.author.tag)
 		embed.setDescription(String.fromCharCode(8203))
-		embed.addField('`Premium`', 'notJust Premium is a premium, paid, server-based upgrade to notJust which gives access to many donator only commands and modules, including the AI command (chat with an artificial assistant) and Music Module (play music from YouTube in voice channels).\n**Get notJust Premium - and support me - by donating. [Just press here!](https://patreon.com/justdotJS)**', false)
+		embed.addField('`Premium`', 'I, the founder of notJust, am just 13 and have to run my servers and sites off donations.\nBecause of this, I have created notJust Premium: a premium, paid, server-based upgrade to notJust which gives access to many donator only commands and modules. These include the AI command (chat with an artificial assistant) and Media Module (play music/videos from YouTube in voice channels).\n**Get notJust Premium - and support me - by [donating](https://patreon.com/justdotJS)**.', false)
 				message.channel.send({
 			embed
 		})
