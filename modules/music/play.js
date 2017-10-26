@@ -83,15 +83,15 @@ class playCommand extends Command {
 			});
 			dispatcher.on('end', () => {
 				collector.stop();
-				play(queue[message.guild.id].songs.shift());
+				play(message.client.queue[message.guild.id].songs.shift());
 			});
 			dispatcher.on('error', (err) => {
 				return api.error(err).then(() => {
 					collector.stop();
-					play(queue[message.guild.id].songs.shift());
+					play(message.client.queue[message.guild.id].songs.shift());
 				});
 			});
-		})(queue[message.guild.id].songs.shift());
+		})(message.client.queue[message.guild.id].songs.shift());
 
 
 
