@@ -31,13 +31,9 @@ class setCommand extends Command {
 		const thisConf = message.client.settings.get(message.guild.id);
 
 
-		function countWords() {
-			s = document.getElementById("inputString").value;
-			s = s.replace(/(^\s*)|(\s*$)/gi, "");
-			s = s.replace(/[ ]{2,}/gi, " ");
-			s = s.replace(/\n /, "\n");
-			document.getElementById("wordcount").value = s.split(' ').length;
-		}
+		function countWords(str) { 
+  return str.split(" ").length;
+}
 
 		function isN(num) {
 			return !isNaN(num)
