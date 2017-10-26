@@ -55,9 +55,9 @@ bot.defaultSettings = {
 
 bot.on("guildCreate", guild => {
 	// Adding a new row to the collection uses `set(key, value)`
-	var thisConf = bot.settings.get(guild.id);
-	if (thisConf) {
-		if (thisConf.isBlacklisted == true) {
+	var isBL = bot.settings.get(guild.id).isBlacklisted
+	if (isBL) {
+		if (isBL == true) {
 			guild.leave()
 		}
 	} else {
