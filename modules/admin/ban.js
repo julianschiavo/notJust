@@ -6,14 +6,13 @@ class banCommand extends Command {
 		super({
 			name: 'ban',
 			help: 'Ban a member',
-			lhelp: '{user} [reason]\n{user} is the user to ban (id or mention)\n[reason] is the Audit Log reason for the ban',
-			guildOnly: true
+			lhelp: '{user} [reason]\n{user} is the user to ban (id or mention)\n[reason] is the Audit Log reason for the ban'
 		})
 	}
 
 	hasPermission(message) {
 		//if (message.author.id == require('../../config.json').owner) return true
-		if (message.guild.member(message.author).hasPermission("BAN_MEMBERS")) return true
+		if (message.guild && message.guild.member(message.author).hasPermission("BAN_MEMBERS")) return true
 		return false
 	}
 
