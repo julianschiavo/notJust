@@ -96,4 +96,4 @@ class setCommand extends Command {
 	}
 }
 
-module.exports = reloadCommand
+module.exports = setCommand
