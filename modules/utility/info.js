@@ -106,7 +106,7 @@ class infoCommand extends Command {
 				type = 'Text Channel'
 			} else if (type == 'voice') {
 				type = 'Voice Channel'
-				members = '`' + channel.members.map(r => r.name).join('`, `') + '`'
+				members = channel.members.map(r => r.name).join('`, `')
 				limit = channel.userLimit
 			}
 			var name = channel.name
@@ -116,8 +116,8 @@ class infoCommand extends Command {
 			embed.setFooter('Replying to ' + message.author.tag)
 			embed.setDescription(String.fromCharCode(8203))
 			embed.setThumbnail(icon)
-			if (members && members !== '``') {
-			embed.addField('`Members`', members, false)
+			if (members) {
+			embed.addField('`Members`', '`' + members + '`', false)
 			}
 			embed.addField('`Position`', pos, true)
 			if (limit) {
