@@ -108,4 +108,4 @@ class playCommand extends Command {
 	}
 }
 
-module.exports = addCommand
+module.exports = playCommand
