@@ -98,7 +98,7 @@ collector.on('collect', r => msgg.channel.send(`Run lcrew to set ${member} to ${
 
 handler.registerModule('sudo', 'Sudo')
 handler.registerModule('fun', 'Fun')
-handler.registerModule('music', 'Music')
+handler.registerModule('media', 'Media')
 handler.registerModule('mod', 'Moderation')
 handler.registerModule('admin', 'Administration')
 handler.registerModule('misc', 'Other')
