@@ -61,14 +61,14 @@ bot.on("guildDelete", guild => {
 	bot.settings.delete(guild.id);
 });
 
-message.client.dispatcher = ''
+bot.dispatcher = ''
 
 message.client.dispatcher.on('end', () => {
 	//collector.stop();
 	//play(message.client.queue[message.guild.id].songs.shift());
 });
 
-message.client.dispatcher.on('error', (err) => {
+bot.dispatcher.on('error', (err) => {
 	return api.error(err)/*.then(() => {
 		//collector.stop();
 		//play(message.client.queue[message.guild.id].songs.shift());
