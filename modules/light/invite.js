@@ -4,7 +4,7 @@ class LgenCommand extends Command {
   constructor() {
     super({
       name: 'invite',
-      help: 'Generate an invite to Light',
+      help: 'Generate an invite',
       lhelp: '{channel} {uses}\n{channel} is the channel to use\n{uses} is the number of invite uses allowed\n{invite} must be 1/5/10/25/50/100'
     })
   }
