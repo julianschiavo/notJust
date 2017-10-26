@@ -36,6 +36,10 @@ class muteCommand extends Command {
 			}
 		}
 		if (role) {
+			if (message.guild.member(user.id).hasPermission("KICK_MEMBERS") && message.author.id !== message.guild.ownerID) {
+				api.error('You can\'t mute staff members unless you are the server owner.')
+				return
+			}
 			if (user.roles.has(role.id)) {
 				api.error('This user is already muted!')
 				return
