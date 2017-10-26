@@ -30,26 +30,17 @@ class joinCommand extends Command {
 		//embed.setTimestamp()
 		embed.setFooter('Replying to ' + message.author.tag)
 
-
-
 		new Promise((resolve, reject) => {
 			const voiceChannel = message.member.voiceChannel;
 			if (!voiceChannel || voiceChannel.type !== 'voice') return api.error('I wasn\'t able to connect to your voice channel.');
 			voiceChannel.join().then(connection => {
 				resolve(connection)
-				embed.setTitle('<:apple_symbol_hash:359559749785616387> `Joined' + voiceChannel.name + '`')
+				embed.setTitle('<:apple_symbol_hash:359559749785616387> `Joined ' + voiceChannel.name + '`')
 				message.channel.send({
 					embed
 				})
 			}).catch(err => reject(err));
 		});
-
-
-
-
-
-
-
 
 		return true
 	}
