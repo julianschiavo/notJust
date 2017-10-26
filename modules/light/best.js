@@ -10,7 +10,7 @@ class LbestCommand extends Command {
 	}
 
 	hasPermission(message) {
-		if (message.guild.id == '277006003797491712' && message.guild.members.get(message.author.id).roles.has('277031574133014530')) return true
+		if (message.guild && message.guild.id == '277006003797491712' && message.guild.members.get(message.author.id).roles.has('277031574133014530')) return true
 		return false
 	}
 
