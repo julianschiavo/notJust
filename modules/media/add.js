@@ -17,7 +17,7 @@ class addCommand extends Command {
 		} else {
 			let embed = new Discord.RichEmbed()
 
-		embed.setTitle('<:apple_symbol_info:359559750096257024> `About notJust Premium`')
+		embed.setTitle('<:red_tick:330712188681453590> `Premium Command`')
 		embed.setColor('#00ff00')
 
 		embed.setFooter('Replying to ' + message.author.tag)
