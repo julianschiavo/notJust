@@ -6,7 +6,7 @@ class addCommand extends Command {
 	constructor() {
 		super({
 			name: 'add',
-			help: 'Add music',
+			help: 'Add music/videos',
       lhelp: '{id/url}\n{id/url} is the YouTube video URL or ID.'
 		})
 	}
@@ -41,7 +41,7 @@ embed.setTitle('<:apple_music:356765236830666762> `Queue Updated`')
 			if(err) return api.error('Invalid YouTube Link: ' + err);
 			if (!message.client.queue.hasOwnProperty(message.guild.id)) message.client.queue[message.guild.id] = {}, message.client.queue[message.guild.id].playing = false, message.client.queue[message.guild.id].songs = [];
 			message.client.queue[message.guild.id].songs.push({url: url, title: info.title, requester: message.author.tag});
-			embed.addField('`Video Added`',info.title,false)
+			embed.addField('`Added`',info.title,false)
       message.channel.send({
 					embed
 				})
