@@ -25,6 +25,7 @@ class banCommand extends Command {
     var user = api.getUser(arg,'member')
 if (user.user.id == message.author.id) {
 	api.error('You can\'t ban yourself!')
+	return
 		  }
     args.splice(0,1)
 		var reason
