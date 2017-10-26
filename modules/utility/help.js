@@ -58,7 +58,7 @@ class HelpCommand extends Command {
 				}
 				if (!oneCommand) continue
 				//moduleEmbeds[mod] = await message.channel.send({ embed })
-				if (message.channel.type == 'text') {
+				if (message.guild && message.channel.type == 'text') {
 					if (message.channel.id == '342611254193553408') {
 						moduleEmbeds[mod] = await message.channel.send({
 							embed
@@ -89,7 +89,7 @@ class HelpCommand extends Command {
 						embed.setDescription(`${command.help}\n\n${api.handler.prefix}${command.name} ${command.lhelp}`)
 					}
 					//return message.channel.send({embed})
-					if (message.channel.type == 'text') {
+					if (message.guild && message.channel.type == 'text') {
 						if (message.channel.id == '342611254193553408') {
 							return message.channel.send({
 								embed
