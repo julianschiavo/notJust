@@ -81,26 +81,7 @@ class playCommand extends Command {
 					message.channel.send(`time: ${Math.floor(message.client.dispatcher.time / 60000)}:${Math.floor((message.client.dispatcher.time % 60000)/1000) <10 ? '0'+Math.floor((message.client.dispatcher.time % 60000)/1000) : Math.floor((message.client.dispatcher.time % 60000)/1000)}`);
 				}
 			});
-			message.client.dispatcher.on('end', () => {
-				collector.stop();
-				play(message.client.queue[message.guild.id].songs.shift());
-			});
-			message.client.dispatcher.on('error', (err) => {
-				return api.error(err).then(() => {
-					collector.stop();
-					play(message.client.queue[message.guild.id].songs.shift());
-				});
-			});
 		})(message.client.queue[message.guild.id].songs.shift());
-
-
-
-
-
-
-
-
-
 
 
 
