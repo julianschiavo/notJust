@@ -35,7 +35,7 @@ class playCommand extends Command {
 		if (message.client.queue[message.guild.id] === undefined) return api.error('Please add some songs to the queue before playing.');
 		if (!message.guild.voiceConnection) return commands.join(message).then(() => commands.play(message));
 		if (message.client.queue[message.guild.id].playing) return api.error('Already Playing');
-		let dispatcher;
+		message.client.dispatcher = ''
 		message.client.queue[message.guild.id].playing = true;
 
 		console.log(message.client.queue);
@@ -50,7 +50,7 @@ class playCommand extends Command {
 				embed
 			})
 			//message.channel.send(`Playing: **${song.title}** as requested by: **${song.requester}**`);
-			dispatcher = message.guild.voiceConnection.playStream(yt(song.url, {
+			message.client.dispatcher = message.guild.voiceConnection.playStream(yt(song.url, {
 				audioonly: true
 			}), {
 				passes: '3'
@@ -59,33 +59,33 @@ class playCommand extends Command {
 			collector.on('message', m => {
 				if (m.content.startsWith('m.pause')) {
 					message.channel.send('paused').then(() => {
-						dispatcher.pause();
+						message.client.dispatcher.pause();
 					});
 				} else if (m.content.startsWith('m.resume')) {
 					message.channel.send('resumed').then(() => {
-						dispatcher.resume();
+						message.client.dispatcher.resume();
 					});
 				} else if (m.content.startsWith('m.skip')) {
 					message.channel.send('skipped').then(() => {
-						dispatcher.end();
+						message.client.dispatcher.end();
 					});
 				} else if (m.content.startsWith('m.volume+')) {
-					if (Math.round(dispatcher.volume * 50) >= 100) return message.channel.send(`Volume: ${Math.round(dispatcher.volume*50)}%`);
-					dispatcher.setVolume(Math.min((dispatcher.volume * 50 + (2 * (m.content.split('+').length - 1))) / 50, 2));
-					message.channel.send(`Volume: ${Math.round(dispatcher.volume*50)}%`);
+					if (Math.round(message.client.dispatcher.volume * 50) >= 100) return message.channel.send(`Volume: ${Math.round(message.client.dispatcher.volume*50)}%`);
+					message.client.dispatcher.setVolume(Math.min((message.client.dispatcher.volume * 50 + (2 * (m.content.split('+').length - 1))) / 50, 2));
+					message.channel.send(`Volume: ${Math.round(message.client.dispatcher.volume*50)}%`);
 				} else if (m.content.startsWith('m.volume-')) {
-					if (Math.round(dispatcher.volume * 50) <= 0) return message.channel.send(`Volume: ${Math.round(dispatcher.volume*50)}%`);
-					dispatcher.setVolume(Math.max((dispatcher.volume * 50 - (2 * (m.content.split('-').length - 1))) / 50, 0));
+					if (Math.round(message.client.dispatcher.volume * 50) <= 0) return message.channel.send(`Volume: ${Math.round(message.client.dispatcher.volume*50)}%`);
+					message.client.dispatcher.setVolume(Math.max((message.client.dispatcher.volume * 50 - (2 * (m.content.split('-').length - 1))) / 50, 0));
 					message.channel.send(`Volume: ${Math.round(dispatcher.volume*50)}%`);
 				} else if (m.content.startsWith('m.time')) {
-					message.channel.send(`time: ${Math.floor(dispatcher.time / 60000)}:${Math.floor((dispatcher.time % 60000)/1000) <10 ? '0'+Math.floor((dispatcher.time % 60000)/1000) : Math.floor((dispatcher.time % 60000)/1000)}`);
+					message.channel.send(`time: ${Math.floor(message.client.dispatcher.time / 60000)}:${Math.floor((message.client.dispatcher.time % 60000)/1000) <10 ? '0'+Math.floor((message.client.dispatcher.time % 60000)/1000) : Math.floor((message.client.dispatcher.time % 60000)/1000)}`);
 				}
 			});
-			dispatcher.on('end', () => {
+			message.client.dispatcher.on('end', () => {
 				collector.stop();
 				play(message.client.queue[message.guild.id].songs.shift());
 			});
-			dispatcher.on('error', (err) => {
+			message.client.dispatcher.on('error', (err) => {
 				return api.error(err).then(() => {
 					collector.stop();
 					play(message.client.queue[message.guild.id].songs.shift());
