@@ -24,7 +24,7 @@ class joinCommand extends Command {
 		}
 
 		let embed = new Discord.RichEmbed()
-		
+
 		embed.setDescription(String.fromCharCode(8203))
 		embed.setColor('#00ff00')
 		//embed.setTimestamp()
