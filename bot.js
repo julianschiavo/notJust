@@ -55,10 +55,14 @@ bot.defaultSettings = {
 
 bot.on("guildCreate", guild => {
 	// Adding a new row to the collection uses `set(key, value)`
-	var isBL = bot.settings.get(guild.id).isBlacklisted
-	if (isBL) {
-		if (isBL == true) {
+	var conf = bot.settings.get(guild.id)
+	if (conf) {
+		if (conf.isBlacklisted == true) {
 			guild.leave()
+		}
+		if (conf.isDonator == true) {
+			conf.isDonator = false;
+		        bot.settings.set(guild.id, conf);
 		}
 	} else {
 	bot.settings.set(guild.id, bot.defaultSettings);
