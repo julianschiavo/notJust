@@ -15,7 +15,7 @@ class serversCommand extends Command {
 	}
 
 	async run(message, args, api) {
-		const guilds = message.client.guilds.map(g => g.name + ' (`' + g.id + ' ' + g.members.size + '`)').join("\n");
+		const guilds = message.client.guilds.map(g => '`' + g.name + '` (`' + g.id + ' ' + g.members.size + '`)').join("\n");
 
 		let embed = new Discord.RichEmbed()
 		//embed.setTimestamp()
