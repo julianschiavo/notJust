@@ -5,7 +5,7 @@ const Command = require('../../cmdModule/commands').Command
 class pauseCommand extends Command {
 	constructor() {
 		super({
-			name: 'Pause',
+			name: 'pause',
 			help: 'Pause media'
 		})
 	}
