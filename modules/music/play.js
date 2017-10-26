@@ -55,7 +55,7 @@ class playCommand extends Command {
 			}), {
 				passes: '3'
 			});
-			let collector = message.channel.createCollector(m => m);
+			/*let collector = message.channel.createCollector(m => m);
 			collector.on('message', m => {
 				if (m.content.startsWith('m.pause')) {
 					message.channel.send('paused').then(() => {
@@ -68,19 +68,20 @@ class playCommand extends Command {
 				} else if (m.content.startsWith('m.skip')) {
 					message.channel.send('skipped').then(() => {
 						message.client.dispatcher.end();
-					});
-				} else if (m.content.startsWith('m.volume+')) {
-					if (Math.round(message.client.dispatcher.volume * 50) >= 100) return message.channel.send(`Volume: ${Math.round(message.client.dispatcher.volume*50)}%`);
-					message.client.dispatcher.setVolume(Math.min((message.client.dispatcher.volume * 50 + (2 * (m.content.split('+').length - 1))) / 50, 2));
-					message.channel.send(`Volume: ${Math.round(message.client.dispatcher.volume*50)}%`);
-				} else if (m.content.startsWith('m.volume-')) {
-					if (Math.round(message.client.dispatcher.volume * 50) <= 0) return message.channel.send(`Volume: ${Math.round(message.client.dispatcher.volume*50)}%`);
-					message.client.dispatcher.setVolume(Math.max((message.client.dispatcher.volume * 50 - (2 * (m.content.split('-').length - 1))) / 50, 0));
-					message.channel.send(`Volume: ${Math.round(dispatcher.volume*50)}%`);
-				} else if (m.content.startsWith('m.time')) {
-					message.channel.send(`time: ${Math.floor(message.client.dispatcher.time / 60000)}:${Math.floor((message.client.dispatcher.time % 60000)/1000) <10 ? '0'+Math.floor((message.client.dispatcher.time % 60000)/1000) : Math.floor((message.client.dispatcher.time % 60000)/1000)}`);
-				}
-			});
+					});*/
+			/*} else if (m.content.startsWith('m.volume+')) {
+				if (Math.round(message.client.dispatcher.volume * 50) >= 100) return message.channel.send(`Volume: ${Math.round(message.client.dispatcher.volume*50)}%`);
+				message.client.dispatcher.setVolume(Math.min((message.client.dispatcher.volume * 50 + (2 * (m.content.split('+').length - 1))) / 50, 2));
+				message.channel.send(`Volume: ${Math.round(message.client.dispatcher.volume*50)}%`);
+			} else if (m.content.startsWith('m.volume-')) {
+				if (Math.round(message.client.dispatcher.volume * 50) <= 0) return message.channel.send(`Volume: ${Math.round(message.client.dispatcher.volume*50)}%`);
+				message.client.dispatcher.setVolume(Math.max((message.client.dispatcher.volume * 50 - (2 * (m.content.split('-').length - 1))) / 50, 0));
+				message.channel.send(`Volume: ${Math.round(dispatcher.volume*50)}%`);
+			*/
+			/*} else if (m.content.startsWith('m.time')) {
+								message.channel.send(`time: ${Math.floor(message.client.dispatcher.time / 60000)}:${Math.floor((message.client.dispatcher.time % 60000)/1000) <10 ? '0'+Math.floor((message.client.dispatcher.time % 60000)/1000) : Math.floor((message.client.dispatcher.time % 60000)/1000)}`);
+							}
+						});*/
 		})(message.client.queue[message.guild.id].songs.shift());
 
 
