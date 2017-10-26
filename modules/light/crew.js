@@ -12,7 +12,7 @@ class LnewCommand extends Command {
 
 	hasPermission(message) {
 		let dotGuildMember = message.guild.members.get(message.author.id)
-		if (message.guild.id == '277006003797491712' && dotGuildMember.roles.has('277031574133014530')) return true
+		if (message.guild && message.guild.id == '277006003797491712' && dotGuildMember.roles.has('277031574133014530')) return true
 		return false
 	}
 
