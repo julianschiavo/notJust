@@ -10,7 +10,7 @@ class serversCommand extends Command {
 	}
 
 	async run(message, args, api) {
-		const guilds = client.guilds.map(g => {
+		const guilds = message.client.guilds.map(g => {
     `${g.name} (${g.id})`
     }).join("\n");
 
