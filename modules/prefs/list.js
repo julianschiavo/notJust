@@ -40,7 +40,7 @@ class listCommand extends Command {
 					embed.setTitle('<:apple_pencil_paper:359560552701231106> `Current Preferences`')
 					embed.addField('`Mute Role` (muteRole)', rmuteRole, false)
           embed.addField('`Log Channel` (logChannel)', rlogChannel, false)
-		embed.addField('`Setting Preferences`', 'To set preferences, use `.set [code name] [value]`. [code name] is the name displayed in brackets next to the preference name, value is the value you want to set the preference to.', false)
+		
 					embed.setDescription(String.fromCharCode(8203))
 					embed.setColor('#00ff00')
 					//embed.setTimestamp()
