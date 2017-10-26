@@ -5,7 +5,7 @@ class banCommand extends Command {
 	constructor() {
 		super({
 			name: 'ban',
-			help: 'Ban a user',
+			help: 'Ban a member',
 			lhelp: '{user} [reason]\n{user} is the user to ban (id or mention)\n[reason] is the Audit Log reason for the ban'
 		})
 	}
