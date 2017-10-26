@@ -36,7 +36,8 @@ class muteCommand extends Command {
 			}
 		}
 		if (role) {
-			if(message.member.roles.has(role.id)) {
+			var booll = message.member.roles.has(role.id)
+			if(booll == true) {
 			var reason
 			if (args[0]) {
 				reason = args.join(' ');
