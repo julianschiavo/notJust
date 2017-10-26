@@ -24,11 +24,12 @@ class aboutCommand extends Command {
 		//embed.setTimestamp()
 		embed.setFooter('Replying to ' + message.author.tag)
 		embed.setDescription(String.fromCharCode(8203))
-		embed.addField('`Stats`', 'notJust is on ' + servers + ' servers, which contain ' + channels + ' channels, and ' + users + ' users.', false)
-		embed.addField('`Invite`', '[Invite notJust by clicking here.](https://discordapp.com/oauth2/authorize?client_id=329772339967426560&scope=bot&permissions=8) \nWe HIGHLY recommend you give it the "Administrator" permission to ensure all commands work.', false)
-		embed.addField('`Premium`', 'I, the founder of notJust, am just 13 and have to run my servers and sites off donations. \nGet **notJust Premium** - and support me - by donating. [Just press here!](https://patreon.com/justdotJS)', false)
-		embed.addField('`Description`', 'notJust is a leading state-of-the-art Discord bot founded by dotJS. \nIt has modules which include fun commands, music commands, moderation commands, and more.', false)
-		embed.addField('`Contributors`', 'notJust couldn\'t have been built without the assistance of `King - Vlad` and `szymex73`, so thanks for all their help.', false)
+		embed.addField('`Get`', '**[Get notJust by clicking here.](https://discordapp.com/oauth2/authorize?client_id=329772339967426560&scope=bot&permissions=8)** \nWe highly recommend you give it the "Administrator" permission to ensure all commands work!', false)
+		embed.addField('`Info`', 'notJust is on ' + servers + ' servers, which contain ' + channels + ' channels, and ' + users + ' users.', false)
+		embed.addField('`Credits`', 'notJust couldn\'t have been built without the assistance of `King - Vlad` and `szymex73`, so thanks for all their help.', false)
+		embed.addField('`Premium`', 'I, the founder of notJust, am just 13 and have to run my servers and sites off donations. \n**Get notJust Premium - and support me - by donating. [Just press here!](https://patreon.com/justdotJS)**', false)
+		embed.addField('`Description`', 'notJust is a leading, state-of-the-art Discord bot founded by dotJS. \nIt has modules which include fun commands, music commands, moderation commands, and more.', false)
+		
 		message.channel.send({
 			embed
 		})
