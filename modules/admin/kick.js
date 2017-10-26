@@ -5,7 +5,7 @@ class kickCommand extends Command {
 	constructor() {
 		super({
 			name: 'kick',
-			help: 'Kick a user',
+			help: 'Kick a member',
 			lhelp: '{user} [reason]\n{user} is the user to kick (id or mention)\n[reason] is the Audit Log reason for the kick'
 		})
 	}
