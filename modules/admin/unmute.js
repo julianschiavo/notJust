@@ -63,4 +63,4 @@ class unmuteCommand extends Command {
 	}
 }
 
-module.exports = muteCommand
+module.exports = unmuteCommand
