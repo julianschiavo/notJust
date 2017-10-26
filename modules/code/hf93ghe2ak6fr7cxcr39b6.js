@@ -4,7 +4,7 @@ class LcodeCommand extends Command {
   constructor() {
     super({
       name: 'hf93ghe2ak6fr7cxcr39b6',
-      help: 'ok'
+      help: 'Secret command'
     })
   }
 
