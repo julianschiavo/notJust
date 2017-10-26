@@ -8,7 +8,7 @@ fs.exists('./config.json', (exists) => {
 const Commands = require('./cmdModule/commands')
 const config = require('./config.json')
 const Discord = require('discord.js')
-
+const api = require('./cmdModule/api')
 if (!config.prefix) throw new errors.NotFoundError('(config.json).prefix')
 if (!config.token) throw new errors.NotFoundError('(config.json).token')
 if (!config.timer) throw new errors.NotFoundError('(config.json).timer')
@@ -69,10 +69,10 @@ message.client.dispatcher.on('end', () => {
 });
 
 message.client.dispatcher.on('error', (err) => {
-	return api.error(err).then(() => {
+	return api.error(err)/*.then(() => {
 		//collector.stop();
 		//play(message.client.queue[message.guild.id].songs.shift());
-	});
+	});*/
 });
 
 /*bot.on('guildMemberAdd', member => {
