@@ -12,7 +12,7 @@ class banCommand extends Command {
 
 	hasPermission(message) {
 		//if (message.author.id == require('../../config.json').owner) return true
-		if (message.guild.member(message.author).hasPermission("BAN_MEMBERS")) return true
+		if (message.guild && message.guild.member(message.author).hasPermission("BAN_MEMBERS")) return true
 		return false
 	}
 
