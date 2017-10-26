@@ -101,9 +101,9 @@ class infoCommand extends Command {
 			var id = channel.id
 			var type = channel.type
 			if (type == 'text') {
-				type = 'Text'
+				type = 'Text Channel'
 			} else if (type == 'voice') {
-				type = 'Voice'
+				type = 'Voice Channel'
 			}
 			var name = channel.name
 			let embed = new Discord.RichEmbed()
@@ -114,8 +114,8 @@ class infoCommand extends Command {
 			embed.setThumbnail(icon)
 			embed.addField('`Position`', pos, true)
 			embed.addField('`Created`', time, true)
-			embed.addField('`Type`', type, false)
-			embed.addField('`ID`', id, false)
+			embed.addField('`Type`', type, true)
+			embed.addField('`ID`', id, true)
 			message.channel.send({
 				embed
 			})
