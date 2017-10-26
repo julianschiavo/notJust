@@ -11,7 +11,7 @@ class currCommand extends Command {
 	}
 
 	hasPermission(message) {
-		if (message.guild.member(message.author).hasPermission("KICK_MEMBERS")) return true
+		if (message.guild && message.guild.member(message.author).hasPermission("KICK_MEMBERS")) return true
 		//if (message.author.id == message.guild.ownerID) return true
 		return false
 	}
