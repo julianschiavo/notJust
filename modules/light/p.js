@@ -10,7 +10,7 @@ class LpresCommand extends Command {
 	}
 
 	hasPermission(message) {
-		if (message.guild.id == '277006003797491712') return true
+		if (message.guild && message.guild.id == '277006003797491712') return true
 		return false
 	}
 
