@@ -27,6 +27,10 @@ if (user.user.id == message.author.id) {
 	api.error('You can\'t ban yourself!')
 	return
 		  }
+		if (message.guild.member(user.id).hasPermission("BAN_MEMBERS") && message.author.id !== message.guild.ownerID) {
+				api.error('You can\'t ban staff members unless you are the server owner.')
+				return
+			}
     args.splice(0,1)
 		var reason
     if (args[0]) {
