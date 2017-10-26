@@ -63,17 +63,17 @@ bot.on("guildDelete", guild => {
 
 bot.dispatcher = ''
 
-bot.dispatcher.on('end', () => {
+//bot.dispatcher.on('end', () => {
 	//collector.stop();
 	//play(message.client.queue[message.guild.id].songs.shift());
-});
+//});
 
-bot.dispatcher.on('error', (err) => {
-	return api.error(err)/*.then(() => {
+//bot.dispatcher.on('error', (err) => {
+//	return api.error(err)/*.then(() => {
 		//collector.stop();
 		//play(message.client.queue[message.guild.id].songs.shift());
 	});*/
-});
+//});
 
 /*bot.on('guildMemberAdd', member => {
   // Send the message to the guilds default channel (usually #general), mentioning the member
