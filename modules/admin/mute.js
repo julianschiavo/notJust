@@ -36,30 +36,10 @@ class muteCommand extends Command {
 			}
 		}
 		if (role) {
-			var booll = message.member.roles.has(role.id)
-			if(booll == true) {
+			if (message.member.roles.has(role.id)) {
+				api.error('This user is already muted!')
+			}
 			var reason
-			if (args[0]) {
-				reason = args.join(' ');
-				user.removeRole(role, reason)
-			} else {
-				user.removeRole(role)
-			}
-			let embed = new Discord.RichEmbed()
-			embed.setTitle('<:apple_muted:372902540393709569> `Unmuted ' + user.user.username + '`')
-			embed.setDescription(String.fromCharCode(8203))
-			embed.setColor('#00ff00')
-			if (reason) {
-				embed.addField('`Reason`', reason, false)
-			}
-			//embed.setTimestamp()
-			embed.setFooter('Replying to ' + message.author.tag)
-
-			message.channel.send({
-				embed
-			})
-			} else {
-				var reason
 			if (args[0]) {
 				reason = args.join(' ');
 				user.addRole(role, reason)
@@ -79,7 +59,6 @@ class muteCommand extends Command {
 			message.channel.send({
 				embed
 			})
-			}
 		} else {
 			api.error('This server\'s mute role is invalid, non existent, or couldn\'t be found. Please check your preferences.')
 		}
