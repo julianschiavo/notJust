@@ -117,7 +117,9 @@ class infoCommand extends Command {
 			embed.setDescription(String.fromCharCode(8203))
 			embed.setThumbnail(icon)
 			if (members) {
+			if (channel.members.size >= '1') {
 			embed.addField('`Members`', '`' + members + '`', false)
+			}
 			}
 			embed.addField('`Position`', pos, true)
 			if (limit) {
