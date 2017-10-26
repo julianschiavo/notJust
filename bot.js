@@ -63,7 +63,7 @@ bot.on("guildDelete", guild => {
 
 bot.dispatcher = ''
 
-message.client.dispatcher.on('end', () => {
+bot.dispatcher.on('end', () => {
 	//collector.stop();
 	//play(message.client.queue[message.guild.id].songs.shift());
 });
