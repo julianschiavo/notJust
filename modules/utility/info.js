@@ -95,7 +95,7 @@ class infoCommand extends Command {
 			} else {
 				api.error('Please specify a channel ID or name.')
 			}
-			var pos = channel.position
+			var pos = channel.calculatedPosition
 			var icon = message.guild.iconURL
 			var time = ta.ago(channel.createdTimestamp);
 			var id = channel.id
@@ -112,9 +112,9 @@ class infoCommand extends Command {
 			embed.setFooter('Replying to ' + message.author.tag)
 			embed.setDescription(String.fromCharCode(8203))
 			embed.setThumbnail(icon)
-			embed.addField('`Type`', type, false)
 			embed.addField('`Position`', pos, true)
 			embed.addField('`Created`', time, true)
+			embed.addField('`Type`', type, false)
 			embed.addField('`ID`', id, false)
 			message.channel.send({
 				embed
@@ -129,7 +129,7 @@ class infoCommand extends Command {
 			} else {
 				api.error('Please specify a role name to get info for.')
 			}
-			var pos = role.position
+			var pos = role.calculatedPosition
 			var color = role.hexColor
 			var time = ta.ago(role.createdTimestamp)
 			var hoist
