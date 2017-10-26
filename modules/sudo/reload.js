@@ -26,7 +26,7 @@ class reloadCommand extends Command {
 if (!message.client.settings.get(message.guild.id)) {
   // Adding a new row to the collection uses `set(key, value)`
   message.client.settings.set(message.guild.id, defaultSettings);
-})
+}
 		
 		if (!args[1] || !args[2]) {
 			api.error('Please specify a module folder and command')
