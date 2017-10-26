@@ -30,7 +30,8 @@ class listCommand extends Command {
 
 		const thisConf = message.client.settings.get(message.guild.id);
     var muteRole = thisConf.muteRole
-    var rmuteRole = 'Code Name: `muteRole`\nCurrent Value: `' + muteRole + '`'
+    muteRole = '<@&' + message.guild.roles.find("name", muteRole).id + '>'
+    var rmuteRole = 'Code Name: `muteRole`\nCurrent Value: ' + muteRole
     
     var logChannel = thisConf.logChannel
     var rlogChannel = 'Code Name: `logChannel`\nCurrent Value: `' + logChannel + '`'
