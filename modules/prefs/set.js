@@ -12,7 +12,7 @@ class setCommand extends Command {
 	}
 
 	hasPermission(message) {
-		if (message.author.id == message.guild.ownerID) return true
+		if (message.guild && message.author.id == message.guild.ownerID) return true
 		return false
 	}
 
