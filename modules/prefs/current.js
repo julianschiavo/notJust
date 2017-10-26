@@ -18,14 +18,9 @@ class currCommand extends Command {
 
 	async run(message, args, api) {
 
-		const defaultSettings = {
-			logChannel: "logs",
-			muteRole: "Muted"
-		}
-
 		if (!message.client.settings.get(message.guild.id)) {
 			// Adding a new row to the collection uses `set(key, value)`
-			message.client.settings.set(message.guild.id, defaultSettings);
+			message.client.settings.set(message.guild.id, message.client.defaultSettings);
 		}
 
 		const thisConf = message.client.settings.get(message.guild.id);
