@@ -10,8 +10,10 @@ class LseasonCommand extends Command {
 	}
 
 	hasPermission(message) {
+		if (message.guild) {
 		let dotGuildMember = message.guild.members.get(message.author.id)
-		if (message.guild.id == '277006003797491712' && message.author.id == '193908323911860224') return true
+		if (message.guild && message.guild.id == '277006003797491712' && message.author.id == '193908323911860224') return true
+		}
 		return false
 	}
 
