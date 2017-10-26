@@ -4,8 +4,8 @@ const Command = require('../../cmdModule/commands').Command
 class ballCommand extends Command {
   constructor() {
     super({
-      name: '8ball',
-      help: 'Ask 8ball a question'
+      name: 'magic',
+      help: 'Ask Magic 8ball a question'
     })
   }
 
