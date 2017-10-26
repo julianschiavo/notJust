@@ -72,7 +72,7 @@ bot.dispatcher = ''
 //	return api.error(err)/*.then(() => {
 		//collector.stop();
 		//play(message.client.queue[message.guild.id].songs.shift());
-	});*/
+	//});
 //});
 
 /*bot.on('guildMemberAdd', member => {
