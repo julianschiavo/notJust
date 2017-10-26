@@ -6,7 +6,7 @@ class listCommand extends Command {
 	constructor() {
 		super({
 			name: 'list',
-			help: 'List server preferences'
+			help: 'List current server preferences'
 		})
 	}
 
@@ -30,12 +30,12 @@ class listCommand extends Command {
 
 		const thisConf = message.client.settings.get(message.guild.id);
     var muteRole = thisConf.muteRole
-    var rmuteRole = 'Code Name: \'muteRole\'\nCurrent Value: \'' + muteRole + '\''
+    var rmuteRole = 'Code Name: `muteRole`\nCurrent Value: `' + muteRole + '`'
     
     var logChannel = thisConf.logChannel
-    var rlogChannel = 'Code Name: \'logChannel\'\nCurrent Value: \'' + logChannel + '\''
+    var rlogChannel = 'Code Name: `logChannel`\nCurrent Value: `' + logChannel + '`'
 					let embed = new Discord.RichEmbed()
-					embed.setTitle('<:apple_pencil_paper:359560552701231106> `Preferences`')
+					embed.setTitle('<:apple_pencil_paper:359560552701231106> `Current Preferences`')
 					embed.addField('`Mute Role`', rmuteRole, false)
           embed.addField('`Log Channel`', rlogChannel, false)
 					embed.setDescription(String.fromCharCode(8203))
