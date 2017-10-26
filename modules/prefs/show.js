@@ -44,7 +44,7 @@ class currCommand extends Command {
 			message.channel.send({
 				embed
 			})
-		} else {
+		} else if (message.author.id == require('../../config.json').owner) {
 			function isN(num) {
 				return !isNaN(num)
 			}
@@ -78,7 +78,7 @@ class currCommand extends Command {
 			embed.setDescription(String.fromCharCode(8203))
 			embed.setColor('#00ff00')
 			//embed.setTimestamp()
-			embed.addField('`Raw List`', thisConf, false)
+			embed.addField('`Raw List`', JSON.stringify(thisConf), false)
 			embed.setFooter('Replying to ' + message.author.tag)
 
 			message.channel.send({
