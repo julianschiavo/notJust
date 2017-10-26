@@ -30,7 +30,7 @@ class addCommand extends Command {
 		embed.setColor('#00ff00')
 		//embed.setTimestamp()
 		embed.setFooter('Replying to ' + message.author.tag)
-embed.setTitle('<:apple_music:356765236830666762> `Queue Updated`')
+embed.setTitle('<:apple_music:372943300753227786> `Queue Updated`')
 
 				
         
