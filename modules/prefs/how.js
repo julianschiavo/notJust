@@ -6,7 +6,7 @@ class howCommand extends Command {
 	constructor() {
 		super({
 			name: 'how',
-			help: 'Show how to set preferences'
+			help: 'Show help for using preferences'
 		})
 	}
 
