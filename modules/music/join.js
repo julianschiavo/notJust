@@ -24,7 +24,7 @@ class joinCommand extends Command {
 		}
     
     return new Promise((resolve, reject) => {
-			const voiceChannel = msg.member.voiceChannel;
+			const voiceChannel = message.member.voiceChannel;
 			if (!voiceChannel || voiceChannel.type !== 'voice') return api.error('I wasn\'t able to connect to your voice channel.');
 			voiceChannel.join().then(connection => resolve(connection)).catch(err => reject(err));
 		});
