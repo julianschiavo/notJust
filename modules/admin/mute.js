@@ -36,7 +36,7 @@ class muteCommand extends Command {
 			}
 		}
 		if (role) {
-			if (message.member.roles.has(role.id)) {
+			if (user.roles.has(role.id)) {
 				api.error('This user is already muted!')
 			}
 			var reason
