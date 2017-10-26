@@ -6,7 +6,7 @@ class unbanCommand extends Command {
 		super({
 			name: 'unban',
 			help: 'Unban a member',
-			lhelp: '{user} [reason]\n{user} is the user to unban (id or mention)\n[reason] is the Audit Log reason for the unban'
+			lhelp: '{user_id} [reason]\n{user_id} is the user to unban\'s ID\n[reason] is the Audit Log reason for the unban'
 		})
 	}
 
@@ -22,11 +22,15 @@ class unbanCommand extends Command {
 			api.error('Please specify which user to unban.')
 		}
 		var arg = args[0]
-		var user = api.getUser(arg, 'member')
-		if (user.user.id == message.author.id) {
-			api.error('You can\'t unban yourself!')
+		function isN(num) {
+			return !isNaN(num)
+		}
+		//var user = api.getUser(arg, 'member')
+		if (isN(arg) == false) {
+			api.error('Please specify the numeric ID of the user you want to unban.')
 			return
 		}
+		var user = arg
 		args.splice(0, 1)
 		var reason
 		if (args[0]) {
@@ -36,7 +40,7 @@ class unbanCommand extends Command {
 			message.guild.unban(user)
 		}
 		let embed = new Discord.RichEmbed()
-		embed.setTitle('<:apple_hammer:359560554479878144> `Unbanned ' + user.user.username + '`')
+		embed.setTitle('<:apple_hammer:359560554479878144> `Unbanned ' + user + '`')
 		embed.setDescription(String.fromCharCode(8203))
 		embed.setColor('#00ff00')
 		if (reason) {
