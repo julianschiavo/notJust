@@ -33,12 +33,14 @@ class randomCommand extends Command {
 			return true
 		} else if (argg.indexOf('number') >= 0) {
 			var num;
+
 			function randomN(min, max) {
-	                	return Math.floor(Math.random()*(max-min+1)+min);
-                        }
-			function isN(num){
-                        	return !isNaN(num)
-                        }
+				return Math.floor(Math.random() * (max - min + 1) + min);
+			}
+
+			function isN(num) {
+				return !isNaN(num)
+			}
 			if (args[1] && isN(args[1]) && args[2] && isN(args[2])) {
 				num = randomN(args[1], args[2])
 			} else {
