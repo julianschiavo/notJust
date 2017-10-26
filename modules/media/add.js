@@ -6,8 +6,8 @@ class addCommand extends Command {
 	constructor() {
 		super({
 			name: 'add',
-			help: 'Add music/videos',
-      lhelp: '{id/url}\n{id/url} is the YouTube video URL or ID.'
+			help: 'Add media to queue',
+			lhelp: '{id/url}\n{id/url} is the YouTube video URL or ID.'
 		})
 	}
 
@@ -25,26 +25,30 @@ class addCommand extends Command {
 		}
 
 		let embed = new Discord.RichEmbed()
-		
+
 		embed.setDescription(String.fromCharCode(8203))
 		embed.setColor('#00ff00')
 		//embed.setTimestamp()
 		embed.setFooter('Replying to ' + message.author.tag)
-embed.setTitle('<:apple_music:372943300753227786> `Queue Updated`')
+		embed.setTitle('<:apple_music:372943300753227786> `Queue Updated`')
 
-				
-        
-    
-    let url = args[1];
+
+
+
+		let url = args[1];
 		if (url == '' || url === undefined) return api.error('You must give a YouTube video url or id.');
 		yt.getInfo(url, (err, info) => {
-			if(err) return api.error('Invalid YouTube Link: ' + err);
+			if (err) return api.error('Invalid YouTube Link: ' + err);
 			if (!message.client.queue.hasOwnProperty(message.guild.id)) message.client.queue[message.guild.id] = {}, message.client.queue[message.guild.id].playing = false, message.client.queue[message.guild.id].songs = [];
-			message.client.queue[message.guild.id].songs.push({url: url, title: info.title, requester: message.author.tag});
-			embed.addField('`Added`',info.title,false)
-      message.channel.send({
-					embed
-				})
+			message.client.queue[message.guild.id].songs.push({
+				url: url,
+				title: info.title,
+				requester: message.author.tag
+			});
+			embed.addField('`Added`', info.title, false)
+			message.channel.send({
+				embed
+			})
 		});
 
 		return true
