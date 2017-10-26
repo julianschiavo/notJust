@@ -53,7 +53,7 @@ class playCommand extends Command {
 			message.client.dispatcher = message.guild.voiceConnection.playStream(yt(song.url, {
 				audioonly: true
 			}), {
-				passes: '3'
+				passes: '5'
 			});
 			message.client.dispatcher.on('end', () => {
 	//collector.stop();
