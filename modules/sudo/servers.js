@@ -10,7 +10,7 @@ class serversCommand extends Command {
 	}
 
 	async run(message, args, api) {
-		const guilds = message.client.guilds.map(g => '`' + g.name + '(' + g.id + ')`').join("\n");
+		const guilds = message.client.guilds.map(g => '`' + g.name + ' (' + g.id + ')`').join("\n");
 
 		let embed = new Discord.RichEmbed()
 		//embed.setTimestamp()
@@ -19,8 +19,9 @@ class serversCommand extends Command {
 		//embed.setFooter('Replying to: ' + this.message.author.tag)
 		//embed.setTimestamp()
 		embed.setFooter('Replying to ' + message.author.tag)
-		embed.setDescription(String.fromCharCode(8203))
-		embed.addField('`List`', guilds, false)
+		embed.setDescription('\n' + guilds)
+		//embed.setDescription(String.fromCharCode(8203))
+		//embed.addField('`List`', guilds, false)
 		message.channel.send({
 			embed
 		})
