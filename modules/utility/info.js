@@ -6,7 +6,7 @@ class infoCommand extends Command {
 	constructor() {
 		super({
 			name: 'info',
-			help: 'Get info about a user or server',
+			help: 'Get user/server/role/channel info',
 			lhelp: '{server/user/role} [user/role name]\n{server/user/role} is whether to get info about the server, a user, or a role\n[user/role name] is the user or to get info on (if user, defaults to message author)'
 		})
 	}
@@ -80,9 +80,9 @@ class infoCommand extends Command {
 			})
 		} else if (argg.indexOf('role') >= 0) {
 			var role
-			args.splice(0,1)
+			args.splice(0, 1)
 			var argsF = args.join(' ')
-			
+
 			if (argsF) {
 				role = message.guild.roles.find("name", argsF);
 			} else {
@@ -111,11 +111,11 @@ class infoCommand extends Command {
 			embed.addField('`ID`', id, false)
 			embed.addField('`Position`', pos, true)
 			embed.addField('`Hoisted`', hoist, true)
-			
+
 			embed.addField('`Color`', color, true)
 			embed.addField('`Created`', time, true)
-			
-			
+
+
 
 
 
