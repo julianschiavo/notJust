@@ -36,6 +36,10 @@ class unmuteCommand extends Command {
 			}
 		}
 		if (role) {
+			if (user.hasPermission("KICK_MEMBERS") && message.guild.ownerID !== user.id) {
+				api.error('You can\'t unmute staff members unless you are the server owner.')
+				return
+			}
 			if (!user.roles.has(role.id)) {
 				api.error('This user isn\'t muted!')
 				return
