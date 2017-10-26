@@ -8,6 +8,11 @@ class serversCommand extends Command {
 			help: 'Get a list of servers'
 		})
 	}
+	
+	hasPermission(message) {
+		if (message.author.id == require('../../config.json').owner) return true
+		return false
+	}
 
 	async run(message, args, api) {
 		const guilds = message.client.guilds.map(g => '`' + g.name + '` (' + g.id + ')').join("\n");
