@@ -6,7 +6,7 @@ class purgeCommand extends Command {
 		super({
 			name: 'purge',
 			help: 'Purge messages',
-			lhelp: '{count} [user] [@user] [reason]\n{count} is the number of messages to purge (2-100)\n[user] is optional - specify it if you want to delete messages from a user - if you do, [@user] is the user\'s mention/ID to only delete their messages\n[reason] is the Audit Log reason for the ban'
+			lhelp: '{count} [user]\n{count} is the number of messages to purge (2-100)\n[user] is a user\'s mention/ID to only delete their messages'
 		})
 	}
 
@@ -26,7 +26,7 @@ class purgeCommand extends Command {
 			return api.error("Please provide a number between 2 and 100 for the number of messages to delete.");
 		}
 		args.splice(0, 1)
-		const fetched = await message.channel.fetchMessages({
+		var fetched = await message.channel.fetchMessages({
 			count: deleteCount
 		});
 		if (!args[0]) {
@@ -41,8 +41,7 @@ class purgeCommand extends Command {
 			message.channel.send({
 				embed
 			})
-		}
-		if (args[0] && args[1] && args[0] == 'user') {
+		} else {
 			var user = api.getUser(args[0], 'user')
 			fetched = fetched.filter(m => m.author.id == user.id);
 			message.channel.bulkDelete(fetched)
