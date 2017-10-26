@@ -101,9 +101,9 @@ class infoCommand extends Command {
 			var id = channel.id
 			var type = channel.type
 			if (type == 'text') {
-				type = 'Text Channel'
+				type = 'Text'
 			} else if (type == 'voice') {
-				type = 'Voice Channel'
+				type = 'Voice'
 			}
 			var name = channel.name
 			let embed = new Discord.RichEmbed()
