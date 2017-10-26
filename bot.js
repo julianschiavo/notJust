@@ -55,12 +55,20 @@ bot.defaultSettings = {
 
 bot.on("guildCreate", guild => {
 	// Adding a new row to the collection uses `set(key, value)`
+	var thisConf = bot.settings.get(guild.id);
+	if (thisConf) {
+		if (thisConf.isBlacklisted == true) {
+			guild.leave()
+		}
+	} else {
 	bot.settings.set(guild.id, bot.defaultSettings);
+	}
 })
 
 bot.on("guildDelete", guild => {
 	// Removing an element uses `delete(key)`
-	bot.settings.delete(guild.id);
+	// bot.settings.delete(guild.id);
+	// EDIT: Don't delete bot settings, that way Blacklist is retained
 });
 
 bot.dispatcher = ''
