@@ -1,7 +1,9 @@
 const Discord = require('discord.js');
 const Cleverbot = require("cleverbot-node");
 const clbot = new Cleverbot;
-clbot.configure({botapi: "CC543jaFnMaaK4pY_BWQLv4CyNQ"});
+clbot.configure({
+	botapi: "CC543jaFnMaaK4pY_BWQLv4CyNQ"
+});
 
 const Command = require('../../cmdModule/commands').Command
 
@@ -14,19 +16,24 @@ class aiCommand extends Command {
 		})
 	}
 
+	hasPermission(message) {
+		if (message.client.settings.get(message.guild.id).isDonator == true || message.author.id == require('../../config.json').owner) return true
+		return false
+	}
+
 	async run(message, args, api) {
 		args.splice(0, 1)
 		if (!args[0]) {
 			api.error('Please provide some text to send to the AI.')
 		}
 		var arg = args.join(' ');
-    clbot.write(arg, (response) => {
-      message.channel.startTyping();
-      setTimeout(() => {
-        message.channel.send(response.output).catch(console.error);
-        message.channel.stopTyping();
-      }, Math.random() * (1 - 3) + 1 * 1000);
-    });
+		clbot.write(arg, (response) => {
+			message.channel.startTyping();
+			setTimeout(() => {
+				message.channel.send(response.output).catch(console.error);
+				message.channel.stopTyping();
+			}, Math.random() * (1 - 3) + 1 * 1000);
+		});
 		return true
 	}
 }
