@@ -36,9 +36,9 @@ bot.on('debug', (e) => {
 })
 
 const Enmap = require('enmap');
-const EnmapLevel = require('enmap-level');
-const tableSource = new EnmapLevel({name: "settings"});
-bot.settings = new Enmap({provider: tableSource});
+const EnmapRethink = require('enmap-rethink');
+const provider = new EnmapRethink({name: "settings"});
+bot.settings = new Enmap({provider: provider});
 //const bot.settings = new Enmap({provider: new EnmapLevel({name: "settings"});});
 
 const defaultSettings = {
