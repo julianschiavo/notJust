@@ -51,4 +51,4 @@ embed.setTitle('<:apple_music:356765236830666762> `Song Added to Queue`')
 	}
 }
 
-module.exports = joinCommand
+module.exports = addCommand
