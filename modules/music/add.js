@@ -30,7 +30,7 @@ class addCommand extends Command {
 		embed.setColor('#00ff00')
 		//embed.setTimestamp()
 		embed.setFooter('Replying to ' + message.author.tag)
-embed.setTitle('<:apple_music:356765236830666762> `Song Added to Queue`')
+embed.setTitle('<:apple_music:356765236830666762> `Queue Updated`')
 
 				
         
@@ -41,7 +41,7 @@ embed.setTitle('<:apple_music:356765236830666762> `Song Added to Queue`')
 			if(err) return api.error('Invalid YouTube Link: ' + err);
 			if (!message.client.queue.hasOwnProperty(message.guild.id)) message.client.queue[message.guild.id] = {}, message.client.queue[message.guild.id].playing = false, message.client.queue[message.guild.id].songs = [];
 			message.client.queue[message.guild.id].songs.push({url: url, title: info.title, requester: message.author.tag});
-			embed.addField('`New Song`',info.title,false)
+			embed.addField('`Video Added`',info.title,false)
       message.channel.send({
 					embed
 				})
