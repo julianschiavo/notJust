@@ -36,7 +36,7 @@ class unmuteCommand extends Command {
 			}
 		}
 		if (role) {
-			if (!message.member.roles.has(role.id)) {
+			if (!user.roles.has(role.id)) {
 				api.error('This user isn\'t muted!')
 				return
 			}
