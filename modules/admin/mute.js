@@ -36,16 +36,16 @@ class muteCommand extends Command {
 			}
 		}
 		if (role) {
-			if(!message.member.roles.has(role.id)) {
+			if(message.member.roles.has(role.id)) {
 			var reason
 			if (args[0]) {
 				reason = args.join(' ');
-				user.addRole(role, reason)
+				user.removeRole(role, reason)
 			} else {
-				user.addRole(role)
+				user.removeRole(role)
 			}
 			let embed = new Discord.RichEmbed()
-			embed.setTitle('<:apple_muted:372902540393709569> `Muted ' + user.user.username + '`')
+			embed.setTitle('<:apple_muted:372902540393709569> `Unmuted ' + user.user.username + '`')
 			embed.setDescription(String.fromCharCode(8203))
 			embed.setColor('#00ff00')
 			if (reason) {
@@ -61,12 +61,12 @@ class muteCommand extends Command {
 				var reason
 			if (args[0]) {
 				reason = args.join(' ');
-				user.removeRole(role, reason)
+				user.addRole(role, reason)
 			} else {
-				user.removeRole(role)
+				user.addRole(role)
 			}
 			let embed = new Discord.RichEmbed()
-			embed.setTitle('<:apple_muted:372902540393709569> `Unmuted ' + user.user.username + '`')
+			embed.setTitle('<:apple_muted:372902540393709569> `Muted ' + user.user.username + '`')
 			embed.setDescription(String.fromCharCode(8203))
 			embed.setColor('#00ff00')
 			if (reason) {
