@@ -12,7 +12,7 @@ class currCommand extends Command {
 
 	hasPermission(message) {
 		if (message.guild.member(message.author).hasPermission("KICK_MEMBERS")) return true
-    //if (message.author.id == message.guild.ownerID) return true
+		//if (message.author.id == message.guild.ownerID) return true
 		return false
 	}
 
@@ -24,26 +24,26 @@ class currCommand extends Command {
 		}
 
 		const thisConf = message.client.settings.get(message.guild.id);
-    var muteRole = thisConf.muteRole
-    muteRole = message.guild.roles.find("name", muteRole)
-    var rmuteRole = muteRole
-    
-    var logChannel = thisConf.logChannel
-    logChannel = message.guild.channels.find("name", logChannel)
-    var rlogChannel = logChannel
-					let embed = new Discord.RichEmbed()
-					embed.setTitle('<:apple_pencil_paper:359560552701231106> `Current Preferences`')
-					embed.addField('`Mute Role` (muteRole)', rmuteRole, false)
-          embed.addField('`Log Channel` (logChannel)', rlogChannel, false)
-		
-					embed.setDescription(String.fromCharCode(8203))
-					embed.setColor('#00ff00')
-					//embed.setTimestamp()
-					embed.setFooter('Replying to ' + message.author.tag)
+		var muteRole = thisConf.muteRole
+		muteRole = message.guild.roles.find("name", muteRole)
+		var rmuteRole = muteRole
 
-					message.channel.send({
-						embed
-					})
+		var logChannel = thisConf.logChannel
+		logChannel = message.guild.channels.find("name", logChannel)
+		var rlogChannel = logChannel
+		let embed = new Discord.RichEmbed()
+		embed.setTitle('<:apple_pencil_paper:359560552701231106> `Current Preferences`')
+		embed.addField('`Mute Role` (muteRole)', rmuteRole, false)
+		embed.addField('`Log Channel` (logChannel)', rlogChannel, false)
+
+		embed.setDescription(String.fromCharCode(8203))
+		embed.setColor('#00ff00')
+		//embed.setTimestamp()
+		embed.setFooter('Replying to ' + message.author.tag)
+
+		message.channel.send({
+			embed
+		})
 
 
 
