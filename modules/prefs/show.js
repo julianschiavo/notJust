@@ -71,9 +71,9 @@ class currCommand extends Command {
 
 			let embed = new Discord.RichEmbed()
 			if (guild) {
-				embed.setTitle('<:apple_hammer:359560554479878144> `Preferences for ' + guild.name + '`')
+				embed.setTitle('<:apple_pencil_paper:359560552701231106> `Preferences for ' + guild.name + '`')
 			} else {
-				embed.setTitle('<:apple_hammer:359560554479878144> `Preferences for ' + gid + '`')
+				embed.setTitle('<:apple_pencil_paper:359560552701231106> `Preferences for ' + gid + '`')
 			}
 			embed.setDescription(String.fromCharCode(8203))
 			embed.setColor('#00ff00')
