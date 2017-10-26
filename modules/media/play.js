@@ -55,6 +55,17 @@ class playCommand extends Command {
 			}), {
 				passes: '3'
 			});
+			message.client.dispatcher.on('end', () => {
+	//collector.stop();
+	//play(message.client.queue[message.guild.id].songs.shift());
+});
+
+message.client.dispatcher.on('error', (err) => {
+	return api.error(err)/*.then(() => {
+		//collector.stop();
+		//play(message.client.queue[message.guild.id].songs.shift());
+	});*/
+});
 			/*let collector = message.channel.createCollector(m => m);
 			collector.on('message', m => {
 				if (m.content.startsWith('m.pause')) {
