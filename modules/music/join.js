@@ -24,7 +24,7 @@ class joinCommand extends Command {
 		}
 
 		let embed = new Discord.RichEmbed()
-		embed.setTitle('<:apple_symbol_hash:359559749785616387> `Voice Channel Joined`')
+		
 		embed.setDescription(String.fromCharCode(8203))
 		embed.setColor('#00ff00')
 		//embed.setTimestamp()
@@ -37,6 +37,7 @@ class joinCommand extends Command {
 			if (!voiceChannel || voiceChannel.type !== 'voice') return api.error('I wasn\'t able to connect to your voice channel.');
 			voiceChannel.join().then(connection => {
 				resolve(connection)
+				embed.setTitle('<:apple_symbol_hash:359559749785616387> `Joined' + voiceChannel.name + '`')
 				message.channel.send({
 					embed
 				})
