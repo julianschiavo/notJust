@@ -31,15 +31,16 @@ class listCommand extends Command {
 		const thisConf = message.client.settings.get(message.guild.id);
     var muteRole = thisConf.muteRole
     muteRole = '<@&' + message.guild.roles.find("name", muteRole).id + '>'
-    var rmuteRole = 'Code Name: `muteRole`\nCurrent Value: ' + muteRole
+    var rmuteRole = 'Current Value: ' + muteRole
     
     var logChannel = thisConf.logChannel
     logChannel = '<#' + message.guild.channels.find("name", logChannel).id + '>'
-    var rlogChannel = 'Code Name: `logChannel`\nCurrent Value: ' + logChannel
+    var rlogChannel = 'Current Value: ' + logChannel
 					let embed = new Discord.RichEmbed()
 					embed.setTitle('<:apple_pencil_paper:359560552701231106> `Current Preferences`')
-					embed.addField('`Mute Role`', rmuteRole, false)
-          embed.addField('`Log Channel`', rlogChannel, false)
+					embed.addField('`Mute Role` (muteRole)', rmuteRole, false)
+          embed.addField('`Log Channel` (logChannel)', rlogChannel, false)
+		embed.addField('`Setting Preferences`', 'To set preferences, use `.set [code name] [value]`. [code name] is the name displayed in brackets next to the preference name, value is the value you want to set the preference to.', false)
 					embed.setDescription(String.fromCharCode(8203))
 					embed.setColor('#00ff00')
 					//embed.setTimestamp()
