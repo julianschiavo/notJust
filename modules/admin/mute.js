@@ -5,8 +5,8 @@ class muteCommand extends Command {
 	constructor() {
 		super({
 			name: 'mute',
-			help: 'Mute a user',
-			lhelp: '{user} [reason]\n{user} is the user to ban (id or mention)\n[reason] is the Audit Log reason for the ban'
+			help: 'Mute a member',
+			lhelp: '{user} [reason]\n{user} is the user to mute (id or mention)\n[reason] is the Audit Log reason for the mute'
 		})
 	}
 
