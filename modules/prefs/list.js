@@ -34,7 +34,7 @@ class listCommand extends Command {
     var rmuteRole = muteRole
     
     var logChannel = thisConf.logChannel
-    logChannel = '<#' + message.guild.channels.find("name", logChannel).id + '>'
+    logChannel = message.guild.channels.find("name", logChannel)
     var rlogChannel = logChannel
 					let embed = new Discord.RichEmbed()
 					embed.setTitle('<:apple_pencil_paper:359560552701231106> `Current Preferences`')
