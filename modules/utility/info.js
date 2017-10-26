@@ -11,7 +11,7 @@ class infoCommand extends Command {
 		})
 	}
 	hasPermission(message) {
-		if (message.channel.type !== 'text') return false
+		if (!message.guild && message.channel.type !== 'text') return false
 		return true
 	}
 
