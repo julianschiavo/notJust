@@ -100,10 +100,14 @@ class infoCommand extends Command {
 			var time = ta.ago(channel.createdTimestamp);
 			var id = channel.id
 			var type = channel.type
+			var members
+			var limit
 			if (type == 'text') {
 				type = 'Text Channel'
 			} else if (type == 'voice') {
 				type = 'Voice Channel'
+				members = '`' + channel.members.map(r => r.name).join('`, `') + '`'
+				limit = channel.userLimit
 			}
 			var name = channel.name
 			let embed = new Discord.RichEmbed()
@@ -112,7 +116,13 @@ class infoCommand extends Command {
 			embed.setFooter('Replying to ' + message.author.tag)
 			embed.setDescription(String.fromCharCode(8203))
 			embed.setThumbnail(icon)
+			if (members) {
+			embed.addField('`Members`', members, false)
+			}
 			embed.addField('`Position`', pos, true)
+			if (limit) {
+				embed.addField('`User Limit`', limit , true)
+			}
 			embed.addField('`Created`', time, true)
 			embed.addField('`Type`', type, true)
 			embed.addField('`ID`', id, true)
