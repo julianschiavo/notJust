@@ -17,7 +17,7 @@ class aiCommand extends Command {
 	}
 
 	hasPermission(message) {
-		if (message.client.settings.get(message.guild.id).isDonator == true || message.author.id == require('../../config.json').owner) return true
+		if (message.guild && (message.client.settings.get(message.guild.id).isDonator == true || message.author.id == require('../../config.json').owner)) return true
 		return false
 	}
 
