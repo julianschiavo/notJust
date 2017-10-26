@@ -48,7 +48,9 @@ bot.queue = {};
 bot.defaultSettings = {
 	logChannel: "logs",
 	muteRole: "Muted",
-	selfRoles: ""
+	selfRoles: "",
+	isDonator: false,
+	isBlacklisted: false
 }
 
 bot.on("guildCreate", guild => {
