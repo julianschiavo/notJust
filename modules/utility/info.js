@@ -102,8 +102,10 @@ class infoCommand extends Command {
 			var type = channel.type
 			var members
 			var limit
+			var topic
 			if (type == 'text') {
 				type = 'Text Channel'
+				topic = channel.topic
 			} else if (type == 'voice') {
 				type = 'Voice Channel'
 				members = channel.members.map(r => r.name).join('`, `')
@@ -120,6 +122,9 @@ class infoCommand extends Command {
 			if (channel.members.size >= '1') {
 			embed.addField('`Members`', '`' + members + '`', false)
 			}
+			}
+			if (topic) {
+				embed.addField('`Topic`', topic, false)
 			}
 			embed.addField('`Position`', pos, true)
 			if (limit) {
