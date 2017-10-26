@@ -41,14 +41,15 @@ const tableSource = new EnmapLevel({name: "settings"});
 bot.settings = new Enmap({provider: tableSource});
 //const bot.settings = new Enmap({provider: new EnmapLevel({name: "settings"});});
 
-const defaultSettings = {
+bot.defaultSettings = {
   logChannel: "logs",
-  muteRole: "Muted"
+  muteRole: "Muted",
+  selfRoles: ""
 }
 
 bot.on("guildCreate", guild => {
   // Adding a new row to the collection uses `set(key, value)`
-  bot.settings.set(guild.id, defaultSettings);
+  bot.settings.set(guild.id, bot.defaultSettings);
 })
 
 bot.on("guildDelete", guild => {
