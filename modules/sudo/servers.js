@@ -27,7 +27,7 @@ class serversCommand extends Command {
 		//embed.setTimestamp()
 		embed.setFooter('Replying to ' + message.author.tag)
 		//embed.setDescription('\n' + guilds)
-		//embed.setDescription(String.fromCharCode(8203))
+		embed.setDescription(String.fromCharCode(8203))
 		embed.addField('`ID`', ids, true)
 		embed.addField('`Name`', names, true)
 		
