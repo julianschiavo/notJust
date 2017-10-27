@@ -15,8 +15,10 @@ class serversCommand extends Command {
 	}
 
 	async run(message, args, api) {
-		const guilds = message.client.guilds.map(g => g.id + ': **`' + g.name + '`** (' + g.members.size + ')').join("\n");
-
+		//const guilds = message.client.guilds.map(g => g.id + ': **`' + g.name + '`** (' + g.members.size + ')').join("\n");
+                const ids = message.client.guilds.map(g => g.id).join("\n");
+		const names = message.client.guilds.map(g => '**`' + g.name + '`**').join("\n");
+		const sizes = message.client.guilds.map(g => g.members.size).join("\n");
 		let embed = new Discord.RichEmbed()
 		//embed.setTimestamp()
 		embed.setTitle('<:apple_symbol_info:359559750096257024> `Server List`')
@@ -24,9 +26,11 @@ class serversCommand extends Command {
 		//embed.setFooter('Replying to: ' + this.message.author.tag)
 		//embed.setTimestamp()
 		embed.setFooter('Replying to ' + message.author.tag)
-		embed.setDescription('\n' + guilds)
+		//embed.setDescription('\n' + guilds)
 		//embed.setDescription(String.fromCharCode(8203))
-		//embed.addField('`List`', guilds, false)
+		embed.addField('`Name`', names, true)
+		embed.addField('`ID`', ids, true)
+		embed.addField('`Count`', sizes, true)
 		message.channel.send({
 			embed
 		})
