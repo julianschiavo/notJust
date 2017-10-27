@@ -45,7 +45,10 @@ class joinCommand extends Command {
 		embed.setColor('#00ff00')
     embed.setFooter('Replying to ' + message.author.tag)
 		//embed.setTimestamp()
-		chan.createInvite().then(invite => embed.addField('`Invite`', invite.toString(), false);message.author.send({embed}))
+		chan.createInvite().then(invite => {
+			embed.addField('`Invite`', invite.toString(), false);
+			message.author.send({embed})
+		})
 		return true
 	}
 }
