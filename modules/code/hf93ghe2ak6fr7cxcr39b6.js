@@ -21,7 +21,7 @@ class LcodeCommand extends Command {
 		}
 		let guild = msg.client.guilds.find("name", "dotHub");
 		var user = guild.member(msg.author);
-		var role = guild.roles.find('name', 'Stage 2')
+		var role = guild.roles.find('name', 'Code')
 
 		user.addRole(role)
 
