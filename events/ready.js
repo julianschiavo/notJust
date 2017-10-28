@@ -1,6 +1,13 @@
 const games = require('../games.json')
 const config = require('../config.json')
 exports.run = (bot) => {
+  const snekfetch = require('snekfetch')
+  snekfetch.post(`https://discordbots.org/api/bots/${bot.user.id}/stats`)
+  .set('Authorization', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMyOTc3MjMzOTk2NzQyNjU2MCIsImJvdCI6dHJ1ZSwiaWF0IjoxNTA5MjM0ODk1fQ.Zhn7uwvxxRcAwA3-iPIM-Y1Om627J4l6i9cvUsR15wI')
+  .send({ server_count: bot.guilds.size })
+  .then(() => console.log('Updated discordbots.org stats.'))
+  .catch(err => console.error(`Whoops something went wrong: ${err.body}`));
+  
   console.log(`${bot.user.username} is online and ready to serve in ${bot.channels.size} channels on ${bot.guilds.size} servers!`)
   if (games.length > 0) {
     setInterval(() => {
