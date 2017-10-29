@@ -10,5 +10,8 @@
     "db": "dotSandbox",
     "user": "admin",
     "password": "your password"
+  },
+  "apiKeys": {
+    "cleverbot": ""
   }
 }

@@ -1,9 +1,14 @@
 const Discord = require('discord.js');
 const Cleverbot = require("cleverbot-node");
+const config = require('./config.json')
 const clbot = new Cleverbot;
+// clbot.configure({
+// 	botapi: "CC543jaFnMaaK4pY_BWQLv4CyNQ"
+// });
+
 clbot.configure({
-	botapi: "CC543jaFnMaaK4pY_BWQLv4CyNQ"
-});
+	botapi: config.apiKeys.cleverbot
+})
 
 const Command = require('../../cmdModule/commands').Command
 
