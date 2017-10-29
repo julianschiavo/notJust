@@ -54,6 +54,13 @@ bot.defaultSettings = {
 }
 
 bot.on("guildCreate", guild => {
+	const snekfetch = require('snekfetch')
+
+snekfetch.post(`https://discordbots.org/api/bots/${bot.user.id}/stats`)
+  .set('Authorization', config.dbotstoken)
+  .send({ server_count: bot.guilds.size })
+  .then(() => console.log('Updated discordbots.org stats.'))
+  .catch(err => console.error(`Whoops something went wrong: ${err.body}`));
 	// Adding a new row to the collection uses `set(key, value)`
 	var conf = bot.settings.get(guild.id)
 	if (conf) {
@@ -70,6 +77,13 @@ bot.on("guildCreate", guild => {
 })
 
 bot.on("guildDelete", guild => {
+	const snekfetch = require('snekfetch')
+
+snekfetch.post(`https://discordbots.org/api/bots/${bot.user.id}/stats`)
+  .set('Authorization', config.dbotstoken)
+  .send({ server_count: bot.guilds.size })
+  .then(() => console.log('Updated discordbots.org stats.'))
+  .catch(err => console.error(`Whoops something went wrong: ${err.body}`));
 	// Removing an element uses `delete(key)`
 	// bot.settings.delete(guild.id);
 	// EDIT: Don't delete bot settings, that way Blacklist is retained
