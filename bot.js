@@ -54,6 +54,13 @@ bot.defaultSettings = {
 }
 
 bot.on("guildCreate", guild => {
+	const snekfetch = require('snekfetch')
+
+snekfetch.post(`https://discordbots.org/api/bots/${bot.user.id}/stats`)
+  .set('Authorization', config.apiKeys.dbots)
+  .send({ server_count: bot.guilds.size })
+  .then(() => console.log('Updated discordbots.org stats.'))
+  .catch(err => console.error(`Whoops something went wrong: ${err.body}`));
 	// Adding a new row to the collection uses `set(key, value)`
 	var conf = bot.settings.get(guild.id)
 	if (conf) {
@@ -70,6 +77,13 @@ bot.on("guildCreate", guild => {
 })
 
 bot.on("guildDelete", guild => {
+	const snekfetch = require('snekfetch')
+
+snekfetch.post(`https://discordbots.org/api/bots/${bot.user.id}/stats`)
+  .set('Authorization', config.apiKeys.dbots)
+  .send({ server_count: bot.guilds.size })
+  .then(() => console.log('Updated discordbots.org stats.'))
+  .catch(err => console.error(`Whoops something went wrong: ${err.body}`));
 	// Removing an element uses `delete(key)`
 	// bot.settings.delete(guild.id);
 	// EDIT: Don't delete bot settings, that way Blacklist is retained
@@ -104,8 +118,8 @@ bot.dispatcher = ''
  (reaction) => reaction.emoji.id === '1️⃣' || reaction.emoji.id === '2️⃣' ||reaction.emoji.id === '3️⃣' ||reaction.emoji.id === '4️⃣'
 );
 collector.on('collect', r => msgg.channel.send(`Run lcrew to set ${member} to ${r}. I can't do it yet, sorry!`));
-  
-  
+
+
   //api.embed('#00ff00', `<:Tick:318378431051989003> \`Prestige Roles Reset for New Season\``, '')
 });*/
 

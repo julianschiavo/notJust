@@ -12,6 +12,7 @@
     "password": "your password"
   },
   "apiKeys": {
-    "cleverbot": ""
+    "cleverbot": "cleverbot api token",
+    "dbots": "discordbots.org api token"
   }
 }
