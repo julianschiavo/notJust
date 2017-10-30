@@ -55,10 +55,10 @@ exports.run = (bot) => {
 		var conf = bot.settings.get(guild.id);
 		var mutes = conf.tempMutes;
 		if (mutes.length >= 1) {
-		mutes.forEach(function(id, conf, g) {
-			if (g && g.members) {
+		mutes.forEach(function(id, conf, guild) {
+			if (guild && guild.members) {
 			var user = bot.users.get(id)
-			var member = g.members.get(user.id)
+			var member = guild.members.get(user.id)
 			if (conf.muteRole) {
 				var role = user.roles.find("name", conf.muteRole);
 				if (user.roles.has(role.id)) {
@@ -66,7 +66,7 @@ exports.run = (bot) => {
 					conf = conf.filter(function(obj) {
 						return obj == id;
 					});
-					bot.settings.set(g.id, conf);
+					bot.settings.set(guild.id, conf);
 				} else {
 					return
 				}
