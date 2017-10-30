@@ -10,18 +10,17 @@ exports.run = (bot) => {
 		.then(() => console.log('Updated discordbots.org stats.'))
 		.catch(err => console.error(`Whoops something went wrong: ${err.body}`));
 
-	function unmute(id, g, conf) {
-		var user = g.members.get(id)
+	function unmute(id, user, conf, guild) {
 		var role
 		if (conf.muteRole) {
-			role = g.roles.find("name", conf.muteRole);
+			role = user.roles.find("name", conf.muteRole);
 			if (user.roles.has(role.id)) {
 				user.removeRole(role, "Automatic unmute")
 				//conf.tempMutes.shift()
         conf = conf.filter(function(obj) {
     return obj == id;
 });
-				bot.settings.set(g.id, conf);
+				bot.settings.set(guild.id, conf);
 			} else {
 				return
 			}
@@ -30,17 +29,19 @@ exports.run = (bot) => {
 		}
 	}
 
-	function prefsCheck(g) {
-		var conf = bot.settings.get(g.id)
+	function prefsCheck(guild) {
+		var conf = bot.settings.get(guild.id)
 		if (!conf) {
-		bot.settings.set(g.id, bot.defaultSettings);
+		bot.settings.set(guild.id, bot.defaultSettings);
 		}
-		conf = bot.settings.get(g.id)
+		conf = bot.settings.get(guild.id)
 
 		if (conf.tempMutes.length >= 1) {
 			var mutes = conf.tempMutes
-			mutes.forEach(function (id, g, conf) {
-                          unmute(id,g,conf);
+			
+			mutes.forEach(function (id, user, conf, guild) {
+			  var user = guild.members.get(id)
+                          unmute(id,user,conf);
                         })
 			//mutes.forEach(unmute(id, g, conf))
 		}
