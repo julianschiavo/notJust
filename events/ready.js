@@ -48,6 +48,27 @@ exports.run = (bot) => {
 	}
 
 	bot.guilds.forEach(prefsCheck)*/
+	bot.guilds.forEach(function(guild) {
+		var conf = bot.settings.get(guild.id);
+		var mutes = conf.tempMutes;
+		mutes.forEach(function(id, conf, guild) {
+			var user = guild.members.get(id);
+			if (conf.muteRole) {
+				var role = user.roles.find("name", conf.muteRole);
+				if (user.roles.has(role.id)) {
+					user.removeRole(role, "Automatic unmute")
+					conf = conf.filter(function(obj) {
+						return obj == id;
+					});
+					bot.settings.set(guild.id, conf);
+				} else {
+					return
+				}
+			} else {
+				return
+			}
+		})
+	})
 
 	console.log(`${bot.user.username} is online and ready to serve in ${bot.channels.size} channels on ${bot.guilds.size} servers!`)
 	if (games.length > 0) {
