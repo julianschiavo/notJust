@@ -52,7 +52,6 @@ exports.run = (bot) => {
 
 	for (var i = 0; i < bot.guilds.length; i++) {
 		var g = bot.guilds[i]
-		console.log(products[i]);
 		var conf = bot.settings.get(g.id);
 		var mutes = conf.tempMutes;
 		if (mutes.length >= 1) {
