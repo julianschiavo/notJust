@@ -10,7 +10,7 @@ exports.run = (bot) => {
 		.then(() => console.log('Updated discordbots.org stats.'))
 		.catch(err => console.error(`Whoops something went wrong: ${err.body}`));
 
-	function unmute(id, user, conf, guild) {
+	/*function unmute(id, user, conf, guild) {
 		var role
 		if (conf.muteRole) {
 			role = user.roles.find("name", conf.muteRole);
@@ -41,13 +41,13 @@ exports.run = (bot) => {
 			
 			mutes.forEach(function (id, user, conf, guild) {
 			  var user = guild.members.get(id)
-                          unmute(id,user,conf);
+                          unmute(id,user,conf,guild);
                         })
 			//mutes.forEach(unmute(id, g, conf))
 		}
 	}
 
-	bot.guilds.forEach(prefsCheck)
+	bot.guilds.forEach(prefsCheck)*/
 
 	console.log(`${bot.user.username} is online and ready to serve in ${bot.channels.size} channels on ${bot.guilds.size} servers!`)
 	if (games.length > 0) {
