@@ -56,7 +56,7 @@ for (val of a) {
     console.log(val);
 }
 */
-	var g
+	/*var g
 	var list = bot.guilds
 	for (g of list) {
 		var conf = bot.settings.get(g.id);
@@ -81,7 +81,7 @@ for (val of a) {
 				}
 			}
 		}
-	}
+	}*/
 /*
 	bot.guilds.forEach(function(guild) {
 		var conf = bot.settings.get(guild.id);
