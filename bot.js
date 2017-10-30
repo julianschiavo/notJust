@@ -50,7 +50,8 @@ bot.defaultSettings = {
 	muteRole: "Muted",
 	selfRoles: "",
 	isDonator: false,
-	isBlacklisted: false
+	isBlacklisted: false,
+	tempMutes: {}
 }
 
 bot.on("guildCreate", guild => {
