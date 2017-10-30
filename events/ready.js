@@ -57,7 +57,7 @@ exports.run = (bot) => {
 		if (mutes.length >= 1) {
 		mutes.forEach(function(id, conf, g) {
 			var user = bot.users.get(id)
-			var member = g.member(user)
+			var member = g.member.get(user.id)
 			if (conf.muteRole) {
 				var role = user.roles.find("name", conf.muteRole);
 				if (user.roles.has(role.id)) {
