@@ -48,10 +48,17 @@ exports.run = (bot) => {
 	}
 
 	bot.guilds.forEach(prefsCheck)
-	*/
-
+	
+	
+	var val;
+var a = ["a", "b", "c"];
+for (val of a) {
+    console.log(val);
+}
+*/
+	var i
 	var list = bot.guilds
-	for (var i = 0; i < list.size; i++) {
+	for (i of list) {
 		var g = list[i];
 		var conf = bot.settings.get(g.id);
 		var mutes = conf.tempMutes;
@@ -76,7 +83,6 @@ exports.run = (bot) => {
 			}
 		}
 	}
-
 /*
 	bot.guilds.forEach(function(guild) {
 		var conf = bot.settings.get(guild.id);
