@@ -39,7 +39,10 @@ exports.run = (bot) => {
 
 		if (conf.tempMutes.length >= 1) {
 			var mutes = conf.tempMutes
-			mutes.forEach(unmute, g, conf)
+			mutes.forEach(function (id, g, conf) {
+                          unmute(id,g,conf);
+                        })
+			//mutes.forEach(unmute(id, g, conf))
 		}
 	}
 
