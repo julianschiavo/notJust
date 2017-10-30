@@ -83,6 +83,65 @@ class setCommand extends Command {
 				}
 			}
 		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		if (name == 'log' || name == 'logs' || name == 'logchannel' || name == 'channel') {
+			if (!isN(value)) {
+				let channel = message.guild.channels.find("name", value)
+				if (channel && countWords(channel.name) == 1) {
+					/* SET IT TO CHANNEL.NAME */
+					thisConf.logChannel = channel.name;
+					message.client.settings.set(message.guild.id, thisConf);
+					let embed = new Discord.RichEmbed()
+					embed.setTitle('<:green_tick:330712173288488960> `Log Channel Set`')
+					embed.addField('`Value`', channel.name, false)
+					embed.setDescription(String.fromCharCode(8203))
+					embed.setColor('#00ff00')
+					//embed.setTimestamp()
+					embed.setFooter('Replying to ' + message.author.tag)
+
+					message.channel.send({
+						embed
+					})
+				} else {
+					api.error('The specified log channel name is invalid. Try again, making sure it doesn\'t contain spaces.')
+				}
+			} else {
+				let channel = message.guild.channels.get(value)
+				if (channel && countWords(channel.name) == 1) {
+					/* SET IT TO CHANNEL.NAME */
+					thisConf.logChannel = channel.name;
+					message.client.settings.set(message.guild.id, thisConf);
+					let embed = new Discord.RichEmbed()
+					embed.setTitle('<:green_tick:330712173288488960> `Log Channel Set`')
+					embed.addField('`Value`', channel.name, false)
+					embed.setDescription(String.fromCharCode(8203))
+					embed.setColor('#00ff00')
+					//embed.setTimestamp()
+					embed.setFooter('Replying to ' + message.author.tag)
+
+					message.channel.send({
+						embed
+					})
+				} else {
+					api.error('The specified log channel ID is invalid. Try again, making sure the channel name doesn\'t contain spaces.')
+				}
+			}
+		}
+		
+		
+		
+		
+		
+		
+		
 		return true
 	}
 }
