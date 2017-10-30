@@ -49,8 +49,10 @@ class roleCommand extends Command {
 		args.splice(0, 1)
 		var reason
 		var type
+		var typ2
 		if (user.roles.has(role.id)) {
-			type = 'Added'
+			type = 'Removed'
+			typ2 = 'from'
 			if (args[0]) {
 				reason = args.join(' ');
 				user.removeRole(role, reason)
@@ -58,7 +60,8 @@ class roleCommand extends Command {
 				user.removeRole(role)
 			}
 		} else {
-			type = 'Removed'
+			type = 'Added'
+			typ2 = 'to'
 			if (args[0]) {
 				reason = args.join(' ');
 				user.addRole(role, reason)
@@ -67,7 +70,7 @@ class roleCommand extends Command {
 			}
 		}
 		let embed = new Discord.RichEmbed()
-		embed.setTitle('<:apple_hammer:359560554479878144> `' + type + ' ' + role.name + ' to ' + user.user.username + '`')
+		embed.setTitle('<:apple_hammer:359560554479878144> `' + type + ' ' + role.name + ' ' + typ2 + ' ' + user.user.username + '`')
 		embed.setDescription(String.fromCharCode(8203))
 		embed.setColor('#00ff00')
 		if (reason) {
