@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const Cleverbot = require("cleverbot-node");
-const config = require('./config.json')
+const config = require('../../config.json')
 const clbot = new Cleverbot;
 clbot.configure({
 	botapi: config.apiKeys.cleverbot
