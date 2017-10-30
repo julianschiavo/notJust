@@ -48,7 +48,7 @@ bot.queue = {};
 bot.defaultSettings = {
 	logChannel: "logs",
 	muteRole: "Muted",
-	selfRoles: "",
+	selfRoles: [],
 	isDonator: false,
 	isBlacklisted: false,
 	tempMutes: []
