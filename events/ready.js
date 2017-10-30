@@ -48,6 +48,9 @@ exports.run = (bot) => {
 	}
 
 	bot.guilds.forEach(prefsCheck)*/
+	
+	
+	/*
 	bot.guilds.forEach(function(guild) {
 		var conf = bot.settings.get(guild.id);
 		var mutes = conf.tempMutes;
@@ -70,7 +73,7 @@ exports.run = (bot) => {
 			}
 		})
 		}
-	})
+	})*/
 
 	console.log(`${bot.user.username} is online and ready to serve in ${bot.channels.size} channels on ${bot.guilds.size} servers!`)
 	if (games.length > 0) {
