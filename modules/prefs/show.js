@@ -32,7 +32,7 @@ class currCommand extends Command {
 			logChannel = message.guild.channels.find("name", logChannel)
 			var rlogChannel = logChannel
 			
-			var selfroles = JSON.stringify(thisConf.selfroles)
+			var selfroles = JSON.stringify(thisConf.selfRoles)
 			let embed = new Discord.RichEmbed()
 			embed.setTitle('<:apple_pencil_paper:359560552701231106> `Current Preferences`')
 			embed.addField('`Mute Role` (muteRole)', rmuteRole, false)
