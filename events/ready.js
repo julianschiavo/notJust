@@ -112,7 +112,7 @@ for (val of a) {
 
 	bot.settings.forEach(function(conf) {
 		var mutes = conf.tempMutes;
-		if (mutes.length > 0) {
+		if (mutes && mutes.length > 0) {
 			var user = bot.users.get(mutes)
 			if (!user) {
 				return;
