@@ -56,10 +56,9 @@ for (val of a) {
     console.log(val);
 }
 */
-	var i
+	var g
 	var list = bot.guilds
-	for (i of list) {
-		var g = i
+	for (g of list) {
 		var conf = bot.settings.get(g.id);
 		var mutes = conf.tempMutes;
 		if (mutes.length > 0) {
