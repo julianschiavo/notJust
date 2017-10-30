@@ -32,7 +32,9 @@ exports.run = (bot) => {
 
 	function prefsCheck(g) {
 		var conf = bot.settings.get(g.id)
+		if (!conf) {
 		bot.settings.set(g.id, bot.defaultSettings);
+		}
 		conf = bot.settings.get(g.id)
 
 		if (conf.tempMutes.length >= 1) {
