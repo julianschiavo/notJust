@@ -50,27 +50,28 @@ exports.run = (bot) => {
 	bot.guilds.forEach(prefsCheck)
 	*/
 
-	for (var i = 0; i < bot.guilds.length; i++) {
-		var g = bot.guilds[i]
+	var list = bot.guilds
+	for (var i = 0; i < list.size; i++) {
+		var g = list[i];
 		var conf = bot.settings.get(g.id);
 		var mutes = conf.tempMutes;
 		if (mutes.length > 0) {
 			for (var l = 0; l < mutes.length; l++) {
-				var id = mutes[l]
-				var user = g.members.get(id)
+				var id = mutes[l];
+				var user = g.members.get(id);
 				if (conf.muteRole) {
 					var role = user.roles.find("name", conf.muteRole);
 					if (user.roles.has(role.id)) {
-						user.removeRole(role, "Automatic Unmute")
+						user.removeRole(role, "Automatic Unmute");
 						conf = conf.filter(function(obj) {
 							return obj == id;
 						});
 						bot.settings.set(g.id, conf);
 					} else {
-						return
+						return;
 					}
 				} else {
-					return
+					return;
 				}
 			}
 		}
