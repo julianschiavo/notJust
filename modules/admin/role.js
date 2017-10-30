@@ -50,32 +50,36 @@ class roleCommand extends Command {
 		var reason
 		var type
 		if (user.roles.has(role.id)) {
-				type = 'Added'
-				if (args[0]) {
-					reason = args.join(' ');
-					user.removeRole(role, reason)
-				} else {
-					user.removeRole(role)
-				}
+			type = 'Added'
+			if (args[0]) {
+				reason = args.join(' ');
+				user.removeRole(role, reason)
 			} else {
-				type = 'Removed'
-				if (args[0]) {
-					reason = args.join(' ');
-					user.addRole(role, reason)
-				} else {
-					user.addRole(role)
-				}
+				user.removeRole(role)
 			}
-			let embed = new Discord.RichEmbed()
-			embed.setTitle('<:apple_hammer:359560554479878144> `' + type + ' ' + role.name + ' to ' + user.user.username + '`') embed.setDescription(String.fromCharCode(8203)) embed.setColor('#00ff00') if (reason) {
-				embed.addField('`Reason`', reason, false)
+		} else {
+			type = 'Removed'
+			if (args[0]) {
+				reason = args.join(' ');
+				user.addRole(role, reason)
+			} else {
+				user.addRole(role)
 			}
-			embed.setFooter('Replying to ' + message.author.tag)
-
-			message.channel.send({
-				embed
-			}) return true
 		}
-	}
+		let embed = new Discord.RichEmbed()
+		embed.setTitle('<:apple_hammer:359560554479878144> `' + type + ' ' + role.name + ' to ' + user.user.username + '`')
+		embed.setDescription(String.fromCharCode(8203))
+		embed.setColor('#00ff00')
+		if (reason) {
+			embed.addField('`Reason`', reason, false)
+		}
+		embed.setFooter('Replying to ' + message.author.tag)
 
-	module.exports = roleCommand
+		message.channel.send({
+			embed
+		})
+		return true
+	}
+}
+
+module.exports = roleCommand
