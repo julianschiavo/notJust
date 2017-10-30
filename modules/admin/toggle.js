@@ -54,7 +54,7 @@ class toggleCommand extends Command {
 		}
 		var check = conf.includes(role.id)
 		if (check == false) {
-			api.error('The specified role is not a self role')
+			api.error('The specified role is not configured as a self role.')
 			return;
 		}
 		args.splice(0, 1)
