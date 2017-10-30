@@ -49,7 +49,7 @@ class roleCommand extends Command {
 		args.splice(0, 1)
 		var reason
 		var type
-		if (user.roles.has(role.id) {
+		if (user.roles.has(role.id)) {
 				type = 'Added'
 				if (args[0]) {
 					reason = args.join(' ');
