@@ -10,7 +10,7 @@ exports.run = (bot) => {
 		.then(() => console.log('Updated discordbots.org stats.'))
 		.catch(err => console.error(`Whoops something went wrong: ${err.body}`));
 
-	function unmute(id, g, conf) {
+	/*function unmute(id, g, conf) {
 		var user = g.members.get(id)
 		var role
 		if (conf.muteRole) {
@@ -40,7 +40,7 @@ exports.run = (bot) => {
 		}
 	}
 
-	bot.guilds.forEach(prefsCheck)
+	bot.guilds.forEach(prefsCheck)*/
 
 
 	console.log(`${bot.user.username} is online and ready to serve in ${bot.channels.size} channels on ${bot.guilds.size} servers!`)
