@@ -54,7 +54,7 @@ exports.run = (bot) => {
 		var g = bot.guilds[i]
 		var conf = bot.settings.get(g.id);
 		var mutes = conf.tempMutes;
-		if (mutes.length >= 1) {
+		if (mutes.length > 0) {
 			for (var l = 0; l < mutes.length; l++) {
 				var id = mutes[l]
 				var user = g.members.get(id)
