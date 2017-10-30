@@ -114,7 +114,13 @@ for (val of a) {
 		var mutes = conf.tempMutes;
 		if (mutes.length > 0) {
 			var user = bot.users.get(mutes)
+			if (!user) {
+				return;
+			}
 			var gs = user.guilds.map(g => g.id)
+			if (!gs) {
+				return;
+			}
 			gs.forEach(function(guild) {
 				var gui = bot.guilds.get(guild)
 				var member = gui.members.get(user.id)
