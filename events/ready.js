@@ -50,13 +50,14 @@ exports.run = (bot) => {
 	bot.guilds.forEach(prefsCheck)*/
 	
 	
-	/*
+	
 	bot.guilds.forEach(function(guild) {
 		var conf = bot.settings.get(guild.id);
 		var mutes = conf.tempMutes;
 		if (mutes.length >= 1) {
 		mutes.forEach(function(id, conf, g) {
-			var user = g.members.find("name", id);
+			var user = bot.users.get(id)
+			var member = g.members(user)
 			if (conf.muteRole) {
 				var role = user.roles.find("name", conf.muteRole);
 				if (user.roles.has(role.id)) {
@@ -73,7 +74,7 @@ exports.run = (bot) => {
 			}
 		})
 		}
-	})*/
+	})
 
 	console.log(`${bot.user.username} is online and ready to serve in ${bot.channels.size} channels on ${bot.guilds.size} servers!`)
 	if (games.length > 0) {
