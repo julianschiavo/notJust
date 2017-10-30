@@ -49,34 +49,61 @@ exports.run = (bot) => {
 
 	bot.guilds.forEach(prefsCheck)
 	*/
-	
-	
+
+	for (var i = 0; i < bot.guilds.length; i++) {
+		var g = bot.guilds[i]
+		console.log(products[i]);
+		var conf = bot.settings.get(g.id);
+		var mutes = conf.tempMutes;
+		if (mutes.length >= 1) {
+			for (var l = 0; l < mutes.length; l++) {
+				var id = mutes[l]
+				var user = g.members.get(id)
+				if (conf.muteRole) {
+					var role = user.roles.find("name", conf.muteRole);
+					if (user.roles.has(role.id)) {
+						user.removeRole(role, "Automatic Unmute")
+						conf = conf.filter(function(obj) {
+							return obj == id;
+						});
+						bot.settings.set(g.id, conf);
+					} else {
+						return
+					}
+				} else {
+					return
+				}
+			}
+		}
+	}
+
+/*
 	bot.guilds.forEach(function(guild) {
 		var conf = bot.settings.get(guild.id);
 		var mutes = conf.tempMutes;
 		if (mutes.length >= 1) {
-		mutes.forEach(function(id, conf, guild) {
-			if (guild && guild.members) {
-			var user = bot.users.get(id)
-			var member = guild.members.get(user.id)
-			if (conf.muteRole) {
-				var role = user.roles.find("name", conf.muteRole);
-				if (user.roles.has(role.id)) {
-					user.removeRole(role, "Automatic unmute")
-					conf = conf.filter(function(obj) {
-						return obj == id;
-					});
-					bot.settings.set(guild.id, conf);
-				} else {
-					return
+			mutes.forEach(function(id, conf, guild) {
+				if (guild && guild.members) {
+					var user = bot.users.get(id)
+					var member = guild.members.get(user.id)
+					if (conf.muteRole) {
+						var role = user.roles.find("name", conf.muteRole);
+						if (user.roles.has(role.id)) {
+							user.removeRole(role, "Automatic unmute")
+							conf = conf.filter(function(obj) {
+								return obj == id;
+							});
+							bot.settings.set(guild.id, conf);
+						} else {
+							return
+						}
+					} else {
+						return
+					}
 				}
-			} else {
-				return
-			}
-			}
-		})
+			})
 		}
-	})
+	})*/
 
 	console.log(`${bot.user.username} is online and ready to serve in ${bot.channels.size} channels on ${bot.guilds.size} servers!`)
 	if (games.length > 0) {
