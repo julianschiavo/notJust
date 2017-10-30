@@ -40,7 +40,7 @@ class setCommand extends Command {
 		var name = args[1].toLowerCase()
 		var value = args[2]
 
-		if (name == 'mute' || name == 'muterole' || name == 'role' || name == 'mutedrole') {
+		if (name == 'mute' || name == 'muterole' || name == 'mutedrole') {
 			if (!isN(value)) {
 				let role = message.guild.roles.find("name", value)
 				if (role && countWords(role.name) == 1) {
@@ -83,15 +83,15 @@ class setCommand extends Command {
 				}
 			}
 		}
-		
-		
-		
-		
-		
-		
-		
-		
-		
+
+
+
+
+
+
+
+
+
 		if (name == 'log' || name == 'logs' || name == 'logchannel' || name == 'channel') {
 			if (!isN(value)) {
 				let channel = message.guild.channels.find("name", value)
@@ -135,13 +135,97 @@ class setCommand extends Command {
 				}
 			}
 		}
-		
-		
-		
-		
-		
-		
-		
+
+
+		if (name == 'roles' || name == 'selfroles' || name == 'self' || name == 'group' || name == 'joinroles') {
+			if (!isN(value)) {
+				let role = message.guild.roles.find("name", value)
+				if (role && countWords(role.name) == 1) {
+					/* SET IT TO ROLE.NAME */
+					var check = thisConf.selfRoles.includes(role.id)
+					if (check == true) {
+						var index = thisConf.selfRoles.indexOf(role.id);
+						if (index > -1) {
+							thisConf.selfRoles.splice(index, 1);
+						}
+						message.client.settings.set(message.guild.id, thisConf);
+						let embed = new Discord.RichEmbed()
+						embed.setTitle('<:green_tick:330712173288488960> `Self Role Removed`')
+						embed.addField('`Role`', role.name, false)
+						embed.setDescription(String.fromCharCode(8203))
+						embed.setColor('#00ff00')
+						//embed.setTimestamp()
+						embed.setFooter('Replying to ' + message.author.tag)
+
+						message.channel.send({
+							embed
+						})
+					} else {
+						thisConf.selfRoles.push(role.id)
+						message.client.settings.set(message.guild.id, thisConf);
+						let embed = new Discord.RichEmbed()
+						embed.setTitle('<:green_tick:330712173288488960> `Self Role Added`')
+						embed.addField('`Role`', role.name, false)
+						embed.setDescription(String.fromCharCode(8203))
+						embed.setColor('#00ff00')
+						//embed.setTimestamp()
+						embed.setFooter('Replying to ' + message.author.tag)
+
+						message.channel.send({
+							embed
+						})
+					}
+				} else {
+					api.error('The specified self role name is invalid. Try again, making sure it doesn\'t contain spaces.')
+				}
+			} else {
+				let role = message.guild.roles.get(value)
+				if (role && countWords(role.name) == 1) {
+					var check = thisConf.selfRoles.includes(role.id)
+					if (check == true) {
+						var index = thisConf.selfRoles.indexOf(role.id);
+						if (index > -1) {
+							thisConf.selfRoles.splice(index, 1);
+						}
+						message.client.settings.set(message.guild.id, thisConf);
+						let embed = new Discord.RichEmbed()
+						embed.setTitle('<:green_tick:330712173288488960> `Self Role Removed`')
+						embed.addField('`Role`', role.name, false)
+						embed.setDescription(String.fromCharCode(8203))
+						embed.setColor('#00ff00')
+						//embed.setTimestamp()
+						embed.setFooter('Replying to ' + message.author.tag)
+
+						message.channel.send({
+							embed
+						})
+					} else {
+						thisConf.selfRoles.push(role.id)
+						message.client.settings.set(message.guild.id, thisConf);
+						let embed = new Discord.RichEmbed()
+						embed.setTitle('<:green_tick:330712173288488960> `Self Role Added`')
+						embed.addField('`Role`', role.name, false)
+						embed.setDescription(String.fromCharCode(8203))
+						embed.setColor('#00ff00')
+						//embed.setTimestamp()
+						embed.setFooter('Replying to ' + message.author.tag)
+
+						message.channel.send({
+							embed
+						})
+					}
+				} else {
+					api.error('The specified self role ID is invalid. Try again, making sure the role\'s name doesn\'t contain spaces.')
+				}
+			}
+		}
+
+
+
+
+
+
+
 		return true
 	}
 }
