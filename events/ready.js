@@ -82,33 +82,55 @@ for (val of a) {
 			}
 		}
 	}*/
-/*
-	bot.guilds.forEach(function(guild) {
-		var conf = bot.settings.get(guild.id);
-		var mutes = conf.tempMutes;
-		if (mutes.length >= 1) {
-			mutes.forEach(function(id, conf, guild) {
-				if (guild && guild.members) {
-					var user = bot.users.get(id)
-					var member = guild.members.get(user.id)
-					if (conf.muteRole) {
-						var role = user.roles.find("name", conf.muteRole);
-						if (user.roles.has(role.id)) {
-							user.removeRole(role, "Automatic unmute")
-							conf = conf.filter(function(obj) {
-								return obj == id;
-							});
-							bot.settings.set(guild.id, conf);
+	/*
+		bot.guilds.forEach(function(guild) {
+			var conf = bot.settings.get(guild.id);
+			var mutes = conf.tempMutes;
+			if (mutes.length >= 1) {
+				mutes.forEach(function(id, conf, guild) {
+					if (guild && guild.members) {
+						var user = bot.users.get(id)
+						var member = guild.members.get(user.id)
+						if (conf.muteRole) {
+							var role = user.roles.find("name", conf.muteRole);
+							if (user.roles.has(role.id)) {
+								user.removeRole(role, "Automatic unmute")
+								conf = conf.filter(function(obj) {
+									return obj == id;
+								});
+								bot.settings.set(guild.id, conf);
+							} else {
+								return
+							}
 						} else {
 							return
 						}
-					} else {
-						return
+					}
+				})
+			}
+		})*/
+
+	bot.settings.forEach(function(conf) {
+		var mutes = conf.tempMutes;
+		if (mutes.length > 0) {
+			var user = bot.users.get(mutes)
+			var gs = user.guilds.map(g => g.id)
+			gs.forEach(function(guild) {
+				var gui = bot.guilds.get(guild)
+				var member = gui.members.get(user.id)
+				if (conf.muteRole) {
+					var role = gui.roles.find("name", conf.muteRole);
+					if (role && member.roles.has(role.id)) {
+						member.removeRole(role, "Automatic Unmute")
+						conf = conf.tempMutes.filter(function(obj) {
+							return obj !== user.id;
+						});
+						bot.settings.set(guild.id, conf);
 					}
 				}
 			})
 		}
-	})*/
+	})
 
 	console.log(`${bot.user.username} is online and ready to serve in ${bot.channels.size} channels on ${bot.guilds.size} servers!`)
 	if (games.length > 0) {
