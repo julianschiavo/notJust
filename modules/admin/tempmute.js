@@ -57,6 +57,10 @@ class tmuteCommand extends Command {
 			} else {
 				user.addRole(role)
 			}
+			if (!thisConf.tempMutes) {
+				thisConf.tempMutes = {}
+				message.client.settings.set(message.guild.id, thisConf);
+			}
       thisConf.tempMutes.push(user.user.id)
 			message.client.settings.set(message.guild.id, thisConf);
       function unmute() {
