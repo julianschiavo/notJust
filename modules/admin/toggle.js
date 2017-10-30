@@ -17,6 +17,18 @@ class toggleCommand extends Command {
 	}
 
 	async run(message, args, api) {
+		var conf
+		if (message.client.settings.get(message.guild.id).selfRoles) {
+		conf = message.client.settings.get(message.guild.id).selfRoles
+		} else {
+			api.error('This server does not have any self roles configured.')
+			return;
+		}
+		if (conf.length > 0) {
+		} else {
+			api.error('This server does not have any self roles configured.')
+			return;
+		}
 		args.splice(0, 1)
 		if (!args[0]) {
 			api.error('Please specify which role to join.')
@@ -38,6 +50,11 @@ class toggleCommand extends Command {
 		}
 		if (!role) {
 			api.error('The specified role doesn\'t exist or couldn\'t be found. Try again, and remember to specify the role ID if it\'s name contains more than one word.')
+			return;
+		}
+		var check = conf.includes(role.id)
+		if (check == false) {
+			api.error('The specified role is not a self role')
 			return;
 		}
 		args.splice(0, 1)
