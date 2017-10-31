@@ -12,7 +12,7 @@ class asciiCommand extends Command {
 	constructor() {
 		super({
 			name: 'ascii',
-			help: 'Convert text or an emoji into ascii'
+			help: 'Convert an emoji into ascii' //text not supported yet
 		})
 	}
 	
