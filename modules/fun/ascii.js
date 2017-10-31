@@ -127,7 +127,7 @@ function splitNChars(txt, num) {
 			embed.setDescription(String.fromCharCode(8203))
 			embed.setColor('#00ff00')
       //embed.setImage(link)
-	    embed.addField('`Input`', arg, false)
+	    embed.addField('`Input`', args[0], false)
 			//embed.addField('`Output`', '```' + out + '```', false)
 			message.channel.send({
 				embed
