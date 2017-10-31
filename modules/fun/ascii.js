@@ -102,7 +102,7 @@ var x = parseInt(out.shift().split(" ")[0]);
 out = out.join("").replace(/\s/g, "");
 out = splitNChars(out, x);
 out = out.join("\n");
-out = require("./braille-2.js")(out);
+out = require("../../utils/braille.js")(out);
 out = out.replace(/[\u2800 ]{1,}$/gm, '');
 console.log(out)
 			alldone(out)
