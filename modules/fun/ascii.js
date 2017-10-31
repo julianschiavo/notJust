@@ -66,10 +66,10 @@ output = out
     
     			let embed = new Discord.RichEmbed()
 			embed.setFooter('Replying to ' + message.author.tag)
-			embed.setTitle('<:apple_face_smile:359559572634992672> `Ascii Generated`')
+			embed.setTitle('<:apple_alien:359560556841271296> `Ascii Generated`')
 			embed.setDescription(String.fromCharCode(8203))
 			embed.setColor('#00ff00')
-      embed.setImage(link)
+      embed.setThumbnail(link)
 			embed.addField('`Output`', '```' + output + '```', false)
 			message.channel.send({
 				embed
