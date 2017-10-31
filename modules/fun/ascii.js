@@ -5,6 +5,7 @@ const fs = require('fs');
 //const im = require('imagemagick');
 const gm = require('gm').subClass({imageMagick: true});
 var request = require('request');
+var https = require('https');
 
 class asciiCommand extends Command {
 	constructor() {
@@ -29,10 +30,10 @@ class asciiCommand extends Command {
 var link
 		if (arg.indexOf('<') >= 0) {
 			arg = arg.replace(/\D/g, '');
-			link = 'http://cdn.discordapp.com/emojis/' + arg + '.png'
+			link = 'https://cdn.discordapp.com/emojis/' + arg + '.png'
 		} else if (erg.indexOf('EMOJI') >= 0) {
 			var arg = twemoji.convert.toCodePoint(arg)
-			link = 'http://raw.githubusercontent.com/twitter/twemoji/gh-pages/2/72x72/' + arg + '.png'
+			link = 'https://raw.githubusercontent.com/twitter/twemoji/gh-pages/2/72x72/' + arg + '.png'
 		} else {
 			api.error('Please provide text or an emoji to convert into ascii.')
 		}
@@ -44,8 +45,18 @@ var output
 		//console.log('stdout:', stdout);
     done(stdout);
 	});*/
-link = 'http://www.haziallat.hu/upload/4/article/4335/nyugati-sirly_width.jpg'
-gm(request(link).body)
+
+
+//link = 'http://www.haziallat.hu/upload/4/article/4335/nyugati-sirly_width.jpg'
+		
+https.get(link, function(response) {
+    /*gm(response, 'image.jpg')
+        .write('test.jpg', function(err) {
+            if (err) return handle(err);
+            console.log('Created an image from a Buffer!');
+        });*/
+	
+	gm(response, 'image.png')
 .command('convert')
 .in("-trim -background white -alpha remove" + (1 ? " -resize 130x130" : "") + " -colorspace Gray -dither FloydSteinberg -colors 2 -monochrome " + " -compress None pbm:-")
 .stream(function (err, stdout, stderr) {
@@ -54,6 +65,10 @@ gm(request(link).body)
 	console.log(stderr)
   done(stdout);
 });
+	
+});
+		
+
   
 function splitNChars(txt, num) {
 	var result = [];
