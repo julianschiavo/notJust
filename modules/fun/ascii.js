@@ -4,7 +4,7 @@ const Command = require('../../cmdModule/commands').Command;
 const fs = require('fs');
 //const im = require('imagemagick');
 const gm = require('gm').subClass({imageMagick: true});
-var req = require('request');
+var request = require('request');
 
 class asciiCommand extends Command {
 	constructor() {
@@ -45,12 +45,12 @@ var output
     done(stdout);
 	});*/
 link = 'http://www.haziallat.hu/upload/4/article/4335/nyugati-sirly_width.jpg'
-gm(link)
+gm(request(link).body)
 .command('convert')
 .in("-trim -background white -alpha remove" + (1 ? " -resize 130x130" : "") + " -colorspace Gray -dither FloydSteinberg -colors 2 -monochrome " + " -compress None pbm:-")
 .stream(function (err, stdout, stderr) {
 	console.log(err)
-	console.log(stdout)
+	//console.log(stdout)
 	console.log(stderr)
   done(stdout);
 });
