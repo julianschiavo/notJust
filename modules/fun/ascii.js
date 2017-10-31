@@ -6,6 +6,7 @@ const im = require('imagemagick');
 const gm = require('gm').subClass({imageMagick: true});
 var request = require('request');
 var https = require('https');
+const download = require('image-downloader')
 
 class asciiCommand extends Command {
 	constructor() {
@@ -38,19 +39,20 @@ var link
 			api.error('Please provide text or an emoji to convert into ascii.')
 		}
 var output
-var download = function(uri, filename, callback){
-  request.head(uri, function(err, res, body){
-    console.log('content-type:', res.headers['content-type']);
-    console.log('content-length:', res.headers['content-length']);
-
-    request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
-  });
-};
-
-download(link, 'tmp/tmp.png', function(){
-  console.log('done');
-});
+const options = {
+  url: link,
+  dest: 'tmp'                  // Save to /path/to/dest/image.jpg
+}
+	
+download.image(options)
+  .then(({ filename, image }) => {
+    console.log('File saved to', filename)
+	conv(filename)
+  }).catch((err) => {
+    throw err
+  })
 		
+function conv() {
 im.convert(['./tmp/tmp.png', '-trim', '-background', 'White', '-alpha', 'remove', '-resize', '130x130', '-colorspace', 'Gray', '-dither', 'FloydSteinberg', '-colors', '2', '-monochrome', '-compress', 'None', 'pbm:-'],
 	function(err, stdout) {
 		if (err) throw err;
@@ -58,6 +60,7 @@ im.convert(['./tmp/tmp.png', '-trim', '-background', 'White', '-alpha', 'remove'
 		//console.log('stdout:', stdout);
     done(stdout);
 	});
+}
 
 
 //link = 'http://www.haziallat.hu/upload/4/article/4335/nyugati-sirly_width.jpg'
