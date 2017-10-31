@@ -56,27 +56,18 @@ https.get(link, function(response) {
             console.log('Created an image from a Buffer!');
         });*/
 	
-	gm(response, 'image.png')
+var end = gm(response, 'image.png')
 .command('convert')
 .in("-trim -background white -alpha remove" + (1 ? " -resize 130x130" : "") + " -colorspace Gray -dither FloydSteinberg -colors 2 -monochrome " + " -compress None pbm:-")
 .stream(function (err, stdout, stderr) {
 	console.log(err)
-	//console.log(stdout)
-	console.log(stderr)
-  done(stdout);
+	console.log(stdout)
+	//console.log(stderr)
+  done(end);
 });
 	
 });
 		
-
-  
-function splitNChars(txt, num) {
-	var result = [];
-	for (var i = 0; i < txt.length; i += num) {
-		result.push(txt.substr(i, num));
-	}
-	return result;
-}
 function done(out) {
 out = out.toString().split("\n");
 out.shift();
@@ -89,6 +80,14 @@ out = require("./braille.js")(out);
 out = out.replace(/[\u2800 ]{1,}$/gm, '');
 console.log(out)
 output = out
+}
+		  
+function splitNChars(txt, num) {
+	var result = [];
+	for (var i = 0; i < txt.length; i += num) {
+		result.push(txt.substr(i, num));
+	}
+	return result;
 }
     
     			let embed = new Discord.RichEmbed()
