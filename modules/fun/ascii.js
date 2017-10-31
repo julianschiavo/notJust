@@ -56,7 +56,8 @@ https.get(link, function(response) {
             console.log('Created an image from a Buffer!');
         });*/
 	
-var end = gm(response, 'image.png')
+var end
+gm(response, 'image.png')
 .command('convert')
 .in("-trim -background white -alpha remove" + (1 ? " -resize 130x130" : "") + " -colorspace Gray -dither FloydSteinberg -colors 2 -monochrome " + " -compress None pbm:-")
 /*.stream(function (err, stdout, stderr) {
@@ -65,15 +66,17 @@ var end = gm(response, 'image.png')
 	//console.log(stderr)
   done(end);
 });*/
-.output(function (err, stdout, stderr) {
+/*.output(function (err, stdout, stderr) {
 	console.log(err)
 	console.log(stdout)
 	//console.log(stderr)
   done(end);
+});*/
+.stream(function (err, stdout, stderr) {
+      stdout.pipe(end)
 });
-	
 });
-		
+done(end);
 function done(out) {
 out = out.toString().split("\n");
 out.shift();
