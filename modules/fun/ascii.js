@@ -123,7 +123,8 @@ function splitNChars(txt, num) {
 			embed.setTitle('<:apple_alien:359560556841271296> `Ascii Generated`')
 			embed.setDescription(String.fromCharCode(8203))
 			embed.setColor('#00ff00')
-      embed.setThumbnail(link)
+      //embed.setImage(link)
+	    embed.addField('`Input`', arg, false)
 			embed.addField('`Output`', '```' + out + '```', false)
 			message.channel.send({
 				embed
