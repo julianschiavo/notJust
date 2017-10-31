@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const twemoji = require('twemoji');
 const Command = require('../../cmdModule/commands').Command;
 const fs = require('fs');
-//const im = require('imagemagick');
+const im = require('imagemagick');
 const gm = require('gm').subClass({imageMagick: true});
 var request = require('request');
 var https = require('https');
@@ -59,14 +59,21 @@ https.get(link, function(response) {
         });*/
 	
 var endboi;
-gm(response, 'image.png')
+/*gm(response, 'image.png')
 .command('convert')
 .in("-trim -background white -alpha remove" + (1 ? " -resize 130x130" : "") + " -colorspace Gray -dither FloydSteinberg -colors 2 -monochrome " + " -compress None pbm:-")
 .toBase64('png', toDataUri, function(err, base64){
     var buffer = new Buffer(base64, 'base64');
     endboi = decode64(buffer)
     done(endboi)
-});
+});*/
+	im.convert([response, '-trim', '-background', 'White', '-alpha', 'remove', '-resize', '130x130', '-colorspace', 'Gray', '-dither', 'FloydSteinberg', '-colors', '777', '-monochrome', '-compress', 'None', 'pbm:-'],
+	function(err, stdout) {
+		if (err) throw err;
+		//console.log('stdout:', stdout);
+		//fs.writeFile(path.replace("apple", "modified_apple"), stdout, function() {});
+    done(stdout);
+	});
 	/*.stream(function (err, stdout, stderr) {
 	console.log(err)
 	console.log(stdout)
