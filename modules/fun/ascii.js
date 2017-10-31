@@ -29,10 +29,10 @@ class asciiCommand extends Command {
 var link
 		if (arg.indexOf('<') >= 0) {
 			arg = arg.replace(/\D/g, '');
-			link = 'https://cdn.discordapp.com/emojis/' + arg + '.png'
+			link = 'http://cdn.discordapp.com/emojis/' + arg + '.png'
 		} else if (erg.indexOf('EMOJI') >= 0) {
 			var arg = twemoji.convert.toCodePoint(arg)
-			link = 'https://raw.githubusercontent.com/twitter/twemoji/gh-pages/2/72x72/' + arg + '.png'
+			link = 'http://raw.githubusercontent.com/twitter/twemoji/gh-pages/2/72x72/' + arg + '.png'
 		} else {
 			api.error('Please provide text or an emoji to convert into ascii.')
 		}
