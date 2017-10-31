@@ -15,6 +15,11 @@ class asciiCommand extends Command {
 			help: 'Convert text or an emoji into ascii'
 		})
 	}
+	
+	hasPermission(message) {
+		if (message.guild && (message.client.settings.get(message.guild.id).isDonator == true || message.author.id == require('../../config.json').owner)) return true
+		return false
+	}
 
 	async run(message, args, api) {
 		args.splice(0, 1)
