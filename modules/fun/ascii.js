@@ -2,7 +2,8 @@ const Discord = require('discord.js');
 const twemoji = require('twemoji');
 const Command = require('../../cmdModule/commands').Command;
 const fs = require('fs');
-const im = require('imagemagick');
+//const im = require('imagemagick');
+const gm = require('gm').subClass({imageMagick: true});
 const request = require('request');
 
 class asciiCommand extends Command {
@@ -36,13 +37,23 @@ var link
 			api.error('Please provide text or an emoji to convert into ascii.')
 		}
 var output
-im.convert([request(link), '-trim', '-background', 'White', '-alpha', 'remove', '-resize', '130x130', '-colorspace', 'Gray', '-dither', 'FloydSteinberg', '-colors', '2', '-monochrome', '-compress', 'None', 'pbm:-'],
+/*im.convert([request(link), '-trim', '-background', 'White', '-alpha', 'remove', '-resize', '130x130', '-colorspace', 'Gray', '-dither', 'FloydSteinberg', '-colors', '2', '-monochrome', '-compress', 'None', 'pbm:-'],
 	function(err, stdout) {
 		if (err) throw err;
 	console.log(err);
 		//console.log('stdout:', stdout);
     done(stdout);
-	});
+	});*/
+
+gm(request(link))
+.command('convert')
+.in("-trim -background white -alpha remove" + (1 ? " -resize 130x130" : "") + " -colorspace Gray -dither FloydSteinberg -colors 2 -monochrome " + " -compress None pbm:-")
+.stream(function (err, stdout, stderr) {
+	console.log(err)
+	console.log(stdout)
+	console.log(stderr)
+  done(stdout);
+});
   
 function splitNChars(txt, num) {
 	var result = [];
