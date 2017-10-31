@@ -107,6 +107,7 @@ out = require("./braille.js")(out);
 out = out.replace(/[\u2800 ]{1,}$/gm, '');
 console.log(out)
 output = out
+alldone(out)
 }
 		  
 function splitNChars(txt, num) {
@@ -116,17 +117,18 @@ function splitNChars(txt, num) {
 	}
 	return result;
 }
-    
+    function alldone(out) {
     			let embed = new Discord.RichEmbed()
 			embed.setFooter('Replying to ' + message.author.tag)
 			embed.setTitle('<:apple_alien:359560556841271296> `Ascii Generated`')
 			embed.setDescription(String.fromCharCode(8203))
 			embed.setColor('#00ff00')
       embed.setThumbnail(link)
-			embed.addField('`Output`', '```' + output + '```', false)
+			embed.addField('`Output`', '```' + out + '```', false)
 			message.channel.send({
 				embed
 			})
+    }
 
 	}
 }
