@@ -45,7 +45,7 @@ var output
     done(stdout);
 	});*/
 link = 'http://www.haziallat.hu/upload/4/article/4335/nyugati-sirly_width.jpg'
-gm(req(link))
+gm(link)
 .command('convert')
 .in("-trim -background white -alpha remove" + (1 ? " -resize 130x130" : "") + " -colorspace Gray -dither FloydSteinberg -colors 2 -monochrome " + " -compress None pbm:-")
 .stream(function (err, stdout, stderr) {
