@@ -59,7 +59,13 @@ https.get(link, function(response) {
 var end = gm(response, 'image.png')
 .command('convert')
 .in("-trim -background white -alpha remove" + (1 ? " -resize 130x130" : "") + " -colorspace Gray -dither FloydSteinberg -colors 2 -monochrome " + " -compress None pbm:-")
-.stream(function (err, stdout, stderr) {
+/*.stream(function (err, stdout, stderr) {
+	console.log(err)
+	console.log(stdout)
+	//console.log(stderr)
+  done(end);
+});*/
+.output(function (err, stdout, stderr) {
 	console.log(err)
 	console.log(stdout)
 	//console.log(stderr)
