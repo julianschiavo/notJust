@@ -6,6 +6,8 @@ const fs = require('fs');
 const gm = require('gm').subClass({imageMagick: true});
 var request = require('request');
 var https = require('https');
+require('gm-base64');
+const decode64 = require('base64').decode;
 
 class asciiCommand extends Command {
 	constructor() {
@@ -60,10 +62,10 @@ var endboi;
 gm(response, 'image.png')
 .command('convert')
 .in("-trim -background white -alpha remove" + (1 ? " -resize 130x130" : "") + " -colorspace Gray -dither FloydSteinberg -colors 2 -monochrome " + " -compress None pbm:-")
-.stream(function (err, stdout, stderr) {
-      //stdout.pipe(endboi);
-	done(stdout.pipe);
-	console.log(stdout.pipe);
+.toBase64('png', toDataUri, function(err, base64){
+    var buffer = new Buffer(base64, 'base64');
+    endboi = decode64(buffer)
+    done(endboi)
 });
 	/*.stream(function (err, stdout, stderr) {
 	console.log(err)
