@@ -4,7 +4,7 @@ const Command = require('../../cmdModule/commands').Command;
 const fs = require('fs');
 //const im = require('imagemagick');
 const gm = require('gm').subClass({imageMagick: true});
-const request = require('request');
+var http = require('http');
 
 class asciiCommand extends Command {
 	constructor() {
@@ -45,7 +45,12 @@ var output
     done(stdout);
 	});*/
 
-gm(request(link))
+var file = fs.createWriteStream("output.png");
+var request = http.get(link, function(response) {
+  response.pipe(file);
+});
+
+gm('/home/me/notJust/output.png')
 .command('convert')
 .in("-trim -background white -alpha remove" + (1 ? " -resize 130x130" : "") + " -colorspace Gray -dither FloydSteinberg -colors 2 -monochrome " + " -compress None pbm:-")
 .stream(function (err, stdout, stderr) {
