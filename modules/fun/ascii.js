@@ -94,20 +94,18 @@ im.convert([path, '-trim', '-background', 'White', '-alpha', 'remove', '-resize'
   done(end);
 });*/
 //});
-function done(out) {
+		
+		function done(out) {
 out = out.toString().split("\n");
-	console.log(out)
 out.shift();
 var x = parseInt(out.shift().split(" ")[0]);
 out = out.join("").replace(/\s/g, "");
 out = splitNChars(out, x);
 out = out.join("\n");
-//console.log(out);
-out = require("../../utils/braille.js")(out);
+out = require("./braille-2.js")(out);
 out = out.replace(/[\u2800 ]{1,}$/gm, '');
 console.log(out)
-output = out
-alldone(out)
+			alldone(out)
 }
 		  
 function splitNChars(txt, num) {
