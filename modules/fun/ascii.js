@@ -4,14 +4,6 @@ const Command = require('../../cmdModule/commands').Command;
 const fs = require('fs');
 const im = require('imagemagick');
 const request = require('request');
-const download = function(uri, filename, callback){
-  request.head(uri, function(err, res, body){
-    console.log('content-type:', res.headers['content-type']);
-    console.log('content-length:', res.headers['content-length']);
-    
-    request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
-  });
-};
 
 class asciiCommand extends Command {
 	constructor() {
@@ -43,11 +35,8 @@ var link
 		} else {
 			api.error('Please provide text or an emoji to convert into ascii.')
 		}
-    download(link, 'input.png', function(){
-  console.log('D/l\'ed');
-});
 var output
-im.convert(['./input.png', '-trim', '-background', 'White', '-alpha', 'remove', '-resize', '130x130', '-colorspace', 'Gray', '-dither', 'FloydSteinberg', '-colors', '2', '-monochrome', '-compress', 'None', 'pbm:-'],
+im.convert([request(link), '-trim', '-background', 'White', '-alpha', 'remove', '-resize', '130x130', '-colorspace', 'Gray', '-dither', 'FloydSteinberg', '-colors', '2', '-monochrome', '-compress', 'None', 'pbm:-'],
 	function(err, stdout) {
 		if (err) throw err;
 	console.log(err);
