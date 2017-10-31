@@ -53,7 +53,7 @@ download.image(options)
   })
 		
 function conv(path) {
-im.convert([path, '-trim', '-background', 'White', '-alpha', 'remove', '-resize', '130x130', '-colorspace', 'Gray', '-dither', 'FloydSteinberg', '-colors', '2', '-monochrome', '-compress', 'None', 'pbm:-'],
+im.convert([path, '-trim', '-negate', '-background', 'White', '-alpha', 'remove', '-resize', '130x130', '-colorspace', 'Gray', '-dither', 'FloydSteinberg', '-colors', '2', '-monochrome', '-compress', 'None', 'pbm:-'],
 	function(err, stdout) {
 		if (err) throw err;
 	console.log(err);
