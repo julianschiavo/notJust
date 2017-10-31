@@ -80,6 +80,7 @@ gm(response, 'image.png')
 });
 function done(out) {
 out = out.toString().split("\n");
+	console.log(out)
 out.shift();
 var x = parseInt(out.shift().split(" ")[0]);
 out = out.join("").replace(/\s/g, "");
