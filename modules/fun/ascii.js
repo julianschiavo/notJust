@@ -38,25 +38,38 @@ var link
 			api.error('Please provide text or an emoji to convert into ascii.')
 		}
 var output
-/*im.convert([request(link), '-trim', '-background', 'White', '-alpha', 'remove', '-resize', '130x130', '-colorspace', 'Gray', '-dither', 'FloydSteinberg', '-colors', '2', '-monochrome', '-compress', 'None', 'pbm:-'],
+var download = function(uri, filename, callback){
+  request.head(uri, function(err, res, body){
+    console.log('content-type:', res.headers['content-type']);
+    console.log('content-length:', res.headers['content-length']);
+
+    request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
+  });
+};
+
+download(link, 'tmp/tmp.png', function(){
+  console.log('done');
+});
+		
+im.convert(['./tmp/tmp.png', '-trim', '-background', 'White', '-alpha', 'remove', '-resize', '130x130', '-colorspace', 'Gray', '-dither', 'FloydSteinberg', '-colors', '2', '-monochrome', '-compress', 'None', 'pbm:-'],
 	function(err, stdout) {
 		if (err) throw err;
 	console.log(err);
 		//console.log('stdout:', stdout);
     done(stdout);
-	});*/
+	});
 
 
 //link = 'http://www.haziallat.hu/upload/4/article/4335/nyugati-sirly_width.jpg'
 		
-https.get(link, function(response) {
+//https.get(link, function(response) {
     /*gm(response, 'image.jpg')
         .write('test.jpg', function(err) {
             if (err) return handle(err);
             console.log('Created an image from a Buffer!');
         });*/
 	
-var endboi;
+//var endboi;
 /*gm(response, 'image.png')
 .command('convert')
 .in("-trim -background white -alpha remove" + (1 ? " -resize 130x130" : "") + " -colorspace Gray -dither FloydSteinberg -colors 2 -monochrome " + " -compress None pbm:-")
@@ -65,13 +78,6 @@ var endboi;
     endboi = decode64(buffer)
     done(endboi)
 });*/
-	im.convert([response, '-trim', '-background', 'White', '-alpha', 'remove', '-resize', '130x130', '-colorspace', 'Gray', '-dither', 'FloydSteinberg', '-colors', '777', '-monochrome', '-compress', 'None', 'pbm:-'],
-	function(err, stdout) {
-		if (err) throw err;
-		//console.log('stdout:', stdout);
-		//fs.writeFile(path.replace("apple", "modified_apple"), stdout, function() {});
-    done(stdout);
-	});
 	/*.stream(function (err, stdout, stderr) {
 	console.log(err)
 	console.log(stdout)
@@ -84,7 +90,7 @@ var endboi;
 	//console.log(stderr)
   done(end);
 });*/
-});
+//});
 function done(out) {
 out = out.toString().split("\n");
 	console.log(out)
