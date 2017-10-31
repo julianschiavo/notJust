@@ -62,7 +62,8 @@ gm(response, 'image.png')
 .in("-trim -background white -alpha remove" + (1 ? " -resize 130x130" : "") + " -colorspace Gray -dither FloydSteinberg -colors 2 -monochrome " + " -compress None pbm:-")
 .stream(function (err, stdout, stderr) {
       //stdout.pipe(endboi);
-	done(stdout.pipe)
+	done(stdout.pipe);
+	console.log(stdout.pipe);
 });
 	/*.stream(function (err, stdout, stderr) {
 	console.log(err)
