@@ -6,7 +6,7 @@ class tmuteCommand extends Command {
 		super({
 			name: 'tempmute',
 			help: 'Temporarily mute a member',
-			lhelp: '{time} {user} [reason]\n{time} is the amount of time to mute for (max 1 day)\n{user} is the user to mute (id or mention)\n[reason] is the Audit Log reason for the mute'
+			lhelp: '{time} {user} [reason]\n{time} is the amount of time to mute the member for (max 1 day)\n{user} is the user to mute (id or mention)\n[reason] is the Audit Log reason for the mute'
 		})
 	}
 
