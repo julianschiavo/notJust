@@ -6,8 +6,6 @@ const im = require('imagemagick');
 const gm = require('gm').subClass({imageMagick: true});
 var request = require('request');
 var https = require('https');
-require('gm-base64');
-const decode64 = require('base64').decode;
 
 class asciiCommand extends Command {
 	constructor() {
