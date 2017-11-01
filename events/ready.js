@@ -7,7 +7,7 @@ exports.run = (bot) => {
 		.send({
 			server_count: bot.guilds.size
 		})
-		.then(() => console.log('discordbots.org: Stats Updated.'))
+		.then(() => console.log('discordbots.org: Stats Updated'))
 		.catch(err => console.error(`Whoops something went wrong: ${err.body}`));
 
 	/*function unmute(id, user, conf, guild) {
@@ -138,7 +138,7 @@ for (val of a) {
 		}
 	})
 
-	console.log(`${bot.user.username} is now serving ${bot.channels.size} channels on ${bot.guilds.size} servers.`)
+	console.log(`${bot.user.username} is now serving ${bot.channels.size} channels on ${bot.guilds.size} servers`)
 	if (games.length > 0) {
 		setInterval(() => {
 			const game = Math.floor(Math.random() * games.length)
