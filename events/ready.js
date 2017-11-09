@@ -144,7 +144,8 @@ for (val of a) {
 			const game = Math.floor(Math.random() * games.length)
 			//bot.user.setStatus('online')
 			//bot.user.setGame(games[game])
-			bot.user.setPresence({'status':'online','activity.name':games[game],'activity.type': '3'})
+			//{"status":"online","game":{"name":"notJust commands","type":0,"url":null}}
+			bot.user.setPresence({'status':'online','activity.name':games[game],'activity.type': 'watching'})
 		}, config.timer)
 	}
 }
