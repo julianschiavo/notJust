@@ -142,8 +142,9 @@ for (val of a) {
 	if (games.length > 0) {
 		setInterval(() => {
 			const game = Math.floor(Math.random() * games.length)
-			bot.user.setStatus('online')
-			bot.user.setGame(games[game])
+			//bot.user.setStatus('online')
+			//bot.user.setGame(games[game])
+			bot.user.setPresence({'status':'online','activity.name':games[game],'activity.type': '3'})
 		}, config.timer)
 	}
 }
