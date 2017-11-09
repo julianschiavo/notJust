@@ -145,7 +145,8 @@ for (val of a) {
 			//bot.user.setStatus('online')
 			//bot.user.setGame(games[game])
 			//{"status":"online","game":{"name":"notJust commands","type":0,"url":null}}
-			bot.user.setPresence({'status':'online','activity.name':games[game],'activity.type': 'watching'})
+			bot.user.setPresence({"status":"online","game":{"name":games[game],"type":3,"url":null}})
+			//bot.user.setPresence({'status':'online','activity.name':games[game],'activity.type': 'watching'})
 		}, config.timer)
 	}
 }
