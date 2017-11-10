@@ -7,6 +7,12 @@ class PingCommand extends Command {
       help: 'Ping the bot'
     })
   }
+  
+  hasPermission(message) {
+    var check = require('../../other/perms').check('utility','ping',JSON.stringify(message.client.settings.get('global')))
+    if (check == true) return false
+    return true
+  }
 
   async run(message, args, api) {
     //message.delete()
