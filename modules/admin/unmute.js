@@ -6,7 +6,8 @@ class unmuteCommand extends Command {
     super({
       name: 'unmute',
       help: 'Unmute a member',
-      lhelp: '{user} [reason]\n{user} is the user to unmute (id or mention)\n[reason] is the Audit Log reason for the unmute'
+      lhelp: '{user} [reason]\n{user} is the user to unmute (id or mention)\n[reason] is the Audit Log reason for the unmute',
+      module: 'admin'
     })
   }
 
