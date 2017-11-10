@@ -5,8 +5,7 @@ class LbestCommand extends Command {
     super({
       name: 'best',
       help: 'Set best crew member',
-      lhelp: '{B/G/Y/R} {user}\n{B/G/Y/R} is the crew the member/user is in\n{user} is @ the user',
-      module: 'light'
+      lhelp: '{B/G/Y/R} {user}\n{B/G/Y/R} is the crew the member/user is in\n{user} is @ the user'
     })
   }
 
