@@ -169,9 +169,8 @@ class CommandHandler {
       if (command.loaded == false) return false
       var check = require('./perms').blacklistCheck(message.client.settings.get('global').blacklistedUsers,message.author.id)
       //console.log(this.commands)
-      console.log(this.commands[args[0]].module)
-      //var check2 = require('./perms').moduleCheck(message.client.settings.get('global').disabledModules,command.module)
-      if (command.hasPermission(message) && !check) {
+      var check2 = require('./perms').moduleCheck(message.client.settings.get('global').disabledModules,this.commands[args[0]].module)
+      if (command.hasPermission(message) && !check && !check2) {
         try {
           command.run(message, args, new api(message, args, this))
           //message.react(`:green_tick:330712173288488960`)
@@ -183,7 +182,7 @@ class CommandHandler {
         return true
       } else if (!check) {
         let apx = new api(message, args, this)
-        return apx.error('You cannot execute that command.\nThis may occur because it is a premium command and this is not a premium server, or because you do not have necessary permissions to execute the command\'s action.')
+        return apx.error('You cannot execute that command.\nThis may occur because it is a premium command and this is not a premium server, or because you do not have necessary permissions to execute the command\'s action. The module may also currently be disabled globally.')
       }
     } catch (err) {
       console.error(err)
