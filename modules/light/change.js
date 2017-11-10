@@ -5,7 +5,8 @@ class LdiffCommand extends Command {
     super({
       name: 'change',
       help: 'Change a member\'s crew',
-      lhelp: '{user} {crew letter}\n{user} is the user to change crew for\n{crew letter} is B or G or Y or R, what crew to change the user to'
+      lhelp: '{user} {crew letter}\n{user} is the user to change crew for\n{crew letter} is B or G or Y or R, what crew to change the user to',
+      module: 'light'
     })
   }
 
