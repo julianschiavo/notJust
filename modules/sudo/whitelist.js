@@ -68,7 +68,7 @@ class wlCommand extends Command {
     var current = message.client.settings.get('global')
 
 for (var i=current.blacklistedUsers.length-1; i>=0; i--) {
-    if (current.blacklistedUsers[i] === search_term) {
+    if (current.blacklistedUsers[i] === user.id) {
         current.blacklistedUsers.splice(i, 1);
         //break;       //<-- Uncomment  if only the first term has to be removed
     }
