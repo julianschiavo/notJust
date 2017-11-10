@@ -8,6 +8,12 @@ class aboutCommand extends Command {
       help: 'Get bot info'
     })
   }
+  
+  hasPermission(message) {
+    var check = require('../../cmdModule/perms').blacklistCheck(message.client.settings.get('global').blacklistedUsers,message.author.id)
+    if (check) return false
+    return true
+  }
 
   async run(message, args, api) {
     //message.delete()
