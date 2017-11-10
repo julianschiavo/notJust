@@ -9,8 +9,8 @@ class PingCommand extends Command {
   }
   
   hasPermission(message) {
-    var check = require('../../other/perms').check('utility','ping',JSON.stringify(message.client.settings.get('global')))
-    if (check == false) return false
+    var check = require('../../other/perms').check('utility','ping',JSON.stringify(message.client.settings.get('global')),message.user.id)
+    if (check == true) return false
     return true
   }
 
