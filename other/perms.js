@@ -1,6 +1,6 @@
 module.exports = {
-  check: function (mod, cmd, message) {
-    if (message.client.settings.get('global').indexOf(mod) >= -1) {
+  check: function (module, command, config) {
+    if (config.indexOf(module) >= -1) {
 			return true
 		}
   }
