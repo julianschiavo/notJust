@@ -11,7 +11,8 @@ class infoCommand extends Command {
     })
   }
   hasPermission(message) {
-    if (!message.guild || message.channel.type !== 'text') return false
+    var check = require('../../cmdModule/perms').blacklistCheck(message.client.settings.get('global').blacklistedUsers,message.author.id)
+    if ((!message.guild || message.channel.type !== 'text') || check) return false
     return true
   }
 
