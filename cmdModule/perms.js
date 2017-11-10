@@ -10,7 +10,7 @@ module.exports = {
 	}*/
 	  var modulename
 	  const folders = ['admin','code','fun','light','media','prefs','sudo','utility']
-	  const folderinitial = '../modules/'
+	  const folderinitial = '../../modules/'
 const fs = require('fs');
 	  //while
 	  for (var i=folders.length-1; i>=0; i--) {
