@@ -14,7 +14,7 @@ class aiCommand extends Command {
       name: 'ai',
       help: 'Talk with an AI',
       lhelp: '{text}\n {text} is the text to send to the artificial intelligence assistant.',
-      module: 'ai'
+      module: 'fun'
     })
   }
 
