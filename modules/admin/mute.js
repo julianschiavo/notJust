@@ -6,7 +6,8 @@ class muteCommand extends Command {
     super({
       name: 'mute',
       help: 'Mute a member',
-      lhelp: '{user} [reason]\n{user} is the user to mute (id or mention)\n[reason] is the Audit Log reason for the mute'
+      lhelp: '{user} [reason]\n{user} is the user to mute (id or mention)\n[reason] is the Audit Log reason for the mute',
+      module: 'admin'
     })
   }
 
