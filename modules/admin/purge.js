@@ -6,7 +6,8 @@ class purgeCommand extends Command {
     super({
       name: 'purge',
       help: 'Purge messages',
-      lhelp: '{count} [user]\n{count} is the number of messages to purge (2-100)\n[user] is a user\'s mention/ID to only delete their messages'
+      lhelp: '{count} [user]\n{count} is the number of messages to purge (2-100)\n[user] is a user\'s mention/ID to only delete their messages',
+      module: 'admin'
     })
   }
 
