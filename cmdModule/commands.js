@@ -178,7 +178,7 @@ class CommandHandler {
         }
         
         return true
-      } else {
+      } else if (!check) {
         let apx = new api(message, args, this)
         return apx.error('You cannot execute that command.\nThis may occur because it is a premium command and this is not a premium server, or because you do not have necessary permissions to execute the command\'s action.')
       }
