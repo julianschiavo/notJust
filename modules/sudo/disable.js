@@ -5,7 +5,7 @@ const Command = require('../../cmdModule/commands').Command
 class diCommand extends Command {
   constructor() {
     super({
-      name: 'Disable',
+      name: 'disable',
       help: 'Disable a module globally',
       lhelp: '{name}\n{name} is the code name of the module to disable'
     })
