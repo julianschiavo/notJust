@@ -6,7 +6,8 @@ class randomCommand extends Command {
     super({
       name: 'random',
       help: 'Flip a coin or get a random number',
-      lhelp: '[coin/number] [first number] [second number]\n[coin/number] is whether to flip a coin or get a random number\n[first number] is the bottom number to use (if you selected random number)\n[second number] is the top number to use (if you selected random number)'
+      lhelp: '[coin/number] [first number] [second number]\n[coin/number] is whether to flip a coin or get a random number\n[first number] is the bottom number to use (if you selected random number)\n[second number] is the top number to use (if you selected random number)',
+      module: 'fun'
     })
   }
 
