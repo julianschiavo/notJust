@@ -11,11 +11,10 @@ module.exports = {
 	  var modulename
 	  const folders = ['admin','code','fun','light','media','prefs','sudo','utility']
 	  const folderinitial = '../modules/'
-	  const folderend = '/'
 const fs = require('fs');
 	  //while
 	  for (var i=folders.length-1; i>=0; i--) {
-	  var cfolder = folderinitial + folders[i] + folderend
+	  var cfolder = folderinitial + folders[i]
 	  var cfoldern = folders[i]
 fs.readdirSync(cfolder).forEach(file => {
   if (file.indexOf(command) > -1) {
