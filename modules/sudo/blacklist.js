@@ -67,6 +67,7 @@ class blCommand extends Command {
     var user = message.client.users.get(args[1])
     var current = message.client.settings.get('global')
     current.blacklistedUsers.push(user.id)
+    message.client.settings.set('global', current);
     
     let embed = new Discord.RichEmbed()
     embed.setTitle('<:apple_hammer:359560554479878144> `Blacklisted ' + user.tag + '!`')
