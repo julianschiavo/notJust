@@ -6,8 +6,8 @@ class wlCommand extends Command {
   constructor() {
     super({
       name: 'whitelist',
-      help: 'Whitelist a server',
-      lhelp: '{server_id}\n{server_id} is ID of the server to whitelist'
+      help: 'Whitelist a server or user',
+      lhelp: '{id}\n{id} is ID of the user or server to whitelist'
     })
   }
 
@@ -18,7 +18,7 @@ class wlCommand extends Command {
 
   async run(message, args, api) {
     if (!args[1]) {
-      api.error('Please specify a guild id to whitelist.')
+      api.error('Please specify a user or server ID to whitelist.')
     }
 
     function isN(num) {
@@ -29,8 +29,9 @@ class wlCommand extends Command {
       return str.split(" ").length;
     }
     if (!isN(args[1])) {
-      api.error('Please specify an all numeric guild id.')
+      api.error('Please specify an all numeric user or server ID.')
     }
+    if (message.client.guilds.get(args[1])) {
     var guild = message.client.guilds.get(args[1])
     var gid
     if (guild) {
@@ -42,6 +43,7 @@ class wlCommand extends Command {
     if (!message.client.settings.get(gid)) {
       message.client.settings.set(gid, message.client.defaultSettings);
     }
+    
 
     const thisConf = message.client.settings.get(gid);
     thisConf.isBlacklisted = false;
@@ -61,6 +63,33 @@ class wlCommand extends Command {
     message.channel.send({
       embed
     })
+    } else if (message.client.users.get(args[1])) {
+    var user = message.client.users.get(args[1])
+    var current = message.client.settings.get('global')
+
+for (var i=current.blacklistedUsers.length-1; i>=0; i--) {
+    if (current.blacklistedUsers[i] === search_term) {
+        current.blacklistedUsers.splice(i, 1);
+        //break;       //<-- Uncomment  if only the first term has to be removed
+    }
+}
+      
+    message.client.settings.set('global', current);
+    
+    let embed = new Discord.RichEmbed()
+    embed.setTitle('<:apple_hand_wave:359559674099400704> `Whitelisted ' + user.tag + '!`')
+    embed.setDescription(String.fromCharCode(8203))
+    embed.setColor('#00ff00')
+    //embed.setTimestamp()
+    embed.setFooter('Replying to ' + message.author.tag)
+
+    message.channel.send({
+      embed
+    })
+    
+  } else {
+    api.error('User/server could not be found. Remember that if you are whitelisting a user, he must be in one of the bot\'s servers.')
+  }
     return true
   }
 }
