@@ -1,6 +1,6 @@
 module.exports = {
-  check: function (module, command, config) {
-    if (config.indexOf(module) >= -1) {
+  blacklistCheck: function (config,id) {
+    if (config.indexOf(id) >= -1) {
 			return true
 		}
   }
