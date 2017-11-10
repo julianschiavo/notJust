@@ -12,7 +12,8 @@ class dogCommand extends Command {
   constructor() {
     super({
       name: 'dog',
-      help: 'Fetch a random dog'
+      help: 'Fetch a random dog',
+      module: 'fun'
     })
   }
 
