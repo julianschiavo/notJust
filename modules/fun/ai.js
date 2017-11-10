@@ -13,7 +13,8 @@ class aiCommand extends Command {
     super({
       name: 'ai',
       help: 'Talk with an AI',
-      lhelp: '{text}\n {text} is the text to send to the artificial intelligence assistant.'
+      lhelp: '{text}\n {text} is the text to send to the artificial intelligence assistant.',
+      module: 'ai'
     })
   }
 
