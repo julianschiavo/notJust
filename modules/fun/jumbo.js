@@ -6,7 +6,8 @@ class jumboCommand extends Command {
   constructor() {
     super({
       name: 'jumbo',
-      help: 'Jumbo an emoji'
+      help: 'Jumbo an emoji',
+      module: 'fun'
     })
   }
 
