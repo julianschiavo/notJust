@@ -6,7 +6,8 @@ class kickCommand extends Command {
     super({
       name: 'kick',
       help: 'Kick a member',
-      lhelp: '{user} [reason]\n{user} is the user to kick (id or mention)\n[reason] is the Audit Log reason for the kick'
+      lhelp: '{user} [reason]\n{user} is the user to kick (id or mention)\n[reason] is the Audit Log reason for the kick',
+      module: 'admin'
     })
   }
 
