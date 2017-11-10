@@ -6,7 +6,8 @@ class unbanCommand extends Command {
     super({
       name: 'unban',
       help: 'Unban a member',
-      lhelp: '{user_id} [reason]\n{user_id} is the user to unban\'s ID\n[reason] is the Audit Log reason for the unban'
+      lhelp: '{user_id} [reason]\n{user_id} is the user to unban\'s ID\n[reason] is the Audit Log reason for the unban',
+      module: 'admin'
     })
   }
 
