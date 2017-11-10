@@ -54,6 +54,18 @@ bot.defaultSettings = {
   tempMutes: []
 }
 
+bot.defaultGlobalSettings = {
+  blacklistedUsers: [],
+  disabledModules: []
+}
+
+var gconf = bot.settings.get('global')
+  if (gconf) {
+  } else {
+    bot.settings.set('global', bot.defaultGlobalSettings);
+  }
+
+
 bot.on("guildCreate", guild => {
   const snekfetch = require('snekfetch')
 
