@@ -2,12 +2,11 @@ const Discord = require('discord.js')
 const config = require('../config.json')
 
 class PermsApi {
-check(module,command,message) {
-		if (message.client.settings.get('global').includes(module)) {
+check(mod,cmd,message) {
+		if (message.client.settings.get('global').includes(mod)) {
 			return true
 		}
 }
 }
-
 
 module.exports = PermsApi
