@@ -10,7 +10,7 @@ class preCommand extends Command {
   }
 
   hasPermission(message) {
-    var check = require('../../other/perms').check('utility','premium',message)
+    var check = require('../../other/perms').check('utility','premium',message.client.settings.get('global'))
     if ((message.guild && message.client.settings.get(message.guild.id).isDonator == true) || check) return false
     //if (message.guild.member(message.author).hasPermission("KICK_MEMBERS")) return true
     // if (message.author.id == message.guild.ownerID) return true
