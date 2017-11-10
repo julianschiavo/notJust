@@ -169,6 +169,7 @@ class CommandHandler {
       if (command.loaded == false) return false
       var check = require('./perms').blacklistCheck(message.client.settings.get('global').blacklistedUsers,message.author.id)
       //console.log(this.commands)
+      console.log(this.commands[args[0]].module)
       //var check2 = require('./perms').moduleCheck(message.client.settings.get('global').disabledModules,command.module)
       if (command.hasPermission(message) && !check) {
         try {
