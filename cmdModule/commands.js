@@ -167,24 +167,20 @@ class CommandHandler {
       if (!this.commands[args[0]]) return false
       let command = this.commands[args[0]].command
       if (command.loaded == false) return false
-      if (command.hasPermission(message)) {
+      var check = require('./perms').blacklistCheck(message.client.settings.get('global').blacklistedUsers,message.author.id)
+      if (command.hasPermission(message) && !check) {
         try {
           command.run(message, args, new api(message, args, this))
-          message.react(`:Green:324341994019225610`)
+          //message.react(`:green_tick:330712173288488960`)
         } catch (err) {
-          message.react(`:Red:324341993969025044`)
+          //message.react(`:red_tick:330712188681453590`)
           return new api(message, args, this).error(`An error occured! ${err}`)
         }
         
         return true
       } else {
         let apx = new api(message, args, this)
-        var check = require('./perms').blacklistCheck(message.client.settings.get('global').blacklistedUsers,message.author.id)
-        if (check == true) {
-          return false
-        } else {
         return apx.error('You cannot execute that command.\nThis may occur because it is a premium command and this is not a premium server, or because you do not have necessary permissions to execute the command\'s action.')
-        }
       }
     } catch (err) {
       console.error(err)
