@@ -179,7 +179,12 @@ class CommandHandler {
         return true
       } else {
         let apx = new api(message, args, this)
-        return apx.error('You do not have permission to execute that command!')
+        var check = require('./perms').blacklistCheck(message.client.settings.get('global').blacklistedUsers,message.author.id)
+        if (check == true) {
+          return false
+        } else {
+        return apx.error('You cannot execute that command.\nThis may occur because it is a premium command and this is not a premium server, or because you do not have necessary permissions to execute the command\'s action.')
+        }
       }
     } catch (err) {
       console.error(err)
