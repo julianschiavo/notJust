@@ -6,8 +6,8 @@ class blCommand extends Command {
   constructor() {
     super({
       name: 'blacklist',
-      help: 'Blacklist a server',
-      lhelp: '{server_id}\n{server_id} is ID of the server to blacklist'
+      help: 'Blacklist a server or user',
+      lhelp: '{id}\n{id} is ID of the user or server to blacklist'
     })
   }
 
@@ -18,7 +18,7 @@ class blCommand extends Command {
 
   async run(message, args, api) {
     if (!args[1]) {
-      api.error('Please specify a guild id to blacklist.')
+      api.error('Please specify a user or server ID to blacklist.')
     }
 
     function isN(num) {
@@ -29,8 +29,9 @@ class blCommand extends Command {
       return str.split(" ").length;
     }
     if (!isN(args[1])) {
-      api.error('Please specify an all numeric guild id.')
+      api.error('Please specify an all numeric user or server ID.')
     }
+    if (message.client.guilds.get(args[1])) {
     var guild = message.client.guilds.get(args[1])
     var gid
     if (guild) {
@@ -62,6 +63,25 @@ class blCommand extends Command {
     message.channel.send({
       embed
     })
+  } else if (message.client.users.get(args[1])) {
+    var user = message.client.users.get(args[1])
+    var current = message.client.settings.get('global')
+    current.blacklistedUsers.push(user.id)
+    
+    let embed = new Discord.RichEmbed()
+    embed.setTitle('<:apple_hammer:359560554479878144> `Blacklisted ' + user.tag + '!`')
+    embed.setDescription(String.fromCharCode(8203))
+    embed.setColor('#00ff00')
+    //embed.setTimestamp()
+    embed.setFooter('Replying to ' + message.author.tag)
+
+    message.channel.send({
+      embed
+    })
+    
+  } else {
+    api.error('User/server could not be found. Remember that if you are blacklisting a user, he must be in one of the bot\'s servers.')
+  }
     return true
   }
 }
