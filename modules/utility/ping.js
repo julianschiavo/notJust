@@ -9,8 +9,7 @@ class PingCommand extends Command {
   }
   
   hasPermission(message) {
-    var a = message.client.settings.get('global').blacklistedUsers
-    var check = require('../../other/perms').blacklistCheck(a,message.author.id)
+    var check = require('../../other/perms').blacklistCheck(message.client.settings.get('global').blacklistedUsers,message.author.id)
     if (check == true) return false
     return true
   }
