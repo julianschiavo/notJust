@@ -6,7 +6,8 @@ class toggleCommand extends Command {
     super({
       name: 'toggle',
       help: 'Toggle a self role',
-      lhelp: '{role}\n{role} is the role name or ID.'
+      lhelp: '{role}\n{role} is the role name or ID.',
+      module: 'admin'
     })
   }
 
