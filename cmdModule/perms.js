@@ -3,5 +3,10 @@ module.exports = {
     if (config.indexOf(id) > -1) {
 			return true
 	}
+  },
+  moduleCheck: function (config,command) {
+    /*if (config.indexOf(id) > -1) {
+			return true
+	}*/
   }
 };
