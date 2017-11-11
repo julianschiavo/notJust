@@ -12,8 +12,7 @@ class dogCommand extends Command {
   constructor() {
     super({
       name: 'dog',
-      help: 'Fetch a random dog',
-      module: 'fun'
+      help: 'Fetch a random dog'
     })
   }
 
@@ -35,6 +34,7 @@ class dogCommand extends Command {
         })
       } else {
         api.error('Wrong file format returned. Please try again.')
+        return
       }
     })
 
