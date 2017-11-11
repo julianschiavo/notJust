@@ -6,8 +6,7 @@ class purgeCommand extends Command {
     super({
       name: 'purge',
       help: 'Purge messages',
-      lhelp: '{count} [user]\n{count} is the number of messages to purge (2-100)\n[user] is a user\'s mention/ID to only delete their messages',
-      module: 'admin'
+      lhelp: '{count} [user]\n{count} is the number of messages to purge (2-100)\n[user] is a user\'s mention/ID to only delete their messages'
     })
   }
 
@@ -21,6 +20,7 @@ class purgeCommand extends Command {
     args.splice(0, 1)
     if (!args[0]) {
       api.error('Please specify how many messages to purge.')
+      return
     }
     const deleteCount = parseInt(args[0], 10);
     if (!deleteCount || deleteCount < 2 || deleteCount > 100) {
