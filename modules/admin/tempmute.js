@@ -6,8 +6,7 @@ class tmuteCommand extends Command {
     super({
       name: 'tempmute',
       help: 'Temporarily mute a member',
-      lhelp: '{time} {user} [reason]\n{time} is the amount of time to mute the member for (max 1 day)\n{user} is the user to mute (id or mention)\n[reason] is the Audit Log reason for the mute',
-      module: 'admin'
+      lhelp: '{time} {user} [reason]\n{time} is the amount of time to mute the member for (max 1 day)\n{user} is the user to mute (id or mention)\n[reason] is the Audit Log reason for the mute'
     })
   }
 
@@ -22,12 +21,14 @@ class tmuteCommand extends Command {
     args.splice(0, 1)
     if (!args[0]) {
       api.error('Please specify the amount of time to mute the user for.')
+      return
     }
     var time = args[0]
     var parse = require('parse-duration')
     time = parse(time)
     if (!args[1]) {
       api.error('Please specify which user to mute.')
+      return
     }
     var arg = args[1]
     var user = api.getUser(arg, 'member')
