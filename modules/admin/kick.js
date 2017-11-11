@@ -6,8 +6,7 @@ class kickCommand extends Command {
     super({
       name: 'kick',
       help: 'Kick a member',
-      lhelp: '{user} [reason]\n{user} is the user to kick (id or mention)\n[reason] is the Audit Log reason for the kick',
-      module: 'admin'
+      lhelp: '{user} [reason]\n{user} is the user to kick (id or mention)\n[reason] is the Audit Log reason for the kick'
     })
   }
 
@@ -21,6 +20,7 @@ class kickCommand extends Command {
     args.splice(0, 1)
     if (!args[0]) {
       api.error('Please specify which user to kick.')
+      return
     }
     var arg = args[0]
     var user = api.getUser(arg, 'member')
