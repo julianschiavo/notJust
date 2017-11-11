@@ -6,8 +6,7 @@ class roleCommand extends Command {
     super({
       name: 'role',
       help: 'Add/remove a role from a member',
-      lhelp: '{user} {role} [reason]\n{user} is the user to ban (id or mention)\n{role} is the role name or ID. If the role name contains 2 words, you MUST provide the ID.\n[reason] is the Audit Log reason for the role modification\n(Please note it will add or remove the role depending on if the user has it or not)',
-      module: 'admin'
+      lhelp: '{user} {role} [reason]\n{user} is the user to ban (id or mention)\n{role} is the role name or ID. If the role name contains 2 words, you MUST provide the ID.\n[reason] is the Audit Log reason for the role modification\n(Please note it will add or remove the role depending on if the user has it or not)'
     })
   }
 
