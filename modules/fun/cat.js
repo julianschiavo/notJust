@@ -13,8 +13,7 @@ class catCommand extends Command {
   constructor() {
     super({
       name: 'cat',
-      help: 'Fetch a random cat',
-      module: 'fun'
+      help: 'Fetch a random cat'
     })
   }
 
