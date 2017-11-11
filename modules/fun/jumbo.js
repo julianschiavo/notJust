@@ -6,8 +6,7 @@ class jumboCommand extends Command {
   constructor() {
     super({
       name: 'jumbo',
-      help: 'Jumbo an emoji',
-      module: 'fun'
+      help: 'Jumbo an emoji'
     })
   }
 
@@ -15,6 +14,7 @@ class jumboCommand extends Command {
     args.splice(0, 1)
     if (!args[0]) {
       api.error('Please provide an emoji to jumbo.')
+      return
     }
     var arg = args[0]
 
@@ -57,6 +57,7 @@ class jumboCommand extends Command {
       return true
     } else {
       api.error('Please provide an emoji to jumbo.')
+      return
     }
     //https://raw.githubusercontent.com/twitter/twemoji/gh-pages/2/svg/twemoji.convert.toCodePoint('unicodeEmojiOutputHere').svg
 
