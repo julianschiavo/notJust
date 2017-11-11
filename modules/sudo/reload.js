@@ -25,6 +25,7 @@ class reloadCommand extends Command {
 
     if (!args[1] || !args[2]) {
       api.error('Please specify a module folder and command')
+      return
     }
     var mn = args[1]
     var cn = args[2]
