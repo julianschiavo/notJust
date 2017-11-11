@@ -53,6 +53,7 @@
     "querystring": "^0.2.0",
     "request": "^2.83.0",
     "rethinkdbdash": "^2.3.29",
+    "rollbar": "^2.3.1",
     "snekfetch": "^3.5.5",
     "sodium": "^2.0.1",
     "time-ago": "^0.1.0",
