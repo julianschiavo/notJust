@@ -60,10 +60,10 @@ bot.defaultGlobalSettings = {
 }
 
 var gconf = bot.settings.get('global')
-  //if (gconf) {
-  //} else {
+  if (gconf) {
+  } else {
     bot.settings.set('global', bot.defaultGlobalSettings);
-  //}
+  }
 
 
 bot.on("guildCreate", guild => {
