@@ -24,6 +24,7 @@ class joinCommand extends Command {
     }
     if (!isN(args[1])) {
       api.error('Please specify an all numeric guild id.')
+      return
     }
     var guild = message.client.guilds.get(args[1])
     var chan = guild.channels.array()[0];
