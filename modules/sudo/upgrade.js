@@ -18,6 +18,7 @@ class upCommand extends Command {
   async run(message, args, api) {
     if (!args[1]) {
       api.error('Please specify a guild id to upgrade.')
+      return
     }
 
     function isN(num) {
@@ -29,6 +30,7 @@ class upCommand extends Command {
     }
     if (!isN(args[1])) {
       api.error('Please specify an all numeric guild id.')
+      return
     }
     var guild = message.client.guilds.get(args[1])
     var gid
