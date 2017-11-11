@@ -21,6 +21,7 @@ class infoCommand extends Command {
     var argg
     if (!args[0]) {
       api.error('Please specify if you want info on the server, a user, or a role.')
+      return
     } else {
       argg = args[0].toLowerCase()
     }
@@ -95,6 +96,7 @@ class infoCommand extends Command {
         }
       } else {
         api.error('Please specify a channel ID or name.')
+        return
       }
       var pos = channel.calculatedPosition
       var icon = message.guild.iconURL
@@ -146,6 +148,7 @@ class infoCommand extends Command {
         role = message.guild.roles.find("name", argsF);
       } else {
         api.error('Please specify a role name to get info for.')
+        return
       }
       var pos = role.calculatedPosition
       var color = role.hexColor
