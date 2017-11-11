@@ -6,8 +6,7 @@ class unbanCommand extends Command {
     super({
       name: 'unban',
       help: 'Unban a member',
-      lhelp: '{user_id} [reason]\n{user_id} is the user to unban\'s ID\n[reason] is the Audit Log reason for the unban',
-      module: 'admin'
+      lhelp: '{user_id} [reason]\n{user_id} is the user to unban\'s ID\n[reason] is the Audit Log reason for the unban'
     })
   }
 
@@ -21,6 +20,7 @@ class unbanCommand extends Command {
     args.splice(0, 1)
     if (!args[0]) {
       api.error('Please specify which user to unban.')
+      return
     }
     var arg = args[0]
 
