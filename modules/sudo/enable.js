@@ -19,6 +19,7 @@ class enCommand extends Command {
   async run(message, args, api) {
     if (!args[1]) {
       api.error('Please specify a module name to enable.')
+      return
     }
     var module = args[1].toLowerCase()
 
