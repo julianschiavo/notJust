@@ -13,8 +13,7 @@ class aiCommand extends Command {
     super({
       name: 'ai',
       help: 'Talk with an AI',
-      lhelp: '{text}\n {text} is the text to send to the artificial intelligence assistant.',
-      module: 'fun'
+      lhelp: '{text}\n {text} is the text to send to the artificial intelligence assistant.'
     })
   }
 
@@ -27,6 +26,7 @@ class aiCommand extends Command {
     args.splice(0, 1)
     if (!args[0]) {
       api.error('Please provide some text to send to the AI.')
+      return
     }
     var arg = args.join(' ');
     clbot.write(arg, (response) => {
