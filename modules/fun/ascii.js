@@ -14,8 +14,7 @@ class asciiCommand extends Command {
   constructor() {
     super({
       name: 'ascii',
-      help: 'Convert an emoji into ascii',//text not supported yet
-      module: 'fun' 
+      help: 'Convert an emoji into ascii'//no text yet
     })
   }
 
@@ -28,6 +27,7 @@ class asciiCommand extends Command {
     args.splice(0, 1)
     if (!args[0]) {
       api.error('Please provide text or an emoji to convert into ascii.')
+	    return
     }
     var arg = args[0]
 
@@ -45,6 +45,7 @@ class asciiCommand extends Command {
       link = 'https://raw.githubusercontent.com/twitter/twemoji/gh-pages/2/72x72/' + arg + '.png'
     } else {
       api.error('Please provide text or an emoji to convert into ascii.')
+	    return
     }
     var output
     const options = {
