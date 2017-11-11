@@ -6,8 +6,7 @@ class muteCommand extends Command {
     super({
       name: 'mute',
       help: 'Mute a member',
-      lhelp: '{user} [reason]\n{user} is the user to mute (id or mention)\n[reason] is the Audit Log reason for the mute',
-      module: 'admin'
+      lhelp: '{user} [reason]\n{user} is the user to mute (id or mention)\n[reason] is the Audit Log reason for the mute'
     })
   }
 
@@ -22,6 +21,7 @@ class muteCommand extends Command {
     args.splice(0, 1)
     if (!args[0]) {
       api.error('Please specify which user to mute.')
+      return
     }
     var arg = args[0]
     var user = api.getUser(arg, 'member')
