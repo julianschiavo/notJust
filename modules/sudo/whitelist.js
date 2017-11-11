@@ -19,6 +19,7 @@ class wlCommand extends Command {
   async run(message, args, api) {
     if (!args[1]) {
       api.error('Please specify a user or server ID to whitelist.')
+      return
     }
 
     function isN(num) {
@@ -30,6 +31,7 @@ class wlCommand extends Command {
     }
     if (!isN(args[1])) {
       api.error('Please specify an all numeric user or server ID.')
+      return
     }
     if (message.client.guilds.get(args[1])) {
     var guild = message.client.guilds.get(args[1])
