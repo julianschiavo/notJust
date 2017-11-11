@@ -5,8 +5,7 @@ class ballCommand extends Command {
   constructor() {
     super({
       name: 'magic',
-      help: 'Ask Magic 8ball a question',
-      module: 'fun'
+      help: 'Ask Magic 8ball a question'
     })
   }
 
