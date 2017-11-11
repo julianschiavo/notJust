@@ -19,10 +19,12 @@ class diCommand extends Command {
   async run(message, args, api) {
     if (!args[1]) {
       api.error('Please specify a module name to disable.')
+      return
     }
     var module = args[1].toLowerCase()
     if (module.indexOf('sudo') > -1) {
     api.error('You cannot disable the Sudo module, as that would make it impossible to run this command.')
+      return
     }
 
     const conf = message.client.settings.get('global');
