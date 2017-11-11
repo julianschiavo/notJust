@@ -65,47 +65,6 @@ var gconf = bot.settings.get('global')
     bot.settings.set('global', bot.defaultGlobalSettings);
   }
 
-
-bot.on("guildCreate", guild => {
-  const snekfetch = require('snekfetch')
-
-  snekfetch.post(`https://discordbots.org/api/bots/${bot.user.id}/stats`)
-    .set('Authorization', config.apiKeys.dbots)
-    .send({
-      server_count: bot.guilds.size
-    })
-    .then(() => console.log('Updated discordbots.org stats.'))
-    .catch(err => console.error(`Whoops something went wrong: ${err.body}`));
-  // Adding a new row to the collection uses `set(key, value)`
-  var conf = bot.settings.get(guild.id)
-  if (conf) {
-    if (conf.isBlacklisted == true) {
-      guild.leave()
-    }
-    if (conf.isDonator == true) {
-      conf.isDonator = false;
-      bot.settings.set(guild.id, conf);
-    }
-  } else {
-    bot.settings.set(guild.id, bot.defaultSettings);
-  }
-})
-
-bot.on("guildDelete", guild => {
-  const snekfetch = require('snekfetch')
-
-  snekfetch.post(`https://discordbots.org/api/bots/${bot.user.id}/stats`)
-    .set('Authorization', config.apiKeys.dbots)
-    .send({
-      server_count: bot.guilds.size
-    })
-    .then(() => console.log('Updated discordbots.org stats.'))
-    .catch(err => console.error(`Whoops something went wrong: ${err.body}`));
-  // Removing an element uses `delete(key)`
-  // bot.settings.delete(guild.id);
-  // EDIT: Don't delete bot settings, that way Blacklist is retained
-});
-
 bot.dispatcher = ''
 
 //bot.dispatcher.on('end', () => {
