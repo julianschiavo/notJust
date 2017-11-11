@@ -36,6 +36,7 @@ class setCommand extends Command {
 
     if (!args[1] || !args[2]) {
       api.error('Please specify a preference name and value.')
+      return
     }
     var name = args[1].toLowerCase()
     var value = args[2]
@@ -80,6 +81,7 @@ class setCommand extends Command {
           })
         } else {
           api.error('The specified mute role ID is invalid. Try again, making sure the role name only contains one word.')
+          return
         }
       }
     }
@@ -112,6 +114,7 @@ class setCommand extends Command {
           })
         } else {
           api.error('The specified log channel name is invalid. Try again, making sure it doesn\'t contain spaces.')
+          return
         }
       } else {
         let channel = message.guild.channels.get(value)
@@ -132,6 +135,7 @@ class setCommand extends Command {
           })
         } else {
           api.error('The specified log channel ID is invalid. Try again, making sure the channel name doesn\'t contain spaces.')
+          return
         }
       }
     }
@@ -177,6 +181,7 @@ class setCommand extends Command {
           }
         } else {
           api.error('The specified self role name is invalid. Try again, making sure it doesn\'t contain spaces.')
+          return
         }
       } else {
         let role = message.guild.roles.get(value)
@@ -216,6 +221,7 @@ class setCommand extends Command {
           }
         } else {
           api.error('The specified self role ID is invalid. Try again, making sure the role\'s name doesn\'t contain spaces.')
+          return
         }
       }
     }
