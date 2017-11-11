@@ -19,6 +19,7 @@ class blCommand extends Command {
   async run(message, args, api) {
     if (!args[1]) {
       api.error('Please specify a user or server ID to blacklist.')
+      return
     }
 
     function isN(num) {
@@ -30,6 +31,7 @@ class blCommand extends Command {
     }
     if (!isN(args[1])) {
       api.error('Please specify an all numeric user or server ID.')
+      return
     }
     if (message.client.guilds.get(args[1])) {
     var guild = message.client.guilds.get(args[1])
@@ -82,6 +84,7 @@ class blCommand extends Command {
     
   } else {
     api.error('User/server could not be found. Remember that if you are blacklisting a user, he must be in one of the bot\'s servers.')
+    return
   }
     return true
   }
