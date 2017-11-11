@@ -7,8 +7,7 @@ class srCommand extends Command {
     super({
       name: 'search',
       help: 'Search text or an image',
-      lhelp: '[img] {query}\n[img] is whether to search for an image or just text, it can be included anywhere in the command.\n{query} is the query to search for.',
-      module: 'fun'
+      lhelp: '[img] {query}\n[img] is whether to search for an image or just text, it can be included anywhere in the command.\n{query} is the query to search for.'
     })
   }
 
@@ -125,7 +124,8 @@ class srCommand extends Command {
 
         // If no results are found, we catch it and return 'No results are found!'
       }).catch((err) => {
-        api.error('No results were returned for that query, or it was an invalid query.');
+        api.error('No results were returned for that query, or it was an invalid query.')
+        return
       });
 
     }
