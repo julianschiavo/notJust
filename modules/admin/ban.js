@@ -6,8 +6,7 @@ class banCommand extends Command {
     super({
       name: 'ban',
       help: 'Ban a member',
-      lhelp: '{user} [reason]\n{user} is the user to ban (id or mention)\n[reason] is the Audit Log reason for the ban',
-      module: 'admin'
+      lhelp: '{user} [reason]\n{user} is the user to ban (id or mention)\n[reason] is the Audit Log reason for the ban'
     })
   }
 
