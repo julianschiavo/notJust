@@ -6,8 +6,7 @@ class unmuteCommand extends Command {
     super({
       name: 'unmute',
       help: 'Unmute a member',
-      lhelp: '{user} [reason]\n{user} is the user to unmute (id or mention)\n[reason] is the Audit Log reason for the unmute',
-      module: 'admin'
+      lhelp: '{user} [reason]\n{user} is the user to unmute (id or mention)\n[reason] is the Audit Log reason for the unmute'
     })
   }
 
@@ -22,6 +21,7 @@ class unmuteCommand extends Command {
     args.splice(0, 1)
     if (!args[0]) {
       api.error('Please specify which user to unmute.')
+      return
     }
     var arg = args[0]
     var user = api.getUser(arg, 'member')
