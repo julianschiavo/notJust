@@ -18,7 +18,7 @@ return
 				return
 			}
   
-	  channel.send('<:apple_pencil_paper:359560552701231106> message `' + message.id + '`\n```' + message.content + '```\ndeleted by `' + message.author.tag + '`')
+	  channel.send('<:apple_pencil_paper:359560552701231106> message \n```' + message.content + '```\n(`' + message.id + '`) deleted by `' + message.author.tag + '`')
       
   } else {
   return
