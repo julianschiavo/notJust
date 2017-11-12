@@ -36,18 +36,10 @@ exports.run = (bot, member, user) => {
 				channel.send('<:apple_pencil:359560553032581130> `' + user.user.tag + '` (`' + user.id + '`) changed nickname from `' + member.nickname + '` to `' + user.nickname + '`')
 			}
 			
-			function io(obj,wut) {
-				if (obj.indexOf(wut) > -1) {
-					return false
-				} else {
-					return true
-				}
-			}
-			
-			var nr = member.guild.roles.map(r => r.name).join(', ').toString()
-			var newroles = user.guild.roles.filter(r => io(nr,r)).map(r => r.name)
-			var or = user.guild.roles.map(r => r.name).join(', ').toString()
-			var oldroles = member.guild.roles.filter(r => io(or,r)).map(r => r.name)
+			var nr = member.roles.map(r => r.name).join(', ').toString()
+			var newroles = user.roles.filter(r => member.roles.indexOf(r) > -1).map(r => r.name)
+			var or = user.roles.map(r => r.name).join(', ').toString()
+			var oldroles = member.roles.filter(r => user.roles.indexOf(r) > -1).map(r => r.name)
 			if (newroles) {
 				channel.send('<:apple_pencil:359560553032581130> `' + user.user.tag + '` (`' + user.id + '`) added role `' + newroles + '`')
 			}
