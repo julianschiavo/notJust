@@ -13,8 +13,13 @@ exports.run = (bot, chn) => {
 				console.log('Failed to find logChannel for ' + chn.guild.name)
 				return
 			}
-      
-      channel.send('<:apple_symbol_hash:359559749785616387> channel `' + channel.name + '` (`' + channel.id + '`) created')
+			var nam
+      if (chn.type == 'text') {
+	      nam = '#' + chn.name
+      } else {
+	      nam = chn.name
+      }
+      channel.send('<:apple_symbol_hash:359559749785616387> channel `' + nam + '` (`' + chn.id + '`) created')
 
 		} else {
 			return
