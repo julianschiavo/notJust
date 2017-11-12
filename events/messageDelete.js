@@ -1,3 +1,4 @@
+console.log('b')
 const config = require('../config.json')
 const ta = require('../timeago.js')
 const Discord = require('discord.js')
