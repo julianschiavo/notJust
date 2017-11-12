@@ -17,7 +17,7 @@ exports.run = (bot, chn) => {
       if (chn.type == 'text') {
 	      nam = '<#' + chn.id + '>'
       } else {
-	      nam = chn.name
+	      nam = '`' + chn.name + '`'
       }
       channel.send('<:apple_symbol_hash:359559749785616387> channel ' + nam + ' (`' + chn.id + '`) created')
 
