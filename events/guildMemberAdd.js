@@ -2,7 +2,7 @@ const config = require('../config.json')
 const ta = require('../../timeago.js')
 
 exports.run = (bot, member) => {
- var conf = bot.settings.get(message.guild.id)
+ var conf = bot.settings.get(member.guild.id)
   if (conf) {
   
   if (conf.useLogs && conf.useLogs == true) {
@@ -23,16 +23,20 @@ exports.run = (bot, member) => {
       embed.addField('`ID`', id, true)
       embed.addField('`Created`', time, true)
       embed.addField('`Joined`', join, true)
-      message.channel.send({
+      if (member.guild.channels.find('name', conf.logChannel)) {
+       member.guild.channels.find('name', conf.logChannel).send({
         embed
       })
+      } else {
+       console.log('Failed to find logChannel for ' + member.guild.name)
+      }
       
   } else {
   return
   }
   
   } else {
-    bot.settings.set(message.guild.id, bot.defaultSettings);
+    bot.settings.set(member.guild.id, bot.defaultSettings);
     return
   }
   
