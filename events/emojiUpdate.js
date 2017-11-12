@@ -16,7 +16,7 @@ exports.run = (bot, oemoji, nemoji) => {
 			}
    
    if (nemoji.name !== oemoji.name) {
-  channel.send('<:apple_face_smile:359559572634992672> emoji `' + nemoji.id + '` changed name from `' + oemoji.name + '` to `' + nemoji.name + '`')
+  channel.send('<:apple_symbol_name_badge:359559749760581633> emoji `' + nemoji.id + '` changed name from `' + oemoji.name + '` to `' + nemoji.name + '`')
   }
       
   } else {
