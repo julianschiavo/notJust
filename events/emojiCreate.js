@@ -15,7 +15,7 @@ exports.run = (bot, emoji) => {
 				return
 			}
    
-  channel.send('<:apple_face_smile:359559572634992672> emoji <:' + emoji.name + ':' + emoji.id + '> (`' + emoji.name + '` - `' + emoji.id + '`) created')
+  channel.send('<:apple_face_smile:359559572634992672> emoji `' + emoji.name + '` (`' + emoji.id + '`) created')
       
   } else {
   return
