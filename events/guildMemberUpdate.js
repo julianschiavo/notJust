@@ -12,30 +12,37 @@ exports.run = (bot, member, user) => {
 				console.log('Failed to find logChannel for ' + member.guild.name)
 				return
 			}
-   
-   
-   
-   
-   
-   
+
+
+
+
+
+
 			//start
 			if (user.user.avatarURL !== member.user.avatarURL) {
-				channel.send('<:apple_pencil:359560553032581130> `' + user.tag + '` (`' + user.id + '`) changed avatar to:' + user.user.avatarURL)
+				channel.send('<:apple_pencil:359560553032581130> `' + user.user.tag + '` (`' + user.id + '`) changed avatar to:' + user.user.avatarURL)
 			}
-   if (user.user.username !== member.user.username) {
-				channel.send('<:apple_pencil:359560553032581130> `' + user.tag + '` (`' + user.id + '`) changed username from `' + member.user.username + '` to `' + user.user.username + '`')
+			if (user.user.username !== member.user.username) {
+				channel.send('<:apple_pencil:359560553032581130> `' + user.user.tag + '` (`' + user.id + '`) changed username from `' + member.user.username + '` to `' + user.user.username + '`')
 			}
-   if (user.nickname !== member.nickname) {
-				channel.send('<:apple_pencil:359560553032581130> `' + user.tag + '` (`' + user.id + '`) changed nickname from `' + member.nickname + '` to `' + user.nickname + '`')
+			
+			if ((user.nickname !== member.nickname) && member.nickname == null) {
+				channel.send('<:apple_pencil:359560553032581130> `' + user.user.tag + '` (`' + user.id + '`) added nickname `' + user.nickname + '`')
+			}
+			if ((user.nickname !== member.nickname) && user.nickname == null) {
+				channel.send('<:apple_pencil:359560553032581130> `' + user.user.tag + '` (`' + user.id + '`) removed nickname `' + member.nickname + '`')
+			}
+			if ((user.nickname !== member.nickname) && (member.nickname !== null && user.nickname !== null)) {
+				channel.send('<:apple_pencil:359560553032581130> `' + user.user.tag + '` (`' + user.id + '`) changed nickname from `' + member.nickname + '` to `' + user.nickname + '`')
 			}
 			//var roles = user.roles.map(r => r.name).join('`, `')
 			//var oroles = oser.roles.map(r => r.name).join('`, `')
 
-   
-   
-   
-   
-   
+
+
+
+
+
 		} else {
 			return
 		}
