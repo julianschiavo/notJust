@@ -20,13 +20,13 @@ exports.run = (bot, old, nuu) => {
       }
       
       if ((nuu.topic !== old.topic) && old.topic == null) {
-      channel.send('<:apple_symbol_hash:359559749785616387> channel <#' + nuu.id + '> added topic\n```md' + nuu.topic + '```')
+      channel.send('<:apple_symbol_hash:359559749785616387> channel <#' + nuu.id + '> added topic\n```' + nuu.topic + '```')
       }
       if ((nuu.topic !== old.topic) && nuu.topic == null) {
-      channel.send('<:apple_symbol_hash:359559749785616387> channel <#' + nuu.id + '> removed topic\n```md' + old.topic + '```')
+      channel.send('<:apple_symbol_hash:359559749785616387> channel <#' + nuu.id + '> removed topic\n```' + old.topic + '```')
       }
       if ((nuu.topic !== old.topic) && (nuu.topic !== null && old.topic !== null)) {
-      channel.send('<:apple_symbol_hash:359559749785616387> channel <#' + nuu.id + '> changed topic from\n```md' + old.topic + '```\n to \n```md' + nuu.topic + '```')
+      channel.send('<:apple_symbol_hash:359559749785616387> channel <#' + nuu.id + '> changed topic from\n```' + old.topic + '``` \nto\n ```' + nuu.topic + '```')
       }
       
       if (old.nsfw == true && nuu.nsfw == false) {
