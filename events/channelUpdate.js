@@ -41,14 +41,14 @@ exports.run = (bot, old, nuu) => {
       channel.send('<:apple_symbol_hash:359559749785616387> channel `' + nuu.id + '` name changed from `' + old.name + '` to `' + nuu.name + '`')
       }
       
-      if ((nuu.userlimit !== old.userlimit) && old.userlimit == 0) {
-      channel.send('<:apple_symbol_hash:359559749785616387> channel `' + nuu.name + '` added userlimit `' + nuu.userlimit + '`')
+      if ((nuu.userLimit !== old.userLimit) && old.userLimit == 0) {
+      channel.send('<:apple_symbol_hash:359559749785616387> channel `' + nuu.name + '` added userlimit `' + nuu.userLimit + '`')
       }
-      if ((nuu.userlimit !== old.userlimit) && nuu.userlimit == 0) {
+      if ((nuu.userLimit !== old.userLimit) && nuu.userLimit == 0) {
       channel.send('<:apple_symbol_hash:359559749785616387> channel `' + nuu.name + '` removed userlimit')
       }
-      if ((nuu.userlimit !== old.userlimit) && (nuu.userlimit !== 0 && old.userlimit !== 0)) {
-      channel.send('<:apple_symbol_hash:359559749785616387> channel `' + nuu.name + '` changed userlimit from `' + old.userlimit + '` to `' + nuu.userlimit + '`')
+      if ((nuu.userLimit !== old.userLimit) && (nuu.userLimit !== 0 && old.userLimit !== 0)) {
+      channel.send('<:apple_symbol_hash:359559749785616387> channel `' + nuu.name + '` changed userlimit from `' + old.userLimit + '` to `' + nuu.userLimit + '`')
       }
       
       }
