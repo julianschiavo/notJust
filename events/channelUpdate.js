@@ -2,53 +2,53 @@ const config = require('../config.json')
 const ta = require('../timeago.js')
 const Discord = require('discord.js')
 
-exports.run = (bot, old, new) => {
-	var conf = bot.settings.get(new.guild.id)
+exports.run = (bot, old, nuu) => {
+	var conf = bot.settings.get(nuu.guild.id)
 	if (conf) {
 		if (conf.useLogs && conf.useLogs == true) {
 			var channel
-			if (new.guild.channels.find('name', conf.logChannel)) {
-				var channel = new.guild.channels.find('name', conf.logChannel)
+			if (nuu.guild.channels.find('name', conf.logChannel)) {
+				var channel = nuu.guild.channels.find('name', conf.logChannel)
 			} else {
-				console.log('Failed to find logChannel for ' + new.guild.name)
+				console.log('Failed to find logChannel for ' + nuu.guild.name)
 				return
 			}
 
-      if (new.type == 'text') {
-      if (new.name !== old.name) {
-      channel.send('<:apple_symbol_hash:359559749785616387> channel `' + new.id + '` name changed from `#' + old.name + '` to `#' + new.name + '`')
+      if (nuu.type == 'text') {
+      if (nuu.name !== old.name) {
+      channel.send('<:apple_symbol_hash:359559749785616387> channel `' + nuu.id + '` name changed from `#' + old.name + '` to `#' + nuu.name + '`')
       }
       
-      if ((new.topic !== old.topic) && old.topic == null) {
-      channel.send('<:apple_symbol_hash:359559749785616387> channel <#' + new.name + '> topic added\n```md' + new.topic + '```')
+      if ((nuu.topic !== old.topic) && old.topic == null) {
+      channel.send('<:apple_symbol_hash:359559749785616387> channel <#' + nuu.name + '> topic added\n```md' + nuu.topic + '```')
       }
-      if ((new.topic !== old.topic) && new.topic == null) {
-      channel.send('<:apple_symbol_hash:359559749785616387> channel <#' + new.name + '> topic removed\n```md' + old.topic + '```')
+      if ((nuu.topic !== old.topic) && nuu.topic == null) {
+      channel.send('<:apple_symbol_hash:359559749785616387> channel <#' + nuu.name + '> topic removed\n```md' + old.topic + '```')
       }
-      if ((new.topic !== old.topic) && (new.topic !== null && old.topic !== null)) {
-      channel.send('<:apple_symbol_hash:359559749785616387> channel <#' + new.name + '> topic changed from `' + old.topic + '` to `' + new.topic + '`')
+      if ((nuu.topic !== old.topic) && (nuu.topic !== null && old.topic !== null)) {
+      channel.send('<:apple_symbol_hash:359559749785616387> channel <#' + nuu.name + '> topic changed from `' + nuu.topic + '` to `' + nuu.topic + '`')
       }
       
-      if (old.nsfw == true && new.nsfw == false) {
-      channel.send('<:apple_symbol_hash:359559749785616387> channel <#' + new.name + '> removed NSFW')
+      if (old.nsfw == true && nuu.nsfw == false) {
+      channel.send('<:apple_symbol_hash:359559749785616387> channel <#' + nuu.name + '> removed NSFW')
       }
-      if (old.nsfw == false && new.nsfw == true) {
-      channel.send('<:apple_symbol_hash:359559749785616387> channel <#' + new.name + '> made NSFW')
+      if (old.nsfw == false && nuu.nsfw == true) {
+      channel.send('<:apple_symbol_hash:359559749785616387> channel <#' + nuu.name + '> made NSFW')
       }
-      } else if (chn.type == 'voice') {
+      } else if (nuu.type == 'voice') {
 
-      if (new.name !== old.name) {
-      channel.send('<:apple_symbol_hash:359559749785616387> channel `' + new.id + '` name changed from `' + old.name + '` to `' + new.name + '`')
+      if (nuu.name !== old.name) {
+      channel.send('<:apple_symbol_hash:359559749785616387> channel `' + nuu.id + '` name changed from `' + old.name + '` to `' + nuu.name + '`')
       }
       
-      if ((new.userlimit !== old.userlimit) && old.userlimit == 0) {
-      channel.send('<:apple_symbol_hash:359559749785616387> channel `' + new.name + '` added userlimit `' + new.userlimit + '`')
+      if ((nuu.userlimit !== old.userlimit) && old.userlimit == 0) {
+      channel.send('<:apple_symbol_hash:359559749785616387> channel `' + nuu.name + '` added userlimit `' + nuu.userlimit + '`')
       }
-      if ((new.userlimit !== old.userlimit) && new.userlimit == 0) {
-      channel.send('<:apple_symbol_hash:359559749785616387> channel `' + new.name + '` removed userlimit')
+      if ((nuu.userlimit !== old.userlimit) && nuu.userlimit == 0) {
+      channel.send('<:apple_symbol_hash:359559749785616387> channel `' + nuu.name + '` removed userlimit')
       }
-      if ((new.userlimit !== old.userlimit) && (new.userlimit !== 0 && old.userlimit !== 0)) {
-      channel.send('<:apple_symbol_hash:359559749785616387> channel `' + new.name + '` changed userlimit from `' + old.userlimit + '` to `' + new.userlimit + '`')
+      if ((nuu.userlimit !== old.userlimit) && (nuu.userlimit !== 0 && old.userlimit !== 0)) {
+      channel.send('<:apple_symbol_hash:359559749785616387> channel `' + nuu.name + '` changed userlimit from `' + old.userlimit + '` to `' + nuu.userlimit + '`')
       }
       
       }
@@ -59,7 +59,7 @@ exports.run = (bot, old, new) => {
 		}
 
 	} else {
-		bot.settings.set(new.guild.id, bot.defaultSettings);
+		bot.settings.set(nuu.guild.id, bot.defaultSettings);
 		return
 	}
 
