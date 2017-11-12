@@ -14,8 +14,8 @@ exports.run = (bot, guil, user) => {
 				console.log('Failed to find logChannel for ' + guil.name)
 				return
 			}
-   
-  channel.send('<:apple_hammer:359560554479878144> `' + user.id + '` unbanned')
+  
+	  channel.send('<:apple_hammer:359560554479878144> `' + user.tag + '` (`' + user.id + '`) unbanned')
       
   } else {
   return
