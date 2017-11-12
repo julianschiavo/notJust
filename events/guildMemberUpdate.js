@@ -37,9 +37,9 @@ exports.run = (bot, member, user) => {
 			}
 			
 			var nr = member.roles.map(r => r.name).join(', ')
-			var newroles = user.roles.filter(r => nr.indexOf(r) > -1).map(r => r.name)
+			var newroles = user.roles.filter(r => nr.indexOf(r.name) > -1).map(r => r.name)
 			var or = user.roles.map(r => r.name).join(', ')
-			var oldroles = member.roles.filter(r => or.indexOf(r) > -1).map(r => r.name)
+			var oldroles = member.roles.filter(r => or.indexOf(r.name) > -1).map(r => r.name)
 			if (newroles) {
 				channel.send('<:apple_pencil:359560553032581130> `' + user.user.tag + '` (`' + user.id + '`) added role `' + newroles + '`')
 			}
