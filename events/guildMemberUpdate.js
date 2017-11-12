@@ -35,17 +35,16 @@ exports.run = (bot, member, user) => {
 			if ((user.nickname !== member.nickname) && (member.nickname !== null && user.nickname !== null)) {
 				channel.send('<:apple_pencil:359560553032581130> `' + user.user.tag + '` (`' + user.id + '`) changed nickname from `' + member.nickname + '` to `' + user.nickname + '`')
 			}
-			
-			var nr = member.roles.map(r => r.name).join(', ')
-			var newroles = user.roles.filter(r => nr.indexOf(r.name) > -1).map(r => r.name)
-			var or = user.roles.map(r => r.name).join(', ')
-			var oldroles = member.roles.filter(r => or.indexOf(r.name) > -1).map(r => r.name)
+			//new user, filter it's roles. if the old list of roles role name 
+			var newroles = user.roles.filter(r => member.roles.map(r => r.name).join(', ').indexOf(r.name) == -1).map(r => r.name)
+			//var or = user.roles.map(r => r.name).join(', ')
+			//var oldroles = member.roles.filter(r => or.indexOf(r.name) > -1).map(r => r.name)
 			if (newroles) {
 				channel.send('<:apple_pencil:359560553032581130> `' + user.user.tag + '` (`' + user.id + '`) added role `' + newroles + '`')
 			}
-			if (oldroles) {
-				channel.send('<:apple_pencil:359560553032581130> `' + user.user.tag + '` (`' + user.id + '`) removed role `' + oldroles + '`')
-			}
+			//if (oldroles) {
+			//	channel.send('<:apple_pencil:359560553032581130> `' + user.user.tag + '` (`' + user.id + '`) removed role `' + oldroles + '`')
+			//}
 			//var roles = user.roles.map(r => r.name).join('`, `')
 			//var oroles = oser.roles.map(r => r.name).join('`, `')
 
