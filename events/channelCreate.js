@@ -7,8 +7,8 @@ exports.run = (bot, chn) => {
 	if (conf) {
 		if (conf.useLogs && conf.useLogs == true) {
 			var channel
-			if (user.guild.channels.find('name', conf.logChannel)) {
-				var channel = user.guild.channels.find('name', conf.logChannel)
+			if (chn.guild.channels.find('name', conf.logChannel)) {
+				var channel = chn.guild.channels.find('name', conf.logChannel)
 			} else {
 				console.log('Failed to find logChannel for ' + chn.guild.name)
 				return
