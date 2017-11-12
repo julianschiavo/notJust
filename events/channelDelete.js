@@ -15,7 +15,7 @@ exports.run = (bot, chn) => {
 			}
 			var nam
       if (chn.type == 'text') {
-	      nam = '`#' + chn.id + '`'
+	      nam = '`#' + chn.name + '`'
       } else {
 	      nam = '`' + chn.name + '`'
       }
