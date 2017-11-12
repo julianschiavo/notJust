@@ -35,6 +35,15 @@ exports.run = (bot, member, user) => {
 			if ((user.nickname !== member.nickname) && (member.nickname !== null && user.nickname !== null)) {
 				channel.send('<:apple_pencil:359560553032581130> `' + user.user.tag + '` (`' + user.id + '`) changed nickname from `' + member.nickname + '` to `' + user.nickname + '`')
 			}
+			
+			var newroles = user.guild.roles.filter(r => member.guild.roles.indexOf(r) > -1).map(r => r.name)
+			var oldroles = member.guild.roles.filter(r => user.guild.roles.indexOf(r) > -1).map(r => r.name)
+			if (newroles) {
+				channel.send('<:apple_pencil:359560553032581130> `' + user.user.tag + '` (`' + user.id + '`) added role `' + newroles + '`')
+			}
+			if (oldroles) {
+				channel.send('<:apple_pencil:359560553032581130> `' + user.user.tag + '` (`' + user.id + '`) removed role `' + oldroles + '`')
+			}
 			//var roles = user.roles.map(r => r.name).join('`, `')
 			//var oroles = oser.roles.map(r => r.name).join('`, `')
 
