@@ -15,7 +15,7 @@ exports.run = (bot, guil, user) => {
 				return
 			}
    
-  channel.send('<:apple_hammer:359560554479878144> ' + user.tag + '` (`' + user.id + '`) banned')
+  channel.send('<:apple_hammer:359560554479878144> `' + user.tag + '` (`' + user.id + '`) banned')
       
   } else {
   return
