@@ -44,10 +44,10 @@ exports.run = (bot, member, user) => {
 				}
 			}
 			
-			var nr = member.guild.roles.map(r => r.name).join(', ')
-			var newroles = user.guild.roles.filter(r => io(r,nr)).map(r => r.name)
-			var or = user.guild.roles.map(r => r.name).join(', ')
-			var oldroles = member.guild.roles.filter(r => io(r,or)).map(r => r.name)
+			var nr = member.guild.roles.map(r => r.name).join(', ').toString()
+			var newroles = user.guild.roles.filter(r => io(nr,r)).map(r => r.name)
+			var or = user.guild.roles.map(r => r.name).join(', ').toString()
+			var oldroles = member.guild.roles.filter(r => io(or,r)).map(r => r.name)
 			if (newroles) {
 				channel.send('<:apple_pencil:359560553032581130> `' + user.user.tag + '` (`' + user.id + '`) added role `' + newroles + '`')
 			}
