@@ -20,28 +20,28 @@ exports.run = (bot, member, user) => {
 
 			//start
 			if (user.user.avatarURL !== member.user.avatarURL) {
-				channel.send('<:apple_pencil:359560553032581130> `' + user.user.tag + '` (`' + user.id + '`) changed avatar to:' + user.user.avatarURL)
+				channel.send('<:apple_person_raising_hand:359559750712557568> `' + user.user.tag + '` (`' + user.id + '`) changed avatar to:' + user.user.avatarURL)
 			}
 			if (user.user.username !== member.user.username) {
-				channel.send('<:apple_pencil:359560553032581130> `' + user.user.tag + '` (`' + user.id + '`) changed username from `' + member.user.username + '` to `' + user.user.username + '`')
+				channel.send('<:apple_person_raising_hand:359559750712557568> `' + user.user.tag + '` (`' + user.id + '`) changed username from `' + member.user.username + '` to `' + user.user.username + '`')
 			}
 			
 			if ((user.nickname !== member.nickname) && member.nickname == null) {
-				channel.send('<:apple_pencil:359560553032581130> `' + user.user.tag + '` (`' + user.id + '`) added nickname `' + user.nickname + '`')
+				channel.send('<:apple_person_raising_hand:359559750712557568> `' + user.user.tag + '` (`' + user.id + '`) added nickname `' + user.nickname + '`')
 			}
 			if ((user.nickname !== member.nickname) && user.nickname == null) {
-				channel.send('<:apple_pencil:359560553032581130> `' + user.user.tag + '` (`' + user.id + '`) removed nickname `' + member.nickname + '`')
+				channel.send('<:apple_person_raising_hand:359559750712557568> `' + user.user.tag + '` (`' + user.id + '`) removed nickname `' + member.nickname + '`')
 			}
 			if ((user.nickname !== member.nickname) && (member.nickname !== null && user.nickname !== null)) {
-				channel.send('<:apple_pencil:359560553032581130> `' + user.user.tag + '` (`' + user.id + '`) changed nickname from `' + member.nickname + '` to `' + user.nickname + '`')
+				channel.send('<:apple_person_raising_hand:359559750712557568> `' + user.user.tag + '` (`' + user.id + '`) changed nickname from `' + member.nickname + '` to `' + user.nickname + '`')
 			}
 			var newrole = '`' + user.roles.filter(r => member.roles.map(r => r.id).join(', ').indexOf(r.id) == -1).map(r => r.name) + '`'
 			var oldrole = '`' + member.roles.filter(r => user.roles.map(r => r.id).indexOf(r.id) == -1).map(r => r.name) + '`'
 			if (newrole !== '``') {
-				channel.send('<:apple_pencil:359560553032581130> `' + user.user.tag + '` (`' + user.id + '`) got role ' + newrole)
+				channel.send('<:apple_person_raising_hand:359559750712557568> `' + user.user.tag + '` (`' + user.id + '`) got role ' + newrole)
 			}
 			if (oldrole !== '``') {
-				channel.send('<:apple_pencil:359560553032581130> `' + user.user.tag + '` (`' + user.id + '`) lost role ' + oldrole)
+				channel.send('<:apple_person_raising_hand:359559750712557568> `' + user.user.tag + '` (`' + user.id + '`) lost role ' + oldrole)
 			}
 			//var roles = user.roles.map(r => r.name).join('`, `')
 			//var oroles = oser.roles.map(r => r.name).join('`, `')
