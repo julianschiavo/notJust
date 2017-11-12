@@ -21,7 +21,7 @@ exports.run = (bot, member) => {
       embed.setTimestamp()
       embed.setDescription(String.fromCharCode(8203))
       embed.setThumbnail(icon)
-      embed.addField('`ID`', id, true)
+      embed.addField('`ID`', id, false)
       embed.addField('`Created`', time, true)
       embed.addField('`Joined`', join, true)
       if (member.guild.channels.find('name', conf.logChannel)) {
