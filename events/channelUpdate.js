@@ -16,24 +16,24 @@ exports.run = (bot, old, nuu) => {
 
       if (nuu.type == 'text') {
       if (nuu.name !== old.name) {
-      channel.send('<:apple_symbol_hash:359559749785616387> channel `' + nuu.id + '` name changed from `#' + old.name + '` to `#' + nuu.name + '`')
+      channel.send('<:apple_symbol_hash:359559749785616387> channel `' + nuu.id + '` changed name from `#' + old.name + '` to `#' + nuu.name + '`')
       }
       
       if ((nuu.topic !== old.topic) && old.topic == null) {
-      channel.send('<:apple_symbol_hash:359559749785616387> channel <#' + nuu.name + '> topic added\n```md' + nuu.topic + '```')
+      channel.send('<:apple_symbol_hash:359559749785616387> channel <#' + nuu.id + '> added topic\n```md' + nuu.topic + '```')
       }
       if ((nuu.topic !== old.topic) && nuu.topic == null) {
-      channel.send('<:apple_symbol_hash:359559749785616387> channel <#' + nuu.name + '> topic removed\n```md' + old.topic + '```')
+      channel.send('<:apple_symbol_hash:359559749785616387> channel <#' + nuu.id + '> removed topic\n```md' + old.topic + '```')
       }
       if ((nuu.topic !== old.topic) && (nuu.topic !== null && old.topic !== null)) {
-      channel.send('<:apple_symbol_hash:359559749785616387> channel <#' + nuu.name + '> topic changed from `' + nuu.topic + '` to `' + nuu.topic + '`')
+      channel.send('<:apple_symbol_hash:359559749785616387> channel <#' + nuu.id + '> changed topic from\n```md' + old.topic + '```\n to \n```md' + nuu.topic + '```')
       }
       
       if (old.nsfw == true && nuu.nsfw == false) {
-      channel.send('<:apple_symbol_hash:359559749785616387> channel <#' + nuu.name + '> removed NSFW')
+      channel.send('<:apple_symbol_hash:359559749785616387> channel <#' + nuu.id + '> removed NSFW')
       }
       if (old.nsfw == false && nuu.nsfw == true) {
-      channel.send('<:apple_symbol_hash:359559749785616387> channel <#' + nuu.name + '> made NSFW')
+      channel.send('<:apple_symbol_hash:359559749785616387> channel <#' + nuu.id + '> made NSFW')
       }
       } else if (nuu.type == 'voice') {
 
