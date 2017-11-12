@@ -19,7 +19,7 @@ exports.run = (bot, chn) => {
       } else {
 	      nam = '`' + chn.name + '`'
       }
-      channel.send('<:apple_symbol_mark_cross:359559750259703808> channel ' + nam + ' (`' + chn.id + '`) deleted')
+      channel.send('<:apple_symbol_hash:359559749785616387> channel ' + nam + ' (`' + chn.id + '`) deleted')
 
 		} else {
 			return
