@@ -18,7 +18,7 @@ return
 				return
 			}
   
-	  channel.send('<:apple_pencil_paper:359560552701231106> message `' + nmessage.id + '` edited from\n```' + omessage.content + '```\nto\n```' + nmessage.content + '``` by `' + message.author.tag + '`')
+	  channel.send('<:apple_pencil_paper:359560552701231106> message `' + nmessage.id + '` edited from\n```' + omessage.content + '```\nto\n```' + nmessage.content + '``` by `' + nmessage.author.tag + '`')
       
   } else {
   return
