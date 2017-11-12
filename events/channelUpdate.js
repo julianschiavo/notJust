@@ -25,7 +25,7 @@ exports.run = (bot, old, nuu) => {
       if ((nuu.topic !== old.topic) && (nuu.topic == '' || nuu.topic == null)) {
       channel.send('<:apple_symbol_hash:359559749785616387> channel <#' + nuu.id + '> removed topic\n```' + old.topic + '```')
       }
-      if ((nuu.topic !== old.topic) && ((old.topic == '' || old.topic == null) && (nuu.topic == '' || nuu.topic == null))) {
+      if (nuu.topic !== old.topic && (old.topic == '' || old.topic == null) && (nuu.topic == '' || nuu.topic == null)) {
       channel.send('<:apple_symbol_hash:359559749785616387> channel <#' + nuu.id + '> changed topic from\n```' + old.topic + '``` \nto\n ```' + nuu.topic + '```')
       }
       
