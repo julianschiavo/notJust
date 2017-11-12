@@ -1,5 +1,6 @@
 const config = require('../config.json')
 const ta = require('../timeago.js')
+const Discord = require('discord.js')
 
 exports.run = (bot, member) => {
  var conf = bot.settings.get(member.guild.id)
