@@ -36,10 +36,10 @@ exports.run = (bot, member, user) => {
 				channel.send('<:apple_pencil:359560553032581130> `' + user.user.tag + '` (`' + user.id + '`) changed nickname from `' + member.nickname + '` to `' + user.nickname + '`')
 			}
 			
-			var nr = member.roles.map(r => r.name).join(', ').toString()
-			var newroles = user.roles.filter(r => member.roles.indexOf(r) > -1).map(r => r.name)
-			var or = user.roles.map(r => r.name).join(', ').toString()
-			var oldroles = member.roles.filter(r => user.roles.indexOf(r) > -1).map(r => r.name)
+			var nr = member.roles.map(r => r.name).join(', ')
+			var newroles = user.roles.filter(r => nr.indexOf(r) > -1).map(r => r.name)
+			var or = user.roles.map(r => r.name).join(', ')
+			var oldroles = member.roles.filter(r => or.indexOf(r) > -1).map(r => r.name)
 			if (newroles) {
 				channel.send('<:apple_pencil:359560553032581130> `' + user.user.tag + '` (`' + user.id + '`) added role `' + newroles + '`')
 			}
