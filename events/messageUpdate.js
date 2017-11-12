@@ -3,7 +3,7 @@ const ta = require('../timeago.js')
 const Discord = require('discord.js')
 
 exports.run = (bot, omessage, nmessage) => {
-if (nmessage.system == true) {
+if (nmessage.system == true || nmessage.author.bot == true) {
 return
 }
  var conf = bot.settings.get(nmessage.guild.id)
