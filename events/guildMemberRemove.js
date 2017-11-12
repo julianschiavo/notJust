@@ -17,7 +17,7 @@ exports.run = (bot, member) => {
 				return
 			}
    
-  channel.send('<:apple_person_raising_hand:359559750712557568> `' + user.user.tag + '` (`' + user.id + '`) left (joined ' + ta.ago(user.joinedTimestamp) + ')')
+  channel.send('<:apple_hand_wave:359559674099400704> `' + user.user.tag + '` (`' + user.id + '`) left (joined ' + ta.ago(user.joinedTimestamp) + ')')
       
   } else {
   return
