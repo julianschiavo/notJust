@@ -38,9 +38,9 @@ exports.run = (bot, member, user) => {
 			
 			function io(obj,wut) {
 				if (obj.indexOf(wut) > -1) {
-					return true
-				} else {
 					return false
+				} else {
+					return true
 				}
 			}
 			
