@@ -4,6 +4,9 @@ const ta = require('../timeago.js')
 const Discord = require('discord.js')
 
 exports.run = (bot, message) => {
+	if (message.channel.type == 'dm' || message.channel.type == 'group') {
+		return;
+	}
 if (message.system == true) {
 	console.log('a')
 return
