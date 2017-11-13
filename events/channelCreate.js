@@ -3,7 +3,7 @@ const ta = require('../timeago.js')
 const Discord = require('discord.js')
 
 exports.run = (bot, chn) => {
-	if (!chn.guild.id) {
+	if (!chn.guild) {
 		return;
 	}
 	var conf = bot.settings.get(chn.guild.id)
