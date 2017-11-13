@@ -3,6 +3,9 @@ const ta = require('../timeago.js')
 const Discord = require('discord.js')
 
 exports.run = (bot, old, nuu) => {
+	if (nuu.type == 'dm' || nuu.type == 'group') {
+		return;
+	}
 	var conf = bot.settings.get(nuu.guild.id)
 	if (conf) {
 		if (conf.useLogs && conf.useLogs == true) {
