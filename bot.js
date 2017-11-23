@@ -43,6 +43,13 @@ const tableSource = new EnmapLevel({
 bot.settings = new Enmap({
   provider: tableSource
 });
+
+const tableSourceNew = new EnmapLevel({
+  name: "currency"
+});
+bot.currency = new Enmap({
+  provider: tableSourceNew
+});
 bot.queue = {};
 
 bot.defaultSettings = {
