@@ -43,7 +43,7 @@ class givCommand extends Command {
     var thisConf = message.client.currency.get(user.id)
     
       if (isN(args[2])) {
-      var amount = args[2]
+      var amount = Number(args[2]) + Number(thisConf.amount)
       } else {
       api.error('Please specify a numeric amount of gold bars.')
       return
@@ -51,7 +51,7 @@ class givCommand extends Command {
       
       
       var idd = user.id
-      thisConf.amount = parseInt(thisConf.amount + amount);
+      thisConf.amount = Number(amount);
           message.client.currency.set(user.id, thisConf);
       let embed = new Discord.RichEmbed()
       embed.setTitle('<:gold:383074743089364992> `' + amount + ' Gold Bars Given To ' + user.user.tag + '`')
