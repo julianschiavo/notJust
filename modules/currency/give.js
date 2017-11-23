@@ -72,4 +72,4 @@ class givCommand extends Command {
   }
 }
 
-module.exports = setCommand
+module.exports = givCommand
