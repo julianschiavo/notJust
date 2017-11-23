@@ -4,7 +4,7 @@ const Command = require('../../cmdModule/commands').Command
 class givCommand extends Command {
   constructor() {
     super({
-      name: 'give',
+      name: 'gold',
       help: 'Give gold bars to a member',
       lhelp: '{user} {amount}\n{user} is the ID or ping of the user\n{amount} is the amount of gold bars'
     })
