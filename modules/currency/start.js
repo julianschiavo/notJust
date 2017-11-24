@@ -36,7 +36,7 @@ class startCommand extends Command {
       chan = message.guild.channels.find('name', 'welcome')
     chan2 = message.guild.channels.find('name', 'invites')
     inv = await chan.createInvite({maxAge:0,unique:true},'Gold Bar Invite for ' + message.author.tag)
-      inv = inv.toString
+      inv = inv.toString()
       var curr = message.client.currency.get(user.id)
       curr.inviteCode = inv.replace('https://discord.gg/', '')
       message.client.currency.set(user.id,curr)
