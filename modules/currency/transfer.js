@@ -52,7 +52,7 @@ class transCommand extends Command {
     var thisConf = message.client.currency.get(user.id)
     var fromConf = message.client.currency.get(from.id)
     
-      if (isN(args[2]) && (fromConf.amount == Number(args[2]) || fromConf.amount < Number(args[2]))) {
+      if (isN(args[2]) && fromConf.amount >= Number(args[2])) {
         var am = Number(args[2])
         var famount = Number(fromConf.amount) - Number(args[2])
       var amount = Number(args[2]) + Number(thisConf.amount)
