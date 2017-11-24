@@ -52,12 +52,12 @@ class transCommand extends Command {
     var thisConf = message.client.currency.get(user.id)
     var fromConf = message.client.currency.get(from.id)
     
-      if (isN(args[2]) && fromConf.amount <= Number(args[2])) {
+      if (isN(args[2]) && (fromConf.amount == Number(args[2]) || fromConf.amount < Number(args[2]))) {
         var am = Number(args[2])
         var famount = Number(fromConf.amount) - Number(args[2])
       var amount = Number(args[2]) + Number(thisConf.amount)
       } else {
-      api.error('Please specify a numeric amount of gold bars.')
+      api.error('Please specify a numeric amount of gold bars. You may also have gotten this error if you do not have enough gold bars for the transfer.')
       return
       }
       
@@ -70,11 +70,11 @@ class transCommand extends Command {
       let embed = new Discord.RichEmbed()
       embed.setTitle('<:gold:383074743089364992> `' + user.user.tag + ' Gold Bars Transferred`')
      // embed.setTitle('<:gold:383074743089364992> `' + amount + ' Gold Bars Given To ' + user.user.tag + '`')
-     embed.addField('Amount Changed', am, false)
+     embed.addField('Amount Transferred', am, false)
      embed.addField('From', '`' + from.user.tag + '`', true)
-     embed.addField('New From Amount', amount, true)
-     embed.addField('To', '`' + user.user.tag + '`', false)
-     embed.addField('New To Amount', famount, true)
+     embed.addField('New From Amount', famount, false)
+     embed.addField('To', '`' + user.user.tag + '`', true)
+     embed.addField('New To Amount', amount, false)
       embed.setColor('#00ff00')
       embed.setFooter('Replying to ' + message.author.tag)
       embed.setDescription(String.fromCharCode(8203))
