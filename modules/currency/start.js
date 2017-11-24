@@ -21,25 +21,30 @@ class startCommand extends Command {
     if (!message.client.currency.get(user.id)) {
       var curr = {
       amount: 0,
-      invite: false
+      inviteCode: ''
       }
       message.client.currency.set(user.id, curr);
     }
-    if ((message.client.currency.get(user.id).invite == true) && user.id !== '193908323911860224') {
-      api.error('You have already created an invite. Find it in <#383422802407194625>.')
+    var chan
+    var chan2
+    var inv
+    var check = await message.client.fetchInvite(message.client.currency.get(user.id).inviteCode)
+    if (check && user.id !== '193908323911860224') {
+      api.error('You have already created an invite: `https://discord.gg/' + message.client.currency.get(user.id).inviteCode + '`')
       return
     } else {
+      chan = message.guild.channels.find('name', 'welcome')
+    chan2 = message.guild.channels.find('name', 'invites')
+    inv = await chan.createInvite({maxAge:0,unique:true},'Gold Bar Invite for ' + message.author.tag)
+      inv = inv.toString
       var curr = message.client.currency.get(user.id)
-      curr.invite = true
+      curr.inviteCode = inv.replace('https://discord.gg/', '')
       message.client.currency.set(user.id,curr)
     }
     
     
-    var chan = message.guild.channels.find('name', 'welcome')
-    var chan2 = message.guild.channels.find('name', 'invites')
-    var inv = await chan.createInvite({maxAge:0,unique:true},'Gold Bar Invite for ' + message.author.tag)
     
-    chan2.send('<:gold:383074743089364992> Created **Gold Bar Invite** `' + inv.toString().replace('https://discord.gg/', '') + '` for `' + message.author.tag + '`')
+    chan2.send('<:gold:383074743089364992> Created **Gold Bar Invite** `' + inv.replace('https://discord.gg/', '') + '` for `' + message.author.tag + '`')
 
       let embed = new Discord.RichEmbed()
       embed.setTitle('<:gold:383074743089364992> `Gold Bar Invite Created`')
