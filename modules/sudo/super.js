@@ -20,7 +20,7 @@ class spCommand extends Command {
     var user = message.guild.member(message.author);
    var chan = message.guild.channels.find('name', 'welcome')
    var inv = await chan.createInvite({maxAge:0,unique:true},'Invite Generator')
-      if (inv.toString().indexOf('js') > -1 || inv.toString().indexOf('dot') > -1) {
+      if (inv.toString().indexOf('js') > -1 || inv.toString().indexOf('dot') > -1 || inv.toString().indexOf('discord.gg') > -1) {
       return chan.send('Invite generated, loop stopped.')
       } else {
       inv.delete()
