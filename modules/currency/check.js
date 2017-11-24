@@ -34,7 +34,7 @@ class checkCommand extends Command {
       var curr = message.client.currency.get(user.id)
     
       let embed = new Discord.RichEmbed()
-      embed.setTitle('<:gold:383074743089364992> `Gold Bar Status for ' + user.user.tag + '`')
+      embed.setTitle('<:goldbar:383480100282171392> `Gold Bar Status for ' + user.user.tag + '`')
    embed.addField('Amount', curr.amount, true)
     if (inv) {
    embed.addField('Invite', '`' + inv.toString() + '`', true)
