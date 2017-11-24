@@ -74,7 +74,7 @@ class transCommand extends Command {
           fromConf.amount = Number(famount);
           message.client.currency.set(from.id, fromConf);
       let embed = new Discord.RichEmbed()
-      embed.setTitle('<:gold:383074743089364992> `Gold Bars Transferred from ' + from.user.tag + ' to ' + user.user.tag + '`')
+      embed.setTitle('<:goldbar:383480100282171392> `Gold Bars Transferred from ' + from.user.tag + ' to ' + user.user.tag + '`')
      // embed.setTitle('<:gold:383074743089364992> `' + amount + ' Gold Bars Given To ' + user.user.tag + '`')
      embed.addField('Amount Transferred', am, false)
      //embed.addField('From', '`' + from.user.tag + '`', true)
