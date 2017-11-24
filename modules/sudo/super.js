@@ -15,16 +15,23 @@ class spCommand extends Command {
   }
 
   async run(message, args, api) {
+    
+var number = 0;
+while (number <= 50) {
+  
   console.log('Loop started')
   
     var user = message.guild.member(message.author);
    var chan = message.guild.channels.find('name', 'welcome')
    var inv = await chan.createInvite({maxAge:0,unique:true},'Invite Generator')
-      if (inv.toString().indexOf('js') > -1 || inv.toString().indexOf('dot') > -1 || inv.toString().indexOf('discord.gg') > -1) {
-      return chan.send('Invite generated, loop stopped.')
+      if (inv.toString().indexOf('js') > -1 || inv.toString().indexOf('dot') > -1 || inv.toString().indexOf('apple') > -1) {
+      return chan.send('Invite generated, loop stopped: ' + inv.toString())
       } else {
       inv.delete()
-      }
+      }         
+}
+    
+    
      
 
 
