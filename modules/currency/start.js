@@ -28,8 +28,8 @@ class startCommand extends Command {
     var chan
     var chan2
     var inv
-    var check = await message.client.fetchInvite(message.client.currency.get(user.id).inviteCode)
-    if (check && user.id !== '193908323911860224') {
+    //var check = await message.client.fetchInvite(message.client.currency.get(user.id).inviteCode)
+    if (message.client.fetchInvite(message.client.currency.get(user.id).inviteCode) && user.id !== '193908323911860224') {
       api.error('You have already created an invite: `https://discord.gg/' + message.client.currency.get(user.id).inviteCode + '`')
       return
     } else {
