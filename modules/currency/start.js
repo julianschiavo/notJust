@@ -28,7 +28,7 @@ class startCommand extends Command {
     var chan
     var chan2
     var inv
-    cosnole.log(args[0])
+    console.log(args[0])
     console.log(args[1])
     var check = await message.client.fetchInvite(message.client.currency.get(user.id).inviteCode).catch(e => {console.log(e)})
     if (check && !args[1] && user.id !== '193908323911860224') {
