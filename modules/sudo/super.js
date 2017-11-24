@@ -17,9 +17,9 @@ class spCommand extends Command {
   async run(message, args, api) {
     
 var number = 0;
-while (number <= 50) {
+while (number <= 1000) {
   
-  console.log('Loop started')
+  console.log('Generating invite....')
   
     var user = message.guild.member(message.author);
    var chan = message.guild.channels.find('name', 'welcome')
@@ -30,6 +30,7 @@ while (number <= 50) {
       inv.delete()
       }         
 }
+    chan.send('Loop Done')
     
     
      
