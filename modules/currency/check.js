@@ -36,7 +36,9 @@ class checkCommand extends Command {
       let embed = new Discord.RichEmbed()
       embed.setTitle('<:gold:383074743089364992> `Gold Bar Status`')
    embed.addField('Amount', curr.amount, true)
+    if (inv) {
    embed.addField('Invite', '`' + inv.toString() + '`', true)
+    }
     
       embed.setColor('#00ff00')
       embed.setFooter('Replying to ' + message.author.tag)
