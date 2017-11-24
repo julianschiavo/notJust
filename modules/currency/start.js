@@ -39,6 +39,7 @@ class startCommand extends Command {
       inv = inv.toString()
       var curr = message.client.currency.get(user.id)
       curr.invCode = inv.replace('https://discord.gg/', '')
+      curr.amount = Number('50') + Number(curr.amount)
       message.client.currency.set(user.id,curr)
     }
     
