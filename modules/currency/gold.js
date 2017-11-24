@@ -55,7 +55,7 @@ class givCommand extends Command {
       thisConf.amount = Number(amount);
           message.client.currency.set(user.id, thisConf);
       let embed = new Discord.RichEmbed()
-      embed.setTitle('<:gold:383074743089364992> `' + user.user.tag + ' Gold Bars Updated`')
+      embed.setTitle('<:goldbar:383480100282171392> `' + user.user.tag + ' Gold Bars Updated`')
      // embed.setTitle('<:gold:383074743089364992> `' + amount + ' Gold Bars Given To ' + user.user.tag + '`')
     embed.addField('Amount Added', am, false)
     embed.addField('Total Amount', thisConf.amount, false)
