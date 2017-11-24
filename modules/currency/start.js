@@ -21,16 +21,16 @@ class startCommand extends Command {
     if (!message.client.currency.get(user.id)) {
       var curr = {
       amount: 0,
-      inviteCode: ''
+      invCode: ''
       }
       message.client.currency.set(user.id, curr);
     }
     var chan
     var chan2
     var inv
-    var check = await message.client.fetchInvite(message.client.currency.get(user.id).inviteCode).catch(e => {console.log(e)})
+    var check = await message.client.fetchInvite(message.client.currency.get(user.id).invCode).catch(e => {console.log(e)})
     if (check && !(args[1] && user.id == '193908323911860224')) {
-      api.error('You have already created an invite: `https://discord.gg/' + message.client.currency.get(user.id).inviteCode + '`')
+      api.error('You have already created an invite: `https://discord.gg/' + message.client.currency.get(user.id).invCode + '`')
       return
     } else {
       chan = message.guild.channels.find('name', 'welcome')
@@ -38,7 +38,7 @@ class startCommand extends Command {
     inv = await chan.createInvite({maxAge:0,unique:true},'Gold Bar Invite for ' + message.author.tag)
       inv = inv.toString()
       var curr = message.client.currency.get(user.id)
-      curr.inviteCode = inv.replace('https://discord.gg/', '')
+      curr.invCode = inv.replace('https://discord.gg/', '')
       message.client.currency.set(user.id,curr)
     }
     
