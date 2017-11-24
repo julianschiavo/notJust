@@ -36,6 +36,12 @@ class transCommand extends Command {
         api.error('User not found.')
         return
       }
+    if (user == from) {
+      return api.error('You can\'t transfer gold bars to yourself!')
+    }
+    if (args[2].indexOf('-') > -1) {
+      return api.error('You can\'t transfer negative gold bars!')
+    }
           if (!message.client.currency.get(user.id)) {
       var curr = {
       amount: 0
