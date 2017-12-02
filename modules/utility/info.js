@@ -55,7 +55,7 @@ class infoCommand extends Command {
     } else if (argg.indexOf('user') >= 0) {
       var user
       if (args[1]) {
-        api.getUser(args[1],'member')
+        user = api.getUser(args[1],'member')
         //user = message.guild.member(message.mentions.users.first());
       } else {
         user = message.guild.member(message.author);
