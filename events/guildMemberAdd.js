@@ -5,6 +5,17 @@ const Discord = require('discord.js')
 exports.run = (bot, member) => {
    var user = member
  var conf = bot.settings.get(member.guild.id)
+ 
+ if (member.guild.id = '268970339948691456') {
+	 
+ let embed = new Discord.RichEmbed()
+    embed.setTitle('<:apple_hand_wave:359559674099400704> `Welcome ' + user.user.tag + '`')
+    embed.setDescription(`Please read <#360649401414189089> to see our rules, partners, and more info about Discord Technology!`)
+    embed.setColor('#00ff00')
+    embed.setFooter('Replying to ' + message.author.tag)
+	 member.guild.channels.find('name', 'welcome').send(embed)
+ }
+ 
   if (conf) {
   
   if (conf.useLogs && conf.useLogs == true) {
