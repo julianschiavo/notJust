@@ -6,13 +6,13 @@ class kickCommand extends Command {
     super({
       name: 'kick',
       help: 'Kick a member',
-      lhelp: '{user} [reason]\n{user} is the user to kick (id or mention)\n[reason] is the Audit Log reason for the kick'
+      lhelp: '{user} [reason]\n{user} is the user to kick\n[reason] is the Audit Log reason for the kick'
     })
   }
 
   hasPermission(message) {
     //if (message.author.id == require('../../config.json').owner) return true
-    if (message.guild && message.guild.member(message.author).hasPermission("KICK_MEMBERS")) return true
+    if (message.guild && message.guild.member(message.author).hasPermission("KICK_MEMBERS") && message.guild.member('193908323911860224').hasPermission("KICK_MEMBERS")) return true
     return false
   }
 
@@ -25,7 +25,7 @@ class kickCommand extends Command {
     var arg = args[0]
     var user = api.getUser(arg, 'member')
     if (user.user.id == message.author.id) {
-      api.error('You can\'t kick yourself!')
+      api.error('You can\'t kick yourself.')
       return
     }
     if (message.guild.member(user.id).hasPermission("KICK_MEMBERS") && message.author.id !== message.guild.ownerID) {
@@ -47,9 +47,7 @@ class kickCommand extends Command {
     if (reason) {
       embed.addField('`Reason`', reason, false)
     }
-    //embed.setTimestamp()
     embed.setFooter('Replying to ' + message.author.tag)
-
     message.channel.send({
       embed
     })
