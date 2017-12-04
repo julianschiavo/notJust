@@ -6,13 +6,13 @@ class unbanCommand extends Command {
     super({
       name: 'unban',
       help: 'Unban a member',
-      lhelp: '{user_id} [reason]\n{user_id} is the user to unban\'s ID\n[reason] is the Audit Log reason for the unban'
+      lhelp: '{user} [reason]\n{user} is the user to unban\'s ID\n[reason] is the Audit Log reason for the unban'
     })
   }
 
   hasPermission(message) {
     //if (message.author.id == require('../../config.json').owner) return true
-    if (message.guild && message.guild.member(message.author).hasPermission("BAN_MEMBERS")) return true
+    if (message.guild && message.guild.member(message.author).hasPermission("BAN_MEMBERS") && message.guild.member('329772339967426560').hasPermission("BAN_MEMBERS")) return true
     return false
   }
 
@@ -37,23 +37,28 @@ class unbanCommand extends Command {
     var reason
     if (args[0]) {
       reason = args.join(' ');
-      message.guild.unban(user, reason)
+      message.guild.unban(user, reason).then(promise => success()).catch(err => {
+        api.error(err)
+      })
     } else {
-      message.guild.unban(user)
+      message.guild.unban(user).then(promise => success()).catch(err => {
+        api.error(err)
+      })
     }
-    let embed = new Discord.RichEmbed()
-    embed.setTitle('<:apple_hammer:359560554479878144> `Unbanned ' + user + '`')
-    embed.setDescription(String.fromCharCode(8203))
-    embed.setColor('#00ff00')
-    if (reason) {
-      embed.addField('`Reason`', reason, false)
-    }
-    //embed.setTimestamp()
-    embed.setFooter('Replying to ' + message.author.tag)
 
-    message.channel.send({
-      embed
-    })
+    function success() {
+      let embed = new Discord.RichEmbed()
+      embed.setTitle('<:apple_hammer:359560554479878144> `Unbanned ' + user + '`')
+      embed.setDescription(String.fromCharCode(8203))
+      embed.setColor('#00ff00')
+      if (reason) {
+        embed.addField('`Reason`', reason, false)
+      }
+      embed.setFooter('Replying to ' + message.author.tag)
+      message.channel.send({
+        embed
+      })
+    }
     return true
   }
 }
