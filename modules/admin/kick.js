@@ -17,7 +17,6 @@ class kickCommand extends Command {
   }
 
   async run(message, args, api) {
-    var check
     args.splice(0, 1)
     if (!args[0]) {
       api.error('Please specify which user to kick.')
@@ -39,12 +38,10 @@ class kickCommand extends Command {
       reason = args.join(' ');
       user.kick(reason).then(promise => success()).catch(err => {
         api.error(err)
-        check = true
       })
     } else {
       user.kick().then(promise => success()).catch(err => {
         api.error(err);
-        check = true
       })
     }
 
