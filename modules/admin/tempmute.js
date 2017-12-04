@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const Command = require('../../cmdModule/commands').Command
 
-class tmuteCommand extends Command {
+class tempmuteCommand extends Command {
   constructor() {
     super({
       name: 'tempmute',
@@ -12,7 +12,7 @@ class tmuteCommand extends Command {
 
   hasPermission(message) {
     //if (message.author.id == require('../../config.json').owner) return true
-    if (message.guild && message.guild.member(message.author).hasPermission("KICK_MEMBERS")) return true
+    if (message.guild && message.guild.member(message.author).hasPermission("KICK_MEMBERS") && message.guild.member('329772339967426560').hasPermission("KICK_MEMBERS")) return true
     return false
   }
 
@@ -49,15 +49,19 @@ class tmuteCommand extends Command {
         return
       }
       if (user.roles.has(role.id)) {
-        api.error('This user is already muted!')
+        api.error('This user is already muted.')
         return
       }
       var reason
       if (args[1]) {
         reason = args.join(' ');
-        user.addRole(role, reason)
+        user.addRole(role, reason).then(promise => success()).catch(err => {
+          api.error(err)
+        })
       } else {
-        user.addRole(role)
+        user.addRole(role).then(promise => success()).catch(err => {
+          api.error(err)
+        })
       }
       if (!thisConf.tempMutes) {
         thisConf.tempMutes = []
@@ -73,20 +77,20 @@ class tmuteCommand extends Command {
         unmute()
       }, time)
 
-      let embed = new Discord.RichEmbed()
-      embed.setTitle('<:apple_muted:372902540393709569> `Temporarily Muted ' + user.user.username + '`')
-      embed.setDescription(String.fromCharCode(8203))
-      embed.setColor('#00ff00')
-      embed.addField('`Duration`', time, false)
-      if (reason) {
-        embed.addField('`Reason`', reason, false)
+      function success() {
+        let embed = new Discord.RichEmbed()
+        embed.setTitle('<:apple_muted:372902540393709569> `Temporarily Muted ' + user.user.username + '`')
+        embed.setDescription(String.fromCharCode(8203))
+        embed.setColor('#00ff00')
+        embed.addField('`Duration`', time, false)
+        if (reason) {
+          embed.addField('`Reason`', reason, false)
+        }
+        embed.setFooter('Replying to ' + message.author.tag)
+        message.channel.send({
+          embed
+        })
       }
-      //embed.setTimestamp()
-      embed.setFooter('Replying to ' + message.author.tag)
-
-      message.channel.send({
-        embed
-      })
     } else {
       api.error('This server\'s mute role is invalid, non existent, or couldn\'t be found. Please check your preferences.')
     }
@@ -94,4 +98,4 @@ class tmuteCommand extends Command {
   }
 }
 
-module.exports = tmuteCommand
+module.exports = tempmuteCommand
