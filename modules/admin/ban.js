@@ -35,22 +35,29 @@ class banCommand extends Command {
     var reason
     if (args[0]) {
       reason = args.join(' ');
-      user.ban(reason)
+      user.ban(reason).then(promise => success()).catch(err => {
+        api.error(err)
+      })
     } else {
-      user.ban()
+      user.ban().then(promise => success()).catch(err => {
+        api.error(err)
+      })
     }
-    let embed = new Discord.RichEmbed()
-    embed.setTitle('<:apple_hammer:359560554479878144> `Banned ' + user.user.username + '`')
-    embed.setDescription(String.fromCharCode(8203))
-    embed.setColor('#00ff00')
-    if (reason) {
-      embed.addField('`Reason`', reason, false)
+
+    function success() {
+      let embed = new Discord.RichEmbed()
+      embed.setTitle('<:apple_hammer:359560554479878144> `Banned ' + user.user.username + '`')
+      embed.setDescription(String.fromCharCode(8203))
+      embed.setColor('#00ff00')
+      if (reason) {
+        embed.addField('`Reason`', reason, false)
+      }
+      //embed.setTimestamp()
+      embed.setFooter('Replying to ' + message.author.tag)
+      message.channel.send({
+        embed
+      })
     }
-    //embed.setTimestamp()
-    embed.setFooter('Replying to ' + message.author.tag)
-    message.channel.send({
-      embed
-    })
     return true
   }
 }
