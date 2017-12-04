@@ -16,6 +16,7 @@ class shellCommand extends Command {
   }
 
   async run(message, args, api) {
+    args.splice(0,1)
 exec(args.join(' '), {shell: "/bin/bash"}, (err, stdout, stderr) => {
         if (err) {
            api.error("The command returned an error.\nCheck system console for more details.");
