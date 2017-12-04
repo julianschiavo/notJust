@@ -17,6 +17,7 @@ class kickCommand extends Command {
   }
 
   async run(message, args, api) {
+    var check
     args.splice(0, 1)
     if (!args[0]) {
       api.error('Please specify which user to kick.')
@@ -36,9 +37,18 @@ class kickCommand extends Command {
     var reason
     if (args[0]) {
       reason = args.join(' ');
-      user.kick(reason).catch(err => return api.error(err))
+      user.kick(reason).catch(err => {
+        api.error(err)
+        check = true
+      })
     } else {
-      user.kick().catch(err => return api.error(err))
+      user.kick().catch(err => {
+        api.error(err);
+        check = true
+      })
+    }
+    if (check == true) {
+      return;
     }
     let embed = new Discord.RichEmbed()
     embed.setTitle('<:apple_boot:372659817287909376> `Kicked ' + user.user.username + '`')
