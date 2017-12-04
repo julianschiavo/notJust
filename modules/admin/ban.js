@@ -12,7 +12,7 @@ class banCommand extends Command {
 
   hasPermission(message) {
     //if (message.author.id == require('../../config.json').owner) return true
-    if (message.guild && message.guild.member(message.author).hasPermission("BAN_MEMBERS")) return true
+    if (message.guild && message.guild.member(message.author).hasPermission("BAN_MEMBERS") && message.guild.member('329772339967426560').hasPermission("BAN_MEMBERS")) return true
     return false
   }
 
@@ -24,7 +24,7 @@ class banCommand extends Command {
     var arg = args[0]
     var user = api.getUser(arg, 'member')
     if (user.user.id == message.author.id) {
-      api.error('You can\'t ban yourself!')
+      api.error('You can\'t ban yourself.')
       return
     }
     if (message.guild.member(user.id).hasPermission("BAN_MEMBERS") && message.author.id !== message.guild.ownerID) {
@@ -48,7 +48,6 @@ class banCommand extends Command {
     }
     //embed.setTimestamp()
     embed.setFooter('Replying to ' + message.author.tag)
-
     message.channel.send({
       embed
     })
