@@ -12,7 +12,7 @@ class toggleCommand extends Command {
 
   hasPermission(message) {
     //if (message.author.id == require('../../config.json').owner) return true
-    if (message.guild) return true
+    if (message.guild && message.guild.member('329772339967426560').hasPermission("MANAGE_ROLES")) return true
     return false
   }
 
@@ -59,19 +59,25 @@ class toggleCommand extends Command {
     args.splice(0, 1)
 
     if (user.roles.has(role.id)) {
-      user.removeRole(role)
+      user.removeRole(role).then(promise => success()).catch(err => {
+        api.error(err)
+      })
     } else {
-      user.addRole(role)
+      user.addRole(role).then(promise => success()).catch(err => {
+        api.error(err)
+      })
     }
-    let embed = new Discord.RichEmbed()
-    embed.setTitle('<:apple_key:359560553431171084> `Toggled ' + role.name + ' for ' + user.user.username + '`')
-    embed.setDescription(String.fromCharCode(8203))
-    embed.setColor('#00ff00')
-    embed.setFooter('Replying to ' + message.author.tag)
 
-    message.channel.send({
-      embed
-    })
+    function success() {
+      let embed = new Discord.RichEmbed()
+      embed.setTitle('<:apple_key:359560553431171084> `Toggled ' + role.name + ' for ' + user.user.username + '`')
+      embed.setDescription(String.fromCharCode(8203))
+      embed.setColor('#00ff00')
+      embed.setFooter('Replying to ' + message.author.tag)
+      message.channel.send({
+        embed
+      })
+    }
     return true
   }
 }
