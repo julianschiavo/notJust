@@ -36,9 +36,9 @@ class kickCommand extends Command {
     var reason
     if (args[0]) {
       reason = args.join(' ');
-      user.kick(reason)
+      user.kick(reason).catch(err => return api.error(err))
     } else {
-      user.kick()
+      user.kick().catch(err => return api.error(err))
     }
     let embed = new Discord.RichEmbed()
     embed.setTitle('<:apple_boot:372659817287909376> `Kicked ' + user.user.username + '`')
