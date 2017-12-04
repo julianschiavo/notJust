@@ -37,30 +37,30 @@ class kickCommand extends Command {
     var reason
     if (args[0]) {
       reason = args.join(' ');
-      user.kick(reason).catch(err => {
+      user.kick(reason).then(promise => success()).catch(err => {
         api.error(err)
         check = true
       })
     } else {
-      user.kick().catch(err => {
+      user.kick().then(promise => success()).catch(err => {
         api.error(err);
         check = true
       })
     }
-    if (check == true) {
-      return;
+
+    function success() {
+      let embed = new Discord.RichEmbed()
+      embed.setTitle('<:apple_boot:372659817287909376> `Kicked ' + user.user.username + '`')
+      embed.setDescription(String.fromCharCode(8203))
+      embed.setColor('#00ff00')
+      if (reason) {
+        embed.addField('`Reason`', reason, false)
+      }
+      embed.setFooter('Replying to ' + message.author.tag)
+      message.channel.send({
+        embed
+      })
     }
-    let embed = new Discord.RichEmbed()
-    embed.setTitle('<:apple_boot:372659817287909376> `Kicked ' + user.user.username + '`')
-    embed.setDescription(String.fromCharCode(8203))
-    embed.setColor('#00ff00')
-    if (reason) {
-      embed.addField('`Reason`', reason, false)
-    }
-    embed.setFooter('Replying to ' + message.author.tag)
-    message.channel.send({
-      embed
-    })
     return true
   }
 }
