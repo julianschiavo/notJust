@@ -13,7 +13,7 @@ exports.run = (bot, member) => {
     embed.setDescription(`Please read <#360649401414189089> to see our rules, partners, and more info about Discord Technology!`)
     embed.setColor('#00ff00')
 	 member.guild.channels.find('name', 'welcome').send(embed)
-	 member.addRole(member.guild.roles.find('name', 'Members'))
+	 member.addRole(member.guild.roles.get('268973728044417024'))
  }
  
   if (conf) {
