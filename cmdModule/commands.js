@@ -182,7 +182,7 @@ class CommandHandler {
         return true
       } else if (!check) {
         let apx = new api(message, args, this)
-        return apx.error('You cannot execute that command.\nThis may occur because it is a premium command and this is not a premium server, or because you do not have necessary permissions to execute the command\'s action. The module may also currently be disabled globally.')
+        return apx.error('You cannot execute that command.\nThis may occur because it is a premium command and this is not a premium server, or because you or the bot do not have necessary permissions to execute the command\'s action. The module may also currently be disabled globally.')
       }
     } catch (err) {
       console.error(err)
