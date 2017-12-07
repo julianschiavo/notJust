@@ -12,7 +12,7 @@ class kickCommand extends Command {
 
   hasPermission(message) {
     //if (message.author.id == require('../../config.json').owner) return true
-    if (message.guild && message.guild.member(message.author).hasPermission("KICK_MEMBERS") && message.guild.member('193908323911860224').hasPermission("KICK_MEMBERS")) return true
+    if (message.guild && message.guild.member(message.author).hasPermission("KICK_MEMBERS") && message.guild.member('329772339967426560').hasPermission("KICK_MEMBERS")) return true
     return false
   }
 
