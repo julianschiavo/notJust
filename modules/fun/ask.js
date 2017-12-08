@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
-const config = require('../../config.json')
+const config = require('../../config.json');
+var changeCase = require('change-case');
 const vdSDK = require("virtual-device-sdk");
 const alexa = new vdSDK.VirtualDevice(config.apiKeys.alexa);
 
