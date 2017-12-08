@@ -37,8 +37,16 @@ class alCommand extends Command {
       embed.setDescription(String.fromCharCode(8203))
       embed.setColor('#00ff00')
       embed.setFooter('Replying to ' + message.author.tag)
+      if (text) {
       embed.addField('`Response`', text, false)
+      } else {
+        embed.addField('`Response`', 'None', false)
+      }
+      if (result.transcriptAudioURL) {
       embed.addField('`Audio Response`', result.transcriptAudioURL, false)
+      } else {
+        embed.addField('`Audio Response`', 'None', false)
+      }
       message.channel.send({
         embed
       })
