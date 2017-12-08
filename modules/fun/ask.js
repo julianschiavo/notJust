@@ -5,10 +5,10 @@ const config = require('../../config.json')
 
 const Command = require('../../cmdModule/commands').Command
 
-class askCommand extends Command {
+class alCommand extends Command {
   constructor() {
     super({
-      name: 'ask',
+      name: 'alexa',
       help: 'Ask Alexa a question',
       lhelp: '{text}\n {text} is the text to send to Alexa.'
     })
@@ -25,8 +25,9 @@ class askCommand extends Command {
       api.error('Please provide some text to send to the AI.')
       return
     }
+    console.log('hi')
     var arg = args.join(' ');
-    alexa.message(message).then((result) => {
+    alexa.message(arg).then((result) => {
       message.channel.startTyping();
       message.channel.send(result.transcript).catch(console.error);
       message.channel.stopTyping();
@@ -37,4 +38,4 @@ class askCommand extends Command {
   }
 }
 
-module.exports = askCommand
+module.exports = alCommand
