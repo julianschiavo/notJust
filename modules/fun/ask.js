@@ -27,8 +27,8 @@ class alCommand extends Command {
     }
     console.log('hi')
     var arg = args.join(' ');
+    message.channel.startTyping();
     alexa.message(arg).then((result) => {
-      message.channel.startTyping();
       message.channel.send(result.transcript).catch(console.error);
       message.channel.stopTyping();
       console.log("Reply Transcript: " + result.transcript);
