@@ -35,6 +35,9 @@ bot.on('debug', (e) => {
   if (env == 'dev' || env == 'development' || env == 'sandbox') console.info(e)
 })
 
+const vdSDK = require("virtual-device-sdk");
+bot.alexa = new vdSDK.VirtualDevice(config.apiKeys.alexa);
+
 const Enmap = require('enmap');
 const EnmapLevel = require('enmap-level');
 const tableSource = new EnmapLevel({
