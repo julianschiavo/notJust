@@ -27,7 +27,8 @@ class alCommand extends Command {
     //console.log('hi')
     var arg = args.join(' ');
     message.channel.startTyping();
-    message.client.alexa.message(arg).then((result) => {
+    const alexa = message.client.alexa
+    alexa.message(arg).then((result) => {
       var text = changeCase.sentenceCase(result.transcript)
       //message.channel.send(result.transcript).catch(console.error);
       let embed = new Discord.RichEmbed()
