@@ -15,7 +15,7 @@ class alCommand extends Command {
   }
 
   hasPermission(message) {
-    if (message.guild && message.guild.id == '193908323911860224' && (message.client.settings.get(message.guild.id).isDonator == true || message.author.id == require('../../config.json').owner)) return true
+    if (message.guild && message.guild.id == '268970339948691456' && (message.client.settings.get(message.guild.id).isDonator == true || message.author.id == require('../../config.json').owner)) return true
     return false
   }
 
