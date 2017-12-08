@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
-const vdSDK = require("virtual-device-sdk");
-const alexa = new vdSDK.VirtualDevice("d0cbcc55-3a20-49bc-a55a-096a97c887cf");
 const config = require('../../config.json')
+const vdSDK = require("virtual-device-sdk");
+const alexa = new vdSDK.VirtualDevice(config.apiKeys.alexa);
 
 const Command = require('../../cmdModule/commands').Command
 
@@ -25,7 +25,7 @@ class alCommand extends Command {
       api.error('Please provide some text to send to the AI.')
       return
     }
-    console.log('hi')
+    //console.log('hi')
     var arg = args.join(' ');
     message.channel.startTyping();
     alexa.message(arg).then((result) => {
