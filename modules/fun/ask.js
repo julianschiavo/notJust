@@ -1,8 +1,6 @@
 const Discord = require('discord.js');
 const config = require('../../config.json');
 var changeCase = require('change-case');
-const vdSDK = require("virtual-device-sdk");
-const alexa = new vdSDK.VirtualDevice(config.apiKeys.alexa);
 
 const Command = require('../../cmdModule/commands').Command
 
@@ -29,7 +27,7 @@ class alCommand extends Command {
     //console.log('hi')
     var arg = args.join(' ');
     message.channel.startTyping();
-    alexa.message(arg).then((result) => {
+    message.client.alexa.message(arg).then((result) => {
       var text = changeCase.sentenceCase(result.transcript)
       //message.channel.send(result.transcript).catch(console.error);
       let embed = new Discord.RichEmbed()
