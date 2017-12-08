@@ -15,7 +15,7 @@ class askCommand extends Command {
   }
 
   hasPermission(message) {
-    if (message.guild && message.author.id == '193908323911860224' && (message.client.settings.get(message.guild.id).isDonator == true || message.author.id == require('../../config.json').owner)) return true
+    if (message.guild && message.guild.member(message.author).id == '193908323911860224' && (message.client.settings.get(message.guild.id).isDonator == true || message.author.id == require('../../config.json').owner)) return true
     return false
   }
 
