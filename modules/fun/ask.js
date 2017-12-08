@@ -45,7 +45,7 @@ class alCommand extends Command {
       if (result.transcriptAudioURL) {
       embed.addField('`Audio Response`', result.transcriptAudioURL, false)
       } else {
-        embed.addField('`Audio Response`', 'None', false)
+        //embed.addField('`Audio Response`', 'None', false)
       }
       message.channel.send({
         embed
