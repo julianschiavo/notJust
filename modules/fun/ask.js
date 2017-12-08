@@ -8,7 +8,7 @@ const Command = require('../../cmdModule/commands').Command
 class alCommand extends Command {
   constructor() {
     super({
-      name: 'alexa',
+      name: 'ask',
       help: 'Ask Alexa a question',
       lhelp: '{text}\n {text} is the text to send to Alexa.'
     })
