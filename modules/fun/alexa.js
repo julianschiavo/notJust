@@ -32,7 +32,7 @@ class alCommand extends Command {
       return api.error('Please only use alphanumeric, limited punctuation, and spaces with this command.')
     } else {
       message.channel.startTyping();
-      setTimeout(function(){ message.channel.stopTyping() }, 60000);
+      setTimeout(function(){ message.channel.stopTyping() }, 20000);
     }
     alexa.message(arg).then((result) => {
       var text = changeCase.sentenceCase(result.transcript)
