@@ -32,14 +32,16 @@ class alCommand extends Command {
       var text = changeCase.sentenceCase(result.transcript)
       //message.channel.send(result.transcript).catch(console.error);
       let embed = new Discord.RichEmbed()
-      embed.setTitle('<:apple_siri:356765237778579457> `' + arg + '`')
-      embed.setDescription(String.fromCharCode(8203))
+      embed.setTitle('<:alexa:390019727369437184> `' + arg + '`')
+      //embed.setDescription(String.fromCharCode(8203))
       embed.setColor('#00ff00')
       embed.setFooter('Replying to ' + message.author.tag)
       if (text) {
-      embed.addField('`Response`', text, false)
+      //embed.addField('`Response`', text, false)
+        embed.setDescription(text)
       } else {
-        embed.addField('`Response`', 'None', false)
+        //embed.addField('`Response`', 'None', false)
+        embed.setDescription(String.fromCharCode(8203))
       }
       if (result.transcriptAudioURL) {
       embed.addField('`Audio Response`', result.transcriptAudioURL, false)
