@@ -28,9 +28,9 @@ class alCommand extends Command {
     var arg = args.join(' ');
     message.channel.startTyping();
     const alexa = message.client.alexa
-    var letterNumber = /^[0-9a-zA-Z]+$/;  
+    var letterNumber = /[^a-zA-Z0-9 \?\,\!\.]+/
     if (!arg.match(letterNumber)) {
-      return api.error('Please only use alphanumeric (a-z, A-Z, 0-9) characters.')
+      return api.error('Please only use alphanumeric, limited punctuation, and spaces with this command.')
     }
     alexa.message(arg).then((result) => {
       var text = changeCase.sentenceCase(result.transcript)
