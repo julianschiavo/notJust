@@ -27,7 +27,7 @@ class alCommand extends Command {
     //console.log('hi')
     var arg = args.join(' ');
     const alexa = message.client.alexa
-    var letterNumber = /[^a-zA-Z0-9 \?\,\!\.]+/
+    var letterNumber = /[^a-zA-Z0-9 \'\"\$\?\,\!\.]+/
     if (arg.match(letterNumber)) {
       return api.error('Please only use alphanumeric, limited punctuation, and spaces with this command.')
     } else {
