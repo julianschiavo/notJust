@@ -51,7 +51,9 @@ class alCommand extends Command {
       message.channel.send({
         embed
       })
+      if (message.guild.member('329772339967426560').hasPermission("MANAGE_MESSAGES")) {
       message.delete('Alexa Successful')
+      }
       message.channel.stopTyping();
       //console.log("Reply Transcript: " + result.transcript);
       //console.log("Reply Audio: " + result.transcript_audio_url);
