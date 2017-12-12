@@ -26,11 +26,13 @@ class alCommand extends Command {
     }
     //console.log('hi')
     var arg = args.join(' ');
-    message.channel.startTyping();
     const alexa = message.client.alexa
     var letterNumber = /[^a-zA-Z0-9 \?\,\!\.]+/
-    if (!arg.match(letterNumber)) {
+    if (arg.match(letterNumber)) {
       return api.error('Please only use alphanumeric, limited punctuation, and spaces with this command.')
+    } else {
+      message.channel.startTyping();
+      setTimeout(function(){ message.channel.stopTyping() }, 60000);
     }
     alexa.message(arg).then((result) => {
       var text = changeCase.sentenceCase(result.transcript)
