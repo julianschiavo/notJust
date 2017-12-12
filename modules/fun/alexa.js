@@ -51,6 +51,7 @@ class alCommand extends Command {
       message.channel.send({
         embed
       })
+      message.delete('Alexa Successful')
       message.channel.stopTyping();
       //console.log("Reply Transcript: " + result.transcript);
       //console.log("Reply Audio: " + result.transcript_audio_url);
