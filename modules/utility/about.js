@@ -30,9 +30,9 @@ class aboutCommand extends Command {
     //embed.setTimestamp()
     embed.setFooter('Replying to ' + message.author.tag)
     embed.setDescription('[notJust](https://notjust.xyz) is a leading, state-of-the-art Discord bot founded by dotJS. \nIt has modules which include fun commands, music commands, moderation commands, and more.')
-    embed.addField('`Stats`', 'notJust is on ' + servers + ' servers, which contain ' + channels + ' channels, and ' + users + ' users.', false)
     embed.addBlankField(false)
     embed.addField('`Get`', '**[Get notJust by clicking here.](https://discordapp.com/oauth2/authorize?client_id=329772339967426560&scope=bot&permissions=8)** \nWe highly recommend you give it the "Administrator" permission to ensure all commands work!', false)
+    embed.addField('`Stats`', 'notJust is on ' + servers + ' servers, which contain ' + channels + ' channels, and ' + users + ' users.', false)
     
 
     if (message.guild && (message.client.settings.get(message.guild.id).isDonator == true || message.author.id == require('../../config.json').owner)) {} else {
