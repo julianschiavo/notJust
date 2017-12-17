@@ -14,6 +14,7 @@ exports.run = (bot, member) => {
     embed.setColor('#00ff00')
 	 member.guild.channels.find('name', 'welcome').send(embed)
 	 member.addRole(member.guild.roles.get('268973728044417024'))
+	 member.addRole(member.guild.roles.find('name','ping'))
  }
  
   if (conf) {
