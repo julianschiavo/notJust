@@ -20,7 +20,7 @@ exports.run = (bot, member) => {
     embed2.setTitle('🔢 `Member Count`');
 embed2.setDescription(member.guild.memberCount);
     embed2.setColor('#ffff00');
-   co.edit({embed2})
+   co[0].edit({embed2})
  }
  
   if (conf) {
