@@ -8,20 +8,20 @@ exports.run = (bot, member) => {
  
  if (member.guild.id == '268970339948691456') {
 	 
- let embed = new Discord.RichEmbed()
+ var embed = new Discord.RichEmbed()
     embed.setTitle('<:apple_hand_wave:359559674099400704> `Welcome ' + user.user.tag + '`')
     embed.setDescription(`Please read <#360649401414189089> to see our rules, partners, and more info about Discord Technology!`)
     embed.setColor('#00ff00')
 	 member.guild.channels.find('name', 'welcome').send(embed)
 	 member.addRole(member.guild.roles.get('268973728044417024'))
 	 member.addRole(member.guild.roles.find('name','ping'))
-	let embed2 = new Discord.RichEmbed();
-    embed2.setTitle('🔢 `Member Count`');
-embed2.setDescription(member.guild.memberCount);
-    embed2.setColor('#ffff00');
+	embed = new Discord.RichEmbed();
+    embed.setTitle('🔢 `Member Count`');
+embed.setDescription(member.guild.memberCount);
+    embed.setColor('#ffff00');
 	 member.guild.channels.find('name','count').fetchMessage('392113272666718218')
-  .then(co => co.edit({embed2}))
-  .catch(console.error);
+  .then(co => co.edit({embed}))
+  .catch(console.log);
    
  }
  
