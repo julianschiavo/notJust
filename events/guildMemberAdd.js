@@ -15,6 +15,12 @@ exports.run = (bot, member) => {
 	 member.guild.channels.find('name', 'welcome').send(embed)
 	 member.addRole(member.guild.roles.get('268973728044417024'))
 	 member.addRole(member.guild.roles.find('name','ping'))
+	 var co = member.guild.channels.find('name','count').fetchMessage('392113272666718218')
+	let embed2 = new Discord.RichEmbed();
+    embed2.setTitle('🔢 `Member Count`');
+embed2.setDescription(member.guild.memberCount);
+    embed2.setColor('#ffff00');
+   co.edit({embed2})
  }
  
   if (conf) {
