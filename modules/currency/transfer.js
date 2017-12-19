@@ -44,13 +44,15 @@ class transCommand extends Command {
     }
           if (!message.client.currency.get(user.id)) {
       var curr = {
-      amount: 0
+      amount: 0,
+        converted: true
       }
       message.client.currency.set(user.id, curr);
     }
     if (!message.client.currency.get(from.id)) {
       var curr = {
-      amount: 0
+      amount: 0,
+        converted: true
       }
       message.client.currency.set(from.id, curr);
     }
