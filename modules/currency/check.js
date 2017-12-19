@@ -31,16 +31,17 @@ class checkCommand extends Command {
       message.client.currency.set(user.id, curr);
     } else if (!message.client.currency.get(user.id).converted) {
       var curr = {
-        amount: message.client.currency.get(user.id).amount / 10,
+        amount: Math.floor(message.client.currency.get(user.id).amount / 10),
         invCode: '',
         converted: true
       }
       message.client.currency.set(user.id,curr)
       let embed = new Discord.RichEmbed()
       embed.setTitle('<:goldbar:383480100282171392> `Conversion Successful`')
-   embed.addField('User', user.user.tag, true)
+   embed.addField('For', user.user.tag, true)
+      embed.addField('Balance', curr.amount, true)
       embed.setColor('#00ff00')
-      embed.setFooter('Replying to ' + message.author.tag)
+      //embed.setFooter('Replying to ' + message.author.tag)
       embed.setDescription(String.fromCharCode(8203))
       message.channel.send({
         embed
