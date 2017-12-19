@@ -26,7 +26,8 @@ class checkCommand extends Command {
     if (!message.client.currency.get(user.id)) {
       var curr = {
       amount: 0,
-      invCode: ''
+      invCode: '',
+        converted: true
       }
       message.client.currency.set(user.id, curr);
     } else if (!message.client.currency.get(user.id).converted) {
