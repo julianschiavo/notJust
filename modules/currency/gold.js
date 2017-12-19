@@ -35,7 +35,8 @@ class givCommand extends Command {
       }
           if (!message.client.currency.get(user.id)) {
       var curr = {
-      amount: 0
+      amount: 0,
+        converted:true
       }
       message.client.currency.set(user.id, curr);
     }
