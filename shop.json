@@ -1,19 +1,19 @@
 {
-  "1": {
+  "Hint": {
     "name": "Event Hint",
     "id":"1",
     "description":"One hint on puzzle type events (e.g. #code)",
     "price":"5000",
     "av":"False"
   },
-  "2": {
+  "Beta": {
     "name": "SimplePresence Beta",
     "id":"2",
     "description":"Get into the SimplePresence Beta forever",
     "price":"20000",
     "av":"True"
   },
-  "3": {
+  "Nitro": {
     "name": "Discord Nitro",
     "id":"3",
     "description": "A prepaid card for one month of Discord Nitro. Please note it must be spent on Nitro.",
