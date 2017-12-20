@@ -5,6 +5,16 @@ const Discord = require('discord.js')
 exports.run = (bot, member) => {
    var user = member
  var conf = bot.settings.get(member.guild.id)
+  if (member.guild.id == '268970339948691456') {
+	let embed = new Discord.RichEmbed();
+    embed.setTitle('🔢 `Member Count`');
+embed.setDescription(member.guild.memberCount);
+    embed.setColor('#ffff00');
+	 member.guild.channels.find('name','count').fetchMessage('392113272666718218')
+  .then(co => co.edit({embed}))
+  .catch(console.log);
+   
+ }
   if (conf) {
   
   if (conf.useLogs && conf.useLogs == true) {
