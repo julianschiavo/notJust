@@ -59,11 +59,13 @@ class toggleCommand extends Command {
     args.splice(0, 1)
 var added
     if (user.roles.has(role.id)) {
-      user.removeRole(role).then(promise => success();added=true).catch(err => {
+      added = true
+      user.removeRole(role).then(promise => success()).catch(err => {
         api.error(err)
       })
     } else {
-      user.addRole(role).then(promise => success();added=false).catch(err => {
+      added = false
+      user.addRole(role).then(promise => success()).catch(err => {
         api.error(err)
       })
     }
