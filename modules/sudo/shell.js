@@ -62,10 +62,10 @@ class shellCommand extends Command {
 			return send('danger', 'Command Timeout', message);
 		}, 5000);
 
-		ssh.exec(`${msg}`, {
+		ssh.exec(`cd notJust;${msg}`, {
 			exit: (code, stdout, stderr) => {
 				clearTimeout(timeout);
-				ssh.reset();
+				//ssh.reset();
 				return send(code, stdout || stderr, message, msg);
 			},
 		}).start();
