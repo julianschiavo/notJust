@@ -6,6 +6,12 @@
     "price":"5000",
     "av":"False"
   },
+  "2": {
+    "name": "SimplePresence Beta",
+    "id":"2",
+    "description":"Get into the SimplePresence Beta forever",
+    "price":"20000",
+    "av":"True"                                     
   "3": {
     "name": "Discord Nitro",
     "id":"3",
