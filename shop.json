@@ -1,6 +1,14 @@
 {
-  "Nitro": {
+  "1": {
+    "name": "Event Hint",
+    "id":"1",
+    "description":"One hint on puzzle type events (e.g. #code)",
+    "price":"5000",
+    "av":"False"
+  },
+  "3": {
     "name": "Discord Nitro",
+    "id":"3",
     "description": "A prepaid card for one month of Discord Nitro. Please note it must be spent on Nitro.",
     "price":"1000000",
     "av":"True"
