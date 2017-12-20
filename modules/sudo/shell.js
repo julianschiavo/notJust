@@ -23,14 +23,13 @@ ssh.exec('exit', {
 const send = (code, text, msg, msgg) => {
 	let color = code ? 'danger' : 'notdanger';
 	const embed = new Discord.RichEmbed()
-	embed.setTitle(msgg)
+	embed.setTitle('<:terminal:392870769086169098> `' + msgg + '`')
 	if (color == 'danger') {
 		embed.setColor('#FF0000')
 	} else {
 		embed.setColor('#00aa00')
 	}
 	embed.setDescription(text)
-	embed.setFooter("Executed At", msg.author.avatarURL)
 	embed.setTimestamp()
 	msg.channel.send({
 		embed
