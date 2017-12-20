@@ -11,7 +11,7 @@ class givCommand extends Command {
   }
 
   hasPermission(message) {
-   if ((message.author.id == require('../../config.json').owner) && message.guild.id == '268970339948691456') return true
+   if (message.guild && (message.author.id == require('../../config.json').owner) && message.guild.id == '268970339948691456') return true
     return false
   }
 
