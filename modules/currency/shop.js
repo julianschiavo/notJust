@@ -16,14 +16,19 @@ class shopCommand extends Command {
   }
 
   async run(message, args, api) {
-      let embed = new Discord.RichEmbed()
-      embed.setTitle('<:goldbar:383480100282171392> `Shop Listing`')
+      for (var i = 0; i < shop.length; i++) {
+              let embed = new Discord.RichEmbed()
+      embed.setTitle('<:goldbar:383480100282171392> `' + shop[i].name + '`')
+       embed.addField('ID',shop[i].id,false)
+        embed.addField('Available',shop[i].av,true)
+        embed.addField('Cost',shop[i].price,true)
       embed.setColor('#00ff00')
       embed.setFooter('Replying to ' + message.author.tag)
       embed.setDescription(String.fromCharCode(8203))
       message.channel.send({
         embed
       })
+      }
     return true
   }
 }
