@@ -57,20 +57,27 @@ class toggleCommand extends Command {
       return;
     }
     args.splice(0, 1)
-
+var added
     if (user.roles.has(role.id)) {
-      user.removeRole(role).then(promise => success()).catch(err => {
+      user.removeRole(role).then(promise => success();added=true).catch(err => {
         api.error(err)
       })
     } else {
-      user.addRole(role).then(promise => success()).catch(err => {
+      user.addRole(role).then(promise => success();added=false).catch(err => {
         api.error(err)
       })
     }
 
     function success() {
       let embed = new Discord.RichEmbed()
-      embed.setTitle('<:apple_key:359560553431171084> `Toggled ' + role.name + ' for ' + user.user.username + '`')
+      if (added == true) {
+        embed.addField('Type','Added',true)
+      } else {
+        embed.addField('Type','Removed',true)
+      }
+      embed.addField('Role',role.name,true)
+      embed.addField('User',user.user.tag,true)
+      embed.setTitle('<:apple_key:359560553431171084> `Toggled Successfully`')
       embed.setDescription(String.fromCharCode(8203))
       embed.setColor('#00ff00')
       embed.setFooter('Replying to ' + message.author.tag)
