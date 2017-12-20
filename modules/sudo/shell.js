@@ -52,7 +52,7 @@ class shellCommand extends Command {
 
   async run(message, args, api) {
     args.splice(0,1)
-    var msg = args
+    var msg = args.join(' ')
     
 		var cmd = `ssh ${config.server.username}@${config.server.host} ${msg}`;
 
