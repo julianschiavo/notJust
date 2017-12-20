@@ -49,7 +49,7 @@ class startCommand extends Command {
     chan2.send('<:goldbar:383480100282171392> Created **Gold Bar Invite** `' + inv.replace('https://discord.gg/', '') + '` for `' + message.author.tag + '`')
 
       let embed = new Discord.RichEmbed()
-      embed.setTitle('<:gold:383074743089364992> `Gold Bar Invite Created`')
+      embed.setTitle('<:goldbar:383480100282171392> `Gold Bar Invite Created`')
    embed.addField('User', message.author.tag, true)
    embed.addField('Invite', inv.toString(), true)
     
