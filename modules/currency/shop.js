@@ -16,15 +16,21 @@ class shopCommand extends Command {
   }
 
   async run(message, args, api) {
+      let embed = new Discord.RichEmbed()
+      embed.setTitle('<:goldbar:383480100282171392> `Shop Listing`')
+      embed.setColor('#00ff00')
+      embed.setFooter('Replying to ' + message.author.tag)
+      message.channel.send({
+        embed
+      })
       for (var i = 0; i < Object.keys(shop).length; i++) {
         var item = shop[Object.keys(shop)]
               let embed = new Discord.RichEmbed()
-      embed.setTitle('<:goldbar:383480100282171392> `' + item.name + '`')
+      embed.setTitle('`' + item.name + '`')
        embed.addField('ID',item.name,false)
         embed.addField('Available',item.av,true)
         embed.addField('Cost',item.price,true)
       embed.setColor('#00ff00')
-      embed.setFooter('Replying to ' + message.author.tag)
       embed.setDescription(item.description + '\n')
       message.channel.send({
         embed
