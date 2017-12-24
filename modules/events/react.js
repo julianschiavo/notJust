@@ -39,7 +39,7 @@ class reactCommand extends Command {
     args.splice(0,2)
     var them = args.join(' ')
     message.guild.roles.get('384675152400482304').setMentionable(true)
-    message.guild.channels.find('name','announcements').send('<@&384675152400482304> <:apple_christmas:390347387908128768> **Merry Christmas!** <:apple_christmas:390347387908128768>\n' + them).then(msg => { 
+    message.guild.channels.find('name','announcements').send('<@&384675152400482304> \n<:apple_christmas:390347387908128768> **Merry Christmas!** <:apple_christmas:390347387908128768>\n' + them).then(msg => { 
       msg.guild.roles.get('384675152400482304').setMentionable(false)
       msg.react(msg.guild.emojis.find('name','code'));
       const collector = msg.createReactionCollector(
