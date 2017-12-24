@@ -73,12 +73,12 @@ var added
     function success() {
       let embed = new Discord.RichEmbed()
       if (added == true) {
-        embed.addField('Type','Added',true)
+        embed.addField('`Type`','Added',true)
       } else {
-        embed.addField('Type','Removed',true)
+        embed.addField('`Type`','Removed',true)
       }
-      embed.addField('Role',role.name,true)
-      embed.addField('User',user.user.tag,true)
+      embed.addField('`Role`',role.name,true)
+      embed.addField('`User`',user.user.tag,true)
       embed.setTitle('<:apple_key:359560553431171084> `Toggled Successfully`')
       embed.setDescription(String.fromCharCode(8203))
       embed.setColor('#00ff00')
