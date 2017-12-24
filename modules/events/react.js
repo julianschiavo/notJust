@@ -20,7 +20,7 @@ class reactCommand extends Command {
       return !isNaN(num)
     }
     args.splice(0,1)
-    if (!args[0] || !args[1] || !args[2] || !args[3]) {
+    if (!args[0] || !args[1] || !args[2]) {
       api.error('Please specify all the required arguments.')
       return
     }
