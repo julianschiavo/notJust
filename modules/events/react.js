@@ -48,12 +48,12 @@ class reactCommand extends Command {
       var list = [];
       collector.on('collect', r => {
         r.users.map(u => {
-          if (!message.client.currency.get(user.id)) {
+          if (!message.client.currency.get(u.id)) {
             var curr = {
               amount: 0,
               converted:true
             }
-            message.client.currency.set(user.id, curr);
+            message.client.currency.set(u.id, curr);
           }
           if (list.indexOf(u.id) == -1 && message.client.currency.get(u.id)) {
             var nuu = message.client.currency.get(u.id);
