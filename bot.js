@@ -121,6 +121,7 @@ handler.registerModule('utility', 'Utility')
 handler.registerModule('code', '#code')
 handler.registerModule('prefs', 'Preferences')
 handler.registerModule('currency', 'Currency')
+handler.registerModule('events', 'Events')
 
 fs.readdir('./events/', (err, files) => {
   if (err) return console.error(err)
