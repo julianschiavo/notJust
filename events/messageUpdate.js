@@ -17,8 +17,9 @@ return
 				console.log('Failed to find logChannel for ' + nmessage.guild.name)
 				return
 			}
-  
-	  channel.send('<:apple_pencil_paper:359560552701231106> message `' + nmessage.id + '` edited from\n```' + omessage.content + '```\nto\n```' + nmessage.content + '``` by `' + nmessage.author.tag + '`')
+  var olc = omessage.content.replace(/`/g, "");
+	  var nlc = nmessage.content.replace(/`/g, "");
+	  channel.send('<:apple_pencil_paper:359560552701231106> message `' + nmessage.id + '` edited from\n```' + olc + '```\nto\n```' + nlc + '``` by `' + nmessage.author.tag + '`')
       
   } else {
   return
