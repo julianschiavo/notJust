@@ -31,7 +31,8 @@ class deleteCommand extends Command {
       })
       function success() {
         let embed = new Discord.RichEmbed()
-        embed.setTitle('<:apple_trash:359560553699475456> `Purged ' + deleteCount + ' Messages`')
+        embed.setTitle('<:apple_trash:359560553699475456> `Messages Deleted Successfully`')
+        embed.addField('Count',deleteCount,false)
         embed.setDescription(String.fromCharCode(8203))
         embed.setColor('#00ff00')
         //embed.setTimestamp()
@@ -51,7 +52,9 @@ class deleteCommand extends Command {
       })
       function success2() {
         let embed = new Discord.RichEmbed()
-        embed.setTitle('<:apple_trash:359560553699475456> `Purged ' + deleteCount + ' Messages by ' + user.tag + '`')
+        embed.setTitle('<:apple_trash:359560553699475456> `Messages Deleted Successfully`')
+        embed.addField('Count',deleteCount,true)
+        embed.addField('User','`'+user.tag+'`', true)
         embed.setDescription(String.fromCharCode(8203))
         embed.setColor('#00ff00')
         //embed.setTimestamp()
