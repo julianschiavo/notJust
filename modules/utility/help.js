@@ -22,7 +22,7 @@ class HelpCommand extends Command {
     message.delete()
     let dotcolor = [245, 236, 71]
     if (args.length == 1) {
-      let order = ['admin', 'currency', 'fun', 'media', 'misc', 'prefs', 'utility', 'sudo', 'light']
+      let order = ['admin', 'currency', 'events', 'fun', 'media', 'misc', 'prefs', 'utility', 'sudo', 'light']
       let modulesio = {}
       let modules = {}
       let moduleEmbeds = []
