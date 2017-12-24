@@ -12,7 +12,7 @@ class unmuteCommand extends Command {
 
   hasPermission(message) {
     //if (message.author.id == require('../../config.json').owner) return true
-    if (message.guild && message.guild.member(message.author).hasPermission("KICK_MEMBERS") && message.guild.member('329772339967426560').hasPermission("MANAGE_ROLES")) return true
+    if (message.guild && message.guild.member(message.author).hasPermission("MANAGE_MESSAGES") && message.guild.member('329772339967426560').hasPermission("MANAGE_ROLES")) return true
     return false
   }
 
@@ -59,11 +59,12 @@ class unmuteCommand extends Command {
 
       function success() {
         let embed = new Discord.RichEmbed()
-        embed.setTitle('<:apple_muted:372902540393709569> `Unmuted ' + user.user.username + '`')
+        embed.setTitle('<:apple_muted:372902540393709569> `User Unmuted`')
+        embed.addField('User','`'+user.user.tag+'`',true)
         embed.setDescription(String.fromCharCode(8203))
         embed.setColor('#00ff00')
         if (reason) {
-          embed.addField('`Reason`', reason, false)
+          embed.addField('`Reason`', reason, true)
         }
         embed.setFooter('Replying to ' + message.author.tag)
         message.channel.send({
