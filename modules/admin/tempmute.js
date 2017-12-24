@@ -53,6 +53,7 @@ class tempmuteCommand extends Command {
         return
       }
       var reason
+      args.splice(0,1)
       if (args[1]) {
         reason = args.join(' ');
         user.addRole(role, reason).then(promise => success()).catch(err => {
