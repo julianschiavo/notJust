@@ -81,7 +81,7 @@ class tempmuteCommand extends Command {
       function success() {
         let embed = new Discord.RichEmbed()
         embed.setTitle('<:apple_muted:372902540393709569> `User Temporarily Muted`')
-        embed.addField('User','`'+user.user.tag+'`',true)
+        embed.addField('`User`','`'+user.user.tag+'`',true)
         embed.setDescription(String.fromCharCode(8203))
         embed.setColor('#00ff00')
         embed.addField('`Duration`', time, true)
