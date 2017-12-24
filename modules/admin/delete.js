@@ -25,15 +25,10 @@ class deleteCommand extends Command {
     if (!deleteCount || deleteCount < 2 || deleteCount > 100) {
       return api.error("Please provide a number between 2 and 100 for the number of messages to delete.");
     }
-    args.splice(0, 1)
-    var fetched = await message.channel.fetchMessages({
-      count: deleteCount
-    });
-    if (!args[0]) {
-      message.channel.bulkDelete(fetched).then(promise => success()).catch(err => {
+    if (!args[1]) {
+      message.channel.bulkDelete(deleteCount).then(promise => success()).catch(err => {
         api.error(err)
       })
-
       function success() {
         let embed = new Discord.RichEmbed()
         embed.setTitle('<:apple_trash:359560553699475456> `Purged ' + deleteCount + ' Messages`')
@@ -46,12 +41,14 @@ class deleteCommand extends Command {
         })
       }
     } else {
-      var user = api.getUser(args[0], 'user')
+      var user = api.getUser(args[1], 'user')
+      var fetched = await message.channel.fetchMessages({
+      count: deleteCount
+      });
       fetched = fetched.filter(m => m.author.id == user.id);
       message.channel.bulkDelete(fetched).then(promise => success2()).catch(err => {
         api.error(err)
       })
-
       function success2() {
         let embed = new Discord.RichEmbed()
         embed.setTitle('<:apple_trash:359560553699475456> `Purged ' + deleteCount + ' Messages by ' + user.tag + '`')
