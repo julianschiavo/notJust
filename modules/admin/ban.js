@@ -46,11 +46,12 @@ class banCommand extends Command {
 
     function success() {
       let embed = new Discord.RichEmbed()
-      embed.setTitle('<:apple_hammer:359560554479878144> `Banned ' + user.user.username + '`')
+      embed.setTitle('<:apple_hammer:359560554479878144> `User Banned`')
+      embed.addField('`User`','`'+user.user.tag+'`',true)
       embed.setDescription(String.fromCharCode(8203))
       embed.setColor('#00ff00')
       if (reason) {
-        embed.addField('`Reason`', reason, false)
+        embed.addField('`Reason`', reason, true)
       }
       //embed.setTimestamp()
       embed.setFooter('Replying to ' + message.author.tag)
