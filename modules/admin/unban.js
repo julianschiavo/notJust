@@ -48,11 +48,12 @@ class unbanCommand extends Command {
 
     function success() {
       let embed = new Discord.RichEmbed()
-      embed.setTitle('<:apple_hammer:359560554479878144> `Unbanned ' + user + '`')
+      embed.setTitle('<:apple_hammer:359560554479878144> `User Unbanned`')
+      embed.addField('User','`'+user+'`',true)
       embed.setDescription(String.fromCharCode(8203))
       embed.setColor('#00ff00')
       if (reason) {
-        embed.addField('`Reason`', reason, false)
+        embed.addField('`Reason`', reason, true)
       }
       embed.setFooter('Replying to ' + message.author.tag)
       message.channel.send({
