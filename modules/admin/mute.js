@@ -60,11 +60,11 @@ class muteCommand extends Command {
       function success() {
         let embed = new Discord.RichEmbed()
         embed.setTitle('<:apple_muted:372902540393709569> `User Muted`')
-        embed.addField('User','`'+user.user.tag+'`',false)
+        embed.addField('User','`'+user.user.tag+'`',true)
         embed.setDescription(String.fromCharCode(8203))
         embed.setColor('#00ff00')
         if (reason) {
-          embed.addField('`Reason`', reason, false)
+          embed.addField('`Reason`', reason, true)
         }
         embed.setFooter('Replying to ' + message.author.tag)
         message.channel.send({
