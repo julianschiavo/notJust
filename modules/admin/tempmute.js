@@ -12,7 +12,7 @@ class tempmuteCommand extends Command {
 
   hasPermission(message) {
     //if (message.author.id == require('../../config.json').owner) return true
-    if (message.guild && message.guild.member(message.author).hasPermission("KICK_MEMBERS") && message.guild.member('329772339967426560').hasPermission("KICK_MEMBERS")) return true
+    if (message.guild && message.guild.member(message.author).hasPermission("MANAGE_MESSAGES") && message.guild.member('329772339967426560').hasPermission("MANAGE_ROLES")) return true
     return false
   }
 
@@ -44,7 +44,7 @@ class tempmuteCommand extends Command {
       }
     }
     if (role) {
-      if (message.guild.member(user.id).hasPermission("KICK_MEMBERS") && message.author.id !== message.guild.ownerID) {
+      if (message.guild.member(user.id).hasPermission("MANAGE_MESSAGES") && message.author.id !== message.guild.ownerID) {
         api.error('You can\'t mute staff members unless you are the server owner.')
         return
       }
@@ -71,7 +71,7 @@ class tempmuteCommand extends Command {
       message.client.settings.set(message.guild.id, thisConf);
 
       function unmute() {
-        user.removeRole(role, 'Automatic unmute')
+        user.removeRole(role, 'Automatic Unmute')
       }
       setTimeout(function() {
         unmute()
@@ -79,12 +79,13 @@ class tempmuteCommand extends Command {
 
       function success() {
         let embed = new Discord.RichEmbed()
-        embed.setTitle('<:apple_muted:372902540393709569> `Temporarily Muted ' + user.user.username + '`')
+        embed.setTitle('<:apple_muted:372902540393709569> `User Temporarily Muted`')
+        embed.addField('User','`'+user.user.tag+'`',true)
         embed.setDescription(String.fromCharCode(8203))
         embed.setColor('#00ff00')
-        embed.addField('`Duration`', time, false)
+        embed.addField('`Duration`', time, true)
         if (reason) {
-          embed.addField('`Reason`', reason, false)
+          embed.addField('`Reason`', reason, true)
         }
         embed.setFooter('Replying to ' + message.author.tag)
         message.channel.send({
