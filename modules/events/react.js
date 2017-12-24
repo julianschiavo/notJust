@@ -37,9 +37,9 @@ class reactCommand extends Command {
       return api.error('Please specify a numeric amount of gold bars to award.')
     }
     args.splice(0,2)
-    var message = args.join(' ')
+    var them = args.join(' ')
    
-    message.guild.channels.find('name','announcements').send('<@&384675152400482304> ' + message).then(msg => { 
+    message.guild.channels.find('name','announcements').send('<@&384675152400482304> ' + them).then(msg => { 
       msg.react(msg.guild.emojis.find('name','code'));
       const collector = msg.createReactionCollector(
         (reaction, user) => reaction.me,
