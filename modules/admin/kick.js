@@ -47,11 +47,12 @@ class kickCommand extends Command {
 
     function success() {
       let embed = new Discord.RichEmbed()
-      embed.setTitle('<:apple_boot:372659817287909376> `Kicked ' + user.user.username + '`')
+      embed.setTitle('<:apple_boot:372659817287909376> `User Kicked`')
+      embed.addField('`User`','`'+user.user.tag+'`',true)
       embed.setDescription(String.fromCharCode(8203))
       embed.setColor('#00ff00')
       if (reason) {
-        embed.addField('`Reason`', reason, false)
+        embed.addField('`Reason`', reason, true)
       }
       embed.setFooter('Replying to ' + message.author.tag)
       message.channel.send({
