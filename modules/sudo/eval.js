@@ -73,7 +73,7 @@ class EvalCommand extends Command {
     }
   }*/
 
-      var msg = message.content.split(' ').slice(1)
+      var msg = message.content.slice(6)
 
       if (msg.startsWith("http://pastebin.com/") || msg.startsWith("https://pastebin.com/")) {
         var origMsg = msg
