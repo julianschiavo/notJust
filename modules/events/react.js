@@ -32,7 +32,7 @@ class reactCommand extends Command {
     }
     var amount
     if (isN(args[1])) {
-      amount = Number(args[1]) + Number(thisConf.amount)
+      amount = Number(args[1])
     } else {
       return api.error('Please specify a numeric amount of gold bars to award.')
     }
