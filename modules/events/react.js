@@ -43,15 +43,15 @@ class reactCommand extends Command {
     } else {
       return api.error('Please specify a numeric chance of getting the gold bars.')
     }
-    var chn
+    var chan
     if (isN(args[3])) {
-      chn = message.guild.channels.get(Number(args[3]))
+      chan = message.guild.channels.get(args[3])
     } else {
       return api.error('Please specify a numeric channel id.')
     }
     var log
     if (isN(args[4])) {
-      log = message.guild.channels.get(Number(args[4]))
+      log = message.guild.channels.get(args[4])
     } else {
       return api.error('Please specify a numeric log channel id.')
     }
@@ -59,7 +59,7 @@ class reactCommand extends Command {
     args.splice(0,5)
     var them = args.join(' ')
     message.guild.roles.get('384675152400482304').setMentionable(true)
-    chn.send(them).then(msg => { 
+    chan.send(them).then(msg => { 
       msg.guild.roles.get('384675152400482304').setMentionable(false)
       msg.react(msg.guild.emojis.find('name','code'));
       const collector = msg.createReactionCollector(
