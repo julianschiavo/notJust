@@ -82,11 +82,11 @@ class reactCommand extends Command {
             nuu.amount = nuu.amount + amount;
             message.client.currency.set(u.id,nuu);
             list.push(u.id);
-            log.send(`\`${u.tag}\` ${u.id} has succeeded.`)
+            log.send(`<:green_tick:330712173288488960> \`${u.tag}\` (\`${u.id}\`)`)
           } else if (list.indexOf(u.id) == -1 && message.client.currency.get(u.id)) {
             list.push(u.id);
-            log.send(`\`${u.tag}\` ${u.id} has failed.`).then(msg => {
-              msg.delete(30000)
+            log.send(`<:red_tick:330712188681453590> \`${u.tag}\` (\`${u.id}\`)`).then(msg => {
+              msg.delete(10000)
             })
           }
         })
