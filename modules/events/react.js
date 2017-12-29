@@ -6,7 +6,7 @@ class reactCommand extends Command {
     super({
       name: 'react',
       help: 'Start the reaction event',
-      lhelp: '|{timeout}|{gold}|{chance}|{channel}|{logchannel}|{message}\n{timeout} is the timeout of the event in seconds\n{channel} is the name of the text channel to run the event in\n{gold} is the amount of gold to award for reacting\n{chance} is the chance of getting gold, 0.1 is 10%, 1 is 100%\n{message} is the text for the event message'
+      lhelp: '|{timeout}|{gold}|{chance}|{channel}|{message}\n{timeout} is the timeout of the event in seconds\n{channel} is the name of the text channel to run the event in\n{gold} is the amount of gold to award for reacting\n{chance} is the chance of getting gold, 0.1 is 10%, 1 is 100%\n{message} is the text for the event message'
     })
   }
 
@@ -21,7 +21,7 @@ class reactCommand extends Command {
     }
     var args = message.content.split('|')
     args.splice(0,1)
-    if (!args[0] || !args[1] || !args[2] || !args[3] || !args[4] || !args[5]) {
+    if (!args[0] || !args[1] || !args[2] || !args[3] || !args[4]) {
       api.error('Please specify all the required arguments.')
       return
     }
@@ -49,14 +49,9 @@ class reactCommand extends Command {
     } else {
       return api.error('Please specify a numeric channel id.')
     }
-    var log
-    if (isN(args[4])) {
-      log = message.guild.channels.get(args[4])
-    } else {
-      return api.error('Please specify a numeric log channel id.')
-    }
-    message.channel.send(`Event is about to start. \nTimeout: ${timeout}\nGold Amount: ${amount}\nChance: ${chance}`)
-    args.splice(0,5)
+    var log = chan
+    message.channel.send(`Event Starting Very Soon. \nTimeout: ${timeout}\nGold Amount: ${amount}\nChance: ${chance}\nChannel: ${chan}`)
+    args.splice(0,4)
     var them = args.join(' ')
     message.guild.roles.get('384675152400482304').setMentionable(true)
     chan.send(them).then(msg => { 
@@ -81,10 +76,10 @@ class reactCommand extends Command {
             var nuu = message.client.currency.get(u.id);
             nuu.amount = nuu.amount + amount;
             message.client.currency.set(u.id,nuu);
-            list.push(u.id);
+            //list.push(u.id);
             log.send(`<:green_tick:330712173288488960> \`${u.tag}\` (\`${u.id}\`)`)
           } else if (list.indexOf(u.id) == -1 && message.client.currency.get(u.id)) {
-            list.push(u.id);
+            //list.push(u.id);
             log.send(`<:red_tick:330712188681453590> \`${u.tag}\` (\`${u.id}\`)`).then(msg => {
               msg.delete(10000)
             })
