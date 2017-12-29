@@ -83,7 +83,8 @@ class reactCommand extends Command {
             message.client.currency.set(u.id,nuu);
             list.push(u.id);
             log.send(`\`${u.tag}\` ${u.id} has succeeded.`)
-          } else if (list.indexOf(u.id) == -1) {
+          } else if (list.indexOf(u.id) == -1 && message.client.currency.get(u.id)) {
+            list.push(u.id);
             log.send(`\`${u.tag}\` ${u.id} has failed.`)
           }
         })
