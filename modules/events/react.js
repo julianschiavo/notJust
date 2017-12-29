@@ -86,9 +86,7 @@ class reactCommand extends Command {
           } else if (list.indexOf(u.id) == -1 && message.client.currency.get(u.id)) {
             list.push(u.id);
             var f = log.send(`\`${u.tag}\` ${u.id} has failed.`)
-            setTimeout(function() {
-              f.delete('Timeout')
-            }, 60000)
+            f.delete(60000)
           }
         })
       });
