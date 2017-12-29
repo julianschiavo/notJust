@@ -6,7 +6,7 @@ class reactCommand extends Command {
     super({
       name: 'react',
       help: 'Start the reaction event',
-      lhelp: '{timeout} {gold} {message}\n{timeout} is the timeout of the event in seconds\n{channel} is the name of the text channel to run the event in\n{gold} is the amount of gold to award for reacting\n{message} is the text for the event message'
+      lhelp: '|{timeout}|{gold}|{chance}|{message}\n{timeout} is the timeout of the event in seconds\n{channel} is the name of the text channel to run the event in\n{gold} is the amount of gold to award for reacting\n{chance} is the chance of getting gold, 0.1 is 10%, 1 is 100%\n{message} is the text for the event message'
     })
   }
 
@@ -19,8 +19,9 @@ class reactCommand extends Command {
     function isN(num) {
       return !isNaN(num)
     }
+    var args = message.content.split('|')
     args.splice(0,1)
-    if (!args[0] || !args[1] || !args[2]) {
+    if (!args[0] || !args[1] || !args[2] || !args[3]) {
       api.error('Please specify all the required arguments.')
       return
     }
@@ -36,10 +37,17 @@ class reactCommand extends Command {
     } else {
       return api.error('Please specify a numeric amount of gold bars to award.')
     }
-    args.splice(0,2)
+    var chance
+    if (isN(args[2])) {
+      chance = Number(args[2])
+    } else {
+      return api.error('Please specify a numeric chance of getting the gold bars.')
+    }
+    message.channel.send(`Event is about to start. \nTimeout: ${timeout}\nGold Amount: ${amount}\nChance: ${chance}`)
+    args.splice(0,3)
     var them = args.join(' ')
     message.guild.roles.get('384675152400482304').setMentionable(true)
-    message.guild.channels.find('name','announcements').send('<@&384675152400482304> \n<:apple_christmas:390347387908128768> **Merry Christmas!** <:apple_christmas:390347387908128768>\n' + them).then(msg => { 
+    message.guild.channels.find('name','announcements').send(them).then(msg => { 
       msg.guild.roles.get('384675152400482304').setMentionable(false)
       msg.react(msg.guild.emojis.find('name','code'));
       const collector = msg.createReactionCollector(
@@ -56,7 +64,8 @@ class reactCommand extends Command {
             }
             message.client.currency.set(u.id, curr);
           }
-          if (list.indexOf(u.id) == -1 && message.client.currency.get(u.id)) {
+          var rand = Math.random();
+          if (list.indexOf(u.id) == -1 && message.client.currency.get(u.id) && rand < chance) {
             var nuu = message.client.currency.get(u.id);
             nuu.amount = nuu.amount + amount;
             message.client.currency.set(u.id,nuu);
