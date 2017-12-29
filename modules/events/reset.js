@@ -20,15 +20,7 @@ class resetCommand extends Command {
     if (!args[0] || args[0] !== message.channel.id) {
       return api.error('Please specify the channel id of the current channel.')
     }
-      message.channel.bulkDelete(100).catch(err => {
-        api.error(err)
-      })
-      message.channel.bulkDelete(100).catch(err => {
-        api.error(err)
-      })
-      message.channel.bulkDelete(100).catch(err => {
-        api.error(err)
-      })
+      message.channel.bulkDelete(100)
     return true
   }
 }
