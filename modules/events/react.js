@@ -82,9 +82,9 @@ class reactCommand extends Command {
             nuu.amount = nuu.amount + amount;
             message.client.currency.set(u.id,nuu);
             list.push(u.id);
-            log.send(`\`${u.u.tag}\` ${u.id} has succeeded.`)
+            log.send(`\`${u.tag}\` ${u.id} has succeeded.`)
           } else {
-            log.send(`\`${u.u.tag}\` ${u.id} has failed.`)
+            log.send(`\`${u.tag}\` ${u.id} has failed.`)
           }
         })
       });
