@@ -6,7 +6,7 @@ class reactCommand extends Command {
     super({
       name: 'react',
       help: 'Start the reaction event',
-      lhelp: '|{timeout}|{gold}|{chance}|{message}\n{timeout} is the timeout of the event in seconds\n{channel} is the name of the text channel to run the event in\n{gold} is the amount of gold to award for reacting\n{chance} is the chance of getting gold, 0.1 is 10%, 1 is 100%\n{message} is the text for the event message'
+      lhelp: '|{timeout}|{gold}|{chance}|{channel}|{logchannel}|{message}\n{timeout} is the timeout of the event in seconds\n{channel} is the name of the text channel to run the event in\n{gold} is the amount of gold to award for reacting\n{chance} is the chance of getting gold, 0.1 is 10%, 1 is 100%\n{message} is the text for the event message'
     })
   }
 
@@ -21,7 +21,7 @@ class reactCommand extends Command {
     }
     var args = message.content.split('|')
     args.splice(0,1)
-    if (!args[0] || !args[1] || !args[2] || !args[3]) {
+    if (!args[0] || !args[1] || !args[2] || !args[3] || !args[4] || !args[5]) {
       api.error('Please specify all the required arguments.')
       return
     }
@@ -43,11 +43,23 @@ class reactCommand extends Command {
     } else {
       return api.error('Please specify a numeric chance of getting the gold bars.')
     }
+    var chn
+    if (isN(args[3])) {
+      chn = message.guild.channels.get(Number(args[3]))
+    } else {
+      return api.error('Please specify a numeric channel id.')
+    }
+    var log
+    if (isN(args[4])) {
+      log = message.guild.channels.get(Number(args[4]))
+    } else {
+      return api.error('Please specify a numeric log channel id.')
+    }
     message.channel.send(`Event is about to start. \nTimeout: ${timeout}\nGold Amount: ${amount}\nChance: ${chance}`)
-    args.splice(0,3)
+    args.splice(0,5)
     var them = args.join(' ')
     message.guild.roles.get('384675152400482304').setMentionable(true)
-    message.guild.channels.find('name','announcements').send(them).then(msg => { 
+    chn.send(them).then(msg => { 
       msg.guild.roles.get('384675152400482304').setMentionable(false)
       msg.react(msg.guild.emojis.find('name','code'));
       const collector = msg.createReactionCollector(
@@ -69,7 +81,10 @@ class reactCommand extends Command {
             var nuu = message.client.currency.get(u.id);
             nuu.amount = nuu.amount + amount;
             message.client.currency.set(u.id,nuu);
-            list.push(u.id)
+            list.push(u.id);
+            log.send(`\`${u.u.tag}\` ${u.id} has succeeded.`)
+          } else {
+            log.send(`\`${u.u.tag}\` ${u.id} has failed.`)
           }
         })
       });
