@@ -29,7 +29,6 @@ class resetCommand extends Command {
       message.channel.bulkDelete(100).catch(err => {
         api.error(err)
       })
-    }
     return true
   }
 }
