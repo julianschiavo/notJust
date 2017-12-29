@@ -1,12 +1,14 @@
 const Discord = require('discord.js');
 const Command = require('../../cmdModule/commands').Command
+const Chance = require('chance')
+const ccc = new Chance()
 
 class reactCommand extends Command {
   constructor() {
     super({
       name: 'react',
       help: 'Start the reaction event',
-      lhelp: '|{timeout}|{gold}|{chance}|{channel}|{message}\n{timeout} is the timeout of the event in seconds\n{channel} is the name of the text channel to run the event in\n{gold} is the amount of gold to award for reacting\n{chance} is the chance of getting gold, 0.1 is 10%, 1 is 100%\n{message} is the text for the event message'
+      lhelp: '|{timeout}|{gold}|{chance}|{channel}|{message}\n{timeout} is the timeout of the event in seconds\n{channel} is the name of the text channel to run the event in\n{gold} is the amount of gold to award for reacting\n{chance} is the chance of getting gold, 1 is 1%, 100 is 100%\n{message} is the text for the event message'
     })
   }
 
@@ -71,7 +73,7 @@ class reactCommand extends Command {
             }
             message.client.currency.set(u.id, curr);
           }
-          var rand = Math.random();
+          var rand = ccc.integer({min: 0, max: 100})
           if (list.indexOf(u.id) == -1 && message.client.currency.get(u.id) && rand < chance) {
             var nuu = message.client.currency.get(u.id);
             nuu.amount = nuu.amount + amount;
