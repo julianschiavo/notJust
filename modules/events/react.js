@@ -86,7 +86,9 @@ class reactCommand extends Command {
           } else if (list.indexOf(u.id) == -1 && message.client.currency.get(u.id)) {
             list.push(u.id);
             log.send(`\`${u.tag}\` ${u.id} has failed.`).then(msg => {
-              msg.delete(60000)
+              setTimeout(function() {
+                msg.delete()
+              }, 60000)
             })
           }
         })
