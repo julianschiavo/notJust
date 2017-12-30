@@ -6,7 +6,7 @@ class participateCommand extends Command {
     super({
       name: 'participate',
       help: 'Start the participate reaction event',
-      lhelp: '|{channel}|{message}\n{channel} is the name of the text channel to run the event in\n{message} is the text for the event message'
+      lhelp: '|{timeout}|{channel}|{message}\n{timeout} is the timeout of the event in seconds\n{channel} is the name of the text channel to run the event in\n{message} is the text for the event message'
     })
   }
 
@@ -21,19 +21,25 @@ class participateCommand extends Command {
     }
     var args = message.content.split('|')
     args.splice(0,1)
-    if (!args[0] || !args[1]) {
+    if (!args[0] || !args[1] || !args[2]) {
       api.error('Please specify all the required arguments.')
       return
     }
     var chan
-    if (isN(args[0])) {
-      chan = message.guild.channels.get(args[0])
+    if (isN(args[1])) {
+      chan = message.guild.channels.get(args[1])
     } else {
       return api.error('Please specify a numeric channel id.')
     }
+    var timeout
+    if (isN(args[0])) {
+      timeout = Number(args[0])
+    } else {
+      return api.error('Please specify a numeric timeout for the event.')
+    }
     var log = chan
     message.channel.send(`Event Starting Very Soon. \nChannel: ${chan}`)
-    args.splice(0,1)
+    args.splice(0,2)
     var them = args.join(' ')
     message.guild.roles.get('384675152400482304').setMentionable(true)
     chan.send(them).then(msg => { 
