@@ -27,11 +27,13 @@ embed.addField("`Info`" , `• You **must** be on this server (Discord Technolog
 • You start with one available hint. You can buy up to two more by typing \`.buy 2\` in #gambling-and-shop in Shiki Zone to purchase one. Then type \`*usehint code\`, code being the code given by Natusno. 
 • Answer all ten riddles, then you will receive a code. Just send \`*riddlecode code\` to finish the event.
 • This event ends in 7 days, at 11:59PM PST, 7/1/2018.`)
-embed.addField("Rules" , `1. No alt.
+    embed.addBlankField(false)
+embed.addField("`Rules`" , `1. No alt.
 2. No cheating.
 3. There are 10 riddles, DM @Megumi#1726 to submit answers.
 4. Mention the riddle when DMing the answer. (e.g. \`*riddle10 answer\`)`);
-embed.addField("Prizes" , `**1st Finisher:** Speedy Riddler Role, 20,000 <:SZskittles:378509901674184704>, a $20 steam game, one dis.gg link, and 20,000 <:goldbar:383480100282171392>.
+    embed.addBlankField(false)
+embed.addField("`Prizes`" , `**1st Finisher:** Speedy Riddler Role, 20,000 <:SZskittles:378509901674184704>, a $20 steam game, one dis.gg link, and 20,000 <:goldbar:383480100282171392>.
 **2nd Finisher:** Riddler Role, and 10,000 <:SZskittles:378509901674184704>, a month of Discord Nitro, and 5,000 <:goldbar:383480100282171392>.
 **3rd Finisher:** Riddler Role, 5,000 <:SZskittles:378509901674184704>, and 5,000 <:goldbar:383480100282171392>.
 **Other Finishers:** 5,000 <:SZskittles:378509901674184704> and 1,000 <:goldbar:383480100282171392>.
