@@ -23,9 +23,9 @@ embed.setColor(" #ffff00 ");
 embed.setTitle("`New Year's Riddle Event`");
 embed.setDescription("Happy New Year! As celebration, we are hosting a riddle event in conjunction with our awesome partner, Shiki Zone. The riddle will be related to anime, so you'll have to solve anime riddles.");
 embed.addField("`Info`" , `• You **must** be on this server (Discord Technology) **and** our partner, Shiki Zone to participate in the event. Join Shiki Zone @ <https://shiki.zone/discord>.
-• Start the event by DMing @Megumi#1726 `*riddlestart`.
-• You start with one available hint. You can buy up to two more by typing `.buy 2` in #gambling-and-shop in Shiki Zone to purchase one. Then type `*usehint code`, code being the code given by Natusno. 
-• Answer all ten riddles, then you will receive a code. Just send `*riddlecode code` to finish the event.
+• Start the event by DMing @Megumi#1726 \`*riddlestart\`.
+• You start with one available hint. You can buy up to two more by typing \`.buy 2\` in #gambling-and-shop in Shiki Zone to purchase one. Then type \`*usehint code\`, code being the code given by Natusno. 
+• Answer all ten riddles, then you will receive a code. Just send \`*riddlecode code\` to finish the event.
 • This event ends in 7 days, at 11:59PM PST, 7/1/2018.`)
 embed.addField("Rules" , `1. No alt.
 2. No cheating.
