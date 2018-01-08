@@ -19,7 +19,7 @@ exports.run = (bot, member) => {
     embed.setTitle('🔢 `Member Count`');
 embed.setDescription(member.guild.memberCount);
     embed.setColor('#ffff00');
-	 member.guild.channels.find('name','count').fetchMessage('392113272666718218')
+	 member.guild.channels.find('name','count').fetchMessage('399721208389566465')
   .then(co => co.edit({embed}))
   .catch(console.log);
    
