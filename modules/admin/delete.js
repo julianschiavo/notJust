@@ -17,14 +17,15 @@ class deleteCommand extends Command {
   }
 
   async run(message, args, api) {
+    message.delete(0)
     args.splice(0, 1)
     if (!args[0]) {
       return api.error('Please specify how many messages to purge.')
     }
     const deleteCount = parseInt(args[0], 10);
-    if (!deleteCount || deleteCount < 2 || deleteCount > 100) {
+    if (!deleteCount || deleteCount > 100) {
       return api.error("Please provide a number between 2 and 100 for the number of messages to delete.");
-    }
+    } else if (deleteCount !== 1) {
     if (!args[1]) {
       message.channel.bulkDelete(deleteCount).then(promise => success()).catch(err => {
         api.error(err)
@@ -37,9 +38,10 @@ class deleteCommand extends Command {
         embed.setColor('#00ff00')
         //embed.setTimestamp()
         embed.setFooter('Replying to ' + message.author.tag)
-        message.channel.send({
+        let ok = message.channel.send({
           embed
         })
+        ok.delete(5000)
       }
     } else {
       var user = api.getUser(args[1], 'user')
@@ -59,9 +61,26 @@ class deleteCommand extends Command {
         embed.setColor('#00ff00')
         //embed.setTimestamp()
         embed.setFooter('Replying to ' + message.author.tag)
-        message.channel.send({
+        let ok = message.channel.send({
           embed
         })
+        ok.delete(5000)
+      }
+    }
+    } else {
+      message.channel.fetchMessage(message.channel.lastMessageID).then(msg => msg.delete();success3()).catch(err => api.error(err))
+      function success2() {
+        let embed = new Discord.RichEmbed()
+        embed.setTitle('<:apple_trash:359560553699475456> `Last Message Deleted`')
+        embed.addField('Count','1',true)
+        embed.setDescription(String.fromCharCode(8203))
+        embed.setColor('#00ff00')
+        //embed.setTimestamp()
+        embed.setFooter('Replying to ' + message.author.tag)
+        let ok = message.channel.send({
+          embed
+        })
+        ok.delete(5000)
       }
     }
     return true
