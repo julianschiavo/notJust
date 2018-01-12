@@ -22,7 +22,7 @@ class deleteCommand extends Command {
     if (!args[0]) {
       return api.error('Please specify how many messages to purge.')
     }
-    const deleteCount = parseInt(args[0], 10);
+    var deleteCount = parseInt(args[0], 10);
     if (!deleteCount || deleteCount < 2 || deleteCount > 98) {
       return api.error("Please provide a number between 2 and 99 for the number of messages to delete.");
     }
