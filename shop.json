@@ -6,11 +6,11 @@
     "price":"5000",
     "av":"False"
   },
-  "Beta": {
-    "name": "SimplePresence Beta",
+  "Role": {
+    "name": "Cool Role Color",
     "id":"2",
-    "description":"Get into the SimplePresence Beta forever",
-    "price":"20000",
+    "description": "A special role for a week, can be any hex color you provide but cannot be similar to existing roles.",
+    "price":"500000",
     "av":"True"
   },
   "Nitro": {
