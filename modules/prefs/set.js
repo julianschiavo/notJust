@@ -267,7 +267,6 @@ class setCommand extends Command {
           api.error('The specified self role name is invalid. Try again, making sure it doesn\'t contain spaces.')
           return
         }
-      }
     }
 
 
