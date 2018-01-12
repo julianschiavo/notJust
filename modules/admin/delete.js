@@ -24,7 +24,7 @@ class deleteCommand extends Command {
     }
     var deleteCount = parseInt(args[0], 10);
     if (!deleteCount || deleteCount < 2 || deleteCount > 98) {
-      return api.error("Please provide a number between 2 and 99 for the number of messages to delete.");
+      return api.error("Please provide a number between 2 and 98 for the number of messages to delete.");
     }
       deleteCount = deleteCount + 1
     if (!args[1]) {
@@ -55,7 +55,7 @@ class deleteCommand extends Command {
       function success2() {
         let embed = new Discord.RichEmbed()
         embed.setTitle('<:apple_trash:359560553699475456> `Messages Deleted Successfully`')
-        embed.addField('Count',deleteCount,true)
+        embed.addField('Count',deleteCount - 1,true)
         embed.addField('User','`'+user.tag+'`', true)
         embed.setDescription(String.fromCharCode(8203))
         embed.setColor('#00ff00')
