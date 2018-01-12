@@ -68,8 +68,11 @@ class deleteCommand extends Command {
       }
     }
     } else {
-      message.channel.fetchMessage(message.channel.lastMessageID).then(msg => msg.delete();success3()).catch(err => api.error(err))
-      function success2() {
+      message.channel.fetchMessage(message.channel.lastMessageID).then(msg => {
+        msg.delete();
+        success3()
+      }).catch(err => api.error(err))
+      function success3() {
         let embed = new Discord.RichEmbed()
         embed.setTitle('<:apple_trash:359560553699475456> `Last Message Deleted`')
         embed.addField('Count','1',true)
