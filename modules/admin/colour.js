@@ -18,8 +18,8 @@ class colorCommand extends Command {
 
   async run(message, args, api) {
     var conf
-    if (message.client.settings.get(message.guild.id).colors) {
-      conf = message.client.settings.get(message.guild.id).colors
+    if (message.client.settings.get(message.guild.id).colorRoles) {
+      conf = message.client.settings.get(message.guild.id).colorRoles
     } else {
       api.error('This server does not have any colors configured.')
       return;
