@@ -52,7 +52,7 @@ class colorCommand extends Command {
       return;
     }
     var check = conf.includes(role.id)
-    if (check == false || user.roles.has() {
+    if (check == false) {
       api.error('The specified role is not configured as a color.')
       return;
     }
