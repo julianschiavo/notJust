@@ -10,7 +10,7 @@ exports.run = (bot, member) => {
 	 
  var embed = new Discord.RichEmbed()
     embed.setTitle('<:apple_hand_wave:359559674099400704> `Welcome ' + user.user.tag + '`')
-    embed.setDescription(`Please read <#360649401414189089> to see our rules, partners, and more info about Discord Technology!`)
+    embed.setDescription(`Please read <#360649401414189089> to see our rules, partners, and more info about Discord Technology!\nPlease note our global emoji require Level 3 on Mee6.`)
     embed.setColor('#00ff00')
 	 member.guild.channels.find('name', 'welcome').send(embed)
 	 member.addRole(member.guild.roles.get('268973728044417024'))
