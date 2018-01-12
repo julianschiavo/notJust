@@ -38,10 +38,9 @@ class deleteCommand extends Command {
         embed.setColor('#00ff00')
         //embed.setTimestamp()
         embed.setFooter('Replying to ' + message.author.tag)
-        let ok = message.channel.send({
+        message.channel.send({
           embed
-        })
-        ok.delete(5000)
+        }).then(msg => msg.delete(5000))
       }
     } else {
       var user = api.getUser(args[1], 'user')
@@ -61,10 +60,9 @@ class deleteCommand extends Command {
         embed.setColor('#00ff00')
         //embed.setTimestamp()
         embed.setFooter('Replying to ' + message.author.tag)
-        let ok = message.channel.send({
+        message.channel.send({
           embed
-        })
-        ok.delete(5000)
+        }).then(msg => msg.delete(5000))
       }
     }
     } else {
@@ -80,10 +78,9 @@ class deleteCommand extends Command {
         embed.setColor('#00ff00')
         //embed.setTimestamp()
         embed.setFooter('Replying to ' + message.author.tag)
-        let ok = message.channel.send({
+        message.channel.send({
           embed
-        })
-        ok.delete(5000)
+        }).then(msg => msg.delete(5000))
       }
     }
     return true
