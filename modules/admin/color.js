@@ -4,7 +4,7 @@ const Command = require('../../cmdModule/commands').Command
 class colorCommand extends Command {
   constructor() {
     super({
-      name: 'color',
+      name: 'colour',
       help: 'Select a color',
       lhelp: '{role}\n{role} is the role name or ID.'
     })
