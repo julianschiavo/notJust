@@ -5,8 +5,8 @@ const Command = require('../../cmdModule/commands').Command
 class joinCommand extends Command {
   constructor() {
     super({
-      name: 'join',
-      help: 'Join a voice channel'
+      name: 'enter',
+      help: 'Enter a voice channel'
     })
   }
 
