@@ -69,10 +69,10 @@ class checkCommand extends Command {
         embed.addField('Invite', '`' + inv.toString() + '`', true)
       }
       embed.addBlankField(false)
-      if (curr.pastUses !== '') {
+      if (!curr.pastUses) {
         embed.addField('Past Uses', curr.pastUses.toString() + '|', true)
       }
-      if (uses !== '' && curr.pastUses !== '') {
+      if (!uses || !curr.pastUses) {
         embed.addField('New Uses', (curr.pastUses - uses).toString() + '|', true)
       }
       embed.setColor('#00ff00')
