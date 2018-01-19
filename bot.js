@@ -75,6 +75,9 @@ var gconf = bot.settings.get('global')
     bot.settings.set('global', bot.defaultGlobalSettings);
   }
 
+const dotProvider = new EnmapLevel({name: "dots"});
+bot.dots = new Enmap({provider: pointProvider});
+
 bot.dispatcher = ''
 
 //bot.dispatcher.on('end', () => {
