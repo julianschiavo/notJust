@@ -52,16 +52,24 @@ class checkCommand extends Command {
     
     var inv = message.client.currency.get(user.id).invCode
       var curr = message.client.currency.get(user.id)
-    var uses = message.client.fetchInvite(inv).uses
+    var uses = message.guild.fetchInvites().then(inv => inv.filter(g => g.code == inv).map(g => g.uses))
+    curr.amount = curr.amount + ((curr.pastUses - uses) * 100)
+    curr.pastUses = uses
+    message.client.currency.set(user.id,curr)
       let embed = new Discord.RichEmbed()
       embed.setTitle('<:goldbar:383480100282171392> `Gold Bar Status for ' + user.user.tag + '`')
    embed.addField('Amount', curr.amount, true)
     if (inv) {
    embed.addField('Invite', '`' + inv.toString() + '`', true)
     }
-    if (uses) {
-      embed.addField('Uses', uses, true)
+    embed.addBlankField(false)
+    if (curr.pastUses) {
+      embed.addField('Past Uses', curr.pastUses, true)
     }
+    if (uses) {
+      embed.addField('New Uses', curr.pastUses - uses, true)
+    }
+    
     
       embed.setColor('#00ff00')
       embed.setFooter('Replying to ' + message.author.tag)
