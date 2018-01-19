@@ -66,7 +66,7 @@ class checkCommand extends Command {
       let embed = new Discord.RichEmbed()
       embed.setTitle('<:goldbar:383480100282171392> `Gold Bar Status for ' + user.user.tag + '`')
       embed.addField('Amount', curr.amount, true)
-      if (inv) {
+      if (invi) {
         embed.addField('Invite', '`' + invi + '`', true)
       }
       if (curr.pastUses) {
