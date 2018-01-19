@@ -54,7 +54,7 @@ class checkCommand extends Command {
       message.client.currency.set(user.id, curr)
     }
     curr = message.client.currency.get(user.id)
-    var inv = curr.invCode.toString()
+    var invi = curr.invCode
     message.guild.fetchInvites().then(inv => {
       var uses = inv.filter(g => g.code == inv).map(g => g.uses)
       curr = message.client.currency.get(user.id)
@@ -66,14 +66,14 @@ class checkCommand extends Command {
       embed.setTitle('<:goldbar:383480100282171392> `Gold Bar Status for ' + user.user.tag + '`')
       embed.addField('Amount', curr.amount, true)
       if (inv) {
-        embed.addField('Invite', '`' + inv.toString() + '`', true)
+        embed.addField('Invite', '`' + invi + '`', true)
       }
       embed.addBlankField(false)
       if (!curr.pastUses) {
-        embed.addField('Past Uses', curr.pastUses.toString() + '|', true)
+        embed.addField('Past Uses', curr.pastUses, true)
       }
       if (!uses || !curr.pastUses) {
-        embed.addField('New Uses', (curr.pastUses - uses).toString() + '|', true)
+        embed.addField('New Uses', (curr.pastUses - uses), true)
       }
       embed.setColor('#00ff00')
       embed.setFooter('Replying to ' + message.author.tag)
