@@ -55,12 +55,11 @@ class checkCommand extends Command {
     }
     curr = message.client.currency.get(user.id)
     var invi = curr.invCode
+    var past = curr.pastUses
     message.guild.fetchInvites().then(inv => {
       var uses = inv.filter(g => g.code == invi).map(g => g.uses)
-      console.log(uses)
       curr = message.client.currency.get(user.id)
-      curr.amount = (curr.amount + ((curr.pastUses - uses) * 100))
-      console.log((curr.amount + ((curr.pastUses - uses) * 100)))
+      curr.amount = (curr.amount + ((past - uses) * 100))
       curr.pastUses = uses
       message.client.currency.set(user.id, curr)
       curr = message.client.currency.get(user.id)
@@ -72,10 +71,10 @@ class checkCommand extends Command {
       }
       if (curr.pastUses) {
         embed.addBlankField(false)
-        embed.addField('Past Uses', curr.pastUses, true)
+        embed.addField('Past Uses', past, true)
       }
       if (uses || curr.pastUses) {
-        embed.addField('New Uses', (curr.pastUses - uses), true)
+        embed.addField('New Uses', (past - uses), true)
       }
       embed.setColor('#00ff00')
       embed.setFooter('Replying to ' + message.author.tag)
