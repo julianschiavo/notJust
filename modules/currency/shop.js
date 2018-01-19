@@ -24,8 +24,8 @@ class shopCommand extends Command {
         embed
       })
       for (var i = 0; i < Object.keys(shop).length; i++) {
-        if (item.av !== 'True') return
         var item = shop[Object.keys(shop)[i]]
+        if (item.av !== 'True') return
               let embed = new Discord.RichEmbed()
       embed.setTitle('`' + item.name + '`')
        //embed.addField('ID',item.id,false)
