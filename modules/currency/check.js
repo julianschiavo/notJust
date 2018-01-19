@@ -57,6 +57,7 @@ class checkCommand extends Command {
     var invi = curr.invCode
     message.guild.fetchInvites().then(inv => {
       var uses = inv.filter(g => g.code == inv).map(g => g.uses)
+      console.log(uses)
       curr = message.client.currency.get(user.id)
       curr.amount = curr.amount + ((curr.pastUses - uses) * 100)
       curr.pastUses = uses
@@ -68,11 +69,11 @@ class checkCommand extends Command {
       if (inv) {
         embed.addField('Invite', '`' + invi + '`', true)
       }
-      if (!curr.pastUses) {
+      if (curr.pastUses) {
         embed.addBlankField(false)
         embed.addField('Past Uses', curr.pastUses, true)
       }
-      if (!uses || !curr.pastUses) {
+      if (uses || curr.pastUses) {
         embed.addField('New Uses', (curr.pastUses - uses), true)
       }
       embed.setColor('#00ff00')
