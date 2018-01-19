@@ -70,10 +70,10 @@ class checkCommand extends Command {
       }
       embed.addBlankField(false)
       if (curr.pastUses !== '') {
-        embed.addField('Past Uses', curr.pastUses.toString(), true)
+        embed.addField('Past Uses', curr.pastUses.toString() + '|', true)
       }
       if (uses !== '' && curr.pastUses !== '') {
-        embed.addField('New Uses', (curr.pastUses - uses).toString(), true)
+        embed.addField('New Uses', (curr.pastUses - uses).toString() + '|', true)
       }
       embed.setColor('#00ff00')
       embed.setFooter('Replying to ' + message.author.tag)
