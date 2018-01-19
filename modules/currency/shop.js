@@ -33,11 +33,9 @@ class shopCommand extends Command {
         embed.addField('Cost',item.price,true)
       embed.setColor('#00ff00')
       embed.setDescription(item.description + '\n')
-      message.channel.send({
+      message.author.send({
         embed
       })
-        } else {
-          console.log(item.av)
         }
       }
     return true
