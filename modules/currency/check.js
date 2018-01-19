@@ -76,6 +76,7 @@ class checkCommand extends Command {
     if (uses !== '' && curr.pastUses !== '') {
       embed.addField('New Uses', curr.pastUses - uses, true)
     }
+      console.log(curr.pastUses)
     
     
       embed.setColor('#00ff00')
