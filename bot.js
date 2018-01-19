@@ -76,7 +76,7 @@ var gconf = bot.settings.get('global')
   }
 
 const dotProvider = new EnmapLevel({name: "dots"});
-bot.dots = new Enmap({provider: pointProvider});
+bot.dots = new Enmap({provider: dotProvider});
 
 bot.pointsMonitor = (message) => {
   if (message.channel.type !== 'text' || message.guild.id !== '268970339948691456') return;
