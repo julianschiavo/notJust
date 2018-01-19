@@ -25,7 +25,7 @@ class shopCommand extends Command {
       })
       for (var i = 0; i < Object.keys(shop).length; i++) {
         var item = shop[Object.keys(shop)[i]]
-        if (item.av == false) return
+        if (item.av == true) {
               let embed = new Discord.RichEmbed()
       embed.setTitle('`' + item.name + '`')
        //embed.addField('ID',item.id,false)
@@ -36,6 +36,9 @@ class shopCommand extends Command {
       message.channel.send({
         embed
       })
+        } else {
+          console.log(item.av)
+        }
       }
     return true
   }
