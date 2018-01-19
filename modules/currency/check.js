@@ -58,7 +58,8 @@ class checkCommand extends Command {
     
     var inv = message.client.currency.get(user.id).invCode
       var curr = message.client.currency.get(user.id)
-    var uses = await message.guild.fetchInvites().then(inv => inv.filter(g => g.code == inv).map(g => g.uses))
+    message.guild.fetchInvites().then(inv => {
+    var uses = inv.filter(g => g.code == inv).map(g => g.uses)
     curr.amount = curr.amount + ((curr.pastUses - uses) * 100)
     curr.pastUses = uses
     message.client.currency.set(user.id,curr)
@@ -69,10 +70,10 @@ class checkCommand extends Command {
    embed.addField('Invite', '`' + inv.toString() + '`', true)
     }
     embed.addBlankField(false)
-    if (curr.pastUses) {
+    if (curr.pastUses !== '') {
       embed.addField('Past Uses', curr.pastUses, true)
     }
-    if (uses && curr.pastUses) {
+    if (uses !== '' && curr.pastUses !== '') {
       embed.addField('New Uses', curr.pastUses - uses, true)
     }
     
@@ -83,7 +84,7 @@ class checkCommand extends Command {
       message.channel.send({
         embed
       })
-
+    })
 
 
 
