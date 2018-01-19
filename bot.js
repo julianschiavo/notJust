@@ -92,7 +92,7 @@ bot.pointsMonitor = (message) => {
   score.dots = score.dots + Math.floor(Math.random() * (30 - 15 + 1)) + 15;
   const curLevel = Math.floor(0.1 * Math.sqrt(score.dots));
   if (score.level < curLevel) {
-    message.author.send(`You are now **Level ${curLevel}**!`);
+    message.author.send(`You are now **Level ${curLevel}**!`).catch(err => console.error(err))
     score.level = curLevel;
   }
   if (score.level > '3') {
