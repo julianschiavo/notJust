@@ -4,6 +4,6 @@ exports.run = (bot, handler, msg) => {
   if (msg.content.startsWith(config.prefix)) {
     handler.handleMessage(msg)
   } else {
-    msg.client.pointsMonitor(msg.client, msg);
+    msg.client.pointsMonitor(msg);
   }
 }
