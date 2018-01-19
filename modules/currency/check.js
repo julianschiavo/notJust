@@ -70,7 +70,7 @@ class checkCommand extends Command {
     }
     embed.addBlankField(false)
     if (curr.pastUses !== '') {
-      embed.addField('Past Uses', curr.pastUses, true)
+      //embed.addField('Past Uses', curr.pastUses, true)
     }
     if (uses !== '' && curr.pastUses !== '') {
       embed.addField('New Uses', curr.pastUses - uses, true)
