@@ -72,7 +72,7 @@ class checkCommand extends Command {
     if (curr.pastUses) {
       embed.addField('Past Uses', curr.pastUses, true)
     }
-    if (uses) {
+    if (uses && curr.pastUses) {
       embed.addField('New Uses', curr.pastUses - uses, true)
     }
     
