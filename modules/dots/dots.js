@@ -18,6 +18,9 @@ class dotsCommand extends Command {
     var user
     if (args[1]) {
       user = message.guild.member(message.mentions.users.first());
+      if (!user) {
+        user = message.guild.member(message.author);
+      }
     } else {
       user = message.guild.member(message.author);
     }
