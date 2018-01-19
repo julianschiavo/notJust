@@ -96,10 +96,10 @@ bot.pointsMonitor = (message) => {
     score.level = curLevel;
   }
   if (score.level > '3') {
-    message.author.addRole(message.guild.roles.find('name','emoji'))
+    message.guild.member(message.author).addRole(message.guild.roles.find('name','emoji'))
   }
   if (score.level > '10') {
-    message.author.addRole(message.guild.roles.find('name','color'))
+    message.guild.member(message.author).addRole(message.guild.roles.find('name','color'))
   }
   bot.dots.set(message.author.id, score);
 };
