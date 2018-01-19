@@ -16,12 +16,12 @@ class checkCommand extends Command {
 
   async run(message, args, api) {
     var user
-    var curr = message.client.currency.get(user.id)
     if (args[1]) {
       user = message.guild.member(message.mentions.users.first());
     } else {
       user = message.guild.member(message.author);
     }
+    var curr = message.client.currency.get(user.id)
     if (!curr) {
       var curr = {
         amount: 0,
