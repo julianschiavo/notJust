@@ -23,12 +23,6 @@ class dotsCommand extends Command {
     }
     var dots = message.client.dots.get(user.id)
     !dots ? message.channel.send('You have no dots yet.') : console.log('');
-      var uses = inv.filter(g => g.code == invi).map(g => g.uses)
-      curr = message.client.currency.get(user.id)
-      curr.amount = (curr.amount + ((uses - past) * 100))
-      curr.pastUses = uses
-      message.client.currency.set(user.id, curr)
-      curr = message.client.currency.get(user.id)
       let embed = new Discord.RichEmbed()
       embed.setTitle('<:GWdotjsVerified:403294615274520576> `Dots Status`')
       embed.addField('User', user.user.tag, true)
