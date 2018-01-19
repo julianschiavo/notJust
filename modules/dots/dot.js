@@ -40,7 +40,7 @@ class dotCommand extends Command {
       var curLevel = Math.floor(0.1 * Math.sqrt(dots.dots));
   if (dots.level < curLevel) {
     user.send(`You are now **Level ${curLevel}**!`);
-    score.level = curLevel;
+    dots.level = curLevel;
   }
   if (dots.level > '3') {
     user.addRole(message.guild.roles.find('name','emoji'))
