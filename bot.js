@@ -78,6 +78,32 @@ var gconf = bot.settings.get('global')
 const dotProvider = new EnmapLevel({name: "dots"});
 bot.dots = new Enmap({provider: pointProvider});
 
+bot.pointsMonitor = (message) => {
+  if (message.channel.type !== 'text' || message.guild.id !== '268970339948691456') return;
+  if (message.content.startsWith('.')) return;
+  const score = bot.dots.get(message.author.id) || { dots: 0, level: 0, time: 0 };
+  var curTime = new Date().getTime();
+  if ((curTime - score.time) < 60000) {
+    score.time = new Date().getTime();
+    return bot.dots.set(message.author.id, score);
+  } else {
+    score.time = new Date().getTime();
+  }
+  score.dots = score.dots + Math.floor(Math.random() * (30 - 15 + 1)) + 15;
+  const curLevel = Math.floor(0.1 * Math.sqrt(score.dots));
+  if (score.level < curLevel) {
+    message.author.send(`You are now **Level ${curLevel}**!`);
+    score.level = curLevel;
+  }
+  if (score.level > '3') {
+    message.author.addRole(message.guild.roles.find('name','emoji'))
+  }
+  if (score.level > '10') {
+    message.author.addRole(message.guild.roles.find('name','color'))
+  }
+  bot.dots.set(message.author.id, score);
+};
+
 bot.dispatcher = ''
 
 //bot.dispatcher.on('end', () => {
@@ -91,26 +117,6 @@ bot.dispatcher = ''
 //play(message.client.queue[message.guild.id].songs.shift());
 //});
 //});
-
-/*bot.on('guildMemberAdd', member => {
-  // Send the message to the guilds default channel (usually #general), mentioning the member
-  //member.guild.defaultChannel.send(`Welcome to the server, ${member}!`);
-
-  // If you want to send the message to a designated channel on a server instead
-  // you can do the following:
-  //const channel = member.guild.channels.find('name', 'admins');
-  // Do nothing if the channel wasn't found on this server
-  //if (!channel) return;
-  // Send the message, mentioning the member
-  //const msgg = channel.send(`Set ${member}'s Crew:\n\nReact with:\n:one: Bot\n:two: Redlight\n:three: Yellowlight\n:four: Greenlight`);
-  //const collector = msgg.createReactionCollector(
- (reaction) => reaction.emoji.id === '1️⃣' || reaction.emoji.id === '2️⃣' ||reaction.emoji.id === '3️⃣' ||reaction.emoji.id === '4️⃣'
-);
-collector.on('collect', r => msgg.channel.send(`Run lcrew to set ${member} to ${r}. I can't do it yet, sorry!`));
-
-
-  //api.embed('#00ff00', `<:Tick:318378431051989003> \`Prestige Roles Reset for New Season\``, '')
-});*/
 
 
 handler.registerModule('sudo', 'Sudo')
