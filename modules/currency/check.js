@@ -52,7 +52,7 @@ class checkCommand extends Command {
     
     var inv = message.client.currency.get(user.id).invCode
       var curr = message.client.currency.get(user.id)
-    var uses = message.guild.fetchInvites().then(inv => inv.filter(g => g.code == inv).map(g => g.uses))
+    var uses = await message.guild.fetchInvites().then(inv => inv.filter(g => g.code == inv).map(g => g.uses))
     curr.amount = curr.amount + ((curr.pastUses - uses) * 100)
     curr.pastUses = uses
     message.client.currency.set(user.id,curr)
