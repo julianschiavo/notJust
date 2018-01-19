@@ -68,8 +68,8 @@ class checkCommand extends Command {
       if (inv) {
         embed.addField('Invite', '`' + invi + '`', true)
       }
-      embed.addBlankField(false)
       if (!curr.pastUses) {
+        embed.addBlankField(false)
         embed.addField('Past Uses', curr.pastUses, true)
       }
       if (!uses || !curr.pastUses) {
