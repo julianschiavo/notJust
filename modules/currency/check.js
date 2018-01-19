@@ -50,6 +50,12 @@ class checkCommand extends Command {
       return
     }
     
+    if (!message.client.currency.get(user.id).pastUses) {
+      var curr = message.client.currency.get(user.id)
+      curr.pastUses = 0
+      message.client.currency.set(user.id,curr)
+    }
+    
     var inv = message.client.currency.get(user.id).invCode
       var curr = message.client.currency.get(user.id)
     var uses = await message.guild.fetchInvites().then(inv => inv.filter(g => g.code == inv).map(g => g.uses))
