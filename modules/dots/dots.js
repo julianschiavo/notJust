@@ -24,7 +24,7 @@ class dotsCommand extends Command {
     var dots = message.client.dots.get(user.id)
     !dots ? message.channel.send('You have no dots yet.') : console.log('');
       let embed = new Discord.RichEmbed()
-      embed.setTitle('<:verifiedd:403138525031170048> `Dots Status`')
+      embed.setTitle('<:verified:403822641653350403> `Dots Status`')
       embed.addField('User', user.user.tag, true)
       embed.addField('Amount', dots.dots, true)
       embed.addField('Level', dots.level, true)
