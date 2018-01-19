@@ -4,41 +4,41 @@
     "id":"1",
     "description":"One hint on puzzle type events (e.g. #code)",
     "price":"5,000",
-    "av":"False"
+    "av":false
   },
   "link": {
     "name": "dis.gg link",
     "id":"2",
     "description": "One dis.gg link pointing to a URL of your choice. Please note terms and conditions apply and some words are not available.",
     "price":"100,000",
-    "av":"True"
+    "av":true
   },
   "P1": {
     "name": "PayPal $1",
     "id":"3",
     "description": "$1 via PayPal. Please note PayPal's fees, terms and conditions apply.",
     "price":"200,000",
-    "av":"True"
+    "av":true
   },
   "P2": {
     "name": "PayPal $2",
     "id":"4",
     "description": "$2 via PayPal. Please note PayPal's fees, terms and conditions apply.",
     "price":"400,000",
-    "av":"True"
+    "av":true
   },
   "P10": {
     "name": "PayPal $10",
     "id":"5",
     "description": "$10 via PayPal. Please note PayPal's fees, terms and conditions apply.",
     "price":"1,500,000",
-    "av":"True"
+    "av":true
   },
   "disgg": {
     "name": "dis.gg account (1 month)",
     "id":"6",
     "description": "A dis.gg account for one month. Please note that terms and conditions apply.",
     "price":"3,000,000",
-    "av":"True"
+    "av":true
   }
 }
