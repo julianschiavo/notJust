@@ -59,7 +59,8 @@ class checkCommand extends Command {
       var uses = inv.filter(g => g.code == invi).map(g => g.uses)
       console.log(uses)
       curr = message.client.currency.get(user.id)
-      curr.amount = curr.amount + ((curr.pastUses - uses) * 100)
+      curr.amount = (curr.amount + ((curr.pastUses - uses) * 100))
+      console.log((curr.amount + ((curr.pastUses - uses) * 100)))
       curr.pastUses = uses
       message.client.currency.set(user.id, curr)
       curr = message.client.currency.get(user.id)
