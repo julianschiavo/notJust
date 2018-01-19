@@ -49,9 +49,8 @@ class checkCommand extends Command {
       })
       return
     }
-    
-    if (!message.client.currency.get(user.id).pastUses) {
-      var curr = message.client.currency.get(user.id)
+    var curr = message.client.currency.get(user.id)
+    if (!curr.pastUses) {
       curr.pastUses = 0
       message.client.currency.set(user.id,curr)
     }
