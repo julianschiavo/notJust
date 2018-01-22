@@ -17,7 +17,7 @@ exports.run = (bot, member) => {
     member.addRole(member.guild.roles.find('name', 'ping'))
     member.addRole(member.guild.roles.find('name', 'pingo'))
     var a = '🔢 Member Count: ' + member.guild.memberCount
-    member.guild.channels.find('name', 'count').fetchMessage('399721208389566465').then(co => co.edit(a)).catch(console.error);
+    member.guild.channels.find('name', 'chat').fetchMessage('404994255019311114').then(co => co.edit(a)).catch(console.error);
   }
 
   if (conf) {
