@@ -31,8 +31,10 @@ class pingoCommand extends Command {
     channel = message.guild.channels.get(args[1])
     } else {
     return api.error('Invalid Channel ID.')
+    }
     message.guild.roles.get('404981161241214977').setMentionable(true)
     channel.send('<@&404981161241214977>' + args[2])
+    message.guild.roles.get('404981161241214977').setMentionable(false)
     return true
   }
 }
