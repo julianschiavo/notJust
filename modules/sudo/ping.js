@@ -32,7 +32,7 @@ class pingCommand extends Command {
     } else {
     return api.error('Invalid Channel ID.')
     message.guild.roles.get('384675152400482304').setMentionable(true)
-    channel.send(args[2])
+    channel.send('<@&384675152400482304>' + args[2])
     return true
   }
 }
