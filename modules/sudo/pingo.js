@@ -17,7 +17,6 @@ class pingoCommand extends Command {
 
   async run(message, args, api) {
     var args = message.content.split('|')
-    args.splice(0,1)
     console.log(args[1])
     if (!args[1]) {
       api.error('Please specify a channel ID for the pingo.')
