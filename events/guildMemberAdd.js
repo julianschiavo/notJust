@@ -9,8 +9,8 @@ exports.run = (bot, member) => {
   if (member.guild.id == '268970339948691456') {
 
     var embed = new Discord.RichEmbed()
-    embed.setTitle('<a:animoji_wave:404992889794592778> `Hey ' + user.user.tag + '`')
-    embed.setDescription(`Check out <#360649401414189089> to see some short rules and info about Discord Technology, then go introduce yourself and say hi in <#268979366896205847>!`)
+    embed.setTitle('<a:animoji_wave:404992889794592778> `Hey, ' + user.user.username + '!`')
+    embed.setDescription(`Check out <#360649401414189089> to see some short rules and info about Discord Technology.\nThen, go introduce yourself and say hi in <#268979366896205847>!`)
     embed.setColor('#00ff00')
     member.guild.channels.find('name', 'welcome').send(embed)
     member.addRole(member.guild.roles.get('268973728044417024'))
