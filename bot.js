@@ -136,6 +136,7 @@ function pingRoles(reaction, user) {
       given = ' You have joined `@'
     }
     user.send(reaction.emoji.toString() + given + reaction.message.guild.roles.get(role).name + '`.')
+	  reaction.remove(user)
   }
 }
 
