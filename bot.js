@@ -121,6 +121,7 @@ bot.dispatcher = ''
 bot.on("messageReactionAdd", (reaction, user) => {
   var role
   var given
+  var user = reaction.message.guild.members(user)
   if (reaction.message.id == '405912702855282698') {
     if (reaction.emoji.id == '405909843098992650') {
       role = reaction.message.guild.roles.get('384675152400482304')
