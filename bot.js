@@ -118,6 +118,11 @@ bot.dispatcher = ''
 //});
 //});
 
+bot.on("messageReactionAdd", (reaction) => {
+  console.log(reaction);
+});
+
+
 handler.registerModule('sudo', 'Sudo')
 handler.registerModule('fun', 'Fun')
 handler.registerModule('media', 'Media')
