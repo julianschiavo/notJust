@@ -143,7 +143,7 @@ bot.on("messageReactionAdd", (reaction, user) => {
   }
 });
 
-client.on('messageReactionRemove', (messageReaction, user) => {
+bot.on('messageReactionRemove', (messageReaction, user) => {
   console.log('rr')
 });
 
