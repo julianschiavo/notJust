@@ -145,9 +145,9 @@ bot.on("messageReactionAdd", (reaction, user) => {
       given = ' You have left @'
     } else {
       user.addRole(role)
-      given = ' You have joined @'
+      given = ' You have joined `@'
     }
-    user.send(reaction.emoji.toString() + given + reaction.message.guild.roles.get(role).toString() + '.')
+    user.send(reaction.emoji.toString() + given + reaction.message.guild.roles.get(role).name + '`.')
   }
 });
 
