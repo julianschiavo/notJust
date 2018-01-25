@@ -118,8 +118,8 @@ bot.dispatcher = ''
 //});
 //});
 
-bot.on('messageReactionRemove', (messageReaction, user) => {
-  console.log('rr')
+bot.on('typingStart', (messageReaction, user) => {
+  console.log('ty')
 });
 
 handler.registerModule('sudo', 'Sudo')
