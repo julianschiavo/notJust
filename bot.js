@@ -118,10 +118,12 @@ bot.dispatcher = ''
 //});
 //});
 
-var rm = bot.guilds.get('268970339948691456').channels.get('360649401414189089').fetchMessage('405912702855282698')
-rm.clearReactions()
-rm.react('405909843098992650')
-rm.react('405911142012026891')
+bot.channels.get('360649401414189089').then(chn => {
+  var rm = chn.fetchMessage('405912702855282698')
+  rm.clearReactions()
+  rm.react('405909843098992650')
+  rm.react('405911142012026891')
+})
 
 bot.on("messageReactionAdd", (reaction, user) => {
   var role
