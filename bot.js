@@ -143,6 +143,10 @@ bot.on("messageReactionAdd", (reaction, user) => {
   }
 });
 
+client.on('messageReactionRemove', (messageReaction, user) => {
+  console.log('rr')
+});
+
 handler.registerModule('sudo', 'Sudo')
 handler.registerModule('fun', 'Fun')
 handler.registerModule('media', 'Media')
