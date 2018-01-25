@@ -125,9 +125,8 @@ bot.on('raw', async event => {
 	if (channel.messages.has(data.message_id)) return;
 	const user = bot.users.get(data.user_id);
 	const message = await channel.fetchMessage(data.message_id);
-	// custom emoji are keyed by IDs, while unicode emoji are keyed by names
-	// if you're not on the master branch, custom emojis reactions are key as `'name:id'`
-	const reaction = message.reactions.get(data.emoji.id || data.emoji.name);
+	const emojiKey = (data.emoji.id) ? `${data.emoji.name}:${data.emoji.id}` : data.emoji.name;
+	const reaction = message.reactions.get(emojiKey);
 	bot.emit('messageReactionAdd', reaction, user);
 });
 
