@@ -70,18 +70,25 @@ bot.defaultGlobalSettings = {
 }
 
 var gconf = bot.settings.get('global')
-  if (gconf) {
-  } else {
-    bot.settings.set('global', bot.defaultGlobalSettings);
-  }
+if (gconf) {} else {
+  bot.settings.set('global', bot.defaultGlobalSettings);
+}
 
-const dotProvider = new EnmapLevel({name: "dots"});
-bot.dots = new Enmap({provider: dotProvider});
+const dotProvider = new EnmapLevel({
+  name: "dots"
+});
+bot.dots = new Enmap({
+  provider: dotProvider
+});
 
 bot.pointsMonitor = (message) => {
   if (message.channel.type !== 'text' || message.guild.id !== '268970339948691456') return;
   if (message.content.startsWith('.')) return;
-  const score = bot.dots.get(message.author.id) || { dots: 0, level: 0, time: 0 };
+  const score = bot.dots.get(message.author.id) || {
+    dots: 0,
+    level: 0,
+    time: 0
+  };
   var curTime = new Date().getTime();
   if ((curTime - score.time) < 60000) {
     score.time = new Date().getTime();
@@ -96,10 +103,10 @@ bot.pointsMonitor = (message) => {
     score.level = curLevel;
   }
   if (score.level >= '3') {
-    message.guild.member(message.author).addRole(message.guild.roles.find('name','emoji'))
+    message.guild.member(message.author).addRole(message.guild.roles.find('name', 'emoji'))
   }
   if (score.level >= '12') {
-    message.guild.member(message.author).addRole(message.guild.roles.find('name','color'))
+    message.guild.member(message.author).addRole(message.guild.roles.find('name', 'color'))
   }
   bot.dots.set(message.author.id, score);
 };
@@ -119,7 +126,7 @@ bot.dispatcher = ''
 //});
 
 function pingRoles(reaction, user) {
-	var role
+  var role
   var given
   var user = reaction.message.guild.member(user)
   if (reaction.message.id == '405912702855282698') {
@@ -136,19 +143,15 @@ function pingRoles(reaction, user) {
       given = ' You have joined `@'
     }
     user.send(reaction.emoji.toString() + given + reaction.message.guild.roles.get(role).name + '`.')
-	  reaction.remove(user)
+    reaction.remove(user)
   }
-}
-
-function resetReactions(message) {
-	//message.clearReactions()
-	//message.react('405909843098992650')
-	//message.react('405911142012026891')
 }
 
 bot.on('raw', async event => {
   if (event.t !== 'MESSAGE_REACTION_ADD' && event.t !== 'MESSAGE_REACTION_REMOVE') return;
-  const { d: data } = event;
+  const {
+    d: data
+  } = event;
   const channel = bot.channels.get(data.channel_id);
   if (channel.messages.has(data.message_id)) return;
   const message = await channel.fetchMessage(data.message_id);
@@ -156,24 +159,16 @@ bot.on('raw', async event => {
   const emojiKey = (data.emoji.id) ? `${data.emoji.name}:${data.emoji.id}` : data.emoji.name;
   const reaction = message.reactions.get(emojiKey);
   if (event.t == 'MESSAGE_REACTION_ADD') {
-	  bot.emit('messageReactionAdd', reaction, user);
+    bot.emit('messageReactionAdd', reaction, user);
   } else {
-	  bot.emit('messageReactionRemove', reaction, user);
+    bot.emit('messageReactionRemove', reaction, user);
   }
 });
 
 bot.on("messageReactionAdd", (reaction, user) => {
-	if (user.id !== '329772339967426560') {
-  pingRoles(reaction, user)
-	resetReactions(reaction.message)
-	}
-});
-
-bot.on("messageReactionRemove", (reaction, user) => {
-	if (user.id !== '329772339967426560') {
-  pingRoles(reaction, user)
-	resetReactions(reaction.message)
-	}
+  if (user.id !== '329772339967426560') {
+    pingRoles(reaction, user)
+  }
 });
 
 handler.registerModule('sudo', 'Sudo')
