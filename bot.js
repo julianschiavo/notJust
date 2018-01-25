@@ -118,7 +118,7 @@ bot.dispatcher = ''
 //});
 //});
 
-bot.channels.get('360649401414189089').then(chn => {
+bot.fetchUser('193908323911860224').guilds.get('268970339948691456').channels.get('360649401414189089').then(chn => {
   var rm = chn.fetchMessage('405912702855282698')
   rm.clearReactions()
   rm.react('405909843098992650')
