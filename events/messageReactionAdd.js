@@ -5,7 +5,7 @@ const Discord = require('discord.js')
 exports.run = (reaction, user) => {
   var role
   var given
-  if (reaction.message.id == '405912702855282698' && reaction.message.guild.id == '268970339948691456') {
+  if (reaction.message.id == '405912702855282698') {
     if (reaction.emoji.id == '405909843098992650') {
       role = reaction.message.guild.roles.get('384675152400482304')
     } else if (reaction.emoji.id == '405911142012026891') {
