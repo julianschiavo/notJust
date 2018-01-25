@@ -140,9 +140,9 @@ function pingRoles(reaction, user) {
 }
 
 function resetReactions(message) {
-	message.clearReactions()
-	message.react('405909843098992650')
-	message.react('405911142012026891')
+	//message.clearReactions()
+	//message.react('405909843098992650')
+	//message.react('405911142012026891')
 }
 
 bot.on('raw', async event => {
