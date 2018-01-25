@@ -118,11 +118,7 @@ bot.dispatcher = ''
 //});
 //});
 
-const config = require('../config.json')
-const ta = require('../timeago.js')
-const Discord = require('discord.js')
-
-client.on("messageReactionAdd", (reaction, user) => {
+bot.on("messageReactionAdd", (reaction, user) => {
   console.log('new reacrion')
   var role
   var given
