@@ -119,7 +119,7 @@ bot.dispatcher = ''
 //});
 
 bot.on("messageReactionAdd", (reaction) => {
-  console.log(reaction);
+  console.log(reaction.message.id);
 });
 
 
