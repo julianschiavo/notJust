@@ -147,7 +147,7 @@ bot.on("messageReactionAdd", (reaction, user) => {
       user.addRole(role)
       given = ' You have joined @'
     }
-    user.send(reaction.emoji.toString() + given + role.name + '.')
+    user.send(reaction.emoji.toString() + given + reaction.message.roles.get(role).toString() + '.')
   }
 });
 
