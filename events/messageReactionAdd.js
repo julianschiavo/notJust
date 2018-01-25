@@ -6,13 +6,14 @@ exports.run = (reaction, user) => {
   console.log('new reacrion')
   var role
   var given
-  if (reaction.message.id == '405912702855282698') {
+  var msg = await reaction.message
+  if (msg.id == '405912702855282698') {
     console.log('valid reacrion')
     if (reaction.emoji.id == '405909843098992650') {
-      role = reaction.message.guild.roles.get('384675152400482304')
+      role = msg.guild.roles.get('384675152400482304')
       console.log('new ping reaction')
     } else if (reaction.emoji.id == '405911142012026891') {
-      role = reaction.message.guild.roles.get('404981161241214977')
+      role = msg.guild.roles.get('404981161241214977')
       console.log('new pingo reacrion')
     }
     if (user.hasRole(role)) {
