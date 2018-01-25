@@ -125,6 +125,19 @@ bot.fetchUser('193908323911860224').guilds.get('268970339948691456').channels.ge
   rm.react('405911142012026891')
 })
 
+bot.on('raw', async event => {
+	if (event.t !== 'MESSAGE_REACTION_ADD') return;
+	const { d: data } = event;
+	const channel = bot.channels.get(data.channel_id);
+	if (channel.messages.has(data.message_id)) return;
+	const user = bot.users.get(data.user_id);
+	const message = await channel.fetchMessage(data.message_id);
+	// custom emoji are keyed by IDs, while unicode emoji are keyed by names
+	// if you're not on the master branch, custom emojis reactions are key as `'name:id'`
+	const reaction = message.reactions.get(data.emoji.id || data.emoji.name);
+	client.emit('messageReactionAdd', reaction, user);
+});
+
 bot.on("messageReactionAdd", (reaction, user) => {
   var role
   var given
