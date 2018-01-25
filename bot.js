@@ -142,7 +142,7 @@ bot.on("messageReactionAdd", (reaction, user) => {
     }
     if (user.roles.has(role)) {
       user.removeRole(role)
-      given = ' You have left @'
+      given = ' You have left `@'
     } else {
       user.addRole(role)
       given = ' You have joined `@'
