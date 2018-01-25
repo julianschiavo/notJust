@@ -2,7 +2,7 @@ const config = require('../config.json')
 const ta = require('../timeago.js')
 const Discord = require('discord.js')
 
-exports.run = (reaction, user) => {
+exports.run = async (reaction, user) => {
   console.log('new reacrion')
   var role
   var given
