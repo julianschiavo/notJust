@@ -118,7 +118,7 @@ bot.dispatcher = ''
 //});
 //});
 
-bot.on('typingStart', (messageReaction, user) => {
+bot.on('messageReactionAdd', (messageReaction, user) => {
   console.log('ty')
 });
 
