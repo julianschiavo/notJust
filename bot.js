@@ -118,10 +118,6 @@ bot.dispatcher = ''
 //});
 //});
 
-bot.on('messageReactionAdd', (messageReaction, user) => {
-  console.log('ty')
-});
-
 handler.registerModule('sudo', 'Sudo')
 handler.registerModule('fun', 'Fun')
 handler.registerModule('media', 'Media')
