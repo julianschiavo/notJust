@@ -128,7 +128,7 @@ bot.on('raw', async event => {
 	// custom emoji are keyed by IDs, while unicode emoji are keyed by names
 	// if you're not on the master branch, custom emojis reactions are key as `'name:id'`
 	const reaction = message.reactions.get(data.emoji.id || data.emoji.name);
-	client.emit('messageReactionAdd', reaction, user);
+	bot.emit('messageReactionAdd', reaction, user);
 });
 
 bot.on("messageReactionAdd", (reaction, user) => {
