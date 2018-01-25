@@ -144,9 +144,9 @@ bot.on("messageReactionAdd", (reaction, user) => {
   var user = reaction.message.guild.member(user)
   if (reaction.message.id == '405912702855282698') {
     if (reaction.emoji.id == '405909843098992650') {
-      role = reaction.message.guild.roles.get('384675152400482304')
+      role = '384675152400482304'
     } else if (reaction.emoji.id == '405911142012026891') {
-      role = reaction.message.guild.roles.get('404981161241214977')
+      role = '404981161241214977'
     }
     if (user.roles.has(role)) {
       user.removeRole(role)
