@@ -128,7 +128,7 @@ bot.on("messageReactionAdd", (reaction, user) => {
     } else if (reaction.emoji.id == '405911142012026891') {
       role = reaction.message.guild.roles.get('404981161241214977')
     }
-    if (user.hasRole(role)) {
+    if (user.roles.has(role)) {
       user.removeRole(role)
       given = ' You have left @'
     } else {
