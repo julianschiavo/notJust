@@ -118,20 +118,8 @@ bot.dispatcher = ''
 //});
 //});
 
-bot.on('raw', async event => {
-	if (event.t !== 'MESSAGE_REACTION_ADD') return;
-	const { d: data } = event;
-	const channel = bot.channels.get(data.channel_id);
-	if (channel.messages.has(data.message_id)) return;
-	const user = bot.users.get(data.user_id);
-	const message = await channel.fetchMessage(data.message_id);
-	const emojiKey = (data.emoji.id) ? `${data.emoji.name}:${data.emoji.id}` : data.emoji.name;
-	const reaction = message.reactions.get(emojiKey);
-	bot.emit('messageReactionAdd', reaction, user);
-});
-
-bot.on("messageReactionAdd", (reaction, user) => {
-  var role
+function pingRoles(reaction, user) {
+	var role
   var given
   var user = reaction.message.guild.member(user)
   if (reaction.message.id == '405912702855282698') {
@@ -149,8 +137,31 @@ bot.on("messageReactionAdd", (reaction, user) => {
     }
     user.send(reaction.emoji.toString() + given + reaction.message.guild.roles.get(role).name + '`.')
   }
+}
+
+bot.on('raw', async event => {
+  if (event.t !== 'MESSAGE_REACTION_ADD' && event.t !== 'MESSAGE_REACTION_REMOVE') return;
+  const { d: data } = event;
+  const channel = bot.channels.get(data.channel_id);
+  if (channel.messages.has(data.message_id)) return;
+  const message = await channel.fetchMessage(data.message_id);
+  const user = bot.users.get(data.user_id);
+  const emojiKey = (data.emoji.id) ? `${data.emoji.name}:${data.emoji.id}` : data.emoji.name;
+  const reaction = message.reactions.get(emojiKey);
+  if (event.t == 'MESSAGE_REACTION_ADD') {
+	  bot.emit('messageReactionAdd', reaction, user);
+  } else {
+	  bot.emit('messageReactionRemove', reaction, user);
+  }
 });
 
+bot.on("messageReactionAdd", (reaction, user) => {
+  pingRoles(reaction, user)
+});
+
+bot.on("messageReactionRemove", (reaction, user) => {
+  pingRoles(reaction, user)
+});
 
 handler.registerModule('sudo', 'Sudo')
 handler.registerModule('fun', 'Fun')
