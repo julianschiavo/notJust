@@ -139,6 +139,12 @@ function pingRoles(reaction, user) {
   }
 }
 
+function resetReactions(message) {
+	message.clearReactions()
+	message.react('405909843098992650')
+	message.react('405911142012026891')
+}
+
 bot.on('raw', async event => {
   if (event.t !== 'MESSAGE_REACTION_ADD' && event.t !== 'MESSAGE_REACTION_REMOVE') return;
   const { d: data } = event;
@@ -157,10 +163,12 @@ bot.on('raw', async event => {
 
 bot.on("messageReactionAdd", (reaction, user) => {
   pingRoles(reaction, user)
+	resetReactions(reaction.message)
 });
 
 bot.on("messageReactionRemove", (reaction, user) => {
   pingRoles(reaction, user)
+	resetReactions(reaction.message)
 });
 
 handler.registerModule('sudo', 'Sudo')
