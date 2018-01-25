@@ -162,13 +162,17 @@ bot.on('raw', async event => {
 });
 
 bot.on("messageReactionAdd", (reaction, user) => {
+	if (user.id !== '329772339967426560') {
   pingRoles(reaction, user)
 	resetReactions(reaction.message)
+	}
 });
 
 bot.on("messageReactionRemove", (reaction, user) => {
+	if (user.id !== '329772339967426560') {
   pingRoles(reaction, user)
 	resetReactions(reaction.message)
+	}
 });
 
 handler.registerModule('sudo', 'Sudo')
