@@ -58,7 +58,7 @@ class colorCommand extends Command {
     }
     let therole = message.guild.roles.find("name", 'color')
     if (!user.roles.has(therole.id)) {
-      return api.error('You are not at Level 15 yet! Please use `.rank` to check your rank.')
+      return api.error('You are not at Level 10 yet! Please use `.dots` to check your rank.')
     }
     args.splice(0, 1)
 var added
