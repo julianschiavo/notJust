@@ -26,10 +26,10 @@ class dotsCommand extends Command {
     }
     var dots = message.client.dots.get(user.id)
     !dots ? message.channel.send('You have no dots yet.') : console.log('');
-    if (dots.level >= '3') {
+    /*if (dots.level >= '3') {
       user.addRole(message.guild.roles.find('name','emoji'))
-    }
-    if (dots.level >= '12') {
+    }*/
+    if (dots.level >= '10') {
       user.addRole(message.guild.roles.find('name','color'))
     }
       let embed = new Discord.RichEmbed()
