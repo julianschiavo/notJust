@@ -42,10 +42,10 @@ class dotCommand extends Command {
     user.send(`You are now **Level ${curLevel}**!`).catch(err => console.error(err))
     dots.level = curLevel;
   }
-  if (dots.level >= '3') {
+  /*if (dots.level >= '3') {
     user.addRole(message.guild.roles.find('name','emoji'))
-  }
-  if (dots.level >= '12') {
+  }*/
+  if (dots.level >= '10') {
     user.addRole(message.guild.roles.find('name','color'))
   }
       message.client.dots.set(message.author.id, dots);
