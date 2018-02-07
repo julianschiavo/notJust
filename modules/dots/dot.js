@@ -39,7 +39,7 @@ class dotCommand extends Command {
       }
       var curLevel = Math.floor(0.1 * Math.sqrt(dots.dots));
   if (dots.level < curLevel) {
-    message.channel.send(`You are now **Level ${curLevel}**!`).then(msg => {msg.delete(10000)}).catch(err => console.error(err))
+    message.channel.send(`**${user.tag}** is now **Level ${curLevel}**!`).then(msg => {msg.delete(10000)}).catch(err => console.error(err))
     dots.level = curLevel;
   }
   /*if (dots.level >= '3') {
