@@ -124,7 +124,7 @@ play(message.client.queue[message.guild.id].songs.shift());
 });
 });*/
 
-bot.on('raw', async event => {
+/*bot.on('raw', async event => {
   if (event.t !== 'MESSAGE_REACTION_ADD') return;
   const { d: data } = event;
   const channel = bot.channels.get(data.channel_id);
@@ -153,7 +153,7 @@ bot.on("messageReactionAdd", (reaction, user) => {
     user.send(reaction.emoji.toString() + given + reaction.message.guild.roles.get(role).name + '`.')
     reaction.remove(user)
   }
-});
+});*/
 
 handler.registerModule('sudo', 'Sudo')
 handler.registerModule('fun', 'Fun')
