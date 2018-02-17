@@ -89,6 +89,9 @@ bot.pointsMonitor = (message) => {
     level: 0,
     time: 0
   };
+  if (message.author.bot) {
+      return api.error('Bot dots... don\'t exist. Sorry!')
+    }
   var curTime = new Date().getTime();
   if ((curTime - score.time) < 60000) {
     score.time = new Date().getTime();
