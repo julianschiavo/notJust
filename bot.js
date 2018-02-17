@@ -97,10 +97,11 @@ bot.pointsMonitor = (message) => {
     score.time = new Date().getTime();
   }
   score.dots = score.dots + Math.floor(Math.random() * (30 - 15 + 1)) + 15;
-  const curLevel = Math.floor(0.1 * Math.sqrt(score.dots));
-  if (score.level < curLevel) {
-    message.channel.send(`**${message.author.tag}** is now **Level ${curLevel}**!`).then(msg => {msg.delete(10000)}).catch(err => console.error(err))
-    score.level = curLevel;
+  var desiredLevel = score.level + 1
+  var xpLeft = score.dots - (5 / 6 * desiredLevel * (2 * desiredLevel * desiredLevel + 27 * desiredLevel + 91))
+  if (xpLeft >= 0) {
+    message.channel.send(`**${message.author.tag}** is now **Level ${desiredLevel}**!`).then(msg => {msg.delete(10000)}).catch(err => console.error(err))
+    score.level = desiredLevel;
   }
   /*if (score.level >= '3') {
     message.guild.member(message.author).addRole(message.guild.roles.find('name', 'emoji'))
