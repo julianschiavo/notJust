@@ -16,15 +16,12 @@ class dotsCommand extends Command {
 
   async run(message, args, api) {
     var user
-    if (args[1]) {
+    if (args[1] && message.guild.member(message.mentions.users.first())) {
       user = message.guild.member(message.mentions.users.first());
-      if (!user) {
-        user = message.guild.member(message.author);
-      }
     } else {
       user = message.guild.member(message.author);
     }
-    if (user.bot) {
+    if (user.bot == true) {
       return api.error('Bot dots... don\'t exist. Sorry!')
     }
     var dots = message.client.dots.get(user.id)
