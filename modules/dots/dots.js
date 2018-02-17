@@ -21,6 +21,7 @@ class dotsCommand extends Command {
     } else {
       user = message.guild.member(message.author);
     }
+    console.log(user.bot)
     if (user.bot == true) {
       return api.error('Bot dots... don\'t exist. Sorry!')
     }
