@@ -30,7 +30,7 @@ class dotCommand extends Command {
       } else {
         user = message.guild.member(message.author);
       }
-    if (user.bot) {
+    if (user.user.bot) {
       return api.error('Bot dots... don\'t exist. Sorry!')
     }
     const dots = message.client.dots.get(user.id) || { dots: 0, level: 0, time: 0 };
