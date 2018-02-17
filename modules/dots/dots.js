@@ -26,6 +26,12 @@ class dotsCommand extends Command {
     }
     var dots = message.client.dots.get(user.id)
     !dots ? message.channel.send('You have no dots yet.') : console.log('');
+    var desiredLevel = dots.level + 1
+    var xpLeft = dots.dots - (5 / 6 * desiredLevel * (2 * desiredLevel * desiredLevel + 27 * desiredLevel + 91))
+    if (xpLeft >= 0) {
+      message.channel.send(`**${message.author.tag}** is now **Level ${desiredLevel}**!`).then(msg => {msg.delete(10000)}).catch(err => console.error(err))
+      dots.level = desiredLevel;
+    }
     /*if (dots.level >= '3') {
       user.addRole(message.guild.roles.find('name','emoji'))
     }*/
