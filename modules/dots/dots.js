@@ -25,7 +25,7 @@ class dotsCommand extends Command {
       user = message.guild.member(message.author);
     }
     if (user.bot) {
-      return api.error('Bot dots... don\'t exist. Sorry')
+      return api.error('Bot dots... don\'t exist. Sorry!')
     }
     var dots = message.client.dots.get(user.id)
     !dots ? message.channel.send('You have no dots yet.') : console.log('');
