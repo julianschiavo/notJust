@@ -22,7 +22,7 @@ class dotCommand extends Command {
       return !isNaN(num)
     }
     if (!args[1] || !args[2]) {
-      returnapi.error('Please specify a user and amount.')
+      return api.error('Please specify a user and amount.')
     }
     var user
       if (args[1]) {
@@ -30,6 +30,9 @@ class dotCommand extends Command {
       } else {
         user = message.guild.member(message.author);
       }
+    if (user.bot) {
+      return api.error('Bot dots... don\'t exist. Sorry')
+    }
     const dots = message.client.dots.get(user.id) || { dots: 0, level: 0, time: 0 };
     if (isN(args[2])) {
       var am = Number(args[2])
