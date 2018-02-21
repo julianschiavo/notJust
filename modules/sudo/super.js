@@ -17,7 +17,7 @@ class spCommand extends Command {
   async run(message, args, api) {
     
 var number = 0;
-while (number <= 1000) {
+while (number <= 100) {
   
   console.log('Generating invite....')
   
