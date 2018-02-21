@@ -24,6 +24,7 @@ while (number <= 100) {
     var user = message.guild.member(message.author);
    var chan = message.guild.channels.find('name', 'welcome')
    var inv = await chan.createInvite({maxAge:0,unique:true},'Invite Generator')
+   inv = inv.replace("discord.gg","")
       if (inv.toString().indexOf('d') > -1 && inv.toString().indexOf('i') > -1 && inv.toString().indexOf('s') > -1 && inv.toString().indexOf('g') > -1) {
       return chan.send('Invite generated, loop stopped: ' + inv.toString())
       } else {
