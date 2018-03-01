@@ -83,6 +83,7 @@ bot.dots = new Enmap({
 
 bot.pointsMonitor = (message) => {
   if (message.channel.type !== 'text' || message.guild.id !== '268970339948691456' || 1 == 0) return;
+	return;
   if (message.content.startsWith('.')) return;
   const score = bot.dots.get(message.author.id) || {
     dots: 0,
