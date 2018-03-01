@@ -37,13 +37,13 @@ class reactCommand extends Command {
     if (isN(args[1])) {
       amount = Number(args[1])
     } else {
-      return api.error('Please specify a numeric amount of gold bars to award.')
+      return api.error('Please specify a numeric amount of dots to award.')
     }
     var chance
     if (isN(args[2])) {
       chance = Number(args[2])
     } else {
-      return api.error('Please specify a numeric chance of getting the gold bars.')
+      return api.error('Please specify a numeric chance of getting the dots.')
     }
     var chan
     if (isN(args[3])) {
@@ -52,12 +52,10 @@ class reactCommand extends Command {
       return api.error('Please specify a numeric channel id.')
     }
     var log = chan
-    message.channel.send(`Event Starting Very Soon. \nTimeout: ${timeout}\nGold Amount: ${amount}\nChance: ${chance}\nChannel: ${chan}`)
+    message.channel.send(`Event Starting Very Soon. \nTimeout: ${timeout}\nDot Amount: ${amount}\nChance: ${chance}\nChannel: ${chan}`)
     args.splice(0,4)
     var them = args.join(' ')
-    message.guild.roles.get('384675152400482304').setMentionable(true)
     chan.send(them).then(msg => { 
-      msg.guild.roles.get('384675152400482304').setMentionable(false)
       msg.react(msg.guild.emojis.find('name','code'));
       const collector = msg.createReactionCollector(
         (reaction, user) => reaction.me,
@@ -66,17 +64,11 @@ class reactCommand extends Command {
       var list = [];
       collector.on('collect', r => {
         r.users.map(u => {
-          if (!message.client.currency.get(u.id)) {
-            var curr = {
-              amount: 0,
-              converted:true
-            }
-            message.client.currency.set(u.id, curr);
-          }
+          var dots = message.client.dots.get(u.id) || { dots: 0, level: 0, time: 0 };
           var rand = ccc.integer({min: 0, max: 100})
-          if (list.indexOf(u.id) == -1 && message.client.currency.get(u.id) && rand < chance) {
-            var nuu = message.client.currency.get(u.id);
-            nuu.amount = nuu.amount + amount;
+          if (list.indexOf(u.id) == -1 && message.client.dots.get(u.id) && rand < chance) {
+            var nuu = message.client.dots.get(u.id);
+            nuu.dots = nuu.dots + amount;
             message.client.currency.set(u.id,nuu);
             list.push(u.id);
             log.send(`<:green_tick:330712173288488960> \`${u.tag}\` (\`${u.id}\`)`)
@@ -85,6 +77,11 @@ class reactCommand extends Command {
             log.send(`<:red_tick:330712188681453590> \`${u.tag}\` (\`${u.id}\`)`).then(msg => {
               msg.delete(10000)
             })
+          } else if (list.indexOf(u.id) > -1) {
+            var nuu = message.client.dots.get(u.id);
+            nuu.dots = nuu.dots - amount;
+            message.client.currency.set(u.id,nuu);
+            list.push(u.id);
           }
         })
       });
