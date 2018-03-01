@@ -11,7 +11,7 @@ class transCommand extends Command {
   }
 
   hasPermission(message) {
-   if (message.guild && message.guild.id == '268970339948691456') return true
+   if (message.guild && message.guild.id == '268970339948691456' && 1 == 0) return true
     return false
   }
 
